@@ -8,31 +8,17 @@ class Header extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            isOpen: false,
-            view: "<App />"
+            isOpen: false
         };
-        this.toggle = this.toggle.bind(this);
-        this.updateView = this.updateView.bind(this);
     }
 
-    toggle(){
-        this.setState({
-            isOpen: !this.state.isOpen
-        });
-    }
-
-    updateView(e){
-        e.preventDefault();
-        const { view } = this.state;
-        const { updateView } = this.props;
-    }
 
     render(){
         return (
             <div>
                 <Navbar color="light" light expand="md">
                 <NavbarBrand href="/">NH Urban Sport</NavbarBrand>
-                <NavbarToggler onClick={this.toggle} />
+                <NavbarToggler />
                 <Collapse isOpen={this.state.isOpen} navbar>
                     <Nav navbar>
                         <UncontrolledDropdown nav inNavbar>
@@ -48,7 +34,6 @@ class Header extends React.Component {
                                 </DropdownItem>
                             </DropdownMenu>
                         </UncontrolledDropdown>
-                        
                     </Nav>
                 </Collapse>
             </Navbar>
