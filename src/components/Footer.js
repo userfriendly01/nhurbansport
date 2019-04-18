@@ -1,4 +1,5 @@
 import React from 'react'
+import styled from 'styled-components';
 
 class Footer extends React.Component {
     constructor(props){
@@ -9,10 +10,15 @@ class Footer extends React.Component {
     }
 
     render(){
+
+        const StyledDiv = styled.div`
+            position: absolute;
+            bottom: 10px;
+        `;
         return (
-            <div>   
+            <StyledDiv>   
                 <h1>I'm a Test Footer! Woohoo!</h1>
-            </div>
+            </StyledDiv>
         );
     }
 
