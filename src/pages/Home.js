@@ -1,20 +1,50 @@
 import React from 'react'
-import Photo from '../components/Photo'
+import styled from 'styled-components';
 
-class Home extends React.Component {
+    
+const Home = () => {
 
-    render(){
+    const PhotoContainer = styled.div`
+        border-style: solid;
+        height: 400px;
+        background-image: url("https://images-na.ssl-images-amazon.com/images/I/91FOeSuXvIL._SX522_.jpg");
+        background-size: auto;
+        margin-left: auto;
+        margin-right: auto;
+    `;
+
+    const LinkContainer = styled.div`
+        margin: auto;
+        border: 3px solid black;
+        margin-top: 15px;
+    `;
+
+    const LinkBox = styled.span`
+        border-style: solid;
+        display: inline-block;
+        height: 400px;
+        width: 400px;
+        background-image: url("https://images-na.ssl-images-amazon.com/images/I/91FOeSuXvIL._SX522_.jpg");
+        background-size: cover;
+        margin-left: 20px;
+        margin-right: 20px;
+    `;
+
         return (
-            <div>   
-                <Photo type="header" img="https://images-na.ssl-images-amazon.com/images/I/91FOeSuXvIL._SX522_.jpg" />
-                <span>
-                <Photo type="mini" img="https://images-na.ssl-images-amazon.com/images/I/91FOeSuXvIL._SX522_.jpg" />
-                </span>
-            
+            <div>  
+                <div id="home-banner">   
+                    <PhotoContainer />
+                    <LinkContainer >
+                        <LinkBox />
+                        <LinkBox />
+                        <LinkBox />  
+                    </LinkContainer>
+                                          
+                </div>
             </div>
         );
     }
 
-}
+
 
 export default Home;
