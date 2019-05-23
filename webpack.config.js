@@ -2,16 +2,18 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 
-module.exports = {
+const config = {
   entry: './src/index.js',
   plugins:[
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
-        title: 'NH Urban Sport'
+        title: 'NH Urban Sport',
+        filename: "index.html",
+        template: "template.html"
     })
   ],
   output: {
-    filename: 'main.js',
+    filename: 'nh-urban-sport.js',
     path: path.resolve(__dirname, 'dist')
   },
   module: {
@@ -29,6 +31,14 @@ module.exports = {
                   'file-loader'
               ]
           },
+          {
+              test: /\.jsx?$/,
+              exclude: /node_modules/,
+              query:{
+                  presets: ["@babel/react"]
+              },
+              loader: "babel-loader"
+          },
           //I may not need this in the end - check after
           //Anything else in the project that should be loaded should be looked at within this configuration
           {
@@ -40,3 +50,5 @@ module.exports = {
       ]
   }
 };
+
+module.exports = config;
