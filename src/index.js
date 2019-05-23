@@ -1,7 +1,8 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import Header from './components/Header.jsx'
 
 ReactDOM.render(
-    <div>Sup App</div>,
+    <Header/>,
     document.getElementById("root")
 );
