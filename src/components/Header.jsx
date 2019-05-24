@@ -4,105 +4,86 @@ import Home from '../pages/Home.jsx';
 import About from '../pages/About.jsx';
 import styled from 'styled-components';
 import {UncontrolledDropdown, DropdownToggle, DropdownItem, 
-    NavbarToggler, DropdownMenu, Navbar, Nav, Collapse, 
-    NavbarBrand} from 'reactstrap'
+    DropdownMenu, Navbar, Nav, NavItem, NavbarBrand} from 'reactstrap'
 
 const Header = () => {
 
-    const [isOpen, setIsOpen] = useState(true);
+    const StyledNavBar = styled(Navbar)`
+        font-size: 20px;
+        display: flex;
+        color: black;
+        
+    `
+    const StyledNavItem = styled(NavItem)`
+        display: block;
+        font-size: 10px;
+        padding-right: 0.5px;
+        padding-left: 0.5px;
+        font-size: 15px;
+        color: #737373;
+        &:hover {
+            color: rgba(0, 0, 0, 0.7);
+        }
+    `;
 
-    const StyledNavItem = styled.nav`
-            font-size: 10px;
-            padding: 10px;
-            font-size: 15px;
-            color: #737373;
-        `;
+    const StyledLink = styled(Link)`
+        padding: 5px;
+        color: #16181b;
+        &:hover {
+            color: #16181b;
+            text-decoration: none;
+        }
+    `;
 
     return (
         <Router>
-        <div>
-            <Navbar color="light" light expand="md">
-            <NavbarBrand><Link to="/">NH Urban Sport</Link></NavbarBrand>
-            <NavbarToggler onClick={() => setIsOpen(!isOpen)} />
-            <Collapse isOpen={isOpen} navbar>
+            <StyledNavBar color="light" light expand="md">
+                <NavbarBrand href="/">NH Urban Sport</NavbarBrand>
                 <Nav className="ml-auto" navbar>
-                    <UncontrolledDropdown nav inNavbar>
+                    <UncontrolledDropdown>
                         <DropdownToggle nav caret>
-                        NH Urban Sport
+                            NH Urban Sport
                         </DropdownToggle>
                         <DropdownMenu>
                             <DropdownItem>
-                                <Link to="/about">About</Link>
+                                <StyledLink to="/about">About</StyledLink>
                             </DropdownItem>
-                            <DropdownItem>
-                                Contact
-                            </DropdownItem>
+                            <DropdownItem> Contact </DropdownItem>
                         </DropdownMenu>
                     </UncontrolledDropdown>
                     <UncontrolledDropdown nav inNavbar>
                         <DropdownToggle nav caret>
-                        Sports Leagues
+                            Sports Leagues
                         </DropdownToggle>
                         <DropdownMenu right>
-                            <DropdownItem>
-                                FAQ
-                            </DropdownItem>
-                            <DropdownItem>
-                                Liability Waiver
-                            </DropdownItem>
+                            <DropdownItem> FAQ </DropdownItem>
+                            <DropdownItem> Liability Waiver </DropdownItem>
                         </DropdownMenu>
                     </UncontrolledDropdown>
-                    <UncontrolledDropdown nav inNavbar>
+                    <UncontrolledDropdown >
                         <DropdownToggle nav caret>
-                        Player Portal
+                            Player Portal
                         </DropdownToggle>
                         <DropdownMenu right>
-                            <DropdownItem>
-                                Log In
-                            </DropdownItem>
-                            <DropdownItem>
-                                How To
-                            </DropdownItem>
-                            <DropdownItem>
-                                Schedules
-                            </DropdownItem>
-                            <DropdownItem>
-                                Rule Books
-                            </DropdownItem>
-                            <DropdownItem>
-                                Roster
-                            </DropdownItem>
-                            <DropdownItem>
-                                League Standings
-                            </DropdownItem>
-                            <DropdownItem>
-                                League Leader
-                            </DropdownItem>
-                            <DropdownItem>
-                                How Can We Improve?
-                            </DropdownItem>
+                            <DropdownItem> Log In </DropdownItem>
+                            <DropdownItem> How To </DropdownItem>
+                            <DropdownItem> Schedules </DropdownItem>
+                            <DropdownItem> Rule Books </DropdownItem>
+                            <DropdownItem> Roster </DropdownItem>
+                            <DropdownItem> League Standings </DropdownItem>
+                            <DropdownItem> League Leader </DropdownItem>
+                            <DropdownItem> How Can We Improve? </DropdownItem>
                         </DropdownMenu>
                     </UncontrolledDropdown>
-                    <StyledNavItem>
-                        Social Events
-                    </StyledNavItem>
-                    <StyledNavItem>
-                        Veterans
-                    </StyledNavItem>
-                    <StyledNavItem>
-                        Corporate Sponsors
-                    </StyledNavItem>
-                    <StyledNavItem>
-                        News
-                    </StyledNavItem>
+                    <StyledLink to="/">Social Events</StyledLink>
+                    <StyledLink to="/">Veterans</StyledLink>                    
+                    <StyledLink to="/">Corporate Sponsors</StyledLink>     
                 </Nav>
-            </Collapse>
-            </Navbar>
+            </StyledNavBar>
             <Switch>
                 <Route exact path = "/" component={Home} />
                 <Route path = "/about" component={About} />
             </Switch>
-        </div>
         </Router>
     );
 };
