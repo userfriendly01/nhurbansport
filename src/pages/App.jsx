@@ -9,6 +9,7 @@ const MainContainer = styled.div`
     flex-direction: column;
     background-color: #D8D8D8;
     height: 100%;
+    white-space: nowrap;
 `;
 
 const App = () =>{

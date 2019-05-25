@@ -14,6 +14,7 @@ const Footer = () => {
         font-family: avenir-lt-w01_35-light1475496, sans-serif;
         letter-spacing: 0.35em;
         padding-top: 15px;
+        white-space: nowrap;
     `;
 
     const FooterText = styled.div`
