@@ -8,10 +8,9 @@ const Footer = () => {
         display: flex;
         flex-direction: column;
         align-items: center;
-        position: absolute;
-        bottom: 0px;
-        background-color: #D8D8D8;
-        min-width: 100%;
+        position: relative;
+        background-color: rgba(255,255,0,0.3);
+        min-width: 50%;
         font-family: avenir-lt-w01_35-light1475496, sans-serif;
         letter-spacing: 0.35em;
         padding-top: 15px;
@@ -60,7 +59,7 @@ const Footer = () => {
 
     const CopyWrite = styled.div`
         font-style: italic;
-        background-color: white;
+        background-color: #D8D8D8;
         color: #5F5F5F;
         font-size: 12px;
         min-width: 100%;

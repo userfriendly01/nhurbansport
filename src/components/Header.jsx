@@ -12,7 +12,6 @@ const Header = () => {
         white-space: nowrap;
         font-size: 16px;
         color: #A9A9A9;
-        min-width: 90%;
         align-items: center;
         background-color: #D8D8D8;
     `
