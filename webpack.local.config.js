@@ -6,7 +6,6 @@ const localConfig = merge(
     {
         mode: "development",
         devServer: {
-            contentBase: "./dist",
             hot: true,
             port: 8080
         }

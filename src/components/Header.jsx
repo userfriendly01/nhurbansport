@@ -14,7 +14,7 @@ const Header = () => {
         color: #A9A9A9;
         min-width: 90%;
         align-items: center;
-        background-color: #E8E8E8;
+        background-color: #D8D8D8;
     `
     const NavHeader = styled.div`
         margin-right: auto;
