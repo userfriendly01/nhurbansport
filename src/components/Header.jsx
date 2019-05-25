@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import { Route, Link, BrowserRouter as Router, Switch } from 'react-router-dom'
 import Home from '../pages/Home.jsx';
-import About from '../pages/About.jsx';
+import Leagues from '../pages/Leagues.jsx';
+import About from './About.jsx';
 import styled from 'styled-components';
 import { UncontrolledDropdown, DropdownToggle, DropdownItem, DropdownMenu } from 'reactstrap'
 
@@ -65,7 +66,7 @@ const Header = () => {
                 </UncontrolledDropdown>
                 <UncontrolledDropdown isOpen={isOpen2} onMouseEnter={() => setIsOpen2(true)} onMouseLeave={() => setIsOpen2(false)}>
                     <StyledDropdownToggle nav>
-                        <StyledLink to="/about">Sports Leagues</StyledLink>
+                        <StyledLink to="/leagues">Sports Leagues</StyledLink>
                     </StyledDropdownToggle>
                     <DropdownMenu>
                         <DropdownItem><StyledLink to="/">FAQ</StyledLink></DropdownItem>
@@ -94,6 +95,7 @@ const Header = () => {
             <Switch>
                 <Route exact path = "/" component={Home} />
                 <Route path = "/about" component={About} />
+                <Route path = "/leagues" component={Leagues} />
                 <Route path = "/*" component={Home} />
             </Switch>
         </Router>
