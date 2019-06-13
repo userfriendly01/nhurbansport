@@ -1,0 +1,28 @@
+{
+    "session" : {
+        "SESS1" : {
+            "sport" : "Flag Football",
+            "season" : "Fall",
+            "type" : "Standard",
+            "startDate" : "8/11",
+            "weekDay" : "Sunday",
+            "schedule" : 1
+        }
+    },
+    "schedule" : {
+        "SCHED1" : {
+            "scheduleId" : "SCHED1",
+            "gameNumber" : 1,
+            "slotNumber" : 1,
+            "homeTeam" : "TEAM1",
+            "awayTeam" : "TEAM2",
+            "time" : "8:15pm"
+        }
+    },
+    "team" : {
+        "TEAM1" : {
+            "name" : "PoundTown",
+
+        }
+    }
+}

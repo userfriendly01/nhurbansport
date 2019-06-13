@@ -45,6 +45,13 @@ const Header = () => {
     const [isOpen2, setIsOpen2] = useState(false);
     const [isOpen3, setIsOpen3] = useState(false);
 
+    const aboutLink = {
+        pathname: '/',
+        search: '',
+        hash: '#about' ,
+        state: {}
+    }
+
     return (
         <Router>
             <StyledNavBar expand="md">
@@ -57,7 +64,7 @@ const Header = () => {
                     </StyledDropdownToggle>
                     <DropdownMenu>
                         <DropdownItem>
-                            <StyledLink to="/about">About</StyledLink>
+                            <StyledLink to={aboutLink}>About</StyledLink>
                         </DropdownItem>
                         <DropdownItem> 
                             <StyledLink to="/">Contact</StyledLink>
@@ -94,7 +101,7 @@ const Header = () => {
             </StyledNavBar>
             <Switch>
                 <Route exact path = "/" component={Home} />
-                <Route path = "/about" component={About} />
+                <Route path = "/:about" component={Home} />
                 <Route path = "/leagues" component={Leagues} />
                 <Route path = "/*" component={Home} />
             </Switch>

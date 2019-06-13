@@ -8,7 +8,6 @@ const MainContainer = styled.div`
     align-items: center;
     flex-direction: column;
     background-color: #D8D8D8;
-    height: 100%;
     white-space: nowrap;
 `;
 
