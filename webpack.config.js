@@ -1,6 +1,7 @@
 const resolve = require('path').resolve;
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 
 
 const config = {
@@ -11,11 +12,15 @@ const config = {
         title: 'NH Urban Sport',
         filename: "index.html",
         template: "template.html"
-    })
+    }),
+    new CopyWebpackPlugin([
+      {from:'src/images',to:'src/images'} 
+  ]), 
   ],
   output: {
     filename: 'nh-urban-sport.js',
     path: resolve(__dirname, 'dist'),
+    //making this public causes the npm start directory issue
     publicPath: '/'
   },
   module: {
@@ -52,5 +57,7 @@ const config = {
       ]
   }
 };
+
+console.log("The Name is: "+ resolve(__dirname, '/public'));
 
 module.exports = config;
