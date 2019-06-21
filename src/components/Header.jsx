@@ -6,6 +6,7 @@ import About from './About.jsx';
 import styled from 'styled-components';
 import { UncontrolledDropdown, DropdownToggle, DropdownItem, DropdownMenu } from 'reactstrap'
 import LiabilityWaiver from '../pages/LiabilityWaiver.jsx';
+import SocialEvents from '../pages/SocialEvents.jsx';
 
 const Header = () => {
 
@@ -78,7 +79,7 @@ const Header = () => {
                     </DropdownMenu>
                 </UncontrolledDropdown>
                 <StyledLink to="/">Player Portal</StyledLink>
-                <StyledLink to="/">Social Events</StyledLink>
+                <StyledLink to="/events">Social Events</StyledLink>
                 <StyledLink to="/">Veterans</StyledLink>  
                 <StyledLink to="/">Corporate Sponsors</StyledLink>
             </StyledNavBar>
@@ -87,6 +88,7 @@ const Header = () => {
                 <Route path = "/about" component={Home} />
                 <Route path = "/leagues" component={Leagues} />
                 <Route path = "/liability" component={LiabilityWaiver} />
+                <Route path = "/events" component={SocialEvents} />
                 <Route path = "/*" component={Home} />
             </Switch>
         </Router>
