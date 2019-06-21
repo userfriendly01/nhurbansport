@@ -55,9 +55,6 @@ const Header = () => {
     return (
         <Router>
             <StyledNavBar expand="md">
-                <NavHeader>
-                    <StyledLink to="/">NH Urban Sport</StyledLink>
-                </NavHeader>
                 <UncontrolledDropdown isOpen={isOpen1} onMouseEnter={() => setIsOpen1(true)} onMouseLeave={() => setIsOpen1(false)}>
                     <StyledDropdownToggle nav>
                         <StyledLink to="/">NH Urban Sport</StyledLink>
@@ -101,7 +98,7 @@ const Header = () => {
             </StyledNavBar>
             <Switch>
                 <Route exact path = "/" component={Home} />
-                <Route path = "/:about" component={Home} />
+                <Route path = "/about" component={Home} />
                 <Route path = "/leagues" component={Leagues} />
                 <Route path = "/*" component={Home} />
             </Switch>

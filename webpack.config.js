@@ -58,6 +58,4 @@ const config = {
   }
 };
 
-console.log("The Name is: "+ resolve(__dirname, '/public'));
-
 module.exports = config;

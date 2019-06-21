@@ -33,6 +33,7 @@ const HomeBannerTextContainer = styled.div`
     position: absolute;
     bottom: 0; 
     min-width: 100%;
+    padding-bottom: 5px;
 `;
 
 const HomeBannerText = styled.div`
@@ -82,8 +83,8 @@ const Home = () => {
                 <HomeBannerImage>
                     <HomeBannerTextContainer>
                         <HomeBannerText color="white" size="32">NH Urban Sport</HomeBannerText>
-                        <HomeBannerText color="yellow" size="15">CO-ED ADULT SPORTS LEAGUE</HomeBannerText>
-                        <HomeBannerText color="white" size="10">COMMUNITY | COMPETITION | CAMARADERIE</HomeBannerText>
+                        <HomeBannerText color="yellow" size="16">CO-ED ADULT SPORTS LEAGUE</HomeBannerText>
+                        <HomeBannerText color="white" size="12">COMMUNITY | COMPETITION | CAMARADERIE</HomeBannerText>
                     </HomeBannerTextContainer>
                 </HomeBannerImage>
             </HomeBannerContainer>
