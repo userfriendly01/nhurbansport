@@ -5,6 +5,7 @@ import Leagues from '../pages/Leagues.jsx';
 import About from './About.jsx';
 import styled from 'styled-components';
 import { UncontrolledDropdown, DropdownToggle, DropdownItem, DropdownMenu } from 'reactstrap'
+import LiabilityWaiver from '../pages/LiabilityWaiver.jsx';
 
 const Header = () => {
 
@@ -73,25 +74,10 @@ const Header = () => {
                         <StyledLink to="/leagues">Sports Leagues</StyledLink>
                     </StyledDropdownToggle>
                     <DropdownMenu>
-                        <DropdownItem><StyledLink to="/">FAQ</StyledLink></DropdownItem>
-                        <DropdownItem><StyledLink to="/">Liability Waiver</StyledLink></DropdownItem>
+                        <DropdownItem><StyledLink to="/liability">Liability Waiver</StyledLink></DropdownItem>
                     </DropdownMenu>
                 </UncontrolledDropdown>
-                <UncontrolledDropdown isOpen={isOpen3} onMouseEnter={() => setIsOpen3(true)} onMouseLeave={() => setIsOpen3(false)}>
-                    <StyledDropdownToggle nav>
-                        <StyledLink to="/about">Player Portal</StyledLink>
-                    </StyledDropdownToggle>
-                    <DropdownMenu>
-                        <DropdownItem><StyledLink to="/">Log In</StyledLink></DropdownItem>
-                        <DropdownItem><StyledLink to="/">How To</StyledLink></DropdownItem>
-                        <DropdownItem><StyledLink to="/">Schedules</StyledLink></DropdownItem>
-                        <DropdownItem><StyledLink to="/">Rule Books</StyledLink></DropdownItem>
-                        <DropdownItem><StyledLink to="/">Roster</StyledLink></DropdownItem>
-                        <DropdownItem><StyledLink to="/">League Standings</StyledLink></DropdownItem>
-                        <DropdownItem><StyledLink to="/">League Leader</StyledLink></DropdownItem>
-                        <DropdownItem><StyledLink to="/">How Can We Improve?</StyledLink></DropdownItem>
-                    </DropdownMenu>
-                </UncontrolledDropdown>
+                <StyledLink to="/">Player Portal</StyledLink>
                 <StyledLink to="/">Social Events</StyledLink>
                 <StyledLink to="/">Veterans</StyledLink>  
                 <StyledLink to="/">Corporate Sponsors</StyledLink>
@@ -100,6 +86,7 @@ const Header = () => {
                 <Route exact path = "/" component={Home} />
                 <Route path = "/about" component={Home} />
                 <Route path = "/leagues" component={Leagues} />
+                <Route path = "/liability" component={LiabilityWaiver} />
                 <Route path = "/*" component={Home} />
             </Switch>
         </Router>

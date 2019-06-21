@@ -57,7 +57,7 @@ const LeagueText = styled.div`
     white-space: pre-line;
 `;
 
-const Home = () => {
+const Leagues = () => {
     return(
         <div>
             <LeagueBannerContainer>
@@ -98,4 +98,4 @@ const Home = () => {
     );
 }
 
-export default Home;
+export default Leagues;
