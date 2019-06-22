@@ -9,18 +9,14 @@ const EventsBannerImage = styled.div`
     position: relative;
 `;
 
-const EventBannerTextContainer = styled.div`
+const EventBannerText = styled.div`
     text-align: center;
-    opacity: 0.8;
-    position: absolute;
-    bottom: 10; 
     white-space: pre-line;
     padding: 0 5 5 5;
     color: white;
     font-size: 32;
-`;
-
-const EventsBannerText = styled.div`
+    position: relative;
+    top: 230;
 `;
 
 const EventsContainer = styled.div`
@@ -57,8 +53,9 @@ const SocialEvents = () => {
     return (
         <div>
             <div>
-                <EventsBannerImage />
-                <EventBannerTextContainer>Upcoming Events</EventBannerTextContainer>
+                <EventsBannerImage>
+                    <EventBannerText>Upcoming Events</EventBannerText>
+                </EventsBannerImage>
             </div>
             <EventsContainer>
                 <Event>
