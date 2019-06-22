@@ -1,58 +1,10 @@
 import React from 'react'
-import styled from 'styled-components'
-//import Container from '../components/Container.jsx'
+import Container from '../components/Container.jsx'
 import Image from '../components/Image.jsx'
-import { Form, FormGroup, Input, InputGroup, InputGroupAddon} from 'reactstrap'
-
-const Container = styled.div`
-    display: flex;
-    margin: 20 5 0 5;
-    flex-direction: ${props => props.direction};
-    align-items: ${props => props.align};
-    background-color: ${props => props.bcolor};
-    width: ${props => props.width};
-    padding: ${props => props.padding};
-    text-align: center;
-    `;
-
-// const Image = styled.div`
-//     background-image: url("${props => props.url}");
-//     background-size: 100% 100%;
-//     min-width: ${props => props.width};
-//     min-height: ${props => props.height};
-//     position: relative;
-//     margin: ${props => props.margin};
-// `;
-
-const Text = styled.div`
-    padding: 2;
-    font-size: ${props => props.size};
-    font-weight: ${props => props.weight};
-    white-space: pre-line;
-    color: ${props => props.color};
-    opacity: ${props => props.opacity};
-`;
-
-const TextContainer = styled.div`
-    background-color: ${props => props.bcolor};
-    text-align: center;
-    opacity: ${props => props.opacity};
-    bottom: 0; 
-    width: ${props => props.width};
-    padding: 5px;
-    position: ${props => props.position};
-    margin: ${props => props.margin};
-`;
-
-const StyledButton = styled.button`
-    background-color: rgba(186,218,85,1);
-    border-color: rgba(186,218,85,1);
-    font-weight: bold;
-    padding: 5 24;
-    height: calc(1.5em + .75rem + 2px);
-    margin: 0 10;
-`
-
+import Text from '../components/Text.jsx'
+import TextContainer from '../components/TextContainer.jsx'
+import Button from '../components/Button.jsx'
+import { Form, FormGroup, Input} from 'reactstrap'
 
 const Home = () => {
     return(
@@ -128,7 +80,7 @@ const Home = () => {
                         <br/>
                         <Input type="text" name="message" id="exampleMessage" placeholder="Message" />
                     </FormGroup>
-                    <StyledButton>Send</StyledButton>
+                    <Button>Send</Button>
                 </Form>
             </Container>   
         </Container>

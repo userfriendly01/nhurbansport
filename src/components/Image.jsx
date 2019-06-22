@@ -1,4 +1,3 @@
-import React from 'react'
 import styled from 'styled-components'
 
 const Image = styled.div`
@@ -10,10 +9,4 @@ const Image = styled.div`
     margin: ${props => props.margin};
 `;
 
-const CustomImage = () => {
-    return (
-        <div className={Image}></div>
-    );
-}
-
-export default CustomImage;
+export default Image;
