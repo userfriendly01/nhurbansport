@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import { Route, Link, BrowserRouter as Router, Switch } from 'react-router-dom'
 import Home from '../pages/Home.jsx';
 import Leagues from '../pages/Leagues.jsx';
-import About from './About.jsx';
 import styled from 'styled-components';
 import { UncontrolledDropdown, DropdownToggle, DropdownItem, DropdownMenu } from 'reactstrap'
 import LiabilityWaiver from '../pages/LiabilityWaiver.jsx';

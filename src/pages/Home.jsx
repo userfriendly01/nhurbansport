@@ -1,5 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
+//import Container from '../components/Container.jsx'
+import Image from '../components/Image.jsx'
 import { Form, FormGroup, Input, InputGroup, InputGroupAddon} from 'reactstrap'
 
 const Container = styled.div`
@@ -13,14 +15,14 @@ const Container = styled.div`
     text-align: center;
     `;
 
-const Image = styled.div`
-    background-image: url("${props => props.url}");
-    background-size: 100% 100%;
-    min-width: ${props => props.width};
-    min-height: ${props => props.height};
-    position: relative;
-    margin: ${props => props.margin};
-`;
+// const Image = styled.div`
+//     background-image: url("${props => props.url}");
+//     background-size: 100% 100%;
+//     min-width: ${props => props.width};
+//     min-height: ${props => props.height};
+//     position: relative;
+//     margin: ${props => props.margin};
+// `;
 
 const Text = styled.div`
     padding: 2;
