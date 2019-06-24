@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 const TextContainer = styled.div`
     background-color: ${props => props.bcolor};
-    text-align: center;
+    text-align: ${props => props.align};
     opacity: ${props => props.opacity};
     top: ${props => props.top};
     bottom: 0; 
