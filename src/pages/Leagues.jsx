@@ -1,9 +1,10 @@
 import React from 'react'
 import styled from 'styled-components'
+import Container from '../components/Container.jsx'
+import Image from '../components/Image.jsx'
+import Text from '../components/Text.jsx'
+import TextContainer from '../components/TextContainer.jsx'
 
-const LeagueBannerContainer = styled.div`
-    margin: 10 0;
-`;
 
 const LeagueBannerImage = styled.div`
     background-image: url("/src/images/league-banner-img.jpg");
@@ -60,15 +61,17 @@ const LeagueText = styled.div`
 const Leagues = () => {
     return(
         <div>
-            <LeagueBannerContainer>
-                <LeagueBannerImage>
-                    <LeagueBannerTextContainer>
-                        <LeagueBannerText color="white" size="32">Leagues</LeagueBannerText>
-                        <LeagueBannerText color="white" size="16">To register for a league, choose your sport, select the number of players, and click “Add to Cart.” It's that easy.</LeagueBannerText>
-                    </LeagueBannerTextContainer>
-                </LeagueBannerImage>
-            </LeagueBannerContainer>
-            <LeaguesContainer>
+            <Container>
+                <Image url="/src/images/league-banner-img.jpg"
+                       width="650px"
+                       height="320px">
+                    <TextContainer bcolor="#0066ff" position="absolute" opacity="0.8">
+                        <Text color="white" size="32">Leagues</Text>
+                        <Text color="white" size="16">To register for a league, choose your sport, select the number of players, and click “Add to Cart.” It's that easy.</Text>
+                    </TextContainer>
+                </Image>
+            </Container>
+            <LeaguesContainer width="660px" wrap="wrap">
                 <League>
                     <LeagueImage img='url("/src/images/home-option-1-img.jpg")'/>
                     <LeagueText size="14">Recreational Cornhole League in Manchester NH | Sundays (8 weeks)</LeagueText>

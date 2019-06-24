@@ -9,6 +9,7 @@ const TextContainer = styled.div`
     padding: 5px;
     position: ${props => props.position};
     margin: ${props => props.margin};
+    white-space: pre-line;
 `;
 
 export default TextContainer;
