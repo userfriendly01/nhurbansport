@@ -1,13 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
-
-const EventsBannerImage = styled.div`
-    background-image: url("/src/images/events-banner.jpg");
-    background-size: 100% 100%;
-    min-width: 650px;
-    min-height: 320px;
-    position: relative;
-`;
+import Container from '../components/Container.jsx'
+import Image from '../components/Image.jsx'
+import Text from '../components/Text.jsx'
+import TextContainer from '../components/TextContainer.jsx'
 
 const EventBannerText = styled.div`
     text-align: center;
@@ -52,17 +48,21 @@ const EventText = styled.div`
 const SocialEvents = () => {
     return (
         <div>
-            <div>
-                <EventsBannerImage>
-                    <EventBannerText>Upcoming Events</EventBannerText>
-                </EventsBannerImage>
-            </div>
-            <EventsContainer>
-                <Event>
-                    <EventImage />
-                    <EventText />
-                </Event>
-            </EventsContainer>
+            <Container>
+                <Image url="/src/images/events-banner.jpg"
+                       width="650"
+                       height="320">
+                    <TextContainer top="230" position="relative">
+                        <Text size="32" color="white">Upcoming Events</Text>
+                    </TextContainer>
+                </Image>
+            </Container>
+            <Container border="1px solid black">
+                <Image />
+                <TextContainer>
+                    <Text/>
+                </TextContainer>
+            </Container>
         </div>
     );
 }

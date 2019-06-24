@@ -11,6 +11,7 @@ const Container = styled.div`
         padding: ${props => props.padding};
         text-align: center;
         justify-content: center;
+        border: ${props => props.border};
     `;
 
 export default Container;
