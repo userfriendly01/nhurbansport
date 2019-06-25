@@ -7,6 +7,8 @@ import { UncontrolledDropdown, DropdownToggle, DropdownItem, DropdownMenu } from
 import LiabilityWaiver from '../pages/LiabilityWaiver.jsx';
 import SocialEvents from '../pages/SocialEvents.jsx';
 import Veterans from '../pages/Veterans.jsx';
+import PlayerPortal from '../pages/PlayerPortal.jsx';
+
 
 
 const Header = () => {
@@ -79,7 +81,7 @@ const Header = () => {
                         <DropdownItem><StyledLink to="/liability">Liability Waiver</StyledLink></DropdownItem>
                     </DropdownMenu>
                 </UncontrolledDropdown>
-                <StyledLink to="/">Player Portal</StyledLink>
+                <StyledLink to="/playerportal">Player Portal</StyledLink>
                 <StyledLink to="/events">Social Events</StyledLink>
                 <StyledLink to="/veterans">Veterans</StyledLink>  
                 <StyledLink to="/">Corporate Sponsors</StyledLink>
@@ -91,6 +93,7 @@ const Header = () => {
                 <Route path = "/liability" component={LiabilityWaiver} />
                 <Route path = "/events" component={SocialEvents} />
                 <Route path = "/veterans" component={Veterans} />
+                <Route path = "/playerportal" component={PlayerPortal} />
                 <Route path = "/*" component={Home} />
             </Switch>
         </Router>

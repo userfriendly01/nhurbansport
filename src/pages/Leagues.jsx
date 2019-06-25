@@ -12,7 +12,7 @@ const Leagues = () => {
                        width="650px"
                        height="320px">
                     <TextContainer bcolor="#0066ff" position="absolute" opacity="0.8">
-                        <Text color="white" size="32">Leagues</Text>
+                        <Text color="white" opacity="1" size="32">Leagues</Text>
                         <Text color="white" size="16">To register for a league, choose your sport, select the number of players, and click “Add to Cart.” It's that easy.</Text>
                     </TextContainer>
                 </Image>
