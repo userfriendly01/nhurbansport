@@ -13,26 +13,19 @@ const app = firebase.initializeApp ({
   
   export const getDatabase = () => {
     const myDatabase = app.database();
-    myDatabase.ref().once("value").then(function(snapshot){
-        const databaseSnapshot = snapshot.val();
-        console.log(databaseSnapshot);
-    });
-
     return myDatabase;
   };
 
-  export const getAllPlayers = () => {
+  export const logDatabase = () => {
     const myDatabase = app.database();
-    myDatabase.ref("Players").once("value").then(function(snapshot){
+    myDatabase.ref().once('value').then(function(snapshot){
         const databaseSnapshot = snapshot.val();
         console.log(databaseSnapshot);
-    });
-
-    return myDatabase;
+    });   
   };
   
    export const test = () => {
-    const myDatabase = app.database();
+    const myDatabase = getDatabase();
     myDatabase.ref().child('Players').orderByChild('Team').equalTo('PoundTown').once('value').then(function(snapshot){
         const databaseSnapshot = snapshot.val();
         console.log(databaseSnapshot);

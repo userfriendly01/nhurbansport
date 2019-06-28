@@ -2,8 +2,8 @@ import React from 'react'
 import Container from '../components/Container.jsx'
 import Image from '../components/Image.jsx'
 import Button from '../components/Button.jsx'
-import { getDatabase, getAllPlayers, test } from '../util/Connect.jsx'
-import getPlayersOnTeam from '../service/Player.jsx'
+import { logDatabase, test } from '../util/Connect.jsx'
+import { getPlayersOnTeam, getAllPlayers } from '../service/Player.jsx'
 
 const AdminHome = () => {
     return (
@@ -15,9 +15,10 @@ const AdminHome = () => {
                 <div>I'm a side nav</div>
                 <div>I'm the working space</div>
             </Container>
-            <Button onClick={getDatabase}>Log The Database</Button>
+            <Button onClick={logDatabase}>Log The Database</Button>
             <Button onClick={getAllPlayers}>Get All Players</Button>
-            <Button onClick={test}>Get Players on PoundTown</Button>
+            <Button onClick={getPlayersOnTeam}>Get All Players on Pound Town</Button>
+            <Button onClick={test}>Test Function</Button>
         </Container>
     )
 

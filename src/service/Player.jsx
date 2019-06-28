@@ -1,16 +1,26 @@
-import getDatabase from '../util/Connect.jsx'
+import { getDatabase } from '../util/Connect.jsx'
 
-const getPlayersOnTeam = () => {
+export const getAllPlayers = () => {
     const myDatabase = getDatabase();
-    const players = myDatabase.child('FirstName');
-    const query = players
-                    .orderByChild('Team')
-                    .equalTo('PoundTown');
-
-    
-    query.on('value', snap => {
-        console.log(snap.val());
+    myDatabase.ref("Players")
+              .once("value")
+              .then(function(snapshot) {
+                const databaseSnapshot = snapshot.val();
+                console.log(databaseSnapshot);
+                return databaseSnapshot;
     });
-}
+  };
 
-export default getPlayersOnTeam;
+export const getPlayersOnTeam = () => {
+    const myDatabase = getDatabase();
+    myDatabase.ref()
+              .child('Players')
+              .orderByChild('Team')
+              .equalTo('PoundTown')
+              .once('value')
+              .then(function(snapshot) {
+                const databaseSnapshot = snapshot.val();
+                console.log(databaseSnapshot);
+                return databaseSnapshot;
+    });  
+}
