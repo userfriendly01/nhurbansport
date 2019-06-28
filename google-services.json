@@ -1,28 +1,68 @@
 {
-    "session" : {
-        "SESS1" : {
-            "sport" : "Flag Football",
-            "season" : "Fall",
-            "type" : "Standard",
-            "startDate" : "8/11",
-            "weekDay" : "Sunday",
-            "schedule" : 1
-        }
+    "SPFLAGFOOTBALL" : {
+        "SportName" : "Flag Football",
+        "type" : "Standard"
     },
-    "schedule" : {
-        "SCHED1" : {
-            "scheduleId" : "SCHED1",
-            "gameNumber" : 1,
-            "slotNumber" : 1,
-            "homeTeam" : "TEAM1",
-            "awayTeam" : "TEAM2",
-            "time" : "8:15pm"
-        }
+    "SPBASKETBALL" : {
+        "SportName" : "Flag Football",
+        "type" : "Standard"
     },
-    "team" : {
-        "TEAM1" : {
-            "name" : "PoundTown",
-
-        }
+    "SPCORNHOLE" : {
+        "SportName" : "Flag Football",
+        "type" : "Standard"
+    },
+    "SESHFLAG062019" : {
+        "SportKey": "SPFLAGFOOTBALL",
+        "Weekday": "Sunday",
+        "Times": "10am-12pm",
+        "StartDate": "06/12/2019",
+        "Cost": "$45"
+    },
+    "SESHBASKETBALL062019" : {
+        "SportKey": "SPBASKETBALL",
+        "Weekday": "Tuesday",
+        "Times": "7pm-9pm",
+        "StartDate": "06/12/2019",
+        "Cost": "$45"
+    },
+    "SESHCORNHOLE062019" : {
+        "SportKey": "SPCORNHOLE",
+        "Weekday": "Sunday",
+        "Times": "3pm-6pm",
+        "StartDate": "06/12/2019",
+        "Cost": "$45"
+    },
+    "SCHEDFLAG062019": {
+        "SessionKey": "SESHFLAG062019",
+        "Games": [
+            "GAME1FLAG062019",
+            "GAME2FLAG062019",
+            "GAME3FLAG062019"
+        ]
+    },
+    "GAME1FLAG062019": {
+        "ScheduleKey": "SCHEDFLAG062019",
+        "GameNumber" : 1,
+        "SlotNumber" : 1,
+        "HomeTeamKey": "PoundTown No Stops",
+        "AwayTeamKey": "Monstars",
+        "GameTime": "10:00am"
+    },
+    "GAME2FLAG062019": {
+        "ScheduleKey": "SCHEDFLAG062019",
+        "GameNumber" : 1,
+        "SlotNumber" : 1,
+        "HomeTeamKey": "MinoritySquad",
+        "AwayTeamKey": "QueensOfManch",
+        "GameTime": "11:00am"
+    },
+    "PLAYER-1":{
+        "FirstName":"Faith",
+        "LastName": "Cuneo",
+        "DateOfBirth": "05/02/1991",
+        "PhoneNumber": "603-851-8200",
+        "TextAlerts": true,
+        "UserName" : "f.cuneo@yahoo.com",
+        "Password" : "password"
     }
 }

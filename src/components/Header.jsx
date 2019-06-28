@@ -8,7 +8,7 @@ import LiabilityWaiver from '../pages/LiabilityWaiver.jsx';
 import SocialEvents from '../pages/SocialEvents.jsx';
 import Veterans from '../pages/Veterans.jsx';
 import PlayerPortal from '../pages/PlayerPortal.jsx';
-
+import AdminHome from '../pages/AdminHome.jsx';
 
 
 const Header = () => {
@@ -85,6 +85,7 @@ const Header = () => {
                 <StyledLink to="/events">Social Events</StyledLink>
                 <StyledLink to="/veterans">Veterans</StyledLink>  
                 <StyledLink to="/">Corporate Sponsors</StyledLink>
+                <StyledLink to="/admin">Admin</StyledLink>
             </StyledNavBar>
             <Switch>
                 <Route exact path = "/" component={Home} />
@@ -94,6 +95,7 @@ const Header = () => {
                 <Route path = "/events" component={SocialEvents} />
                 <Route path = "/veterans" component={Veterans} />
                 <Route path = "/playerportal" component={PlayerPortal} />
+                <Route path = "/admin" component={AdminHome} />
                 <Route path = "/*" component={Home} />
             </Switch>
         </Router>
