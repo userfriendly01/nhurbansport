@@ -11,33 +11,30 @@ const app = firebase.initializeApp ({
     appId: "1:7120958805:web:6ed7bb86b1a9109c"
   });
   
-  const getDatabase = () => {
+  export const getDatabase = () => {
     const myDatabase = app.database();
     myDatabase.ref().once("value").then(function(snapshot){
-        const blank = snapshot.val();
-        console.log("This is a blank value" + blank);
-        console.log(blank);
+        const databaseSnapshot = snapshot.val();
+        console.log(databaseSnapshot);
     });
+
+    return myDatabase;
+  };
+
+  export const getAllPlayers = () => {
+    const myDatabase = app.database();
+    myDatabase.ref("Players").once("value").then(function(snapshot){
+        const databaseSnapshot = snapshot.val();
+        console.log(databaseSnapshot);
+    });
+
+    return myDatabase;
   };
   
-  const test = () => {
-      const myDatabase = app.database();
-      console.log('This is the database: ' + myDatabase.ref().toJSON);
-      console.log('This is a reference: ' + myDatabase.ref("PLAYER-1").toJSON);
-      myDatabase.ref("PLAYER-1").once("value").then(function(snapshot){
-          const snapshott = snapshot.val();
-          console.log(snapshott);
-          console.log("First Name" + snapshott.val().FirstName);
-      });
-
-      myDatabase.ref().once("value").then(function(snapshot){
-        const blank = snapshot.val();
-        console.log("This is a blank value" + blank);
-        console.log(blank);
-
-    });
-
-      //return database;
+   export const test = () => {
+    const myDatabase = app.database();
+    myDatabase.ref().child('Players').orderByChild('Team').equalTo('PoundTown').once('value').then(function(snapshot){
+        const databaseSnapshot = snapshot.val();
+        console.log(databaseSnapshot);
+    });    
   }
-
-  export default getDatabase;
