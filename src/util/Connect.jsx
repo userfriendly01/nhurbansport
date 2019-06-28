@@ -12,15 +12,25 @@ const app = firebase.initializeApp ({
   });
   
   const getDatabase = () => {
+    const myDatabase = app.database();
+    myDatabase.ref().once("value").then(function(snapshot){
+        const blank = snapshot.val();
+        console.log("This is a blank value" + blank);
+        console.log(blank);
+    });
+  };
+  
+  const test = () => {
       const myDatabase = app.database();
       console.log('This is the database: ' + myDatabase.ref().toJSON);
       console.log('This is a reference: ' + myDatabase.ref("PLAYER-1").toJSON);
       myDatabase.ref("PLAYER-1").once("value").then(function(snapshot){
           const snapshott = snapshot.val();
           console.log(snapshott);
+          console.log("First Name" + snapshott.val().FirstName);
       });
 
-      myDatabase.ref("").once("value").then(function(snapshot){
+      myDatabase.ref().once("value").then(function(snapshot){
         const blank = snapshot.val();
         console.log("This is a blank value" + blank);
         console.log(blank);
