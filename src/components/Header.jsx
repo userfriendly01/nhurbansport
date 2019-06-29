@@ -1,14 +1,9 @@
 import React, { useState } from 'react'
 import { Route, Link, BrowserRouter as Router, Switch } from 'react-router-dom'
-import Home from '../pages/Home.jsx';
-import Leagues from '../pages/Leagues.jsx';
 import styled from 'styled-components';
 import { UncontrolledDropdown, DropdownToggle, DropdownItem, DropdownMenu } from 'reactstrap'
-import LiabilityWaiver from '../pages/LiabilityWaiver.jsx';
-import SocialEvents from '../pages/SocialEvents.jsx';
-import Veterans from '../pages/Veterans.jsx';
-import PlayerPortal from '../pages/PlayerPortal.jsx';
-import AdminHome from '../pages/AdminHome.jsx';
+import { routes } from '../util/Routes.jsx'
+
 
 
 const Header = () => {
@@ -88,15 +83,14 @@ const Header = () => {
                 <StyledLink to="/admin">Admin</StyledLink>
             </StyledNavBar>
             <Switch>
-                <Route exact path = "/" component={Home} />
-                <Route path = "/about" component={Home} />
-                <Route path = "/leagues" component={Leagues} />
-                <Route path = "/liability" component={LiabilityWaiver} />
-                <Route path = "/events" component={SocialEvents} />
-                <Route path = "/veterans" component={Veterans} />
-                <Route path = "/playerportal" component={PlayerPortal} />
-                <Route path = "/admin" component={AdminHome} />
-                <Route path = "/*" component={Home} />
+                {routes.map((route, index) => (
+                    <Route
+                        key={index}
+                        path={route.path}
+                        exact={route.exact}
+                        component={route.main}
+                    />
+                ))}
             </Switch>
         </Router>
     );
