@@ -11,7 +11,7 @@ const MainContainer = styled.div`
     white-space: nowrap;
 `;
 
-const App = () =>{
+const App = () => {
     return (
         <MainContainer>
             <Header/>

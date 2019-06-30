@@ -4,14 +4,9 @@ import { logDatabase, test } from '../../util/Connect.jsx'
 import { getAllPlayers, getPlayersOnTeam, addPlayer, deletePlayer } from '../../service/Player.jsx'
 
 const AdminPlayers = () => {
-    return(
+    return (
         <div>
-            <Button onClick={logDatabase}>Log The Database</Button>
-            <Button onClick={getAllPlayers}>Get All Players</Button>
-            <Button onClick={getPlayersOnTeam}>Get All Players on Pound Town</Button>
-            <Button onClick={addPlayer}>Add Player</Button>
-            <Button onClick={deletePlayer}>Delete Player</Button>
-            <Button onClick={test}>Test Function</Button>
+            I'm going to show player information!
         </div>
     );
 }
