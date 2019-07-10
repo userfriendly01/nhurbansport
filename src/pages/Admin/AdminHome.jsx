@@ -17,15 +17,15 @@ const AdminHome = () => {
             <Image url="/src/images/admin-home-banner.jpg"
                            width="650"
                            height="250"/>
-            <Container direction="row">
-                <Container direction="column">
-                    <TextContainer>
+            <Container>
+                <Container direction="column" bcolor="blue" align="center" grow=".5"> 
+                    <TextContainer width="150">
                         <Text onClick={() => updateView(<AdminPlayers/>)}>Players</Text>
                         <Text onClick={() => updateView(<AdminTeams/>)}>Teams</Text>
                         <Text onClick={() => updateView(<AdminSchedules/>)}>Schedules</Text>
                     </TextContainer>
                 </Container>
-                <Container id="admin-view">
+                <Container bcolor="yellow" grow="6">
                     {view}
                 </Container>
             </Container>

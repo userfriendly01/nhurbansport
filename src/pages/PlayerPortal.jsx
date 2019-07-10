@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import Container from '../components/Container.jsx'
 import Image from '../components/Image.jsx'
 import Text from '../components/Text.jsx'
@@ -36,9 +37,11 @@ const PlayerPortal = () => {
                     <Text size="13">The who, what, where, and when – all in one place!</Text>
                 </Container>
                 <Container direction="column" width="300px" bcolor="white">
-                    <Image url="/src/images/pp-rosters.jpg"
-                           width="200"
-                           height="180"/>
+                    <Link to="/roster">
+                        <Image url="/src/images/pp-rosters.jpg"
+                               width="200"
+                               height="180"/>
+                    </Link>
                     <Text size="14">League Rosters</Text>
                     <Text size="13">Here's where you'll find who's who on your team.</Text>
                 </Container>

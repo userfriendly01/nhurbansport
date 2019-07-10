@@ -9,6 +9,7 @@ import AdminHome from '../pages/Admin/AdminHome.jsx';
 import AdminPlayers from '../pages/Admin/AdminPlayers.jsx';
 import AdminSchedules from '../pages/Admin/AdminSchedules.jsx';
 import AdminTeams from '../pages/Admin/AdminTeams.jsx';
+import Roster from '../pages/Roster.jsx'
 
 export const routes = [
     {
@@ -35,6 +36,10 @@ export const routes = [
     {
         path: "/playerportal",
         main: () => <PlayerPortal/>
+    },
+    {
+        path: "/roster",
+        main: () => <Roster/>
     },
     {
         path: "/admin",
