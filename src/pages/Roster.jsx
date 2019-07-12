@@ -3,47 +3,78 @@ import Container from '../components/Container.jsx'
 import Accordion from '../components/Accordian.jsx'
 import { getSportNameArray, getSports } from '../service/Sport.jsx'
 
-//Get all of the teams and the players on them. First and Last Name
-//const players = getTeams();
+
 
   const Roster = () => {
-        //setState({ [`block${index}`]: !this.state[`block${index}`] });
         
-    const [ list, setList ] = useState([]);
+    const [ sportsList, setSportsList ] = useState([]);
+    const [ teamList, setTeamList ] = useState({
+      sport: ["Team 1", "Team 2", "Team 3"],
+
+    }
+    );
+    const [ playerList, setPlayersList ] = useState(["Player 1", "Player 2", "Player 3"]);
+
+
     
-    useEffect(() => {
+    const filterSports = () => {
       getSports().then((sports) => {
         let sportNames = [];
         for(var s in sports){
-            sportNames.push(sports[s].SportName);
-          }
-          setList(sportNames);
-          console.log(sportNames);
+          sportNames.push(sports[s].SportName);
+        }
+        setSportsList(sportNames);
       });
-    });
+    }
+
+    const filterTeams = () => {
+      //For each sport, find the listed team names and add the sport:teams array to the overall teams object
+      
+    }
+
+    const filterPlayers = () => {
+    }
+
+
+    useEffect(() => {
+      filterSports();
+      filterTeams();
+      filterPlayers();
+    }, []);
+
     return (
         <Container direction="column" width="70%" margin="0 auto">
             <h1>Roster!</h1>
             <dl className="accordion">
               {
-                list.map((item, index) => (
-                  <div>
-                  <Accordion 
-                    title={item} 
-                    expand={!index}
-                    content= {
-                      <div>
-                        <Accordion title="PoundTown!" expand="false" content="I'm all the PoundTown players!"/>
-                        <Accordion title="Monstars!" expand="false" content="I'm all the Monstar players!"/>
-                      </div>
-                    }
-                  />
+                sportsList.map((item, index) => (
+                  <div key={`sport${index}`}>
+                    <Accordion 
+                      title={item} 
+                      expand={!index}
+                      content= {
+                        teamList.map((item, index) => (
+                          <div>
+                            <Accordion 
+                              title={item} 
+                              expand={!index}
+                              content= {
+                                playerList.map((item, index) => (
+                                <div>
+                                  <p>{item}</p>
+                                </div>
+                                ))  
+                              }   
+                            />
+                          </div>
+                        ))  
+                      }
+                    />
                   </div>
                 ))
               }
             </dl>
         </Container>
-          
     );
 };
 

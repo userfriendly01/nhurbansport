@@ -11,3 +11,12 @@ export const getAllTeams = () => {
                 return databaseSnapshot;
     });
 };
+
+export const getAllTeamsForSport = (sport) => {
+    playerRef.once("value")
+             .then(function(snapshot) {
+                const databaseSnapshot = snapshot.val();
+                console.log(databaseSnapshot);
+                return databaseSnapshot;
+    });
+};
