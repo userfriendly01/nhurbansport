@@ -24,10 +24,34 @@ const app = firebase.initializeApp ({
     });   
   };
   
-   export const test = () => {
-    const myDatabase = getDatabase();
-    myDatabase.ref().child('Players').orderByChild('Team').equalTo('PoundTown').once('value').then(function(snapshot){
-        const databaseSnapshot = snapshot.val();
-        console.log(databaseSnapshot);
-    });    
+   
+  export const test = () => {  
+    console.log(test3());
+    console.log(test2());
   }
+
+  export const test3 = () => {  
+    let testArray = []
+
+    test2().then((message) =>{
+      for(var m in message){
+        testArray.push(message[m].SportName);
+      }
+    })
+    return testArray
+  }
+ 
+
+  const test2 = () => {
+    let testArray = []
+    const myDatabase = app.database();
+    const sportRef = myDatabase.ref("Sports");
+    return sportRef
+      .once('value')
+      .then((snapshot) => {
+        console.log(snapshot.val())
+       return snapshot.val();
+    })
+  }
+
+  

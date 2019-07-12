@@ -65,16 +65,11 @@ const StyledTitle = styled.dt `
 
 
 const Accordion = (props) => {
-    //Eventually set this up to loop through the teams and set the title as each one in the list
         const title = props.title;
-    //Eventually set this up to only equal true if it's the first sport in the list
-        const [ expand, setExpand] = useState(props.expand);
-        //expand={this.state[`block${index+1}`]}
-  
+        const [ expand, setExpand] = useState(props.expand);  
         const content = props.content;
         const onClick = () => {
           setExpand(!expand);
-          console.log("Did I.. did I expand?");
         };
         
         return (

@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import Container from '../components/Container.jsx'
 import Accordion from '../components/Accordian.jsx'
-//import { getTeams } from '../service/Team.jsx'
+import { getSportNameArray, getSports, getKeyArray } from '../service/Sport.jsx'
 
 //Get all of the teams and the players on them. First and Last Name
 //const players = getTeams();
@@ -9,18 +9,23 @@ import Accordion from '../components/Accordian.jsx'
   const Roster = () => {
         //setState({ [`block${index}`]: !this.state[`block${index}`] });
 
-        const sportList = [{ title: 'Flag Football' }, { title: 'Basketball' }, { title: 'Cornhole' }];
+        const sportArray = getSportNameArray();
+        const sports = getSports();
+        const keys = getKeyArray();
+       
 
     return (
         <Container direction="column" width="70%" margin="0 auto">
             <h1>Roster!</h1>
+            <p>{"I'm the variable you're supposed to see!" + sportArray}</p>
+            <p>{"I'm the variable you're supposed to see!" + sports}</p>
+            <p>{"I'm the variable you're supposed to see!" + keys}</p>
             <dl className="accordion">
               {
-                sportList.map((item, index) => (
+                sportArray.map((item, index) => (
                   <div>
-                  <p>{index}</p>
                   <Accordion 
-                    title={item.title} 
+                    title={item} 
                     expand={!index}
                     content= {
                       <div>
