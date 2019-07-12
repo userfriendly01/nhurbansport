@@ -7,7 +7,6 @@ export const getSports = () => {
     return sportRef
             .once('value')
             .then((snapshot) => {
-                console.log(snapshot.val())
                 return snapshot.val();
             })
 }

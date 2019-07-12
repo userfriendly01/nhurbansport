@@ -13,7 +13,7 @@ export const getAllPlayers = () => {
 };
 
 export const getPlayersOnTeam = () => {
-    playerRef.orderByChild('Team')
+    playerRef.orderByChild('team')
              .equalTo('PoundTown')
              .once('value')
              .then(function(snapshot) {

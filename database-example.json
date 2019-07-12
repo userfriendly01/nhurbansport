@@ -1,43 +1,59 @@
 {
     "Sports": {
         "SPFLAGFOOTBALL" : {
-            "SportName" : "Flag Football",
-            "type" : "Standard"
+            "sportName" : "Flag Football"
         },
         "SPBASKETBALL" : {
-            "SportName" : "Flag Football",
-            "type" : "Standard"
+            "sportName" : "Basketball"
+        },
+        "SPELITEBASKETBALL" : {
+            "sportName" : "Elite Basketball"
         },
         "SPCORNHOLE" : {
-            "SportName" : "Flag Football",
-            "type" : "Standard"
+            "sportName" : "Cornhole"
+        },
+        "SPADAPTIVEBASKETBALL" : {
+            "sportName" : "Adaptive Basketball"
         }
     },
     "Sessions": {
         "SESHFLAG062019" : {
-            "SportKey": "SPFLAGFOOTBALL",
-            "Weekday": "Sunday",
-            "Times": "10am-12pm",
-            "StartDate": "06/12/2019",
-            "Cost": "$45"
+            "sportKey": "SPFLAGFOOTBALL",
+            "weekday": "Sunday",
+            "times": "10am-12pm",
+            "startDate": "06/12/2019",
+            "cost": "$45",
+            "active": true
         },
         "SESHBASKETBALL062019" : {
-            "SportKey": "SPBASKETBALL",
-            "Weekday": "Tuesday",
-            "Times": "7pm-9pm",
-            "StartDate": "06/12/2019",
-            "Cost": "$45"
+            "sportKey": "SPBASKETBALL",
+            "weekday": "Tuesday",
+            "times": "7pm-9pm",
+            "startDate": "06/12/2019",
+            "cost": "$45",
+            "active": true
         },
         "SESHCORNHOLE062019" : {
-            "SportKey": "SPCORNHOLE",
-            "Weekday": "Sunday",
-            "Times": "3pm-6pm",
-            "StartDate": "06/12/2019",
-            "Cost": "$45"
+            "sportKey": "SPCORNHOLE",
+            "weekday": "Sunday",
+            "times": "3pm-6pm",
+            "startDate": "06/12/2019",
+            "cost": "$45",
+            "active": true
         },
+        "SESHCORNHOLE062018" : {
+            "sportKey": "SPCORNHOLE",
+            "weekday": "Sunday",
+            "times": "3pm-6pm",
+            "startDate": "06/12/2018",
+            "cost": "$45",
+            "active": false
+        }
+    },
+    "Schedules" : {
         "SCHEDFLAG062019": {
-            "SessionKey": "SESHFLAG062019",
-            "Games": [
+            "sessionKey": "SESHFLAG062019",
+            "games": [
                 "GAME1FLAG062019",
                 "GAME2FLAG062019",
                 "GAME3FLAG062019"
@@ -46,74 +62,128 @@
     },
     "Games" : {
         "GAME1FLAG062019": {
-            "ScheduleKey": "SCHEDFLAG062019",
-            "GameNumber" : 1,
-            "SlotNumber" : 1,
-            "HomeTeamKey": "PoundTown No Stops",
-            "AwayTeamKey": "Monstars",
-            "GameTime": "10:00am"
+            "scheduleKey": "SCHEDFLAG062019",
+            "gameNumber" : 1,
+            "slotNumber" : 1,
+            "homeTeamKey": "TEAM-1",
+            "awayTeamKey": "TEAM-2",
+            "gameTime": "10:00am"
         },
         "GAME2FLAG062019": {
-            "ScheduleKey": "SCHEDFLAG062019",
-            "GameNumber" : 1,
-            "SlotNumber" : 1,
-            "HomeTeamKey": "MinoritySquad",
-            "AwayTeamKey": "QueensOfManch",
-            "GameTime": "11:00am"
+            "scheduleKey": "SCHEDFLAG062019",
+            "gameNumber" : 1,
+            "slotNumber" : 1,
+            "homeTeamKey": "TEAM-3",
+            "awayTeamKey": "TEAM-4",
+            "gameTime": "11:00am"
         }
     },
     "Players": {
         "PLAYER-1":{
-            "FirstName":"Faith",
-            "LastName": "Cuneo",
-            "DateOfBirth": "05/02/1991",
-            "PhoneNumber": "603-851-8200",
-            "TextAlerts": true,
-            "Team": "PoundTown",
-            "UserName" : "f.cuneo@yahoo.com",
-            "Password" : "password"
+            "firstName":"Faith",
+            "lastName": "Cuneo",
+            "dateOfBirth": "05/02/1991",
+            "phoneNumber": "603-851-8200",
+            "textAlerts": true
         },
         "PLAYER-2":{
-            "FirstName":"Tyrell",
-            "LastName": "Skinner",
-            "DateOfBirth": "05/02/1991",
-            "PhoneNumber": "603-851-8200",
-            "TextAlerts": true,
-            "Team": "PoundTown",
-            "UserName" : "f.cuneo@yahoo.com",
-            "Password" : "password"
+            "firstName":"Tyrell",
+            "lastName": "Skinner",
+            "dateOfBirth": "05/02/1991",
+            "phoneNumber": "603-851-8200",
+            "textAlerts": true
         },
         "PLAYER-3":{
-            "FirstName":"Jesus",
-            "LastName": "Salamanca",
-            "DateOfBirth": "05/02/1991",
-            "PhoneNumber": "603-851-8200",
-            "TextAlerts": true,
-            "Team": "Monstars",
-            "UserName" : "f.cuneo@yahoo.com",
-            "Password" : "password"
+            "firstName":"Jesus",
+            "lastName": "Salamanca",
+            "dateOfBirth": "05/02/1991",
+            "phoneNumber": "603-851-8200",
+            "textAlerts": true
         },
         "PLAYER-4":{
-            "FirstName":"Greg",
-            "LastName": "Scott",
-            "DateOfBirth": "05/02/1991",
-            "PhoneNumber": "603-851-8200",
-            "TextAlerts": true,
-            "Team": "Monstars",
-            "UserName" : "f.cuneo@yahoo.com",
-            "Password" : "password"
+            "firstName":"Greg",
+            "lastName": "Scott",
+            "dateOfBirth": "05/02/1991",
+            "phoneNumber": "603-851-8200",
+            "textAlerts": true
+        },
+        "PLAYER-5":{
+            "firstName":"Jon",
+            "lastName": "Ramos",
+            "dateOfBirth": "02/18/1986",
+            "phoneNumber": "603-851-8200",
+            "textAlerts": true
         }
     },
     "Teams": {
         "TEAM-1": {
-            "TeamName": "PoundTown",
-            "CaptainFirstName": "Tyrell",
-            "CaptainLastName": "Skinner"
+            "teamName": "PoundTown",
+            "sportKey": "SPFLAGFOOTBALL",
+            "sessionKey": "SESHFLAG062019",
+            "captain": "Tyrell Skinner",
+            "players": [
+                "PLAYER-1",
+                "PLAYER-2"
+            ]
         },
         "TEAM-2": {
-            "TeamName": "Monstars",
-            "CaptainFirstName": "Jesus",
-            "CaptainLastName": "Salamanca"
+            "teamName": "Monstars",
+            "sportKey": "SPFLAGFOOTBALL",
+            "sessionKey": "SESHFLAG062019",
+            "captain": "Jesus Salamanca",
+            "players": [
+                "PLAYER-3",
+                "PLAYER-4"
+            ]
+        },
+        "TEAM-3": {
+            "teamName": "Minority Squad",
+            "sportKey": "SPFLAGFOOTBALL",
+            "sessionKey": "SESHFLAG062019",
+            "captain": "Jon Ramos",
+            "players": [
+                "PLAYER-5",
+                "PLAYER-3"
+            ]
+        },
+        "TEAM-4": {
+            "teamName": "Queens Of Manchester",
+            "sportKey": "SPFLAGFOOTBALL",
+            "sessionKey": "SESHFLAG062019",
+            "captain": "Faith Cuneo",
+            "players": [
+                "PLAYER-3"
+            ]
+        },
+        "TEAM-5": {
+            "teamName": "Minority Squad",
+            "sportKey": "SPBASKETBALL",
+            "sessionKey": "SESHBASKETBALL062019",
+            "captain": "Jon Ramos",
+            "players": [
+                "PLAYER-5",
+                "PLAYER-3"
+            ]
+        },
+        "TEAM-6": {
+            "teamName": "Monstars",
+            "sportKey": "SPBASKETBALL",
+            "sessionKey": "SESHBASKETBALL062019",
+            "captain": "Jon Ramos",
+            "players": [
+                "PLAYER-5",
+                "PLAYER-3"
+            ]
+        },
+        "TEAM-7": {
+            "teamName": "Pound Town",
+            "sportKey": "SPCORNHOLE",
+            "sessionKey": "SESHCORNHOLE062019",
+            "captain": "Faith Cuneo",
+            "players": [
+                "PLAYER-1",
+                "PLAYER-3"
+            ]
         }
     }
 }
