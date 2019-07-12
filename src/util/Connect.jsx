@@ -1,6 +1,7 @@
 import firebase from 'firebase/app'
 import 'firebase/database'
 
+
 const app = firebase.initializeApp ({
     apiKey: "AIzaSyAGv8EK68fJJPXdtG3O75UF7D7_5TGUElo",
     authDomain: "nh-urban-sport.firebaseapp.com",
@@ -10,7 +11,7 @@ const app = firebase.initializeApp ({
     messagingSenderId: "7120958805",
     appId: "1:7120958805:web:6ed7bb86b1a9109c"
   });
-  
+
   export const getDatabase = () => {
     const myDatabase = app.database();
     return myDatabase;
@@ -27,23 +28,24 @@ const app = firebase.initializeApp ({
    
   export const test = () => {  
     console.log(test3());
-    console.log(test2());
   }
 
   export const test3 = () => {  
     let testArray = []
 
-    test2().then((message) =>{
+    return test2().then((message) =>{
       for(var m in message){
         testArray.push(message[m].SportName);
       }
+      return new Promise((resolve, reject) => {
+        resolve(testArray);
+      })      
     })
-    return testArray
+    
   }
  
 
   const test2 = () => {
-    let testArray = []
     const myDatabase = app.database();
     const sportRef = myDatabase.ref("Sports");
     return sportRef

@@ -1,28 +1,32 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Container from '../components/Container.jsx'
 import Accordion from '../components/Accordian.jsx'
-import { getSportNameArray, getSports, getKeyArray } from '../service/Sport.jsx'
+import { getSportNameArray, getSports } from '../service/Sport.jsx'
 
 //Get all of the teams and the players on them. First and Last Name
 //const players = getTeams();
 
   const Roster = () => {
         //setState({ [`block${index}`]: !this.state[`block${index}`] });
-
-        const sportArray = getSportNameArray();
-        const sports = getSports();
-        const keys = getKeyArray();
-       
-
+        
+    const [ list, setList ] = useState([]);
+    
+    useEffect(() => {
+      getSports().then((sports) => {
+        let sportNames = [];
+        for(var s in sports){
+            sportNames.push(sports[s].SportName);
+          }
+          setList(sportNames);
+          console.log(sportNames);
+      });
+    });
     return (
         <Container direction="column" width="70%" margin="0 auto">
             <h1>Roster!</h1>
-            <p>{"I'm the variable you're supposed to see!" + sportArray}</p>
-            <p>{"I'm the variable you're supposed to see!" + sports}</p>
-            <p>{"I'm the variable you're supposed to see!" + keys}</p>
             <dl className="accordion">
               {
-                sportArray.map((item, index) => (
+                list.map((item, index) => (
                   <div>
                   <Accordion 
                     title={item} 
