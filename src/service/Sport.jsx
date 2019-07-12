@@ -7,18 +7,18 @@ export const getSports = () => {
     return sportRef
             .once('value')
             .then((snapshot) => {
+                console.log("getSports was run")
                 return snapshot.val();
             })
 }
 
-export const getSportNameArray = () => {
-    let sportNames = []
-    return getSports().then((data) => {
-        for(var d in data){
-            sportNames.push(data[d].SportName);
-          }
-        return new Promise((resolve, reject) => {
-        resolve(sportNames);
-        })
-    })
+export const getSport = (sport) => {
+    return sportRef
+            .orderByKey()
+            .equalTo(sport)
+            .once('value')
+            .then((snapshot) => {
+                return snapshot.val();
+            })
 }
+

@@ -20,3 +20,13 @@ export const getAllTeamsForSport = (sportKey) => {
                 return databaseSnapshot;
     });
 };
+
+export const getAllTeamsForSession = (sessionKey) => {
+    return playerRef.orderByChild('sessionKey')
+             .equalTo(sessionKey)
+             .once('value')
+             .then(function(snapshot) {
+                const databaseSnapshot = snapshot.val();
+                return databaseSnapshot;
+    });
+};
