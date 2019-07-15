@@ -9,10 +9,16 @@ let returnValues = {};
 //Get Return Values
 
 export const returnSessionValues = () => {
+    //getSessions();
+    //getActiveSessions();
+    //filterSessions();
+    return returnValues;
+}
+
+export const setEverything = () => {
     getSessions();
     getActiveSessions();
     filterSessions();
-    return returnValues;
 }
 
 //Basic CRUD methods
@@ -23,6 +29,7 @@ export const getSessions = () => {
             .then((snapshot) => {
                 let sessions = snapshot.val()
                 returnValues.sessions = sessions
+                return sessions;
             }).catch((error) => {
                 console.log(error)    
             })

@@ -30,3 +30,17 @@ export const getAllTeamsForSession = (sessionKey) => {
                 return databaseSnapshot;
     });
 };
+
+const filterTeams = () => {
+    //For each sport, find the listed team names and add the sport:teams array to the overall teams object
+    let teamsArrayBySport = {};
+    getSports().then((sports) => {
+      for(var s in sports) {
+        const sportName = sports[s].sportName;
+        getAllTeamsForSport(s).then((teams) => {
+          teamsArrayBySport[sportName] = teams;
+        })
+      }
+      console.log(teamsArrayBySport)
+    })
+  }
