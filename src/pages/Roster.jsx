@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import Container from '../components/Container.jsx'
 import Accordion from '../components/Accordian.jsx'
-import { getSports, getSport } from '../service/Sport.jsx'
+import { getSports, getSport, getSportName } from '../service/Sport.jsx'
 import { getAllTeamsForSport } from '../service/Team.jsx'
-import { returnSessionValues } from '../service/Session.jsx'
+import { returnSessionValues, getSessions, filterSessions, getActiveSessions } from '../service/Session.jsx'
 
   const Roster = () => {
         
@@ -12,7 +12,9 @@ import { returnSessionValues } from '../service/Session.jsx'
     const [ teams, setTeams ] = useState({});
     const [ players, setPlayers ] = useState(["Player 1", "Player 2", "Player 3"]);
     
-    console.log(returnSessionValues())
+    console.log(filterSessions())
+    console.log(getSportName("SPBASKETBALL"))
+    console.log(activeSessionFriendlyNames)
     
 
     const filterTeams = () => {

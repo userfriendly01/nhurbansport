@@ -1,26 +1,18 @@
 import { getDatabase } from '../util/Connect.jsx'
-import { getSport } from './Sport.jsx'
+import { getSportName} from './Sport.jsx'
 
 //Establish database connection pointed to Sessions
 const myDatabase = getDatabase();
 const sessionRef = myDatabase.ref("Sessions");
 let returnValues = {};
-var test;
-let sessions = "wasssup";
 
 //Get Return Values
 
 export const returnSessionValues = () => {
-    console.log(returnValues)
-    setShit();
-    console.log(returnValues.activeSessionSnapshot)
+    getSessions();
+    getActiveSessions();
+    filterSessions();
     return returnValues;
-}
-
-const setShit = () => {
-    clean().then((resolved) => {
-        console.log(returnValues);
-    })
 }
 
 //Basic CRUD methods
@@ -29,11 +21,10 @@ export const getSessions = () => {
     return sessionRef
             .once('value')
             .then((snapshot) => {
-                console.log(sessions)
-                sessions = snapshot.val()
-                console.log(sessions)
-            }).then((finalReturn) => {
-                return finalReturn
+                let sessions = snapshot.val()
+                returnValues.sessions = sessions
+            }).catch((error) => {
+                console.log(error)    
             })
 }
 
@@ -45,35 +36,28 @@ export const getActiveSessions = () => {
             .equalTo(true)
             .once('value')
             .then((snapshot) => {
-                return snapshot.val();
+                let activeSessions = snapshot.val();
+                returnValues.activeSessions = activeSessions;
+                return activeSessions;
+            }).catch((error) => {
+                console.log(error)
             })
 }
 
-const filterSessions = () => {
-     return getActiveSessions().then((sessions) => {
-      let sessionsArray = [];
-      for(var s in sessions){
-        let startDate = sessions[s].startDate;
-        let sportFriendlyName;
-        return getSport(sessions[s].sportKey).then((sport) => {
-          for(var x in sport){
-            sportFriendlyName = sport[x].sportName
-          }
-          sessionsArray.push(sportFriendlyName + " " + startDate)
-        })
-      }
-      returnValues.activeSessionFriendlyNames = sessionsArray;
+export const filterSessions = () => {
+     return getActiveSessions()
+            .then((sessions) => {
+                let sessionsArray = [];
+                for(let s in sessions) {
+                    let startDate = sessions[s].startDate;
+                    let sportId = sessions[s].sportKey;
+                    getSportName(sportId).then((sport) => {
+                        sessionsArray.push(sport + " " + startDate)
+                    });
+                }
+                returnValues.activeSessionFriendlyNames = sessionsArray;
+                return sessionsArray
+    }).catch((error) => {
+        console.log(error)
     })
-  }
-
-  const clean = () => {
-      //get active session
-      return getActiveSessions().then((activeSessionSnapshot) => {
-          console.log(activeSessionSnapshot)
-        returnValues.activeSessionSnapshot = activeSessionSnapshot;
-        return activeSessionSnapshot;
-      })
-        //get the start Date
-        //get the sportId
-
   }
