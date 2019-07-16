@@ -2,7 +2,7 @@ import React from 'react'
 import Header from '../components/Header.jsx'
 import Footer from '../components/Footer.jsx'
 import styled from 'styled-components'
-import { setEverything } from '../service/Session.jsx'
+import { setData } from '../util/SetData.jsx'
 
 const MainContainer = styled.div`
     display: flex;
@@ -13,7 +13,7 @@ const MainContainer = styled.div`
 `;
 
 const App = () => {
-    setEverything();
+    setData();
     return (
         <MainContainer>
             <Header/>

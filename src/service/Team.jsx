@@ -2,6 +2,7 @@ import { getDatabase } from '../util/Connect.jsx'
 
 const myDatabase = getDatabase();
 const playerRef = myDatabase.ref("Teams");
+let returnValues = {};
 
 export const getAllTeams = () => {
     playerRef.once("value")
@@ -27,20 +28,22 @@ export const getAllTeamsForSession = (sessionKey) => {
              .once('value')
              .then(function(snapshot) {
                 const databaseSnapshot = snapshot.val();
+                console.log(databaseSnapshot)
                 return databaseSnapshot;
     });
 };
 
-const filterTeams = () => {
-    //For each sport, find the listed team names and add the sport:teams array to the overall teams object
-    let teamsArrayBySport = {};
-    getSports().then((sports) => {
-      for(var s in sports) {
-        const sportName = sports[s].sportName;
-        getAllTeamsForSport(s).then((teams) => {
-          teamsArrayBySport[sportName] = teams;
-        })
-      }
-      console.log(teamsArrayBySport)
-    })
-  }
+
+export const getPlayersOnTeam = (teamId) => {
+    playerRef.orderByKey()
+             .equalTo(teamId)
+             .once('value')
+             .then(function(snapshot) {
+                const databaseSnapshot = snapshot.val();
+                console.log("these were the players returned" + JSON.stringify(databaseSnapshot));
+                return databaseSnapshot;
+            }).catch((error) => {
+                console.log(error)
+            }
+    );
+};

@@ -1,17 +1,41 @@
 import { getDatabase } from '../util/Connect.jsx'
 import { getSportName} from './Sport.jsx'
+import { getAllTeamsForSession, getPlayersOnTeam } from './Team.jsx'
 
 //Establish database connection pointed to Sessions
 const myDatabase = getDatabase();
 const sessionRef = myDatabase.ref("Sessions");
-let returnValues = {};
+let returnValues = {
+    activeSessions: [
+        {
+            sessionId: "Test Session Id",
+            sessionFriendlyName: "Test Friendly Name",
+            sessionTeams: [
+                {
+                    teamId: "TestId 1",
+                    teamName: "Test Pound Town",
+                    players: [
+                        "Test PoundTown Player 1",
+                        "Test PoundTown Player 2"
+                    ],
+                },
+                {
+                    teamId: "Test Id 2",
+                    teamName: "Test Monstars",
+                    players: [
+                        "Test Monstars Player 1",
+                        "Test Monstars Player 2",
+                        "Test Monstars Player 3"
+                    ]
+                }
+            ]
+        }
+    ]
+};
 
 //Get Return Values
 
 export const returnSessionValues = () => {
-    //getSessions();
-    //getActiveSessions();
-    //filterSessions();
     return returnValues;
 }
 
@@ -44,25 +68,41 @@ export const getActiveSessions = () => {
             .once('value')
             .then((snapshot) => {
                 let activeSessions = snapshot.val();
-                returnValues.activeSessions = activeSessions;
                 return activeSessions;
             }).catch((error) => {
                 console.log(error)
             })
 }
 
-export const filterSessions = () => {
+export const filterSessionsForRoster = () => {
      return getActiveSessions()
             .then((sessions) => {
                 let sessionsArray = [];
                 for(let s in sessions) {
+                    let sessionObject = {};
                     let startDate = sessions[s].startDate;
                     let sportId = sessions[s].sportKey;
+                    let sessionId = s;
                     getSportName(sportId).then((sport) => {
-                        sessionsArray.push(sport + " " + startDate)
+                        sessionObject.sessionId = sessionId;
+                        sessionObject.sessionFriendlyName = sport + " " + startDate;
                     });
+                    getAllTeamsForSession(sessionId).then((teams) => {
+                        let teamsArray = [];
+                        for(let t in teams){
+                            let teamObject = {};
+                            let teamId = t;
+                            teamObject.teamId = teamId;
+                            teamObject.teamName = teams[teamId].teamName;
+                            teamObject.players = teams[teamId].players;
+                            teamsArray.push(teamObject);
+                        }
+                        sessionObject.sessionTeams = teamsArray;
+                    });
+                    sessionsArray.push(sessionObject)
                 }
-                returnValues.activeSessionFriendlyNames = sessionsArray;
+                returnValues.activeSessions = sessionsArray;
+                console.log(sessionsArray)
                 return sessionsArray
     }).catch((error) => {
         console.log(error)

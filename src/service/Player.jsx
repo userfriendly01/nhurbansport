@@ -7,18 +7,7 @@ export const getAllPlayers = () => {
     playerRef.once("value")
              .then(function(snapshot) {
                 const databaseSnapshot = snapshot.val();
-                console.log(databaseSnapshot);
-                return databaseSnapshot;
-    });
-};
-
-export const getPlayersOnTeam = () => {
-    playerRef.orderByChild('team')
-             .equalTo('PoundTown')
-             .once('value')
-             .then(function(snapshot) {
-                const databaseSnapshot = snapshot.val();
-                console.log(databaseSnapshot);
+                console.log(JSON.stringify(databaseSnapshot));
                 return databaseSnapshot;
     });
 };  
