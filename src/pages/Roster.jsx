@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import Container from '../components/Container.jsx'
 import Accordion from '../components/Accordian.jsx'
 import { returnSessionValues } from '../service/Session.jsx'

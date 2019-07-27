@@ -2,7 +2,7 @@ import React from 'react'
 import Header from '../components/Header.jsx'
 import Footer from '../components/Footer.jsx'
 import styled from 'styled-components'
-import { setData } from '../util/SetData.jsx'
+import { setData } from '../util/UtilHelper.jsx'
 
 const MainContainer = styled.div`
     display: flex;

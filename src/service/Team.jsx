@@ -28,7 +28,6 @@ export const getAllTeamsForSession = (sessionKey) => {
              .once('value')
              .then(function(snapshot) {
                 const databaseSnapshot = snapshot.val();
-                console.log(databaseSnapshot)
                 return databaseSnapshot;
     });
 };
@@ -40,10 +39,8 @@ export const getPlayersOnTeam = (teamId) => {
              .once('value')
              .then(function(snapshot) {
                 const databaseSnapshot = snapshot.val();
-                console.log("these were the players returned" + JSON.stringify(databaseSnapshot));
                 return databaseSnapshot;
             }).catch((error) => {
-                console.log(error)
             }
     );
 };

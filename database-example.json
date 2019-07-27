@@ -124,7 +124,14 @@
             "players": [
                 "PLAYER-1",
                 "PLAYER-2"
-            ]
+            ],
+            "stats": {
+                "position": 1,
+                "played": 12,
+                "won": 8,
+                "loss": 4,
+                "tie": 0
+            }
         },
         "TEAM-2": {
             "teamName": "Monstars",

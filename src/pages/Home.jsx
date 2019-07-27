@@ -5,25 +5,27 @@ import Text from '../components/Text.jsx'
 import TextContainer from '../components/TextContainer.jsx'
 import Button from '../components/Button.jsx'
 import { Form, FormGroup, Input} from 'reactstrap'
+import { images } from '../util/Constants.jsx'
 
 const Home = () => {
     return(
         <Container direction="column" align="center">
-            <Image url="/src/images/home-banner-img.jpg"
+            <Container position="relative">
+                <Image url={images.HOME.BANNER}
                              height="320"
-                             width="650">
+                             width="650"/>
                 <TextContainer bcolor="#0066ff" width="100%" position="absolute"  opacity=".8">
                     <Text color="white" size="32" opacity="1">NH Urban Sport</Text>
                     <Text color="yellow" size="16" opacity="1">CO-ED ADULT SPORTS LEAGUE</Text>
                     <Text color="white" size="12" opacity="1">COMMUNITY | COMPETITION | CAMARADERIE</Text>
                 </TextContainer>
-            </Image>
+            </Container>
             <Container>
                 <TextContainer bcolor="white" width="200" margin="0 10">
                     <Text size="16" weight="bold">SPORTS LEAGUES</Text>
                     <Text>__</Text>
                     <Text size="13">From the couch potato to the weekend warrior, we have a sport for you.</Text>
-                    <Image url="/src/images/home-option-1-img.jpg"
+                    <Image url={images.HOME.LEAGUES}
                                  height="180"
                                  width="180"
                                  margin="2%"/>
@@ -32,7 +34,7 @@ const Home = () => {
                     <Text size="16" weight="bold">JOIN OUR EMAIL LIST</Text>
                     <Text>__</Text>
                     <Text size="13">Join our emails for league updates. Don't worry. We don't like spam either.</Text>
-                    <Image url="/src/images/home-option-2-img.jpg"
+                    <Image url={images.HOME.EMAIL}
                                  height="180"
                                  width="180"
                                  margin="2%"/>
@@ -41,7 +43,7 @@ const Home = () => {
                     <Text size="16" weight="bold">PLAYER PORTAL</Text>
                     <Text>__</Text>
                     <Text size="13">Create an account to explore the forums for updated rosters, rules, and rankings.</Text>
-                    <Image url="/src/images/home-option-3-img.jpg"
+                    <Image url={images.HOME.PORTAL}
                                  height="180"
                                  width="180"
                                  margin="2%"/>
@@ -63,7 +65,7 @@ const Home = () => {
                         To build an inclusive recreational sports organization not just accommodated for or accessible to veterans with disabilities but rather specifically designed for their unique recreational needs while also engaging the able-bodied public
                     </Text>
                 </TextContainer>
-                <Image url="/src/images/about-us-img.jpg"
+                <Image url={images.HOME.ABOUT}
                                  height="180"
                                  width="180"/>
             </Container>

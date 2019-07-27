@@ -2,17 +2,23 @@ import styled from 'styled-components'
 
 const Container = styled.div`
         display: flex;
-        margin: ${props => props.margin ? props.margin : "20 5 0 5"};
+        text-align: center;
+        justify-content: center;
         flex-direction: ${props => props.direction};
         flex-wrap: ${props => props.wrap};
         flex-grow: ${props => props.grow};
         align-items: ${props => props.align};
+        
         background-color: ${props => props.bcolor};
         width: ${props => props.width};
+
         padding: ${props => props.padding};
-        text-align: center;
-        justify-content: center;
+        margin: ${props => props.margin ? props.margin : "20 5 0 5"};
         border: ${props => props.border};
+
+        position: ${props => props.position};
+        z-index: ${props => props.index};
+        left: ${props => props.left};
     `;
 
 export default Container;

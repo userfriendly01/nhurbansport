@@ -1,5 +1,6 @@
 import firebase from 'firebase/app'
 import 'firebase/database'
+import 'firebase/storage'
 
 
 const app = firebase.initializeApp ({
@@ -17,6 +18,11 @@ const app = firebase.initializeApp ({
     return myDatabase;
   };
 
+  export const getStorage = () => {
+    const myStorageBucket = app.storage();
+    return myStorageBucket;
+  }
+
   export const logDatabase = () => {
     const myDatabase = app.database();
     myDatabase.ref().once('value').then(function(snapshot){
@@ -25,35 +31,4 @@ const app = firebase.initializeApp ({
     });   
   };
   
-   
-  export const test = () => {  
-    console.log(test3());
-  }
-
-  export const test3 = () => {  
-    let testArray = []
-
-    return test2().then((message) =>{
-      for(var m in message){
-        testArray.push(message[m].SportName);
-      }
-      return new Promise((resolve, reject) => {
-        resolve(testArray);
-      })      
-    })
-    
-  }
- 
-
-  const test2 = () => {
-    const myDatabase = app.database();
-    const sportRef = myDatabase.ref("Sports");
-    return sportRef
-      .once('value')
-      .then((snapshot) => {
-        console.log(snapshot.val())
-       return snapshot.val();
-    })
-  }
-
   

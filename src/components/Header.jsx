@@ -80,7 +80,6 @@ const Header = () => {
                 <StyledLink to="/events">Social Events</StyledLink>
                 <StyledLink to="/veterans">Veterans</StyledLink>  
                 <StyledLink to="/admin/teams">Corporate Sponsors</StyledLink>
-                <StyledLink to="/admin">Admin</StyledLink>
             </StyledNavBar>
             <Switch>
                 {routes.map((route, index) => (

@@ -19,7 +19,7 @@ const SocialEvents = () => {
             <Container border="1px solid black">
                 <Image />
                 <TextContainer>
-                    <Text/>
+                    <input type="file"/>
                 </TextContainer>
             </Container>
         </div>
