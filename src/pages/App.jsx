@@ -8,7 +8,7 @@ const MainContainer = styled.div`
     display: flex;
     align-items: center;
     flex-direction: column;
-    background-color: #D8D8D8;
+    background-color: #EDEDEE;
     white-space: nowrap;
 `;
 

@@ -3,16 +3,23 @@ import Container from '../components/Container.jsx'
 import styled from 'styled-components'
 import Text from '../components/Text.jsx'
 
+
+const Accordion = (props) => {
+  const title = props.title;
+  const [ expand, setExpand] = useState(props.expand);  
+  const content = props.content;
+  const onClick = () => {
+    setExpand(!expand);
+  };
+
 const StyledTitle = styled.dt `
-  padding: 30px 30px;
+  padding: 10px;
   cursor: pointer;
   transform: translate3d(0, 0, 0);
-  color: white;
+  color: ${props => props.color ? props.color : "white"};
   position: relative;
   font-size: 20px;
-  background: #1569a8;
-  margin-bottom: -1px;
-  border-bottom: 1px solid #0e4671;
+  background: ${props => props.bcolor ? props.bcolor : "#26a3d9"};
   text-align: left;
 
   &::after {
@@ -27,7 +34,6 @@ const StyledTitle = styled.dt `
 
   &.is-expanded {
     transition: background .5s;
-    background: #0e4671;
     
     &::after {
       content: "-";
@@ -41,13 +47,14 @@ const StyledTitle = styled.dt `
     transition: max-height .5s;
     margin: 0;
     padding: 0 30px;
-    border: solid 1px #eeeeee;
     border-top: 0;
-    background: #e8f4fc;
+    background: ${props => props.bcolor ? props.bcolor : "white"};
+    ;
 
     p {
-      padding: 30px 0;
-      margin: 0;
+      border: solid 1px #eeeeee;
+      margin: 1;
+      padding: 10px;
       opacity: 0;
       transition: .5s;
     }
@@ -55,26 +62,22 @@ const StyledTitle = styled.dt `
     &.is-expanded {
       max-height: 500px;
       overflow: hidden;
+      padding: 5px 30px;
       p {
         opacity: 1;
       }
     }
   }
 
-  `
-
-
-const Accordion = (props) => {
-        const title = props.title;
-        const [ expand, setExpand] = useState(props.expand);  
-        const content = props.content;
-        const onClick = () => {
-          setExpand(!expand);
-        };
-        
+  `  
         return (
-          <Container direction="column">
-            <StyledTitle className={expand ? 'title is-expanded' : 'title'} onClick={onClick}>
+          <Container direction="column" 
+                     border="solid 1px #eeeeee" 
+                     margin="10px 5px">
+            <StyledTitle bcolor={props.bcolor}
+                         color={props.color}
+                         className={expand ? 'title is-expanded' : 'title'} 
+                         onClick={onClick}>
               {title}
             </StyledTitle>
             <StyledContent className={expand ? 'content is-expanded' : 'content'}>

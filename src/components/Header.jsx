@@ -14,7 +14,7 @@ const Header = () => {
         font-size: 16px;
         color: #A9A9A9;
         align-items: center;
-        background-color: #D8D8D8;
+        background-color: #EDEDEE;
     `
     const NavHeader = styled.div`
         margin-right: auto;
