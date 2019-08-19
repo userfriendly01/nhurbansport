@@ -15,6 +15,7 @@ const Container = styled.div`
         padding: ${props => props.padding};
         margin: ${props => props.margin ? props.margin : "20 5 0 5"};
         border: ${props => props.border};
+        border-radius: ${props => props.radius};
 
         position: ${props => props.position};
         z-index: ${props => props.index};

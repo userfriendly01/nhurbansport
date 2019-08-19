@@ -7,6 +7,7 @@ import Veterans from '../pages/Veterans.jsx';
 import PlayerPortal from '../pages/PlayerPortal.jsx';
 import Roster from '../pages/Roster.jsx'
 import HowTo from '../pages/HowTo.jsx'
+import RuleBook from '../pages/RuleBook.jsx'
 
 export const routes = [
     {
@@ -41,5 +42,9 @@ export const routes = [
     {
         path: "/how-to",
         main: () => <HowTo/>
+    },
+    {
+        path: "/rule-book",
+        main: () => <RuleBook/>
     }
 ];

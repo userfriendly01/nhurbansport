@@ -2,12 +2,14 @@ import { filterSessionsForRoster } from '../service/Session.jsx'
 import { getStorage, getDatabase } from './Connect.jsx'
 
 const imageArray = []
-let howToObject = {}
+let howToObject = []
+let rulebooks = []
 
 export const setData = () => {
     filterSessionsForRoster();
     setAllImages();
     setHowToDocuments();
+    setRuleBooks();
 }
 
 export const getAllImages = () => {
@@ -18,6 +20,10 @@ export const getHowToDocuments = () => {
   return howToObject;
 };
 
+export const getRuleBooks = () => {
+  return rulebooks;
+};
+
 export const setHowToDocuments = () => {
   getDatabase()
   .ref("Documents")
@@ -25,10 +31,24 @@ export const setHowToDocuments = () => {
   .once("value")
   .then(function(snapshot) {
     howToObject = snapshot.val();
-    console.log(howToObject)
   })
-  console.log(howToObject)
   return howToObject;
+}
+
+export const setRuleBooks = () => {
+  getDatabase()
+  .ref("Documents")
+  .child("RuleBooks")
+  .once("value")
+  .then(function(snapshot) {
+    let newSnapshot = snapshot.val();
+    for(let r in newSnapshot){
+      let newObject = {...newSnapshot[r]};
+      newObject.show = false;
+      rulebooks.push(newObject)
+    }
+  })
+  return rulebooks;
 }
 
 export const setAllImages = () => {

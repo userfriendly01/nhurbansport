@@ -14,5 +14,8 @@ export const images = {
     },
     HOWTO: {
         BANNER: "https://firebasestorage.googleapis.com/v0/b/nh-urban-sport.appspot.com/o/images%2Fpp-how-to-banner.JPG?alt=media&token=23d795bd-c81d-42fe-aef9-e5e1ceae9e2b"
+    },
+    RULEBOOK: {
+        BANNER: "https://firebasestorage.googleapis.com/v0/b/nh-urban-sport.appspot.com/o/images%2Fpp-rule-book-banner.JPG?alt=media&token=7b3d11c1-2bf7-4a7d-99e8-80db800563ae"
     }
 }

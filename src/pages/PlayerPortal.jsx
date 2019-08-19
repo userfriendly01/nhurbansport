@@ -25,9 +25,11 @@ const PlayerPortal = () => {
                     <Text size="13">First and foremost, thank you for joining the portal. Here's where to find information on exactly what you need to do</Text>
                 </Container>
                 <Container direction="column" width="300px" bcolor="white">
+                    <Link to="/rule-book">
                     <Image url="/src/images/pp-rule-book.jpg"
                            width="200"
                            height="180"/>
+                    </Link>
                     <Text size="14">NH Urban Sport Rulebook</Text>
                     <Text size="13">Your information on touchdowns, gender plays, and more.</Text>
                 </Container>

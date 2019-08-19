@@ -204,6 +204,23 @@
                 "title" : "Where can I find the schedule?",
                 "source" : "https://docs.google.com/document/d/e/2PACX-1vSr6QDsdlx1rXCpBmTzqvteMS5gU94iLmlkspFidE7ch6K6BuTJVF8Y8xxhvabVtP_6-_dh0omr97nw/pub?embedded=true"
             }
+        ],
+        "RuleBooks": [
+            {
+                "title" : "CornHole RuleBook",
+                "source" : "https://docs.google.com/document/d/e/2PACX-1vQ_Ja9qrIuYqzVRD93xmUtXuTwThAJ-UJU_xJ0xeORQOvebuOqXEcIBlpyvwVuN55cMvdUEE23cBZrn/pub?embedded=true",
+                "image" : "https://firebasestorage.googleapis.com/v0/b/nh-urban-sport.appspot.com/o/images%2Frulebook-cornhole.jpg?alt=media&token=3c67a715-805f-4b67-b881-81e75f988c7f"    
+            },
+            {
+                "title" : "Flag Football RuleBook",
+                "source" : "https://docs.google.com/document/d/e/2PACX-1vRGOEPQ1j0rFQ24gcWY6cbvobtJ0sI32hnSnNoPpih-GHn45YadQJB6maWzacyMjkBZHu0Lho-S5f-H/pub?embedded=true",
+                "image" : "https://firebasestorage.googleapis.com/v0/b/nh-urban-sport.appspot.com/o/images%2Frulebook-flagfootball.jpg?alt=media&token=f1718918-6587-43d5-add0-afcd2a17ccfe"
+            },
+            {
+                "title" : "Basketball RuleBook",
+                "source" : "https://docs.google.com/document/d/e/2PACX-1vTs6ThwlpdRZs6SLrvz1N59w0LeG9bO16xpG-uXqJHEm3odOmlQvi8VlNTWiCsG16B9GI4olnSVEtBc/pub?embedded=true",
+                "image" : "https://firebasestorage.googleapis.com/v0/b/nh-urban-sport.appspot.com/o/images%2Frulebook-basketball.jpg?alt=media&token=9b2dd7e1-a0ed-4934-b3b9-f4a3f67b8717"
+            }
         ]
     }
 }
