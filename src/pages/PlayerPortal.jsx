@@ -16,9 +16,11 @@ const PlayerPortal = () => {
             </Container>
             <Container width="660px" wrap="wrap">
                 <Container direction="column" width="300px" bcolor="white">
-                    <Image url="/src/images/pp-how-to.jpg"
+                    <Link to="/how-to">
+                        <Image url="/src/images/pp-how-to.jpg"
                            width="200"
                            height="180"/>
+                    </Link>
                     <Text size="14">How-Tos</Text>
                     <Text size="13">First and foremost, thank you for joining the portal. Here's where to find information on exactly what you need to do</Text>
                 </Container>

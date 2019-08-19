@@ -6,6 +6,7 @@ import SocialEvents from '../pages/SocialEvents.jsx';
 import Veterans from '../pages/Veterans.jsx';
 import PlayerPortal from '../pages/PlayerPortal.jsx';
 import Roster from '../pages/Roster.jsx'
+import HowTo from '../pages/HowTo.jsx'
 
 export const routes = [
     {
@@ -36,5 +37,9 @@ export const routes = [
     {
         path: "/roster",
         main: () => <Roster/>
+    },
+    {
+        path: "/how-to",
+        main: () => <HowTo/>
     }
 ];

@@ -192,5 +192,18 @@
                 "PLAYER-3"
             ]
         }
+    },
+    "Documents": {
+        "Liability Waiver": "https://docs.google.com/document/d/e/2PACX-1vQkfPJFZovcEt__gjqKzBKtPtIDBb6-kyQ2ga1FcMvcZdBKiDNcYoJz6MIBPXPxa5vDAl47gTySjn_v/pub?embedded=true",
+        "How-To": [
+            {
+                "title" : "Next Steps After Joining the Player Portal",
+                "source" : "https://docs.google.com/document/d/e/2PACX-1vRv8bkwLXcqBVIDFf-XelIcc1wT_erHnzZcp7U72lKwJ5c03yscCQQjlh-K9K2JyiaWGdYJo85O0PyY/pub?embedded=true"
+            },
+            {
+                "title" : "Where can I find the schedule?",
+                "source" : "https://docs.google.com/document/d/e/2PACX-1vSr6QDsdlx1rXCpBmTzqvteMS5gU94iLmlkspFidE7ch6K6BuTJVF8Y8xxhvabVtP_6-_dh0omr97nw/pub?embedded=true"
+            }
+        ]
     }
 }

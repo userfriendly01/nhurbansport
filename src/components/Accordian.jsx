@@ -25,7 +25,7 @@ const StyledTitle = styled.dt `
   &::after {
     content: "+";
     font-size: 18px;
-    color: white;
+    color: ${props => props.scolor ? props.scolor : "white"};
     transition: transform .5s ease-in-out;
     position: absolute;
     right: 30px;
@@ -70,21 +70,22 @@ const StyledTitle = styled.dt `
   }
 
   `  
-        return (
-          <Container direction="column" 
-                     border="solid 1px #eeeeee" 
-                     margin="10px 5px">
-            <StyledTitle bcolor={props.bcolor}
-                         color={props.color}
-                         className={expand ? 'title is-expanded' : 'title'} 
-                         onClick={onClick}>
-              {title}
-            </StyledTitle>
-            <StyledContent className={expand ? 'content is-expanded' : 'content'}>
-              {content}
-            </StyledContent>
-          </Container>
-        );
+      return (
+        <Container direction="column" 
+                    border="solid 1px #eeeeee" 
+                    margin="10px 5px">
+          <StyledTitle bcolor={props.bcolor}
+                        color={props.color}
+                        scolor={props.scolor}
+                        className={expand ? 'title is-expanded' : 'title'} 
+                        onClick={onClick}>
+            {title}
+          </StyledTitle>
+          <StyledContent className={expand ? 'content is-expanded' : 'content'}>
+            {content}
+          </StyledContent>
+        </Container>
+      );
     }
 
     export default Accordion;

@@ -11,7 +11,7 @@ import { images } from '../util/Constants.jsx'
     console.log(activeSessions)
 
   return (
-          <Container direction="column" width="70%" margin="0 auto">
+          <Container direction="column" width="600" margin="0 auto">
 <           Container>
               <Image url={images.ROSTER.BANNER}
                        width="650"
@@ -40,6 +40,7 @@ import { images } from '../util/Constants.jsx'
                                 }
                                 bcolor="white"
                                 color="black"
+                                scolor="#26a3d9"
                               />
                             </div>
                           ))  

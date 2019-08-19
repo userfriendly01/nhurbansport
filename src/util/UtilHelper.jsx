@@ -1,16 +1,35 @@
 import { filterSessionsForRoster } from '../service/Session.jsx'
-import { getStorage } from './Connect.jsx'
+import { getStorage, getDatabase } from './Connect.jsx'
 
 const imageArray = []
+let howToObject = {}
 
 export const setData = () => {
     filterSessionsForRoster();
     setAllImages();
+    setHowToDocuments();
 }
 
 export const getAllImages = () => {
   return imageArray;
 };
+
+export const getHowToDocuments = () => {
+  return howToObject;
+};
+
+export const setHowToDocuments = () => {
+  getDatabase()
+  .ref("Documents")
+  .child("How-To")
+  .once("value")
+  .then(function(snapshot) {
+    howToObject = snapshot.val();
+    console.log(howToObject)
+  })
+  console.log(howToObject)
+  return howToObject;
+}
 
 export const setAllImages = () => {
     getStorage()
