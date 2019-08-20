@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
-import Container from '../components/Container.jsx'
-import TextContainer from '../components/TextContainer.jsx'
-import Text from '../components/Text.jsx'
-import Image from '../components/Image.jsx'
-import IFrame from '../components/IFrame.jsx'
-import { images } from '../util/Constants.jsx'
-import { getRuleBooks } from '../util/UtilHelper.jsx'
+import Container from '../../components/Container.jsx'
+import TextContainer from '../../components/TextContainer.jsx'
+import Text from '../../components/Text.jsx'
+import Image from '../../components/Image.jsx'
+import IFrame from '../../components/IFrame.jsx'
+import { images } from '../../util/Constants.jsx'
+import { getRuleBooks } from '../../service/Database/Documents.jsx'
 import {Modal, ModalBody, ModalHeader, ModalFooter, Button} from 'reactstrap'
 
 

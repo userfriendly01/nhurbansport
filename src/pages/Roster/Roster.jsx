@@ -1,12 +1,15 @@
 import React from 'react'
-import Container from '../components/Container.jsx'
-import Image from '../components/Image.jsx'
-import Accordion from '../components/Accordian.jsx'
-import { returnSessionValues } from '../service/Session.jsx'
-import { images } from '../util/Constants.jsx'
+import {
+  Accordion,
+  Container,
+  Image 
+} from '../../components'
+import { returnSessionValues } from './RosterUtil.jsx'
+import { images } from '../../util/Constants.jsx'
 
   const Roster = () => {
     const values = returnSessionValues();
+    console.log(values)
     const activeSessions = values.activeSessions;
     console.log(activeSessions)
 

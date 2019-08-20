@@ -1,10 +1,12 @@
 import React from 'react'
-import Container from '../components/Container.jsx'
-import Image from '../components/Image.jsx'
-import Accordian from '../components/Accordian.jsx'
-import IFrame from '../components/IFrame.jsx'
-import { images } from '../util/Constants.jsx'
-import { getHowToDocuments } from '../util/UtilHelper.jsx'
+import {
+  Accordion,
+  Container,
+  IFrame,
+  Image,
+} from '../../components'
+import { images } from '../../util/Constants.jsx'
+import { getHowToDocuments } from '../../service/Database/Documents.jsx'
 
 const HowTo = () => {
 
@@ -22,7 +24,7 @@ const HowTo = () => {
           { 
             howToDocuments.map((document, index) => (
               <div key={`doc${index}`}>
-                <Accordian
+                <Accordion
                   title={document.title}
                   expand={!index}
                   content={

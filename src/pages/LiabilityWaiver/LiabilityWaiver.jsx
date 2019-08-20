@@ -1,5 +1,5 @@
 import React from 'react'
-import Container from '../components/Container.jsx'
+import Container from '../../components/Container.jsx'
 
 const LiabilityWaiver = () => {
     return(

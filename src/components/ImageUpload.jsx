@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import Container from '../components/Container.jsx'
-import { getAllImages } from '../util/UtilHelper.jsx'
+import { getAllImages } from '../service/Storage.jsx'
 
 const ImageUpload = () => {
 const imageArray = getAllImages();

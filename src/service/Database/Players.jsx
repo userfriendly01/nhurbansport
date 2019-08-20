@@ -1,29 +1,30 @@
-import { getDatabase } from '../util/Connect.jsx'
+import { getDatabase } from "../Connect.jsx";
 
-const myDatabase = getDatabase();
-const playerRef = myDatabase.ref("Players");
+const playerRef = getDatabase().ref("Players");
 
 export const getPlayerFriendlyName = (playerId) => {
     return playerRef
-            .orderByKey()
-            .equalTo(playerId)
-            .once('value')
-            .then((snapshot) => {
-                let playerObject = snapshot.val();
-                let playerFirstName = playerObject[playerId].firstName
-                let playerLastName = playerObject[playerId].lastName
-                return playerFirstName + " " + playerLastName;
-            }).catch((error) => {
-                console.log(error)
-            })
-}
+      .orderByKey()
+      .equalTo(playerId)
+      .once('value')
+      .then((snapshot) => {
+        let playerObject = snapshot.val();
+        let playerFirstName = playerObject[playerId].firstName
+        let playerLastName = playerObject[playerId].lastName
+        return playerFirstName + " " + playerLastName;
+    }).catch((error) => {
+        console.log(error)
+    });
+};
 
 export const getAllPlayers = () => {
-    playerRef.once("value")
-             .then(function(snapshot) {
-                const databaseSnapshot = snapshot.val();
-                console.log(JSON.stringify(databaseSnapshot));
-                return databaseSnapshot;
+    playerRef
+      .once("value")
+      .then(function(snapshot) {
+        const databaseSnapshot = snapshot.val();
+        return databaseSnapshot;
+    }).catch((error) => {
+        console.log(error)
     });
 };  
 
@@ -58,3 +59,4 @@ export const updatePlayer = (id, field, value) => {
         }
     );        
 };
+

@@ -1,9 +1,9 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import Container from '../components/Container.jsx'
-import Image from '../components/Image.jsx'
-import Text from '../components/Text.jsx'
-import TextContainer from '../components/TextContainer.jsx'
+import Container from '../../components/Container.jsx'
+import Image from '../../components/Image.jsx'
+import Text from '../../components/Text.jsx'
+import TextContainer from '../../components/TextContainer.jsx'
 
 const PlayerPortal = () => {
     return(

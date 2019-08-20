@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
-import Container from '../components/Container.jsx'
+import Container from './Container.jsx'
 import styled from 'styled-components'
-import Text from '../components/Text.jsx'
+import Text from './Text.jsx'
 
 
 const Accordion = (props) => {

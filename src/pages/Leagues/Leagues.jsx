@@ -1,8 +1,8 @@
 import React from 'react'
-import Container from '../components/Container.jsx'
-import Image from '../components/Image.jsx'
-import Text from '../components/Text.jsx'
-import TextContainer from '../components/TextContainer.jsx'
+import Container from '../../components/Container.jsx'
+import Image from '../../components/Image.jsx'
+import Text from '../../components/Text.jsx'
+import TextContainer from '../../components/TextContainer.jsx'
 
 const Leagues = () => {
     return(

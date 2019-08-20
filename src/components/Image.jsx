@@ -5,7 +5,7 @@ import ImageUpload from '../components/ImageUpload.jsx'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAngleDoubleUp } from '@fortawesome/free-solid-svg-icons'
 import styled from 'styled-components'
-import { uploadImage, downloadImage } from '../util/UtilHelper.jsx'
+import { uploadImage, downloadImage } from '../service/Storage.jsx'
 
 const Image = (props) => {
 
