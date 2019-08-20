@@ -141,7 +141,14 @@
             "players": [
                 "PLAYER-3",
                 "PLAYER-4"
-            ]
+            ],
+            "stats": {
+                "position": 1,
+                "played": 12,
+                "won": 8,
+                "loss": 4,
+                "tie": 0
+            }
         },
         "TEAM-3": {
             "teamName": "Minority Squad",
@@ -151,7 +158,14 @@
             "players": [
                 "PLAYER-5",
                 "PLAYER-3"
-            ]
+            ],
+            "stats": {
+                "position": 1,
+                "played": 12,
+                "won": 8,
+                "loss": 4,
+                "tie": 0
+            }
         },
         "TEAM-4": {
             "teamName": "Queens Of Manchester",
@@ -160,7 +174,14 @@
             "captain": "Faith Cuneo",
             "players": [
                 "PLAYER-3"
-            ]
+            ],
+            "stats": {
+                "position": 1,
+                "played": 12,
+                "won": 8,
+                "loss": 4,
+                "tie": 0
+            }
         },
         "TEAM-5": {
             "teamName": "Minority Squad",
@@ -170,7 +191,14 @@
             "players": [
                 "PLAYER-5",
                 "PLAYER-3"
-            ]
+            ],
+            "stats": {
+                "position": 1,
+                "played": 12,
+                "won": 8,
+                "loss": 4,
+                "tie": 0
+            }
         },
         "TEAM-6": {
             "teamName": "Monstars",
@@ -180,7 +208,14 @@
             "players": [
                 "PLAYER-5",
                 "PLAYER-3"
-            ]
+            ],
+            "stats": {
+                "position": 1,
+                "played": 12,
+                "won": 8,
+                "loss": 4,
+                "tie": 0
+            }
         },
         "TEAM-7": {
             "teamName": "Pound Town",
@@ -190,7 +225,14 @@
             "players": [
                 "PLAYER-1",
                 "PLAYER-3"
-            ]
+            ],
+            "stats": {
+                "position": 1,
+                "played": 12,
+                "won": 8,
+                "loss": 4,
+                "tie": 0
+            }
         }
     },
     "Documents": {

@@ -50,9 +50,11 @@ const PlayerPortal = () => {
                     <Text size="13">Here's where you'll find who's who on your team.</Text>
                 </Container>
                 <Container direction="column" width="300px" bcolor="white">
-                    <Image url="/src/images/pp-standings.jpg"
+                    <Link to="/standings">
+                        <Image url="/src/images/pp-standings.jpg"
                            width="200"
                            height="180"/>
+                    </Link>
                     <Text size="14">League Standings</Text>
                     <Text size="13">Your updates for team standings</Text>
                 </Container>

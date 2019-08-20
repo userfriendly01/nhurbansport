@@ -3,12 +3,14 @@ import {
     setRuleBooks,
 } from './Database'
 import {
-    filterSessionsForRoster
+    setRoster,
+    setStandings
 } from '../pages'
 import { setAllImages } from './Storage.jsx'
 
 export const setData = () => {
-    console.log(filterSessionsForRoster());
+    setRoster();
+    setStandings();
     setAllImages();
     setHowToDocuments();
     setRuleBooks();

@@ -5,13 +5,13 @@ import {
     getAllTeamsForSession
  } from '../../service/Database'
 
-let returnValues = {};
+let roster = {};
 
-export const returnSessionValues = () => {
-    return returnValues;
+export const getRoster = () => {
+    return roster;
 }
 
-export const filterSessionsForRoster = () => {
+export const setRoster = () => {
     getActiveSessions()
       .then((sessions) => {
         console.log(sessions)
@@ -45,7 +45,7 @@ export const filterSessionsForRoster = () => {
             });
             sessionsArray.push(sessionObject)
           }
-          returnValues.activeSessions = sessionsArray;
+          roster.activeSessions = sessionsArray;
           console.log(sessionsArray)
           return sessionsArray
     }).catch((error) => {

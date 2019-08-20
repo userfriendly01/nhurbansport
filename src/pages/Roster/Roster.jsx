@@ -4,14 +4,12 @@ import {
   Container,
   Image 
 } from '../../components'
-import { returnSessionValues } from './RosterUtil.jsx'
+import { getRoster } from './RosterUtil.jsx'
 import { images } from '../../util/Constants.jsx'
 
   const Roster = () => {
-    const values = returnSessionValues();
-    console.log(values)
+    const values = getRoster();
     const activeSessions = values.activeSessions;
-    console.log(activeSessions)
 
   return (
           <Container direction="column" width="600" margin="0 auto">

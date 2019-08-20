@@ -8,7 +8,8 @@ import {
     PlayerPortal,
     Roster,
     HowTo,
-    RuleBook
+    RuleBook,
+    Standings
 } from '../pages'
 
 
@@ -49,5 +50,9 @@ export const routes = [
     {
         path: "/rule-book",
         main: () => <RuleBook/>
+    },
+    {
+        path: "/standings",
+        main: () => <Standings/>
     }
 ];
