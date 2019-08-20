@@ -4,6 +4,7 @@ import {
     Leagues,
     LiabilityWaiver,
     SocialEvents,
+    EventTemplate,
     Veterans,
     PlayerPortal,
     Roster,
@@ -30,6 +31,10 @@ export const routes = [
     {
         path: "/events",
         main: () => <SocialEvents/>
+    },
+    {
+        path: "/current-event",
+        main: () => <EventTemplate/>
     },
     {
         path: "/veterans",
