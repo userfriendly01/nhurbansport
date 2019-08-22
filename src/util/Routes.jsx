@@ -1,10 +1,10 @@
-import React from 'react'
 import {
     Home,
     Leagues,
+    LeagueLeader,
     LiabilityWaiver,
     SocialEvents,
-    EventTemplate,
+    EventDetails,
     Veterans,
     PlayerPortal,
     Roster,
@@ -18,46 +18,51 @@ export const routes = [
     {
         path: "/",
         exact: true,
-        main: () => <Home/>,
+        component: Home
     },
     {
         path: "/leagues",
-        main: () => <Leagues/>
+        component: Leagues
     },
     {
         path: "/liability",
-        main: () => <LiabilityWaiver/>
+        component: LiabilityWaiver
     },
     {
         path: "/events",
-        main: () => <SocialEvents/>
+        exact: true,
+        component: SocialEvents
     },
     {
-        path: "/current-event",
-        main: () => <EventTemplate/>
+        path: "/events/:id",
+        component:  EventDetails
     },
     {
         path: "/veterans",
-        main: () => <Veterans/>
+        component: Veterans
     },
     {
         path: "/playerportal",
-        main: () => <PlayerPortal/>
+        component: PlayerPortal
     },
     {
         path: "/roster",
-        main: () => <Roster/>
+        component: Roster
     },
     {
         path: "/how-to",
-        main: () => <HowTo/>
+        component: HowTo
     },
     {
         path: "/rule-book",
-        main: () => <RuleBook/>
+        component: RuleBook
     },
     {
         path: "/standings",
-        main: () => <Standings/>
+        component: Standings
+    },
+    {
+        path: "/leagueleader",
+        component: LeagueLeader
     }
 ];

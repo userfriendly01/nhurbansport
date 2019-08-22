@@ -7,8 +7,8 @@ import {
 
 let roster = {};
 
-export const getRoster = () => {
-    return roster;
+export const getRoster = async () => {
+  return roster;
 }
 
 export const setRoster = () => {

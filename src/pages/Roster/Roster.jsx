@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import {
   Accordion,
   Container,
@@ -8,8 +8,19 @@ import { getRoster } from './RosterUtil.jsx'
 import { images } from '../../util/Constants.jsx'
 
   const Roster = () => {
-    const values = getRoster();
-    const activeSessions = values.activeSessions;
+
+    useEffect(() => {
+      fetchRoster();
+    }, [])
+
+    const [roster, setRoster] = useState([]);
+
+    const fetchRoster = async () => {
+      const values = await getRoster();
+      setRoster(values.activeSessions);
+      //const activeSessions = values.activeSessions;
+    };
+    
 
   return (
           <Container direction="column" width="600" margin="0 auto">
@@ -21,7 +32,7 @@ import { images } from '../../util/Constants.jsx'
             </Container>              
             <dl className="accordion">
                 {
-                  activeSessions.map((session, index) => (
+                  roster.map((session, index) => (
                     <div key={`sport${index}`}>
                       <Accordion 
                         title={session.sessionFriendlyName} 

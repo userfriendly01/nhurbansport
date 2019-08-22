@@ -27,6 +27,7 @@
     "babel-eslint": "^10.0.1",
     "babel-loader": "^8.0.6",
     "babel-plugin-styled-components": "^1.10.0",
+    "babel-polyfill": "^6.26.0",
     "bootstrap": "^4.3.1",
     "clean-webpack-plugin": "^2.0.2",
     "copy-webpack-plugin": "^5.0.3",
@@ -52,6 +53,7 @@
     "@fortawesome/free-solid-svg-icons": "^5.9.0",
     "@fortawesome/react-fontawesome": "^0.1.4",
     "firebase": "^6.3.3",
+    "iframe-resizer": "^4.1.1",
     "mdbreact": "^4.17.0"
   }
 }

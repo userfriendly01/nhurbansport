@@ -59,9 +59,11 @@ const PlayerPortal = () => {
                     <Text size="13">Your updates for team standings</Text>
                 </Container>
                 <Container direction="column" width="300px" bcolor="white">
+                    <Link to="/leagueleader">
                     <Image url="/src/images/pp-leader.jpg"
                            width="200"
                            height="180"/>
+                    </Link>
                     <Text size="14">League Leader</Text>
                     <Text size="13">A place to recognize the MVP in each league.</Text>
                 </Container>

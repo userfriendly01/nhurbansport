@@ -87,7 +87,7 @@ const Header = () => {
                         key={index}
                         path={route.path}
                         exact={route.exact}
-                        component={route.main}
+                        component={route.component}
                     />
                 ))}
             </Switch>
