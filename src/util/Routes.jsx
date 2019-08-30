@@ -1,8 +1,10 @@
 import {
     Home,
+    ImageUpload,
     Leagues,
     LeagueLeader,
     LiabilityWaiver,
+    Schedules,
     SocialEvents,
     EventDetails,
     Veterans,
@@ -64,5 +66,14 @@ export const routes = [
     {
         path: "/leagueleader",
         component: LeagueLeader
+    },
+    {
+        path: "/schedules",
+        component: Schedules
+    }
+    ,
+    {
+        path: "/upload-image",
+        component: ImageUpload
     }
 ];

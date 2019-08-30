@@ -23,5 +23,8 @@ export const images = {
     },
     EVENTS: {
         BANNER: "https://firebasestorage.googleapis.com/v0/b/nh-urban-sport.appspot.com/o/images%2Fevents-banner.jpg?alt=media&token=71323d32-769a-43e4-9749-f08cb14283fd"
+    },
+    SCHEDULE: {
+        BANNER: "https://firebasestorage.googleapis.com/v0/b/nh-urban-sport.appspot.com/o/images%2Fschedules-banner.JPG?alt=media&token=a4d3e908-1ecf-46bb-bf2a-9f8c68f6826b"
     }
 }

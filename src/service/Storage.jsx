@@ -9,10 +9,11 @@ export const getAllImages = () => {
 };
 
 export const setAllImages = () => {
-  myStorageBucket
+  return myStorageBucket
     .ref("images")
     .listAll()
     .then(function(result) {
+      console.log(result)
       result.items.forEach(function(imageRef) {
         const imageName = imageRef.name;
         getStorage()
@@ -20,13 +21,15 @@ export const setAllImages = () => {
           .child(imageName)
           .getDownloadURL()
           .then((url) => {
-            imageArray.push(url);
+            const imageObject = {};
+            imageObject.name = imageName;
+            imageObject.url = url;
+            imageArray.push(imageObject);
           })
         });
       }).catch(function(error) {
         console.log(error);
       });
-      return imageArray
 };
 
 export const uploadImage = (image) => {

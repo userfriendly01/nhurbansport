@@ -34,9 +34,11 @@ const PlayerPortal = () => {
                     <Text size="13">Your information on touchdowns, gender plays, and more.</Text>
                 </Container>
                 <Container direction="column" width="300px" bcolor="white">
-                    <Image url="/src/images/pp-schedules.jpg"
+                    <Link to="/schedules">
+                        <Image url="/src/images/pp-schedules.jpg"
                            width="200"
                            height="180"/>
+                    </Link>
                     <Text size="14">League Schedules</Text>
                     <Text size="13">The who, what, where, and when – all in one place!</Text>
                 </Container>

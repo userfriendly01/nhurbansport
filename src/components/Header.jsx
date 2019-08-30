@@ -57,7 +57,7 @@ const Header = () => {
             <StyledNavBar expand="md">
                 <UncontrolledDropdown isOpen={isOpen1} onMouseEnter={() => setIsOpen1(true)} onMouseLeave={() => setIsOpen1(false)}>
                     <StyledDropdownToggle nav>
-                        <StyledLink to="/">NH Urban Sport</StyledLink>
+                        <StyledLink to="/upload-image">NH Urban Sport</StyledLink>
                     </StyledDropdownToggle>
                     <DropdownMenu>
                         <DropdownItem>

@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import {Modal, ModalBody, ModalHeader, ModalFooter, Button} from 'reactstrap'
 import Container from '../components/Container.jsx'
-import ImageUpload from '../components/ImageUpload.jsx'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAngleDoubleUp } from '@fortawesome/free-solid-svg-icons'
 import styled from 'styled-components'
@@ -69,7 +68,6 @@ const Image = (props) => {
                     Select Picture
                 </ModalHeader>
                 <ModalBody>
-                    <ImageUpload />
                 </ModalBody>
                 <ModalFooter>
                     <input type="file" onChange={handleChange}/>
