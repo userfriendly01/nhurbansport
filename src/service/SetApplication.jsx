@@ -6,7 +6,7 @@ import {
     setRoster,
     setStandings
 } from '../pages'
-import { setAllImages } from './Storage.jsx'
+import { setAllImages } from '../pages/ImageUpload/ImageUtil.jsx'
 
 export const setData = () => {
     setRoster();
