@@ -1,52 +1,35 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Pagination, PaginationItem, PaginationLink } from 'reactstrap';
-import Container from '../../components/Container.jsx'
-import styled from 'styled-components'
+import { 
+    Container, 
+    Image 
+} from '../../components';
 
-const Pages = ({
+const ImagePagination = ({
         array,
-        itemsPerPage
+        parentCallBack
     }) => {
 
     const [ numberOfPages, setNumberOfPages ] = useState(0);
     const [ currentPage, setCurrentPage ] = useState(1);
-    const [ start, setStart ] = useState(0);
-    const [ end, setEnd ] = useState(0);
+    const itemsPerPage = 6;
+    const start = (currentPage - 1) * itemsPerPage;
+    const end = currentPage * itemsPerPage;
 
     useEffect(() => {
         setNumberOfPages(Math.ceil(array.length / itemsPerPage));
-    }, [array, itemsPerPage])
-
-    useEffect(() => {
-        //Start should be the index of the item to start the page display at
-        
-        setStart((currentPage - 1) * itemsPerPage);
-        //End should be the index of the item to end the page display at
-        setEnd(currentPage * itemsPerPage);
-    }, [currentPage, setCurrentPage])
-
-    const ExistingImage = styled.img`
-            background-size: 100% 100%;
-            width: 150;
-            height: 150;
-            position: relative;
-            margin: 5;
-        `;
-
-    console.log("number of Pages" , numberOfPages)
-    console.log("current Page" , currentPage)
-    console.log("start" , start)
-    console.log("end" , end)
-
+    }, [array])
 
     return (
-        <Container direction="column" align="center">
-            <Container direction="row" wrap="wrap" width="800" >
+        <Container direction="column" align="center" margin="0">
+            <Container direction="row" wrap="wrap" width="650" margin="0">
                 {
                     array.slice(start, end).map((item, index) => (
-                        <Container id="index" direction="column">
-                            <ExistingImage src={item.url} id={index}/>
-                            <p>{item.name}</p>
+                        <Container id="index" direction="column" align="center">
+                            <div onClick={() => parentCallBack(item.url)}>
+                                <Image cursor="pointer" url={item.url} height="150" width="150" margin="5" upload={false} id={index}/>
+                                <p>{item.name}</p>
+                            </div>
                         </Container>
                     ))
                 }
@@ -79,4 +62,4 @@ const Pages = ({
     
 }
 
-export default Pages;
+export default ImagePagination;

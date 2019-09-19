@@ -14,6 +14,7 @@ const Home = () => {
         <Container direction="column" align="center">
             <Container position="relative">
                 <Image url={images.HOME.BANNER}
+                             name="Home Banner"
                              height="320"
                              width="650"/>
                 <TextContainer bcolor="#0066ff" width="100%" position="absolute"  opacity=".8">

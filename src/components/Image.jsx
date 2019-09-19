@@ -1,22 +1,25 @@
-import React, { useState, useEffect } from 'react'
-import {Modal, ModalBody, ModalHeader, ModalFooter, Button} from 'reactstrap'
-import Container from '../components/Container.jsx'
+import React, { useState} from 'react'
+import Container from './Container.jsx'
+import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAngleDoubleUp } from '@fortawesome/free-solid-svg-icons'
 import styled from 'styled-components'
-import { uploadImage, downloadImage } from '../service/Storage.jsx'
 
 const Image = (props) => {
 
     const uploadIcon = <FontAwesomeIcon icon={faAngleDoubleUp} />
+    const [uploadIconShouldDisplay] = useState(props.upload != null ? props.upload : true);
 
     const ImageContent = styled.div`
-    background-image: url("${props.url}");
-    background-size: 100% 100%;
-    min-width: ${props.width};
-    min-height: ${props.height};
-    position: relative;
-    margin: ${props.margin};
+        background-image: url("${props.url}");
+        background-size: 100% 100%;
+        min-width: ${props.width};
+        min-height: ${props.height};
+        position: relative;
+        margin: ${props.margin};
+        &:hover {
+            cursor: ${props.cursor ? props.cursor : null};
+        }
     `;
 
     const UploadIconWrapper = styled.div`
@@ -35,50 +38,28 @@ const Image = (props) => {
         }
     `;
 
-    const [ showModule, setShowModule ] = useState(false);
-    const [ currentImage, setCurrentImage ] = useState();
-    const handleClose = () => setShowModule(false);
-    const handleShow = () => setShowModule(true);
-    const handleChange = e => {
-        if(e.target.files[0]){
-            const imageFile = e.target.files[0];
-            setCurrentImage(() => ({imageFile}));
-            console.log("Handle Change was called");
-        }
-    }
 
-    useEffect(() => {
-        if(currentImage){
-            uploadImage(currentImage.imageFile)
-                .then((filename) => {
-                    console.log("Filename: " , filename)
-                    downloadImage(filename).then((url) => {
-                        //setCurrentImage(url)
-                        console.log("I'm the download url!", url)
-                    })
-                    
-                })
-        }
-    }, currentImage)
-
-    return (
+    return(
         <Container position="relative" margin="0">
-            <Modal isOpen={showModule} toggle={handleClose} size="lg" scrollable={true}>
-                <ModalHeader>
-                    Select Picture
-                </ModalHeader>
-                <ModalBody>
-                </ModalBody>
-                <ModalFooter>
-                    <input type="file" onChange={handleChange}/>
-                    <Button onClick={handleClose}>Do Stuff</Button>
-                </ModalFooter>
-            </Modal>
-            <UploadIconWrapper onClick={handleShow}>
-                {uploadIcon}       
-            </UploadIconWrapper>
-        <ImageContent/>
-      </Container>
- )
+            {uploadIconShouldDisplay ?
+                <Link to={{
+                    pathname: `/upload-image`, 
+                    state: {
+                        url: props.url,
+                        name: props.name,
+                        height: props.height,
+                        width: props.width
+                    }
+                }}>
+                    <UploadIconWrapper>
+                        {uploadIcon}   
+                    </UploadIconWrapper>    
+                </Link>
+                : null
+            }
+            <ImageContent/>
+        </Container>
+    )
+
 }
 export default Image;

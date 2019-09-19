@@ -1,9 +1,11 @@
 import React from 'react'
-import Container from '../../components/Container.jsx'
-import Image from '../../components/Image.jsx'
-import Text from '../../components/Text.jsx'
-import TextContainer from '../../components/TextContainer.jsx'
-import Button from '../../components/Button.jsx'
+import {
+    Container,
+    Image,
+    Text,
+    TextContainer,
+    Button
+} from '../../components'
 
 
 const Veterans = () => {

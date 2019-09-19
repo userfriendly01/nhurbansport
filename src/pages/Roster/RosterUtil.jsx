@@ -14,7 +14,6 @@ export const getRoster = async () => {
 export const setRoster = () => {
     getActiveSessions()
       .then((sessions) => {
-        console.log(sessions)
         let sessionsArray = [];
           for(let s in sessions) {
             let sessionObject = {};
@@ -46,7 +45,6 @@ export const setRoster = () => {
             sessionsArray.push(sessionObject)
           }
           roster.activeSessions = sessionsArray;
-          console.log(sessionsArray)
           return sessionsArray
     }).catch((error) => {
         console.log(error)

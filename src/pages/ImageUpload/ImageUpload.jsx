@@ -1,18 +1,26 @@
 import React, { useState, useContext, useEffect } from 'react'
-import styled from 'styled-components'
 import Container from '../../components/Container.jsx'
+import Image from '../../components/Image.jsx'
 import { getAllImages, setAllImages } from '../../service/Storage.jsx'
 import { getStorage } from '../../service/Connect.jsx';
-import Pages from '../../util/Hooks/Pages.jsx'
+import ImagePagination from './ImagePagination.jsx'
 
-const ImageUpload = () => {
-    const imagesPerPage = 8;
+
+const ImageUpload = ({ location }) => {
+    const replacedImageName = location.state.name;
+    const [ imageDetails, setImageDetails ] = useState({
+        url: location.state.url,
+        name: location.state.name,
+        height: location.state.height,
+        width: location.state.width
+    });
+
     const [ imageArray, setImageArray ] = useState(getAllImages());
     const [ image, setImage ] = useState(null)
     const [ url, setUrl ] = useState('')
     const [ progress, setProgress ] = useState(0)
     const storage = getStorage();
- 
+
     const handleChange = e => {
         if (e.target.files[0]) {
             const tempImage = e.target.files[0];
@@ -44,27 +52,27 @@ const ImageUpload = () => {
         });
     }
 
-    const style = {
-      height: '100vh',
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'center',
-      justifyContent: 'center'
-    };
+    
+    const callbackFunction = (childData) => {
+        setImageDetails({
+            ...imageDetails,
+            url: childData
+        });
+        console.log(imageDetails)
+    }
 
     return (
-        <Container direction= "column">
-            <Container direction="row" wrap="wrap">
-                <Pages array={imageArray} itemsPerPage={imagesPerPage} />
-            </Container>
-            <div style={style}>
+        <Container direction= "row" align="center">
+            <Container height="100vh" direction="column" align="center" justify="center" margin="0 -50 0 0">
+                {replacedImageName}
+                <Image url={imageDetails.url} height={imageDetails.height} width={imageDetails.width} margin="20"/>
                 <progress value={progress} max="100"/>
-                <br/>
                 <input type="file" onChange={handleChange}/>
                 <button onClick={() => handleUpload()}>Upload</button>
-                <br/>
-                <img src={url || 'http://via.placeholder.com/400x300'} alt="Uploaded images" height="300" width="400"/>
-            </div>
+            </Container>
+            <Container direction="row" wrap="wrap">
+                <ImagePagination array={imageArray} parentCallBack={callbackFunction} />
+            </Container>
         </Container>
     )
 }

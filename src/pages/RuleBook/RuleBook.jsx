@@ -11,12 +11,10 @@ import {Modal, ModalBody, ModalHeader, ModalFooter, Button} from 'reactstrap'
 
 const RuleBook = () => {
     const [ pages, setPages ] = useState(getRuleBooks());
-    console.log(pages)
     
     const handleShow = index => {
         let newPageObject = [...pages]
         newPageObject[index].show = true
-        console.log(newPageObject)
         setPages(newPageObject);
     }
 
