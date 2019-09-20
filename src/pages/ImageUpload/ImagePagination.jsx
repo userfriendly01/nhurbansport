@@ -20,6 +20,8 @@ const ImagePagination = ({
         setNumberOfPages(Math.ceil(array.length / itemsPerPage));
     }, [array])
 
+    console.log(array)
+
     return (
         <Container direction="column" align="center" margin="0">
             <Container direction="row" wrap="wrap" width="650" margin="0">

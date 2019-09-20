@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import {
     Container,
     Image,
@@ -8,12 +8,14 @@ import {
 } from '../../components'
 import { Form, FormGroup, Input} from 'reactstrap'
 import { images } from '../../util/Constants.jsx'
+import { getImage } from '../ImageUpload'
 
 const Home = () => {
-    return(
+    return (
         <Container direction="column" align="center">
+            
             <Container position="relative">
-                <Image url={images.HOME.BANNER}
+                <Image url={getImage("Home Banner")}
                              name="Home Banner"
                              height="320"
                              width="650"/>
@@ -28,10 +30,11 @@ const Home = () => {
                     <Text size="16" weight="bold">SPORTS LEAGUES</Text>
                     <Text>__</Text>
                     <Text size="13">From the couch potato to the weekend warrior, we have a sport for you.</Text>
-                    <Image url={images.HOME.LEAGUES}
-                                 height="180"
-                                 width="180"
-                                 margin="2%"/>
+                    <Image url={getImage("Home: Option 1")}
+                                name="Home: Option 1"
+                                height="180"
+                                width="180"
+                                margin="2%"/>
                 </TextContainer>
                 <TextContainer bcolor="white" width="200" margin="0 10">
                     <Text size="16" weight="bold">JOIN OUR EMAIL LIST</Text>
@@ -91,5 +94,6 @@ const Home = () => {
         </Container>
     );
 }
+
 
 export default Home;

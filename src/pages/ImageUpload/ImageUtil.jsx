@@ -1,20 +1,52 @@
-import { getStorage } from "../../service/Connect.jsx";
+import { getStorage, getDatabase } from "../../service/Connect.jsx";
 
 const storage = getStorage();
-const myStorageBucket = getStorage();
+const database = getDatabase();
 const imageArray = []
+const imageObject = {}
 
-
+console.log("I'm just the obj ",imageArray)
 export const getAllImages = () => {
     return imageArray;
 };
 
+export const getImageObject = () => {
+  return database.ref("Images")
+  .once("value")
+  .then(function(snapshot) {
+    let newSnapshot = snapshot.val();
+        for(let r in newSnapshot) {
+          imageObject[r] = newSnapshot[r]
+        };
+      console.log("IMAGE OBJECT",imageObject)
+  }).catch((error) => {
+    console.log(error);
+  });
+
+}
+
+export const getImage = (name) => {
+  return imageObject[name];
+}
+
+export const setImage = ({
+  name,
+  url,
+  setCompleted
+}) => {
+  database.ref('Images/' + name).set(url).then(()=> {
+    getImageObject().then(() => {
+      setCompleted(true);
+    })
+  })
+}
+
+
 export const setAllImages = () => {
-  return myStorageBucket
+  return storage
     .ref("images")
     .listAll()
     .then(function(result) {
-      console.log(result)
       result.items.forEach(function(imageRef) {
         const imageName = imageRef.name;
         getStorage()
@@ -28,6 +60,7 @@ export const setAllImages = () => {
             imageArray.push(imageObject);
           })
         });
+        console.log("Setting the images was called and is a legth of ", imageArray.length)
       }).catch(function(error) {
         console.log(error);
       });

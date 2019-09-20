@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Redirect } from 'react-router-dom'
 import { 
     Container,
     Image,
@@ -6,7 +7,8 @@ import {
 import { 
     ImagePagination,
     getAllImages, 
-    uploadImage,  
+    uploadImage,
+    setImage 
 } from '../ImageUpload'
 
 const ImageUpload = ({ location }) => {
@@ -19,8 +21,9 @@ const ImageUpload = ({ location }) => {
     });
 
     const [ imageArray, setImageArray ] = useState(getAllImages());
-    const [ temporaryImage, setTemporaryImage ] = useState(null)
-    const [ progress, setProgress ] = useState(0)
+    const [ temporaryImage, setTemporaryImage ] = useState(null);
+    const [ progress, setProgress ] = useState(0);
+    const [ completed, setCompleted ] = useState(false);
 
     const handleChange = e => {
         if (e.target.files[0]) {
@@ -49,25 +52,39 @@ const ImageUpload = ({ location }) => {
     }
 
     const updateImageSource = () => {
-
+        setImage({
+            name: imageDetails.name,
+            url: imageDetails.url,
+            setCompleted
+        })
     }
 
     return (
+        <div>
+        {
+        !completed ?
         <Container direction= "row" align="center">
             <Container height="100vh" direction="column" align="center" justify="center" margin="0 -50 0 0">
                 {replacedImageName}
                 <Image url={imageDetails.url} height={imageDetails.height} width={imageDetails.width} margin="20"/>
                 <progress value={progress} max="100"/>
                 <input type="file" onChange={handleChange}/>
-                {temporaryImage != null ?
-                    <button onClick={() => handleUpload()}>Upload</button>
+                {
+                    temporaryImage != null ?
+                        <button onClick={() => handleUpload()}>Upload</button>
                     : null
                 }
+                <button onClick={() => updateImageSource()}>Change Image</button>
             </Container>
             <Container direction="row" wrap="wrap">
                 <ImagePagination array={imageArray} parentCallBack={callbackFunction} />
             </Container>
         </Container>
+        : 
+        <Redirect to={history.go(-1)} />
+        
+    }
+    </div>
     )
 }
 

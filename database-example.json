@@ -264,5 +264,9 @@
                 "image" : "https://firebasestorage.googleapis.com/v0/b/nh-urban-sport.appspot.com/o/images%2Frulebook-basketball.jpg?alt=media&token=9b2dd7e1-a0ed-4934-b3b9-f4a3f67b8717"
             }
         ]
+    },
+    "Images": {
+        "Home Banner" : "https://firebasestorage.googleapis.com/v0/b/nh-urban-sport.appspot.com/o/images%2Fhome-banner-img.jpg?alt=media&token=298f016b-1477-498c-9516-8d32f38d7b9b",
+        "Home: Option 1": "https://firebasestorage.googleapis.com/v0/b/nh-urban-sport.appspot.com/o/images%2Fhome-option-1-img.jpg?alt=media&token=d6a8cec2-c00a-43d3-afe9-0dea3933bd72"
     }
 }
