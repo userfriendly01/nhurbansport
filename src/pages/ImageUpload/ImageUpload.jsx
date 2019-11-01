@@ -21,16 +21,28 @@ const ImageUpload = ({ location }) => {
     });
 
     const [ imageArray, setImageArray ] = useState(getAllImages());
-    const [ temporaryImage, setTemporaryImage ] = useState(null);
+    const [ temporaryImage, setTemporaryImage ] = useState({
+        file: null,
+        preview: null
+    });
     const [ progress, setProgress ] = useState(0);
     const [ completed, setCompleted ] = useState(false);
 
     const handleChange = e => {
+        const reader = new FileReader();
+      
         if (e.target.files[0]) {
-            const tempImage = e.target.files[0];
-            setTemporaryImage(() => (tempImage));
+          const tempImage = e.target.files[0];
+      
+          reader.onloadend = () => {
+            setTemporaryImage({
+              file: tempImage.file,
+              preview: reader.result
+            })
+          }
+            reader.readAsDataURL(tempImage);
         }
-    }
+      }
 
     const handleUpload = () => {
         const obj = {

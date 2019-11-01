@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import {
   Container,
-  Button,
-  Image
+  Button
 } from '../../components'
+import { Link } from 'react-router-dom'
 import {
   TextField
 } from '@material-ui/core'
@@ -11,7 +11,6 @@ import styled from 'styled-components'
 import ReactQuill from 'react-quill'
 import 'react-quill/dist/quill.snow.css'
 import { Card } from '@material-ui/core'
-
 
 //Create a common component for an input field, wrapped in a container for spacing/margin deets
 
@@ -26,64 +25,51 @@ const StyledQuill = styled(ReactQuill)`
 `
 
 const LeagueTemplate = () => {
-  
-  const [ progress, setProgress ] = useState(0);
-  const [ imageArray, setImageArray ] = useState([]);
-  const [ temporaryImage, setTemporaryImage ] = useState(
-    {
-      file: null,
-      preview: null
-    });
-  const [ imageDetails, setImageDetails ] = useState({
-    url: "",
-    height: "200",
-    width: "200"
-});
+  const [ leagueForm, setLeagueForm ] = useState({
+    name: "I'm the default Name!",
+    location: "",
+    day: "",
+    price: "",
+    image: "",
+    descriptionHTML: "",
+    disclaimer: "",
+    instructions: "",
+    coupons: ""
+  });
 
-const handleChange = e => {
-  const reader = new FileReader();
-
-  if (e.target.files[0]) {
-    const tempImage = e.target.files[0];
-
-    reader.onloadend = () => {
-      setTemporaryImage({
-        file: tempImage.file,
-        preview: reader.result
-      })
+  const handleChange = event => {
+    const key = event.target.name;
+    const value = event.target.value;
+    const updatedObject = {
+      ...leagueForm
     }
-      reader.readAsDataURL(tempImage);
-  }
-}
-
-const handleUpload = () => {
-  const obj = {
-      temporaryImage, 
-      setProgress, 
-      imageArray, 
-      setImageArray,
-      imageDetails,
-      setImageDetails
+    updatedObject[key] = value;
+    console.log("updated", updatedObject);
+    console.log(event.target.tagName);
+    setLeagueForm(updatedObject);
   };
-  uploadImage(obj);
-}
 
-console.log(temporaryImage);
+  console.log("final", leagueForm);
+
 
   return (
     <Card>
       <Container direction="column">
+      <form noValidate autoComplete="off">
         <Container>
-          <Container direction="column">
+          <Container direction="column" justify="flex-start">
           <Container height="100vh" direction="column" align="center" justify="center" margin="0 -50 0 0">
-            <img src={temporaryImage.preview}></img>                
-            <progress value={progress} max="100"/>
-            <input type="file" onChange={handleChange}/>
-              {
-                temporaryImage != null ?
-                <button onClick={() => handleUpload()}>Upload</button>
-                : null
-              }
+              <Link to={{
+                    pathname: `/upload-image`, 
+                    state: {
+                        url: "none",
+                        name: "New League Image",
+                        height: "300",
+                        width: "300"
+                    }
+                }}>
+                <Button>Add Image</Button>
+                </Link>
             </Container>
             <Container>
               <StyledQuill />
@@ -91,18 +77,63 @@ console.log(temporaryImage);
           </Container>
           <Container direction="column">
             <Container>
+              {leagueForm.name}
+              {leagueForm.location}
               Placeholder for 'add to cart' display
             </Container>
-            <StyledTextField id="outlined-basic" label="League Name" margin="normal"/>
-            <StyledTextField id="outlined-basic" label="Location" margin="normal"/>
-            <StyledTextField id="outlined-basic" label="Day" margin="normal"/>
-            <StyledTextField id="outlined-basic" label="Price" margin="normal"/>
-            <StyledTextField id="outlined-basic" label="disclaimer" margin="normal"/>
-            <StyledTextField id="outlined-basic" label="special instructions" margin="normal"/>
-            <StyledTextField id="outlined-basic" label="coupons" margin="normal"/>
+            <StyledTextField 
+              id="outlined-basic"
+              name="name"
+              label="League Name" 
+              margin="normal"
+              onChange={handleChange}
+              />
+            <StyledTextField 
+              id="outlined-basic"
+              name="location"
+              label="Location" 
+              margin="normal"
+              onChange={handleChange}
+              />
+            <StyledTextField 
+              id="outlined-basic"
+              name="day"
+              label="Day" 
+              margin="normal"
+              onChange={handleChange}
+              />
+            <StyledTextField 
+              id="outlined-basic"
+              name="price"
+              label="Price" 
+              margin="normal"
+              onChange={handleChange}
+              />
+            <StyledTextField 
+              id="outlined-basic"
+              name="disclaimer"
+              label="Disclaimer" 
+              margin="normal"
+              onChange={handleChange}
+              />
+            <StyledTextField 
+              id="outlined-basic"
+              name="instructions"
+              label="Special Instructions" 
+              margin="normal"
+              onChange={handleChange}
+              />
+            <StyledTextField 
+              id="outlined-basic"
+              name="coupons"
+              label="Coupons" 
+              margin="normal"
+              onChange={handleChange}
+              />
           </Container>
         </Container>
         <Button>Create League</Button>
+        </form>
       </Container>
     </Card>
   );
