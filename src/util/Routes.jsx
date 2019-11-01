@@ -1,4 +1,5 @@
 import {
+    AddLeagueTemplate,
     Home,
     ImageUpload,
     Leagues,
@@ -75,5 +76,9 @@ export const routes = [
     {
         path: "/upload-image",
         component: ImageUpload
+    },
+    {
+        path: "/add-league",
+        component: AddLeagueTemplate
     }
 ];

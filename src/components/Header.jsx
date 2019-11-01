@@ -37,7 +37,6 @@ const Header = () => {
         &:hover {
             color: #16181b;
             text-decoration: none;
-            
         }
     `;
 
