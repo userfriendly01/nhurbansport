@@ -15,14 +15,12 @@ export const setStandings = () => {
       .then((sessions) => {
         let sessionsArray = [];
           for(let s in sessions) {
-            let sessionObject = {};
-            let startDate = sessions[s].startDate;
-            let sportId = sessions[s].sportKey;
+            let sessionObject = {...sessions[s]};
+            let startDate = sessions[s].date;
+            let leagueName = sessions[s].name;
             let sessionId = s;
-            getSportName(sportId).then((sport) => {
-              sessionObject.sessionId = sessionId;
-              sessionObject.sessionFriendlyName = sport + " " + startDate;
-            });
+            sessionObject.sessionId = sessionId;
+            sessionObject.sessionFriendlyName = leagueName + " " + startDate;
             getAllTeamsForSession(sessionId).then((teams) => {
               let teamsArray = [];
                 for(let t in teams){

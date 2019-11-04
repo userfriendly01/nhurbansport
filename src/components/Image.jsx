@@ -12,6 +12,7 @@ const Image = (props) => {
 
     const ImageContent = styled.div`
         background-image: url("${props.url}");
+        // src: ${props.src};
         background-size: 100% 100%;
         min-width: ${props.width};
         min-height: ${props.height};

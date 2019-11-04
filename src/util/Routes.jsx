@@ -1,3 +1,4 @@
+import React from 'react'
 import {
     AddLeagueTemplate,
     Home,
@@ -75,7 +76,7 @@ export const routes = [
     ,
     {
         path: "/upload-image",
-        component: ImageUpload
+        render: props => <ImageUpload {...props} test={props}/>
     },
     {
         path: "/add-league",

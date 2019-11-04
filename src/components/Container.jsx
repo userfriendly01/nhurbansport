@@ -11,6 +11,7 @@ const Container = styled.div`
         
         background-color: ${props => props.bcolor};
         width: ${props => props.width};
+        max-width: ${props => props.maxw};
 
         padding: ${props => props.padding};
         margin: ${props => props.margin ? props.margin : "20 5 0 5"};
@@ -20,6 +21,7 @@ const Container = styled.div`
         position: ${props => props.position};
         z-index: ${props => props.index};
         left: ${props => props.left};
+        white-space: pre-line;
     `;
 
 export default Container;

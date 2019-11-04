@@ -11,7 +11,7 @@ import {
     setImage 
 } from '../ImageUpload'
 
-const ImageUpload = ({ location }) => {
+const ImageUpload = ({ location, callbackState, callbackFunction } ) => {
     const replacedImageName = location.state.name;
     const [ imageDetails, setImageDetails ] = useState({
         url: location.state.url,
@@ -27,6 +27,7 @@ const ImageUpload = ({ location }) => {
     });
     const [ progress, setProgress ] = useState(0);
     const [ completed, setCompleted ] = useState(false);
+    const redirect = location.state.redirect == null ? true : false;
 
     const handleChange = e => {
         const reader = new FileReader();
@@ -56,7 +57,7 @@ const ImageUpload = ({ location }) => {
         uploadImage(obj);
     }
     
-    const callbackFunction = (childData) => {
+    const imageCallback = (childData) => {
         setImageDetails({
             ...imageDetails,
             url: childData
@@ -68,36 +69,37 @@ const ImageUpload = ({ location }) => {
             name: imageDetails.name,
             url: imageDetails.url,
             setCompleted
-        })
+        });
+        callbackFunction(imageDetails.url);
     }
+    console.log(completed, redirect, location.state.redirect);
 
     return (
         <div>
         {
-        !completed ?
-        <Container direction= "row" align="center">
-            <Container height="100vh" direction="column" align="center" justify="center" margin="0 -50 0 0">
+          completed && redirect ?
+            <Redirect to={history.go(-1)} />
+          :
+            <Container direction= "row" align="center">
+              <Container height="100vh" direction="column" align="center" justify="center" margin="0 -50 0 0">
                 {replacedImageName}
-                <Image url={imageDetails.url} height={imageDetails.height} width={imageDetails.width} margin="20"/>
-                <progress value={progress} max="100"/>
-                <input type="file" onChange={handleChange}/>
-                {
+                  <Image url={imageDetails.url} height={imageDetails.height} width={imageDetails.width} margin="20"/>
+                  <progress value={progress} max="100"/>
+                  <input type="file" onChange={handleChange}/>
+                  {
                     temporaryImage != null ?
                         <button onClick={() => handleUpload()}>Upload</button>
                     : null
-                }
+                  }
                 <button onClick={() => updateImageSource()}>Change Image</button>
-            </Container>
+              </Container>
             <Container direction="row" wrap="wrap">
-                <ImagePagination array={imageArray} parentCallBack={callbackFunction} />
+              <ImagePagination array={imageArray} parentCallBack={imageCallback} />
             </Container>
         </Container>
-        : 
-        <Redirect to={history.go(-1)} />
-        
-    }
+      }
     </div>
-    )
+  )
 }
 
 export default ImageUpload;

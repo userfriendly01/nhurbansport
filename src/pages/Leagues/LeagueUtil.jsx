@@ -1,6 +1,6 @@
-import { 
-    getActiveSessions
- } from '../../service/Database'
+import { getDatabase } from "../../service/Connect.jsx";
+
+const sessionsRef = getDatabase().ref("Sessions");
 
 let roster = {};
 
@@ -10,4 +10,8 @@ export const getLeagues = async () => {
 
 export const setLeagues = () => {
 
+}
+
+export const createLeague = newSession => {
+  sessionsRef.push(newSession);
 }

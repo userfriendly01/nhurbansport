@@ -9,11 +9,16 @@ import { getStandings } from '../Standings/StandingsUtil.jsx';
 import AddLeagueButton from './AddLeagueButton.jsx'
 import { Card } from '@material-ui/core'
 import { Link } from 'react-router-dom'
+import styled from 'styled-components'
 
+const StyledImage = styled.img`
+  width: 200;
+  height: 180
+`;
 const Leagues = () => {
     const values = getStandings();
     const activeSessions = values.activeSessions;
-    console.log(activeSessions);
+    console.log("Is this what's undefined?", activeSessions);
 
     return (
         <Container direction="column" align="center">
@@ -34,13 +39,11 @@ const Leagues = () => {
                         
                         <Container direction="column" width="200px">
                         <Card>
-                          <Image url="/src/images/home-option-1-img.jpg"
-                             width="200"
-                             height="180"/>
-                          <Text size="14">Recreational Cornhole League</Text>
-                          <Text size="14">Manchester NH | Sundays (8 weeks)</Text>
+                          <StyledImage src={session.image} />
+                          <Text size="14">{session.name}</Text>
+                          <Text size="14">{session.location} | {session.day} ({session.length})</Text>
                           <Text>__</Text>
-                          <Text size="13" weight="normal">$40</Text>
+                          <Text size="13" weight="normal">{session.price}</Text>
                           </Card>
                         </Container>
                         
