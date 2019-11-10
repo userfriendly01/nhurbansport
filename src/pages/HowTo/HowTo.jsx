@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext} from 'react'
 import {
   Accordion,
   Container,
@@ -6,11 +6,12 @@ import {
   Image,
 } from '../../components'
 import { images } from '../../util/Constants.jsx'
-import { getHowToDocuments } from '../../service/Database/Documents.jsx'
+import { StateContext } from '../../context/appContext.jsx'
 
 const HowTo = () => {
 
-  const howToDocuments = getHowToDocuments();
+  const context = useContext(StateContext);
+  const howToDocuments = context.state.documentContext.howToDocuments;
 
   return (
         <Container direction="column" width="600" margin="0 auto">

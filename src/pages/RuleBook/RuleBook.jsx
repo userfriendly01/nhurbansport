@@ -1,17 +1,25 @@
-import React, { useState } from 'react'
-import Container from '../../components/Container.jsx'
-import TextContainer from '../../components/TextContainer.jsx'
-import Text from '../../components/Text.jsx'
-import Image from '../../components/Image.jsx'
-import IFrame from '../../components/IFrame.jsx'
+import React, { useState, useContext } from 'react'
+import {
+  Container,
+  TextContainer,
+  Text,
+  Image,
+  IFrame } 
+from '../../components'
 import { images } from '../../util/Constants.jsx'
-import { getRuleBooks } from '../../service/Database/Documents.jsx'
-import {Modal, ModalBody, ModalHeader, ModalFooter, Button} from 'reactstrap'
-
+import { StateContext } from '../../context/appContext.jsx'
+import {
+  Modal, 
+  ModalBody,
+  ModalHeader, 
+  ModalFooter, 
+  Button
+} from 'reactstrap'
 
 const RuleBook = () => {
-    const [ pages, setPages ] = useState(getRuleBooks());
-    
+    const context = useContext(StateContext);
+    const [ pages, setPages ] = useState(context.state.documentContext.ruleBooks);
+
     const handleShow = index => {
         let newPageObject = [...pages]
         newPageObject[index].show = true
