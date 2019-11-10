@@ -1,24 +1,23 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import {
     Container,
     Image,
     Text,
     TextContainer
 } from '../../components'
-import { getStandings } from '../Standings/StandingsUtil.jsx';
 import AddLeagueButton from './AddLeagueButton.jsx'
-import { Card } from '@material-ui/core'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
+import { StateContext } from '../../context/appContext.jsx'
 
 const StyledImage = styled.img`
   width: 200;
   height: 180
 `;
 const Leagues = () => {
-    const values = getStandings();
-    const activeSessions = values.activeSessions;
-    const [ showEdit, setShowEdit ] = useState(false);
+    const context = useContext(StateContext);
+    const activeSessions = context.state.leagueContext.leagues;
+    
     return (
         <Container direction="column" align="center">
             <Container>
@@ -35,26 +34,17 @@ const Leagues = () => {
                 {
                   activeSessions.map((session, index) => (
                       <div key={`session${index}`} >
-                        
+                        {console.log(session)}
                         <Container direction="column" width="200px">
-                        
-                        <Card onMouseEnter={() => {setShowEdit(true)}} onMouseLeave={() => {setShowEdit(false)}}>
-                        { showEdit ?
-                        <button>Look at me!</button>
-                        : null
-                        }
                           <StyledImage src={session.image} />
                           <Text size="14">{session.name}</Text>
                           <Text size="14">{session.location} | {session.day} ({session.length})</Text>
                           <Text>__</Text>
                           <Text size="13" weight="normal">{session.price}</Text>
-                          </Card>
                         </Container>
-                        
                       </div>
                   ))
                 }
-                
                 <Link to="/add-league">
                   <AddLeagueButton/>
                 </Link>

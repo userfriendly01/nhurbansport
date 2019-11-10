@@ -11,7 +11,6 @@ import { getHowToDocuments } from '../../service/Database/Documents.jsx'
 const HowTo = () => {
 
   const howToDocuments = getHowToDocuments();
-  console.log(howToDocuments)
 
   return (
         <Container direction="column" width="600" margin="0 auto">

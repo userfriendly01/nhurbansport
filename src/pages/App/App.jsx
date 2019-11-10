@@ -2,7 +2,6 @@ import React, { useState, useEffect, useContext } from 'react'
 import Header from '../../components/Header.jsx'
 import Footer from '../../components/Footer.jsx'
 import styled from 'styled-components'
-import { setData } from '../../service/SetApplication.jsx'
 import { getImageObject } from '../ImageUpload'
 import { 
   setDocumentContext,
@@ -32,6 +31,7 @@ const App = () => {
         setLoading(false);
       });
     }, [])
+
     return (
         <MainContainer>
           { loading ?

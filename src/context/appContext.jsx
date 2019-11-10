@@ -38,9 +38,9 @@ export { StateContextProvider, StateContext };
 export const setLeagueContext = state => {
     getActiveSessions()
       .then((sessions) => {
-        let sessionsArray = [];
           for(let s in sessions) {
-            let sessionObject = {};
+            console.log("I should be a session", s)
+            let sessionObject = {...sessions[s]};
             let leagueName = sessions[s].name
             let startDate = sessions[s].date;
             let sessionId = s;
