@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import {
     Container,
     Image,
@@ -18,8 +18,7 @@ const StyledImage = styled.img`
 const Leagues = () => {
     const values = getStandings();
     const activeSessions = values.activeSessions;
-    console.log("Is this what's undefined?", activeSessions);
-
+    const [ showEdit, setShowEdit ] = useState(false);
     return (
         <Container direction="column" align="center">
             <Container>
@@ -38,7 +37,12 @@ const Leagues = () => {
                       <div key={`session${index}`} >
                         
                         <Container direction="column" width="200px">
-                        <Card>
+                        
+                        <Card onMouseEnter={() => {setShowEdit(true)}} onMouseLeave={() => {setShowEdit(false)}}>
+                        { showEdit ?
+                        <button>Look at me!</button>
+                        : null
+                        }
                           <StyledImage src={session.image} />
                           <Text size="14">{session.name}</Text>
                           <Text size="14">{session.location} | {session.day} ({session.length})</Text>

@@ -1,9 +1,16 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import Header from '../../components/Header.jsx'
 import Footer from '../../components/Footer.jsx'
 import styled from 'styled-components'
 import { setData } from '../../service/SetApplication.jsx'
 import { getImageObject } from '../ImageUpload'
+import { 
+  setDocumentContext,
+  setLeagueContext, 
+  setImageContext, 
+  StateContext 
+} from '../../context/appContext.jsx'
+
 
 const MainContainer = styled.div`
     display: flex;
@@ -14,28 +21,29 @@ const MainContainer = styled.div`
 `;
 
 const App = () => {
-
     const [ loading, setLoading ] = useState(true);
+    const { state } = useContext(StateContext);
 
     useEffect(() => {
-        getImageObject().then(() => {
-            setLoading(false);
-        })
-    })
-    setData();
+      setDocumentContext(state);
+      setImageContext(state);
+      setLeagueContext(state);
+      getImageObject().then(() => {
+        setLoading(false);
+      });
+    }, [])
     return (
         <MainContainer>
-            {loading ?
-                <div>LOADING</div>
-                :
-                <div>
-                    <Header/>
-                    <Footer/>
-                </div>
-            }
+          { loading ?
+            <div>LOADING</div>
+            :
+            <div>
+              <Header/>
+              <Footer/>
+            </div>
+          }
         </MainContainer>
     );
-
 };
 
 export default App;

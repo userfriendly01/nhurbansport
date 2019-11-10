@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import {
     Container,
     Image,
@@ -9,11 +9,13 @@ import {
 import { Form, FormGroup, Input} from 'reactstrap'
 import { images } from '../../util/Constants.jsx'
 import { getImage } from '../ImageUpload'
+import { StateContext } from '../../context/appContext.jsx'
 
 const Home = () => {
+    const testing = useContext(StateContext);
+    console.log("The home page is accessing this value: ", testing);
     return (
         <Container direction="column" align="center">
-            
             <Container position="relative">
                 <Image url={getImage("Home Banner")}
                              name="Home Banner"

@@ -1,6 +1,5 @@
 import { 
     getActiveSessions,
-    getSportName,
     getPlayerFriendlyName,
     getAllTeamsForSession
  } from '../../service/Database'
@@ -43,6 +42,7 @@ export const setRoster = () => {
             sessionsArray.push(sessionObject)
           }
           roster.activeSessions = sessionsArray;
+          
           return sessionsArray
     }).catch((error) => {
         console.log(error)

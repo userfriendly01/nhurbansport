@@ -4,8 +4,6 @@ import styled from 'styled-components';
 import { UncontrolledDropdown, DropdownToggle, DropdownItem, DropdownMenu } from 'reactstrap'
 import { routes } from '../util/Routes.jsx'
 
-
-
 const Header = () => {
 
     const StyledNavBar = styled.div`

@@ -9,9 +9,9 @@ import {
 import { setAllImages } from '../pages/ImageUpload/ImageUtil.jsx'
 
 export const setData = () => {
-    setRoster();
-    setStandings();
-    setAllImages();
+    // setRoster();
+    // setStandings();
+    // setAllImages();
     setHowToDocuments();
     setRuleBooks();
   };

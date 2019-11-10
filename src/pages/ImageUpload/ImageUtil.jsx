@@ -42,29 +42,29 @@ export const setImage = ({
 }
 
 
-export const setAllImages = () => {
-  return storage
-    .ref("images")
-    .listAll()
-    .then(function(result) {
-      result.items.forEach(function(imageRef) {
-        const imageName = imageRef.name;
-        getStorage()
-          .ref("images")
-          .child(imageName)
-          .getDownloadURL()
-          .then((url) => {
-            const imageObject = {};
-            imageObject.name = imageName;
-            imageObject.url = url;
-            imageArray.push(imageObject);
-          })
-        });
-        console.log("Setting the images was called and is a legth of ", imageArray.length)
-      }).catch(function(error) {
-        console.log(error);
-      });
-};
+// export const setAllImages = () => {
+//   return storage
+//     .ref("images")
+//     .listAll()
+//     .then(function(result) {
+//       result.items.forEach(function(imageRef) {
+//         const imageName = imageRef.name;
+//         getStorage()
+//           .ref("images")
+//           .child(imageName)
+//           .getDownloadURL()
+//           .then((url) => {
+//             const imageObject = {};
+//             imageObject.name = imageName;
+//             imageObject.url = url;
+//             imageArray.push(imageObject);
+//           })
+//         });
+//         console.log("Setting the images was called and is a legth of ", imageArray.length)
+//       }).catch(function(error) {
+//         console.log(error);
+//       });
+// };
 
 export const uploadImage = ({ 
     temporaryImage,
