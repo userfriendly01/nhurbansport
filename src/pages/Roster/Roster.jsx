@@ -1,26 +1,15 @@
-import React, { useState, useEffect } from 'react'
+import React, { useContext } from 'react'
 import {
   Accordion,
   Container,
   Image 
 } from '../../components'
-import { getRoster } from './RosterUtil.jsx'
+import { StateContext } from '../../context/appContext.jsx'
 import { images } from '../../util/Constants.jsx'
 
   const Roster = () => {
-
-    useEffect(() => {
-      fetchRoster();
-    }, [])
-
-    const [roster, setRoster] = useState([]);
-
-    const fetchRoster = async () => {
-      const values = await getRoster();
-      setRoster(values.activeSessions);
-      //const activeSessions = values.activeSessions;
-    };
-    
+    const context = useContext(StateContext);
+    const roster = context.state.leagueContext.leagues;
 
   return (
           <Container direction="column" width="600" margin="0 auto">
