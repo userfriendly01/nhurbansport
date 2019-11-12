@@ -7,7 +7,7 @@ import { StateContextProvider } from './context/appContext.jsx'
 
 ReactDOM.render(
       <StateContextProvider>
-        <App/>
+        <App/>,
       </StateContextProvider>,
     document.getElementById("root")
 );

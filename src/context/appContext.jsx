@@ -4,7 +4,7 @@ import {
   getAllTeamsForSession
 } from '../service/Database'
 import { getStorage, getDatabase } from "../service/Connect.jsx";
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 const StateContext = React.createContext(null);
 const storage = getStorage();
@@ -12,7 +12,8 @@ const database = getDatabase();
 
 let initialState = {
   imageContext: {
-    images: []
+    images: {},
+    imageData: {}
   },
   documentContext: {
     howToDocuments: [],
@@ -24,19 +25,40 @@ let initialState = {
 };
 const StateContextProvider = ({ children }) => {
   const [ state, setState ] = useState(initialState);
+  const [ loading, setLoading ] = useState(true);
+
+  useEffect(() => {
+    const documentPromise = setDocumentContext(state);
+    const leaguePromise = setLeagueContext(state);
+    const imagePromise = setImageContext(state);
+
+    Promise.all([documentPromise, leaguePromise, imagePromise]).then(() => {
+      console.log("Do all the promises resolve?");
+      setLoading(false);
+    })
+  });
+
   return (
-    <StateContext.Provider value={{ state, setState }}>
-      <>
-        {children}
-      </>
-    </StateContext.Provider>
+    <> { loading ?
+      <StateContext.Provider>
+          <>
+            {children}
+            {console.log("An Empty Context provider was given")}
+          </>
+        </StateContext.Provider>
+      : <StateContext.Provider value={{ state, setState }}>
+          <>
+            {children}
+          </>
+        </StateContext.Provider>
+    } </>
   );
 };
 
 export { StateContextProvider, StateContext };
 
-export const setLeagueContext = state => {
-    getActiveSessions()
+export const setLeagueContext = async state => {
+    await getActiveSessions()
       .then((sessions) => {
           for(let s in sessions) {
             console.log("I should be a session", s)
@@ -71,52 +93,82 @@ export const setLeagueContext = state => {
     })
 }
 
-export const setImageContext = state => {
-  storage
-    .ref("images")
-    .listAll()
-    .then(function(result) {
-      result.items.forEach(function(imageRef) {
-        const imageName = imageRef.name;
-        storage
-          .ref("images")
-          .child(imageName)
-          .getDownloadURL()
-          .then((url) => {
-            const imageObject = {};
-            imageObject.name = imageName;
-            imageObject.url = url;
-            state.imageContext.images.push(imageObject);
-          })
-        });
-      }).catch(function(error) {
-        console.log(error);
-      });
+export const setImageContext = async state => {
+  await setImages(state);
+  await setImageData(state);
 };
 
-export const setDocumentContext = state => {
-  const documentsRef = database.ref("Documents");
+export const setDocumentContext = async state => {
+  await setHowToDocuments(state);
+  await setRuleBooks(state);
+}
 
-  documentsRef
+export const setHowToDocuments = async state => {
+  await database
+    .ref("Documents")
     .child("How-To")
     .once("value")
-    .then(function(snapshot) {
+    .then(snapshot => {
       let newSnapshot = snapshot.val();
       for(let r in newSnapshot){
         let newObject = {...newSnapshot[r]};
         state.documentContext.howToDocuments.push(newObject);
       };
+    }).catch(error => {
+      console.log(error);
     });
+}
 
-  documentsRef
+export const setRuleBooks = async state => {
+  await database
+    .ref("Documents")
     .child("RuleBooks")
     .once("value")
-    .then(function(snapshot) {
+    .then(snapshot => {
       let newSnapshot = snapshot.val();
       for(let r in newSnapshot){
         let newObject = {...newSnapshot[r]};
         newObject.show = false;
         state.documentContext.ruleBooks.push(newObject);
       };
+    }).catch(error => {
+      console.log(error);
     });
+}
+
+export const setImages = async (state) => {
+  await storage
+    .ref("images")
+    .listAll()
+    .then(async result => {
+      const imageObject = {};
+      result.items.forEach(async imageRef => {
+        const imageName = imageRef.name;
+        const formattedImageName = imageName.substring(0, imageName.length - 4)
+        await storage
+          .ref("images")
+          .child(imageName)
+          .getDownloadURL()
+          .then(async (url) => {
+            imageObject[formattedImageName] = url;
+          }).catch(error => {
+            console.log(error);
+          });
+        });
+        state.imageContext.images = imageObject;
+      }).catch(error => {
+        console.log(error);
+      });
+    };
+
+export const setImageData = async (state) => {
+  await database
+  .ref("Images")
+  .once("value")
+  .then(async snapshot => {
+    let newSnapshot = snapshot.val();
+    state.imageContext.imageData = newSnapshot;
+  }).catch((error) => {
+    console.log(error);
+  });
 }

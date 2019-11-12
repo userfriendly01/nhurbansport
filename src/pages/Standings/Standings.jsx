@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import {
   Accordion,
   Container,
@@ -6,11 +6,11 @@ import {
 } from '../../components'
 import { images } from '../../util/Constants.jsx'
 import { Table } from 'reactstrap';
-import { getStandings } from './StandingsUtil.jsx';
+import { StateContext } from '../../context/appContext.jsx';
 
 const Standings = () => {
-    const values = getStandings();
-    const activeSessions = values.activeSessions;
+    const context = useContext(StateContext);
+    const activeSessions = context.state.leagueContext.leagues;
 
   return (
           <Container direction="column" width="600" margin="0 auto">

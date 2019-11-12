@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import { Redirect } from 'react-router-dom'
 import { 
     Container,
@@ -6,12 +6,12 @@ import {
 } from '../../components'
 import { 
     ImagePagination,
-    getAllImages, 
     uploadImage,
     setImage 
 } from '../ImageUpload'
+import { StateContext } from '../../context/appContext.jsx'
 
-const ImageUpload = ({ location, callbackState, callbackFunction } ) => {
+const ImageUpload = ({ location, callbackFunction } ) => {
     const replacedImageName = location.state.name;
     const [ imageDetails, setImageDetails ] = useState({
         url: location.state.url,
@@ -20,7 +20,20 @@ const ImageUpload = ({ location, callbackState, callbackFunction } ) => {
         width: location.state.width
     });
 
-    const [ imageArray, setImageArray ] = useState(getAllImages());
+    const context = useContext(StateContext);
+    const createImageArray = () => {
+      const tempImageArray = [];
+      const images = context.state.imageContext.images;
+      for (const i in images) {
+        const imageObject = {
+          name: i,
+          url: images[i]
+        }
+        tempImageArray.push(imageObject)
+      };
+      return tempImageArray;
+    };
+    const [ imageArray, setImageArray ] = useState(createImageArray());
     const [ temporaryImage, setTemporaryImage ] = useState({
         file: null,
         preview: null
@@ -65,12 +78,13 @@ const ImageUpload = ({ location, callbackState, callbackFunction } ) => {
     }
 
     const updateImageSource = () => {
+      console.log("Do I have the right stuff ",imageDetails)
         setImage({
             name: imageDetails.name,
             url: imageDetails.url,
             setCompleted
         });
-        callbackFunction(imageDetails.url);
+        // callbackFunction(imageDetails.url);
     }
     console.log(completed, redirect, location.state.redirect);
 

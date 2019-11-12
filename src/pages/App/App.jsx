@@ -6,10 +6,10 @@ import { getImageObject } from '../ImageUpload'
 import { 
   setDocumentContext,
   setLeagueContext, 
-  setImageContext, 
-  StateContext 
+  setImages, 
+  StateContext, 
+  setImageData
 } from '../../context/appContext.jsx'
-
 
 const MainContainer = styled.div`
     display: flex;
@@ -20,29 +20,23 @@ const MainContainer = styled.div`
 `;
 
 const App = () => {
-    const [ loading, setLoading ] = useState(true);
-    const { state } = useContext(StateContext);
-
-    useEffect(() => {
-      setDocumentContext(state);
-      setImageContext(state);
-      setLeagueContext(state);
-      getImageObject().then(() => {
-        setLoading(false);
-      });
-    }, [])
-
+    const context = useContext(StateContext);
+    // console.log("The context provider object: ", StateContextProvider);
+    console.log("The progression of the context", context);
+    
     return (
+      // <StateContextProvider>
         <MainContainer>
-          { loading ?
+          { context == null ?
             <div>LOADING</div>
             :
-            <div>
+            <>
               <Header/>
               <Footer/>
-            </div>
+            </>
           }
         </MainContainer>
+      // </StateContextProvider>
     );
 };
 

@@ -2,38 +2,15 @@ import { getStorage, getDatabase } from "../../service/Connect.jsx";
 
 const storage = getStorage();
 const database = getDatabase();
-const imageArray = []
-const imageObject = {}
-
-console.log("I'm just the obj ",imageArray)
-export const getAllImages = () => {
-    return imageArray;
-};
-
-export const getImageObject = () => {
-  return database.ref("Images")
-  .once("value")
-  .then(function(snapshot) {
-    let newSnapshot = snapshot.val();
-        for(let r in newSnapshot) {
-          imageObject[r] = newSnapshot[r]
-        };
-      console.log("IMAGE OBJECT",imageObject)
-  }).catch((error) => {
-    console.log(error);
-  });
-
-}
-
-export const getImage = (name) => {
-  return imageObject[name];
-}
 
 export const setImage = ({
   name,
   url,
   setCompleted
 }) => {
+  //Get the image object from the uploaded name and re-upload it with the new name
+
+  console.log("What type of Object is the Ref?: ", storage.ref('Images/Nature Background*'))
   database.ref('Images/' + name).set(url).then(()=> {
     getImageObject().then(() => {
       setCompleted(true);
