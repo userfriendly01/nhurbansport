@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import {
     Container,
     Image,
@@ -6,13 +6,17 @@ import {
     TextContainer,
     Button
 } from '../../components'
-
+import { StateContext } from '../../context/appContext.jsx';
 
 const Veterans = () => {
+    const context = useContext(StateContext);
+    const images = context.state.imageContext.imageData;
+
     return (
         <div>
             <Container>
-                <Image url="/src/images/veterans-banner.jpg"
+                <Image url={images["Veterans Banner"]}
+                       name="Veterans Banner"
                        width="650"
                        height="320">
                     <TextContainer top="260" position="relative">

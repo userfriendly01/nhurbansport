@@ -4,20 +4,21 @@ import {
   Container,
   Image 
 } from '../../components'
-import { images } from '../../util/Constants.jsx'
 import { Table } from 'reactstrap';
 import { StateContext } from '../../context/appContext.jsx';
 
 const Standings = () => {
     const context = useContext(StateContext);
     const activeSessions = context.state.leagueContext.leagues;
+    const images = context.state.imageContext.imageData;
 
   return (
           <Container direction="column" width="600" margin="0 auto">
 <           Container>
-              <Image url={images.STANDINGS.BANNER}
-                       width="650"
-                       height="200">
+              <Image url={images["Standings Banner"]}
+                     name="Standings Banner"
+                     width="650"
+                     height="200">
                 </Image>
             </Container>              
             <dl className="accordion">

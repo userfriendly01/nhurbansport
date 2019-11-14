@@ -5,20 +5,20 @@ import {
   IFrame,
   Image,
 } from '../../components'
-import { images } from '../../util/Constants.jsx'
 import { StateContext } from '../../context/appContext.jsx'
 
 const HowTo = () => {
-
   const context = useContext(StateContext);
+  const images = context.state.imageContext.imageData;
   const howToDocuments = context.state.documentContext.howToDocuments;
 
   return (
         <Container direction="column" width="600" margin="0 auto">
             <Container position="relative" margin="10 0 10 0">
-                <Image url={images.HOWTO.BANNER}
-                    height="300"
-                    width="650"/>
+                <Image url={images["How To Banner"]}
+                       name="How To Banner"
+                       height="300"
+                       width="650"/>
             </Container>
           <dl className="accordion">
           { 

@@ -11,14 +11,14 @@ import { StateContext } from '../../context/appContext.jsx'
 
 const Home = () => {
     const context = useContext(StateContext);
-    const images = context.state.imageContext.images;
+    const images = context.state.imageContext.imageData;
     console.log("The home page is accessing this value: ", context);
     console.log("The Images array is: ", images)
     return (
         <Container direction="column" align="center">
             <Container position="relative">
-                <Image url={images["home-banner-img"]}
-                             name="Home Banner"
+                <Image url={images["Home Banner"]}
+                             name="Home: Banner"
                              height="320"
                              width="650"/>
                 <TextContainer bcolor="#0066ff" width="100%" position="absolute"  opacity=".8">
@@ -32,7 +32,7 @@ const Home = () => {
                     <Text size="16" weight="bold">SPORTS LEAGUES</Text>
                     <Text>__</Text>
                     <Text size="13">From the couch potato to the weekend warrior, we have a sport for you.</Text>
-                    <Image url={images["home-option-1-img"]}
+                    <Image url={images["Home: Option 1"]}
                                 name="Home: Option 1"
                                 height="180"
                                 width="180"
@@ -42,19 +42,21 @@ const Home = () => {
                     <Text size="16" weight="bold">JOIN OUR EMAIL LIST</Text>
                     <Text>__</Text>
                     <Text size="13">Join our emails for league updates. Don't worry. We don't like spam either.</Text>
-                    <Image url="TBD"
-                                 height="180"
-                                 width="180"
-                                 margin="2%"/>
+                    <Image url={images["Home: Option 2"]}
+                                name="Home: Option 2"
+                                height="180"
+                                width="180"
+                                margin="2%"/>
                 </TextContainer>
                 <TextContainer bcolor="white" width="200" margin="0 10">
                     <Text size="16" weight="bold">PLAYER PORTAL</Text>
                     <Text>__</Text>
                     <Text size="13">Create an account to explore the forums for updated rosters, rules, and rankings.</Text>
-                    <Image url="TBD"
-                                 height="180"
-                                 width="180"
-                                 margin="2%"/>
+                    <Image url={images["Home: Option 3"]}
+                                name="Home: Option 3"
+                                height="180"
+                                width="180"
+                                margin="2%"/>
                 </TextContainer>
             </Container>
             <Container align="stretch">
@@ -73,7 +75,8 @@ const Home = () => {
                         To build an inclusive recreational sports organization not just accommodated for or accessible to veterans with disabilities but rather specifically designed for their unique recreational needs while also engaging the able-bodied public
                     </Text>
                 </TextContainer>
-                <Image url="TBD"
+                <Image url={images["Home: About Us"]}
+                            name="Home: Option 2"
                                  height="180"
                                  width="180"/>
             </Container>

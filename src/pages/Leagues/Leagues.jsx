@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react'
+import React, { useContext } from 'react'
 import {
     Container,
     Image,
@@ -16,12 +16,14 @@ const StyledImage = styled.img`
 `;
 const Leagues = () => {
     const context = useContext(StateContext);
+    const images = context.state.imageContext.imageData;
     const activeSessions = context.state.leagueContext.leagues;
     
     return (
         <Container direction="column" align="center">
             <Container>
-                <Image url="/src/images/league-banner-img.jpg"
+                <Image url={images["Leagues Banner"]}
+                       name="Leagues Banner"
                        width="650px"
                        height="320px">
                     <TextContainer bcolor="#0066ff" position="absolute" opacity="0.8">
@@ -34,7 +36,6 @@ const Leagues = () => {
                 {
                   activeSessions.map((session, index) => (
                       <div key={`session${index}`} >
-                        {console.log(session)}
                         <Container direction="column" width="200px">
                           <StyledImage src={session.image} />
                           <Text size="14">{session.name}</Text>

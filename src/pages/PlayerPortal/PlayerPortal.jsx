@@ -1,33 +1,39 @@
-import React from 'react'
+import React, { useContext} from 'react'
 import { Link } from 'react-router-dom'
 import {
     Container,
     Image,
     Text
 } from '../../components'
+import { StateContext } from '../../context/appContext.jsx'
 
 const PlayerPortal = () => {
-    return(
-        <div>
-            <Container>
-                <Image url="/src/images/player-portal-banner.jpg"
-                       width="650px"
-                       height="180px">
-                </Image>
+    const context = useContext(StateContext);
+    const images = context.state.imageContext.imageData;
+    return (
+        <Container direction="column">
+          <Container>
+            <Image url={images["Player Portal Banner"]}
+                    name="Player Portal Banner"
+                    width="650px"
+                    height="180px">
+            </Image>
             </Container>
-            <Container width="660px" wrap="wrap">
-                <Container direction="column" width="300px" bcolor="white">
-                    <Link to="/how-to">
-                        <Image url="/src/images/pp-how-to.jpg"
-                           width="200"
-                           height="180"/>
-                    </Link>
-                    <Text size="14">How-Tos</Text>
-                    <Text size="13">First and foremost, thank you for joining the portal. Here's where to find information on exactly what you need to do</Text>
-                </Container>
+          <Container width="660px" wrap="wrap">
+            <Container direction="column" width="300px" bcolor="white">
+              <Link to="/how-to">
+                <Image url={images["Player Portal: How To"]}
+                        name="Player Portal: How To"
+                        width="200"
+                        height="180"/>
+              </Link>
+              <Text size="14">How-Tos</Text>
+              <Text size="13">First and foremost, thank you for joining the portal. Here's where to find information on exactly what you need to do</Text>
+            </Container>
                 <Container direction="column" width="300px" bcolor="white">
                     <Link to="/rule-book">
-                    <Image url="/src/images/pp-rule-book.jpg"
+                    <Image url={images["Player Portal: RuleBook"]}
+                           name="Player Portal: RuleBook"
                            width="200"
                            height="180"/>
                     </Link>
@@ -36,7 +42,8 @@ const PlayerPortal = () => {
                 </Container>
                 <Container direction="column" width="300px" bcolor="white">
                     <Link to="/schedules">
-                        <Image url="/src/images/pp-schedules.jpg"
+                        <Image url={images["Player Portal: Schedules"]}
+                           name="Player Portal: Schedules"
                            width="200"
                            height="180"/>
                     </Link>
@@ -45,16 +52,18 @@ const PlayerPortal = () => {
                 </Container>
                 <Container direction="column" width="300px" bcolor="white">
                     <Link to="/roster">
-                        <Image url="/src/images/pp-rosters.jpg"
-                               width="200"
-                               height="180"/>
+                        <Image url={images["Player Portal: Rosters"]}
+                            name="Player Portal: Rosters"
+                            width="200"
+                            height="180"/>
                     </Link>
                     <Text size="14">League Rosters</Text>
                     <Text size="13">Here's where you'll find who's who on your team.</Text>
                 </Container>
                 <Container direction="column" width="300px" bcolor="white">
                     <Link to="/standings">
-                        <Image url="/src/images/pp-standings.jpg"
+                        <Image url={images["Player Portal: Standings"]}
+                           name="Player Portal: Standings"
                            width="200"
                            height="180"/>
                     </Link>
@@ -63,7 +72,8 @@ const PlayerPortal = () => {
                 </Container>
                 <Container direction="column" width="300px" bcolor="white">
                     <Link to="/leagueleader">
-                    <Image url="/src/images/pp-leader.jpg"
+                    <Image url={images["Player Portal: Leader"]}
+                           name="Player Portal: Leader"
                            width="200"
                            height="180"/>
                     </Link>
@@ -71,14 +81,15 @@ const PlayerPortal = () => {
                     <Text size="13">A place to recognize the MVP in each league.</Text>
                 </Container>
                 <Container direction="column" width="300px" bcolor="white">
-                    <Image url="/src/images/pp-improve.jpg"
+                    <Image url={images["Player Portal: Contact"]}
+                           name="Player Portal: Contact"
                            width="200"
                            height="180"/>
                     <Text size="14">How Can We Improve?</Text>
                     <Text size="13">Questions, Comments, Concerns? We want to hear from you!.</Text>
                 </Container>
             </Container>
-        </div>
+        </Container>
     );
 }
 

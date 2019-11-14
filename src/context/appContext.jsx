@@ -43,7 +43,6 @@ const StateContextProvider = ({ children }) => {
       <StateContext.Provider>
           <>
             {children}
-            {console.log("An Empty Context provider was given")}
           </>
         </StateContext.Provider>
       : <StateContext.Provider value={{ state, setState }}>

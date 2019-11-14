@@ -1,20 +1,23 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import Container from '../../components/Container.jsx'
 import TextContainer from '../../components/TextContainer.jsx'
 import Text from '../../components/Text.jsx'
 import Image from '../../components/Image.jsx'
-import { images } from '../../util/Constants.jsx'
 import { getSchedule } from '../../service/Database'
+import { StateContext } from '../../context/appContext.jsx'
 
 //add image parameter to sessions
 
 const Schedules = () => {
+    const context = useContext(StateContext);
     const [ schedules, setSchedules ] = useState(getSchedule("SESHFLAG062019"));
+    const images = context.state.imageContext.imageData;
 
     return (
         <Container direction="column" width="600" margin="0 auto">
             <Container position="relative" margin="10 0 10 0">
-                <Image url={images.SCHEDULE.BANNER}
+                <Image url={images["Schedules Banner"]}
+                    name="Schedules Banner"
                     height="200"
                     width="650"/>
             </Container>

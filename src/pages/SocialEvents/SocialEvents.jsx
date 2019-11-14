@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import {
     Container,
     Image,
@@ -6,10 +6,11 @@ import {
     TextContainer
 } from '../../components'
 import { Link } from 'react-router-dom'
-
-import { images } from '../../util/Constants.jsx'
+import { StateContext } from '../../context/appContext.jsx'
 
 const SocialEvents = () => {
+    const context = useContext(StateContext);
+    const images = context.state.imageContext.imageData;
 
     const events = [
         {
@@ -27,7 +28,8 @@ const SocialEvents = () => {
     return (
         <div>
             <Container>
-                <Image url={images.EVENTS.BANNER}
+                <Image url={images["Events Banner"]}
+                       name="Events Banner"
                        width="650"
                        height="200">
                     <TextContainer top="230" position="relative">

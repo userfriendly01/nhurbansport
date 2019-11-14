@@ -6,7 +6,6 @@ import {
   Image,
   IFrame } 
 from '../../components'
-import { images } from '../../util/Constants.jsx'
 import { StateContext } from '../../context/appContext.jsx'
 import {
   Modal, 
@@ -19,6 +18,7 @@ import {
 const RuleBook = () => {
     const context = useContext(StateContext);
     const [ pages, setPages ] = useState(context.state.documentContext.ruleBooks);
+    const images = context.state.imageContext.imageData;
 
     const handleShow = index => {
         let newPageObject = [...pages]
@@ -35,7 +35,8 @@ const RuleBook = () => {
     return (
         <Container direction="column" width="600" margin="0 auto">
             <Container position="relative" margin="10 0 10 0">
-                <Image url={images.RULEBOOK.BANNER}
+                <Image url={images["Rulebook Banner"]}
+                    name="Rulebook Banner"
                     height="200"
                     width="650"/>
             </Container>

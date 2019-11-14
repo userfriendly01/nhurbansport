@@ -5,19 +5,20 @@ import {
   Image 
 } from '../../components'
 import { StateContext } from '../../context/appContext.jsx'
-import { images } from '../../util/Constants.jsx'
 
   const Roster = () => {
     const context = useContext(StateContext);
     const roster = context.state.leagueContext.leagues;
+    const images = context.state.imageContext.imageData;
 
   return (
           <Container direction="column" width="600" margin="0 auto">
 <           Container>
-              <Image url={images.ROSTER.BANNER}
-                       width="650"
-                       height="200">
-                </Image>
+              <Image url={images["Roster Banner"]}
+                     name="Roster Banner"
+                     width="650"
+                     height="200">
+              </Image>
             </Container>              
             <dl className="accordion">
                 {
