@@ -6,16 +6,34 @@ const database = getDatabase();
 export const setImage = ({
   name,
   url,
-  setCompleted
+  updateStateAndReturn
 }) => {
-  //Get the image object from the uploaded name and re-upload it with the new name
-
-  console.log("What type of Object is the Ref?: ", storage.ref('Images/Nature Background*'))
-  database.ref('Images/' + name).set(url).then(()=> {
+  database
+    .ref('Images/' + name)
+    .set(url)
+    .then(()=> {
     getImageObject().then(() => {
-      setCompleted(true);
-    })
+      updateStateAndReturn();
+    }).catch(error => {
+      console.log(error);
+    });
   })
+}
+
+export const getImageObject = () => {
+  return database.ref("Images")
+  .once("value")
+  .then(function(snapshot) {
+    const imageObject = {};
+    let newSnapshot = snapshot.val();
+        for(let r in newSnapshot) {
+          imageObject[r] = newSnapshot[r]
+        };
+      console.log("IMAGE OBJECT",imageObject)
+  }).catch((error) => {
+    console.log(error);
+  });
+
 }
 
 export const uploadImage = ({ 

@@ -81,10 +81,10 @@ const Footer = () => {
             </EmailInput>
             <SocialMedia>
                 <a href="https://www.facebook.com/NHUrbanSport/">
-                    <SocialMediaIcon iconImg="src/images/facebook-icon.jpg"/>
+                    {/* <SocialMediaIcon iconImg="src/images/facebook-icon.jpg"/> */}
                 </a>
                 <a href="https://www.instagram.com/nhurbansport/">
-                    <SocialMediaIcon iconImg="src/images/insta-icon.jpg"/>
+                    {/* <SocialMediaIcon iconImg="src/images/insta-icon.jpg"/> */}
                </a>
             </SocialMedia>
             <CopyWrite>C2019 NH Urban Sport, LLC. All Rights Reserved. </CopyWrite>

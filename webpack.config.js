@@ -12,10 +12,7 @@ const config = {
         title: 'NH Urban Sport',
         filename: "index.html",
         template: "template.html"
-    }),
-    new CopyWebpackPlugin([
-      {from:'src/images',to:'src/images'} 
-  ]), 
+    })
   ],
   output: {
     filename: 'nh-urban-sport.js',

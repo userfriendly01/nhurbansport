@@ -11,7 +11,7 @@ import {
 } from '../ImageUpload'
 import { StateContext } from '../../context/appContext.jsx'
 
-const ImageUpload = ({ location, callbackFunction } ) => {
+const ImageUpload = ({ location } ) => {
     const replacedImageName = location.state.name;
     const [ imageDetails, setImageDetails ] = useState({
         url: location.state.url,
@@ -82,11 +82,23 @@ const ImageUpload = ({ location, callbackFunction } ) => {
         setImage({
             name: imageDetails.name,
             url: imageDetails.url,
-            setCompleted
+            updateStateAndReturn
         });
-        // callbackFunction(imageDetails.url);
     }
-    console.log(completed, redirect, location.state.redirect);
+
+    const updateStateAndReturn = () => {
+      context.setState({
+        ...context.state,
+        imageContext: {
+          ...context.state.imageContext,
+          imageData: {
+            ...context.state.imageContext.imageData,
+            [imageDetails.name]: imageDetails.url
+          }
+        }
+      });
+      setCompleted(true);
+    }
 
     return (
         <div>
