@@ -36,13 +36,15 @@ const Leagues = () => {
                 {
                   activeSessions.map((session, index) => (
                       <div key={`session${index}`} >
-                        <Container direction="column" width="200px">
-                          <StyledImage src={session.image} />
-                          <Text size="14">{session.name}</Text>
-                          <Text size="14">{session.location} | {session.day} ({session.length})</Text>
-                          <Text>__</Text>
-                          <Text size="13" weight="normal">{session.price}</Text>
-                        </Container>
+                        <Link to={`/league/${session.sessionId}`}>
+                          <Container direction="column" width="200px">
+                            <StyledImage src={session.image} />
+                            <Text size="14">{session.name}</Text>
+                            <Text size="14">{session.location} | {session.day} ({session.length})</Text>
+                            <Text>__</Text>
+                            <Text size="13" weight="normal">{session.price}</Text>
+                          </Container>
+                        </Link>
                       </div>
                   ))
                 }

@@ -1,5 +1,6 @@
 import React, { useContext } from 'react'
 import {
+  Accordion,
   Container,
   Image,
   TextContainer
@@ -38,11 +39,15 @@ const League = ({ match } ) => {
       </Container>
       <Container direction="column" border="5px solid black" justify="flex-start">
         <Container direction="column" border="2px solid black" margin="10" height="100" width="325">
-          League Title
-        </Container><Container direction="column" border="2px solid black" margin="10" height="320" width="325">
+            <TextContainer align="left">{league.name + ", " + league.location + " | " + league.length }</TextContainer>
+        </Container>
+        <Container direction="column" border="2px solid black" margin="10" height="320" width="325">
           Cart Summary
-        </Container><Container direction="column" border="2px solid black" margin="10" height="320" width="325">
-          Dropdowns for options
+        </Container>
+        <Container direction="column" border="2px solid black" margin="10" height="320" width="325" justify="flex-start">
+          <Accordion title={"DISCLAIMER"} expand={false} content={league.disclaimer}/>
+          <Accordion title={"SPECIAL INSTRUCTIONS"} expand={false} content={league.instructions}/>
+          <Accordion title={"COUPONS"} expand={false} content={league.coupons}/>
         </Container>
       </Container>
     </Container>
