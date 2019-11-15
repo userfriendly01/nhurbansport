@@ -29,7 +29,6 @@ export const getImageObject = () => {
         for(let r in newSnapshot) {
           imageObject[r] = newSnapshot[r]
         };
-      console.log("IMAGE OBJECT",imageObject)
   }).catch((error) => {
     console.log(error);
   });

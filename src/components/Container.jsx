@@ -11,6 +11,7 @@ const Container = styled.div`
         
         background-color: ${props => props.bcolor};
         width: ${props => props.width};
+        height: ${props => props.height};
         max-width: ${props => props.maxw};
 
         padding: ${props => props.padding};

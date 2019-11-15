@@ -78,7 +78,6 @@ const ImageUpload = ({ location } ) => {
     }
 
     const updateImageSource = () => {
-      console.log("Do I have the right stuff ",imageDetails)
         setImage({
             name: imageDetails.name,
             url: imageDetails.url,

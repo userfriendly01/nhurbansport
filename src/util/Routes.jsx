@@ -3,6 +3,7 @@ import {
     AddLeagueTemplate,
     Home,
     ImageUpload,
+    League,
     Leagues,
     LeagueLeader,
     LiabilityWaiver,
@@ -81,5 +82,9 @@ export const routes = [
     {
         path: "/add-league",
         component: AddLeagueTemplate
+    },
+    {
+        path: "/league/:id",
+        component: League
     }
 ];

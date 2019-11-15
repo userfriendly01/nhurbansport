@@ -67,7 +67,7 @@ const Header = () => {
                 </UncontrolledDropdown>
                 <UncontrolledDropdown isOpen={isOpen2} onMouseEnter={() => setIsOpen2(true)} onMouseLeave={() => setIsOpen2(false)}>
                     <StyledDropdownToggle nav>
-                        <StyledLink to="/leagues">Sports Leagues</StyledLink>
+                        <StyledLink to="/league/-Lso1uPG6zNnih--n9NP">Sports Leagues</StyledLink>
                     </StyledDropdownToggle>
                     <DropdownMenu>
                         <DropdownItem><StyledLink to="/liability">Liability Waiver</StyledLink></DropdownItem>
