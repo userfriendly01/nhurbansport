@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import {
   Container,
   Button,
@@ -19,6 +19,7 @@ import ImageUpload from '../ImageUpload/ImageUpload.jsx'
 import DayPickerInput from 'react-day-picker/DayPickerInput';
 import 'react-day-picker/lib/style.css';
 import { createLeague } from './LeagueUtil.jsx'
+import { StateContext } from '../../context/appContext.jsx'
 
 const StyledTextField = styled(TextField)`
   width: 200;
@@ -31,22 +32,26 @@ const StyledImage = styled.img`
   margin: 10;
 `;
 
-const LeagueTemplate = () => {
+const LeagueTemplate = ({ match }) => {
+  const context = useContext(StateContext);
+  const leagueId = match.params.id;
+  const leagues = context.state.leagueContext.leagues;
+  const league = leagues.find(obj => obj.sessionId === leagueId) ? leagues.find(obj => obj.sessionId === leagueId) : {};
   const [ leagueForm, setLeagueForm ] = useState({
-    name: "",
-    location: "",
-    day: "",
-    length: "",
-    price: "",
-    date: "",
-    image: "",
-    html: "",
-    disclaimer: "Teams that have not met the minimum requirement will be filled with free agents or merged with another team.",
-    instructions: "Please include your team name, if you have one already, and your tshirt size. ",
-    coupons: "Coupon codes cannot be combined.",
-    active: false, 
-    selectTeamOption: true,
-    selectShirtOption: true
+    name: league.name ? league.name : "",
+    location: league.location ? league.location : "",
+    day: league.day ? league.day : "",
+    length: league.length ? league.length : "",
+    price: league.price ? league.price : "",
+    date: league.date ? league.date : "",
+    image: league.image ? league.image : "",
+    html: league.html ? league.html : "",
+    disclaimer: league.disclaimer ? league.disclaimer : "",
+    instructions: league.instructions ? league.instructions : "",
+    coupons: league.coupons ? league.coupons : "",
+    active: league.active ? league.active : false, 
+    selectTeamOption: league.selectTeamOption ? league.selectTeamOption : true,
+    selectShirtOption: league.selectShirtOption ? league.selectShirtOption : true
   });
 
   const [ selectImageView, setSelectImageView ] = useState(false);
@@ -98,6 +103,10 @@ const LeagueTemplate = () => {
     createLeague(leagueForm);
   }
 
+  const handleEditLeague = () => {
+    console.log("League was editted yay!");
+  }
+
   const location = {
     state: {
       url: "none",
@@ -123,7 +132,7 @@ const LeagueTemplate = () => {
                       <Button onClick={() => {setSelectImageView(true)}}>Add Image</Button>
                   </Container>
                 <Container>
-                  <TextEditor callbackState={leagueForm} callbackFunction={setLeagueForm}/>
+                  <TextEditor value={leagueForm.html} callbackState={leagueForm} callbackFunction={setLeagueForm}/>
                 </Container>
               </Container>
               <Container direction="column" maxw="300" wrap="wrap" margin="5">
@@ -165,6 +174,7 @@ const LeagueTemplate = () => {
                 </Container>
                 <DayPickerInput 
                   id="date"
+                  value={leagueForm.date}
                   onDayChange={handleDateChange} 
                   component={props => <StyledTextField {...props} 
                   label="Start Date"
@@ -173,55 +183,68 @@ const LeagueTemplate = () => {
                 />
                 <StyledTextField 
                   id="name"
+                  value={leagueForm.name}
                   label="League Name" 
                   margin="normal"
                   onChange={handleChange}
                   />
                 <StyledTextField 
                   id="location"
+                  value={leagueForm.location}
                   label="Location" 
                   margin="normal"
                   onChange={handleChange}
                   />
                 <StyledTextField 
                   id="day"
+                  value={leagueForm.day}
                   label="Day" 
                   margin="normal"
                   onChange={handleChange}
                   />
                   <StyledTextField 
                   id="length"
+                  value={leagueForm.length}
                   label="Length" 
                   margin="normal"
                   onChange={handleChange}
                   />
                 <StyledTextField 
                   id="price"
+                  value={leagueForm.price}
                   label="Price" 
                   margin="normal"
                   onChange={handleChange}
                   />
                 <StyledTextField 
                   id="disclaimer"
+                  value={leagueForm.disclaimer}
                   label="Disclaimer" 
                   margin="normal"
                   onChange={handleChange}
                   />
                 <StyledTextField 
                   id="instructions"
+                  value={leagueForm.instructions}
                   label="Special Instructions" 
                   margin="normal"
                   onChange={handleChange}
                   />
                 <StyledTextField 
                   id="coupons"
+                  value={leagueForm.coupons}
                   label="Coupons" 
                   margin="normal"
                   onChange={handleChange}
                   />
               </Container>
             </Container>
-            <Button onClick={handleCreateLeague}>Create League</Button>
+            {
+              match.params.id ?
+                <Button onClick={handleEditLeague}>Update League</Button>
+              :
+                <Button onClick={handleCreateLeague}>Create League</Button>
+            }
             </form>
           </Container>
         </Card>

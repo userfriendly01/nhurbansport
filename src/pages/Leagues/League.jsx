@@ -6,6 +6,7 @@ import {
   Accordion,
   Cart,
   Container,
+  EditIcon,
   Image,
   Text,
   TextContainer
@@ -23,7 +24,7 @@ const StyledAccordian = styled(Accordion)`
   }
 `;
 
-const League = ({ match } ) => {
+const League = ({ match }) => {
   const context = useContext(StateContext);
   const leagueId = match.params.id;
   const leagues = context.state.leagueContext.leagues;
@@ -34,6 +35,9 @@ const League = ({ match } ) => {
     <Card>
       <Container>
         <Container direction="column" justify="flex-start" align="center">
+          <Container>
+            <EditIcon route="/edit-league" id={leagueId} />
+          </Container>
           <Container direction="column" border="2px solid black" margin="10" height="320" width="325">
             { league.image == null ?
               <Image upload={false} url={imagePlaceholder} height="320" width="325"/>

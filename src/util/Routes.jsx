@@ -84,6 +84,10 @@ export const routes = [
         component: AddLeagueTemplate
     },
     {
+        path: "/edit-league/:id",
+        component: AddLeagueTemplate
+    },
+    {
         path: "/league/:id",
         component: League
     }
