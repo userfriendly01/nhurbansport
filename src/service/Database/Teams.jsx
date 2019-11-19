@@ -2,6 +2,10 @@ import { getDatabase } from "../Connect.jsx";
 
 const teamsRef = getDatabase().ref("Teams");
 
+export const createTeam = newTeam => {
+    sessionsRef.push(newTeam);
+  }
+
 export const getAllTeams = () => {
     teamsRef
       .once("value")

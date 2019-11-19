@@ -29,14 +29,14 @@ const StateContextProvider = ({ children }) => {
 
   useEffect(() => {
     const documentPromise = setDocumentContext(state);
-    const leaguePromise = setLeagueContext(state);
+    const leaguePromise = setLeagueContext(state, setState);
     const imagePromise = setImageContext(state);
 
     Promise.all([documentPromise, leaguePromise, imagePromise]).then(() => {
-      console.log("Do all the promises resolve?");
+      console.log("Promises have resolved");
       setLoading(false);
     })
-  });
+  }, []);
 
   return (
     <> { loading ?
@@ -60,7 +60,6 @@ export const setLeagueContext = async state => {
     await getActiveSessions()
       .then((sessions) => {
           for(let s in sessions) {
-            console.log("I should be a session", s)
             let sessionObject = {...sessions[s]};
             let leagueName = sessions[s].name
             let startDate = sessions[s].date;
@@ -135,7 +134,7 @@ export const setRuleBooks = async state => {
     });
 }
 
-export const setImages = async (state) => {
+export const setImages = async state => {
   await storage
     .ref("images")
     .listAll()
@@ -160,7 +159,7 @@ export const setImages = async (state) => {
       });
     };
 
-export const setImageData = async (state) => {
+export const setImageData = async state => {
   await database
   .ref("Images")
   .once("value")
