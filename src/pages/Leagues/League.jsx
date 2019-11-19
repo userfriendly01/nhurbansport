@@ -6,6 +6,7 @@ import {
   Accordion,
   Cart,
   Container,
+  DeleteIcon,
   EditIcon,
   Image,
   Text,
@@ -37,6 +38,7 @@ const League = ({ match }) => {
         <Container direction="column" justify="flex-start" align="center">
           <Container>
             <EditIcon route="/edit-league" id={leagueId} />
+            <DeleteIcon deleteFunction={() => {console.log("I'm deleted!")}}/>
           </Container>
           <Container direction="column" border="2px solid black" margin="10" height="320" width="325">
             { league.image == null ?
