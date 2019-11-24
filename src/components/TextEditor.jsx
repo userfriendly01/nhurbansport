@@ -23,7 +23,8 @@ const StyledQuill = styled(ReactQuill)`
 
 const TextEditor = ({
   callbackState,
-  callbackFunction
+  callbackFunction,
+  html
 }) => {
 
   const handleChange = event => {
@@ -33,11 +34,12 @@ const TextEditor = ({
     })
   };
 
-  console.log(callbackState)
+  //const string = "<h3><strong>League Information</strong>";
 
   return (
       <StyledQuill
         id="Test"
+        value={html}
         modules={customModules}
         onChange={handleChange}
       />

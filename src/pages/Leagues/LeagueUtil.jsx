@@ -15,3 +15,11 @@ export const setLeagues = () => {
 export const createLeague = newSession => {
   sessionsRef.push(newSession);
 }
+
+export const editLeague = (id, updatedSession) => {
+  sessionsRef.child(id).set(updatedSession);
+}
+
+export const deleteLeague = id => {
+  sessionsRef.child(id).remove();
+}

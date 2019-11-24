@@ -18,7 +18,10 @@ import TextEditor from '../../components/TextEditor.jsx'
 import ImageUpload from '../ImageUpload/ImageUpload.jsx'
 import DayPickerInput from 'react-day-picker/DayPickerInput';
 import 'react-day-picker/lib/style.css';
-import { createLeague } from './LeagueUtil.jsx'
+import { 
+  createLeague,
+  editLeague
+} from './LeagueUtil.jsx'
 import { StateContext } from '../../context/appContext.jsx'
 
 const StyledTextField = styled(TextField)`
@@ -104,7 +107,7 @@ const LeagueTemplate = ({ match }) => {
   }
 
   const handleEditLeague = () => {
-    console.log("League was editted yay!");
+    editLeague(leagueId, leagueForm);
   }
 
   const location = {
@@ -132,7 +135,7 @@ const LeagueTemplate = ({ match }) => {
                       <Button onClick={() => {setSelectImageView(true)}}>Add Image</Button>
                   </Container>
                 <Container>
-                  <TextEditor value={leagueForm.html} callbackState={leagueForm} callbackFunction={setLeagueForm}/>
+                  <TextEditor html={leagueForm.html} callbackState={leagueForm} callbackFunction={setLeagueForm}/>
                 </Container>
               </Container>
               <Container direction="column" maxw="300" wrap="wrap" margin="5">
