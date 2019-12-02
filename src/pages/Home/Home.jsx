@@ -38,52 +38,34 @@ const Home = () => {
                 </TextContainer>
             </Container>
             <Container>
-                <Container direction="column" bcolor="white" width="200" margin="0 10" onClick={handleEdit}>
-                  <Container direction="column">
-                    <CustomHTMLParser html={adminText["Home: Option 1"]} />
-                  </Container>
+                <Container direction="column" bcolor="white" width="200" margin="0 10" justify="space-between" onClick={handleEdit}>
+                  <CustomHTMLParser html={adminText["Home: Option 1"]} />
                   <Image url={images["Home: Option 1"]}
                          name="Home: Option 1"
                          height="180"
                          width="180"
                          margin="2%"/>
                 </Container>
-                <TextContainer bcolor="white" width="200" margin="0 10">
-                    <Text size="16" weight="bold">JOIN OUR EMAIL LIST</Text>
-                    <Text>__</Text>
-                    <Text size="13">Join our emails for league updates. Don't worry. We don't like spam either.</Text>
-                    <Image url={images["Home: Option 2"]}
-                                name="Home: Option 2"
-                                height="180"
-                                width="180"
-                                margin="2%"/>
-                </TextContainer>
-                <TextContainer bcolor="white" width="200" margin="0 10">
-                    <Text size="16" weight="bold">PLAYER PORTAL</Text>
-                    <Text>__</Text>
-                    <Text size="13">Create an account to explore the forums for updated rosters, rules, and rankings.</Text>
-                    <Image url={images["Home: Option 3"]}
-                                name="Home: Option 3"
-                                height="180"
-                                width="180"
-                                margin="2%"/>
-                </TextContainer>
+                <Container direction="column" bcolor="white" width="200" margin="0 10" justify="space-between" onClick={handleEdit}>
+                  <CustomHTMLParser html={adminText["Home: Option 2"]} />
+                  <Image url={images["Home: Option 2"]}
+                         name="Home: Option 2"
+                         height="180"
+                         width="180"
+                         margin="2%"/>
+                </Container>
+                <Container direction="column" bcolor="white" width="200" margin="0 10" justify="space-between" onClick={handleEdit}>
+                  <CustomHTMLParser html={adminText["Home: Option 3"]} />
+                  <Image url={images["Home: Option 3"]}
+                         name="Home: Option 3"
+                         height="180"
+                         width="180"
+                         margin="2%"/>
+                </Container>
             </Container>
             <Container align="stretch">
                 <TextContainer bcolor="white" width="450">
-                    <Text size="20" weight="bold">ABOUT US</Text>
-                    <Text>__</Text>
-                    <Text size="14">
-                        NH Urban Sport, LLC is a veteran-owned-and operated, recreational sports organization that provides adaptive sports to disabled veterans and all able-bodied athletes in southern New Hampshire. It's the first organization in the Granite State to offer both adaptive and non-adaptive sports in the area
-                    </Text>
-                    <Text size="16" weight="bold">Mission</Text>
-                    <Text size="14">
-                        To provide affordable, inclusive athletic and recreational programming for adults with and without physical disabilities in a positive and empowering environment. 
-                    </Text>
-                    <Text size="16" weight="bold">Vision</Text>
-                    <Text size="14">
-                        To build an inclusive recreational sports organization not just accommodated for or accessible to veterans with disabilities but rather specifically designed for their unique recreational needs while also engaging the able-bodied public
-                    </Text>
+                  <CustomHTMLParser html={adminText["About Us"]} />
                 </TextContainer>
                 <Image url={images["Home: About Us"]}
                             name="Home: Option 2"

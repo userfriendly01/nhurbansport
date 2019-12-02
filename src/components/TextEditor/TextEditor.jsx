@@ -5,7 +5,7 @@ import styled from "styled-components";
 
 const customModules = {
   toolbar: [
-    [{'header': []}],
+    [{'size': []}],
     [ 'bold', 'italic', 'underline'],
     [{ 'color': [] }, { 'background': [] }],
     [{ 'script': 'super' }, { 'script': 'sub' }],
