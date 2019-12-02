@@ -21,6 +21,11 @@ let initialState = {
   },
   leagueContext: {
     leagues: []
+  },
+  adminContext: {
+    text: [
+
+    ]
   }
 };
 const StateContextProvider = ({ children }) => {
@@ -31,8 +36,9 @@ const StateContextProvider = ({ children }) => {
     const documentPromise = setDocumentContext(state);
     const leaguePromise = setLeagueContext(state, setState);
     const imagePromise = setImageContext(state);
+    const adminPromise = setAdminContext(state);
 
-    Promise.all([documentPromise, leaguePromise, imagePromise]).then(() => {
+    Promise.all([documentPromise, leaguePromise, imagePromise, adminPromise]).then(() => {
       console.log("Promises have resolved");
       setLoading(false);
     })
@@ -89,6 +95,19 @@ export const setLeagueContext = async state => {
     }).catch((error) => {
         console.log(error)
     })
+}
+
+export const setAdminContext = async state => {
+  await database
+    .ref("Admin")
+    .child("Text")
+    .once("value")
+    .then(snapshot => {
+      let newSnapshot = snapshot.val();
+      state.adminContext.text = newSnapshot;
+    }).catch(error => {
+      console.log(error);
+    });
 }
 
 export const setImageContext = async state => {

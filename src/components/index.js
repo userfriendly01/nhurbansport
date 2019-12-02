@@ -11,3 +11,7 @@ export { default as TextContainer } from "./TextContainer.jsx"
 export { default as PaymentTest } from "./PaymentTest.jsx"
 export { default as EditIcon } from "./EditIcon.jsx"
 export { default as DeleteIcon } from "./DeleteIcon.jsx"
+export { default as EditTextModal } from "./TextEditor/EditTextModal.jsx"
+export { default as TextEditor } from "./TextEditor/TextEditor.jsx"
+export { default as CustomHTMLParser } from "./TextEditor/CustomHTMLParser.jsx"
+

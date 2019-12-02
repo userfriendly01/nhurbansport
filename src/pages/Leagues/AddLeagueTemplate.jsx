@@ -2,7 +2,8 @@ import React, { useState, useContext } from 'react'
 import {
   Container,
   Button,
-  Text
+  Text,
+  TextEditor
 } from '../../components'
 import {
   TextField
@@ -14,7 +15,6 @@ import {
   Checkbox, 
   FormControlLabel
 } from '@material-ui/core'
-import TextEditor from '../../components/TextEditor.jsx'
 import ImageUpload from '../ImageUpload/ImageUpload.jsx'
 import DayPickerInput from 'react-day-picker/DayPickerInput';
 import 'react-day-picker/lib/style.css';
@@ -119,6 +119,8 @@ const LeagueTemplate = ({ match }) => {
       redirect: false
     }
   }
+
+  console.log(leagueForm);
 
   return (
     <div>

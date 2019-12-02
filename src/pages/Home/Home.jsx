@@ -1,10 +1,12 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import {
     Container,
+    CustomHTMLParser,
     Image,
     Text,
     TextContainer,
-    Button
+    Button,
+    EditTextModal
 } from '../../components'
 import { Form, FormGroup, Input} from 'reactstrap'
 import { StateContext } from '../../context/appContext.jsx'
@@ -12,8 +14,16 @@ import { StateContext } from '../../context/appContext.jsx'
 const Home = () => {
     const context = useContext(StateContext);
     const images = context.state.imageContext.imageData;
+    const adminText = context.state.adminContext.text;
+    const [ admin, setAdmin ] = useState(false);
+    const handleEdit = ({
+    
+    }) => {
+
+    }
+
     console.log("The home page is accessing this value: ", context);
-    console.log("The Images array is: ", images)
+
     return (
         <Container direction="column" align="center">
             <Container position="relative">
@@ -28,16 +38,16 @@ const Home = () => {
                 </TextContainer>
             </Container>
             <Container>
-                <TextContainer bcolor="white" width="200" margin="0 10">
-                    <Text size="16" weight="bold">SPORTS LEAGUES</Text>
-                    <Text>__</Text>
-                    <Text size="13">From the couch potato to the weekend warrior, we have a sport for you.</Text>
-                    <Image url={images["Home: Option 1"]}
-                                name="Home: Option 1"
-                                height="180"
-                                width="180"
-                                margin="2%"/>
-                </TextContainer>
+                <Container direction="column" bcolor="white" width="200" margin="0 10" onClick={handleEdit}>
+                  <Container direction="column">
+                    <CustomHTMLParser html={adminText["Home: Option 1"]} />
+                  </Container>
+                  <Image url={images["Home: Option 1"]}
+                         name="Home: Option 1"
+                         height="180"
+                         width="180"
+                         margin="2%"/>
+                </Container>
                 <TextContainer bcolor="white" width="200" margin="0 10">
                     <Text size="16" weight="bold">JOIN OUR EMAIL LIST</Text>
                     <Text>__</Text>
@@ -96,6 +106,14 @@ const Home = () => {
                     <Button>Send</Button>
                 </Form>
             </Container>   
+            <EditTextModal 
+                      isOpen={false} 
+                      buttons={[]} 
+                    //   callbackState={}
+                    //   callbackFunction={}
+                    //   header={}
+                    //   html={}
+                      />
         </Container>
     );
 }

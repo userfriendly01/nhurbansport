@@ -34,15 +34,12 @@ const TextEditor = ({
     })
   };
 
-  //const string = "<h3><strong>League Information</strong>";
-
   return (
-      <StyledQuill
-        id="Test"
-        value={html}
-        modules={customModules}
-        onChange={handleChange}
-      />
+    <StyledQuill
+      value={html}
+      modules={customModules}
+      onChange={handleChange}
+    />
   );
 };
 

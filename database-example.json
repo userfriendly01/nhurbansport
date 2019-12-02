@@ -1,272 +1,264 @@
 {
-    "Sports": {
-        "SPFLAGFOOTBALL" : {
-            "sportName" : "Flag Football"
-        },
-        "SPBASKETBALL" : {
-            "sportName" : "Basketball"
-        },
-        "SPELITEBASKETBALL" : {
-            "sportName" : "Elite Basketball"
-        },
-        "SPCORNHOLE" : {
-            "sportName" : "Cornhole"
-        },
-        "SPADAPTIVEBASKETBALL" : {
-            "sportName" : "Adaptive Basketball"
-        }
+  "Documents" : {
+    "How-To" : [ {
+      "source" : "https://docs.google.com/document/d/e/2PACX-1vRv8bkwLXcqBVIDFf-XelIcc1wT_erHnzZcp7U72lKwJ5c03yscCQQjlh-K9K2JyiaWGdYJo85O0PyY/pub?embedded=true",
+      "title" : "Next Steps After Joining the Player Portal"
+    }, {
+      "source" : "https://docs.google.com/document/d/e/2PACX-1vSr6QDsdlx1rXCpBmTzqvteMS5gU94iLmlkspFidE7ch6K6BuTJVF8Y8xxhvabVtP_6-_dh0omr97nw/pub?embedded=true",
+      "title" : "Where can I find the schedule?"
+    } ],
+    "Liability Waiver" : "https://docs.google.com/document/d/e/2PACX-1vQkfPJFZovcEt__gjqKzBKtPtIDBb6-kyQ2ga1FcMvcZdBKiDNcYoJz6MIBPXPxa5vDAl47gTySjn_v/pub?embedded=true",
+    "RuleBooks" : [ {
+      "image" : "https://firebasestorage.googleapis.com/v0/b/nh-urban-sport.appspot.com/o/images%2Frulebook-cornhole.jpg?alt=media&token=3c67a715-805f-4b67-b881-81e75f988c7f",
+      "source" : "https://docs.google.com/document/d/e/2PACX-1vQ_Ja9qrIuYqzVRD93xmUtXuTwThAJ-UJU_xJ0xeORQOvebuOqXEcIBlpyvwVuN55cMvdUEE23cBZrn/pub?embedded=true",
+      "title" : "CornHole RuleBook"
+    }, {
+      "image" : "https://firebasestorage.googleapis.com/v0/b/nh-urban-sport.appspot.com/o/images%2Frulebook-flagfootball.jpg?alt=media&token=f1718918-6587-43d5-add0-afcd2a17ccfe",
+      "source" : "https://docs.google.com/document/d/e/2PACX-1vRGOEPQ1j0rFQ24gcWY6cbvobtJ0sI32hnSnNoPpih-GHn45YadQJB6maWzacyMjkBZHu0Lho-S5f-H/pub?embedded=true",
+      "title" : "Flag Football RuleBook"
+    }, {
+      "image" : "https://firebasestorage.googleapis.com/v0/b/nh-urban-sport.appspot.com/o/images%2Frulebook-basketball.jpg?alt=media&token=9b2dd7e1-a0ed-4934-b3b9-f4a3f67b8717",
+      "source" : "https://docs.google.com/document/d/e/2PACX-1vTs6ThwlpdRZs6SLrvz1N59w0LeG9bO16xpG-uXqJHEm3odOmlQvi8VlNTWiCsG16B9GI4olnSVEtBc/pub?embedded=true",
+      "title" : "Basketball RuleBook"
+    } ]
+  },
+  "Admin" : {
+    "Text" : {
+      "Home: Option 1" : "<p class=\"ql-align-center\">SPORTS&nbsp;LEAGUES</p><p class=\"ql-align-center\">__</p><p class=\"ql-align-center\">From&nbsp;the&nbsp;couch&nbsp;potato&nbsp;to&nbsp;the&nbsp;weekend&nbsp;warrior,&nbsp;we&nbsp;have&nbsp;a&nbsp;sport&nbsp;for&nbsp;you.</p>"
+    }    
+  },
+  "Games" : {
+    "GAME1FLAG062019" : {
+      "awayTeamKey" : "TEAM-2",
+      "gameNumber" : 1,
+      "gameTime" : "10:00am",
+      "homeTeamKey" : "TEAM-1",
+      "scheduleKey" : "SCHEDFLAG062019",
+      "slotNumber" : 1
     },
-    "Sessions": {
-        "SESHFLAG062019" : {
-            "sportKey": "SPFLAGFOOTBALL",
-            "weekday": "Sunday",
-            "times": "10am-12pm",
-            "startDate": "06/12/2019",
-            "cost": "$45",
-            "active": true
-        },
-        "SESHBASKETBALL062019" : {
-            "sportKey": "SPBASKETBALL",
-            "weekday": "Tuesday",
-            "times": "7pm-9pm",
-            "startDate": "06/12/2019",
-            "cost": "$45",
-            "active": true
-        },
-        "SESHCORNHOLE062019" : {
-            "sportKey": "SPCORNHOLE",
-            "weekday": "Sunday",
-            "times": "3pm-6pm",
-            "startDate": "06/12/2019",
-            "cost": "$45",
-            "active": true
-        },
-        "SESHCORNHOLE062018" : {
-            "sportKey": "SPCORNHOLE",
-            "weekday": "Sunday",
-            "times": "3pm-6pm",
-            "startDate": "06/12/2018",
-            "cost": "$45",
-            "active": false
-        }
-    },
-    "Schedules" : {
-        "SCHEDFLAG062019": {
-            "sessionKey": "SESHFLAG062019",
-            "games": [
-                "GAME1FLAG062019",
-                "GAME2FLAG062019",
-                "GAME3FLAG062019"
-            ]
-        }
-    },
-    "Games" : {
-        "GAME1FLAG062019": {
-            "scheduleKey": "SCHEDFLAG062019",
-            "gameNumber" : 1,
-            "slotNumber" : 1,
-            "homeTeamKey": "TEAM-1",
-            "awayTeamKey": "TEAM-2",
-            "gameTime": "10:00am"
-        },
-        "GAME2FLAG062019": {
-            "scheduleKey": "SCHEDFLAG062019",
-            "gameNumber" : 1,
-            "slotNumber" : 1,
-            "homeTeamKey": "TEAM-3",
-            "awayTeamKey": "TEAM-4",
-            "gameTime": "11:00am"
-        }
-    },
-    "Players": {
-        "PLAYER-1":{
-            "firstName":"Faith",
-            "lastName": "Cuneo",
-            "dateOfBirth": "05/02/1991",
-            "phoneNumber": "603-851-8200",
-            "textAlerts": true
-        },
-        "PLAYER-2":{
-            "firstName":"Tyrell",
-            "lastName": "Skinner",
-            "dateOfBirth": "05/02/1991",
-            "phoneNumber": "603-851-8200",
-            "textAlerts": true
-        },
-        "PLAYER-3":{
-            "firstName":"Jesus",
-            "lastName": "Salamanca",
-            "dateOfBirth": "05/02/1991",
-            "phoneNumber": "603-851-8200",
-            "textAlerts": true
-        },
-        "PLAYER-4":{
-            "firstName":"Greg",
-            "lastName": "Scott",
-            "dateOfBirth": "05/02/1991",
-            "phoneNumber": "603-851-8200",
-            "textAlerts": true
-        },
-        "PLAYER-5":{
-            "firstName":"Jon",
-            "lastName": "Ramos",
-            "dateOfBirth": "02/18/1986",
-            "phoneNumber": "603-851-8200",
-            "textAlerts": true
-        }
-    },
-    "Teams": {
-        "TEAM-1": {
-            "teamName": "PoundTown",
-            "sportKey": "SPFLAGFOOTBALL",
-            "sessionKey": "SESHFLAG062019",
-            "captain": "Tyrell Skinner",
-            "players": [
-                "PLAYER-1",
-                "PLAYER-2"
-            ],
-            "stats": {
-                "position": 1,
-                "played": 12,
-                "won": 8,
-                "loss": 4,
-                "tie": 0
-            }
-        },
-        "TEAM-2": {
-            "teamName": "Monstars",
-            "sportKey": "SPFLAGFOOTBALL",
-            "sessionKey": "SESHFLAG062019",
-            "captain": "Jesus Salamanca",
-            "players": [
-                "PLAYER-3",
-                "PLAYER-4"
-            ],
-            "stats": {
-                "position": 1,
-                "played": 12,
-                "won": 8,
-                "loss": 4,
-                "tie": 0
-            }
-        },
-        "TEAM-3": {
-            "teamName": "Minority Squad",
-            "sportKey": "SPFLAGFOOTBALL",
-            "sessionKey": "SESHFLAG062019",
-            "captain": "Jon Ramos",
-            "players": [
-                "PLAYER-5",
-                "PLAYER-3"
-            ],
-            "stats": {
-                "position": 1,
-                "played": 12,
-                "won": 8,
-                "loss": 4,
-                "tie": 0
-            }
-        },
-        "TEAM-4": {
-            "teamName": "Queens Of Manchester",
-            "sportKey": "SPFLAGFOOTBALL",
-            "sessionKey": "SESHFLAG062019",
-            "captain": "Faith Cuneo",
-            "players": [
-                "PLAYER-3"
-            ],
-            "stats": {
-                "position": 1,
-                "played": 12,
-                "won": 8,
-                "loss": 4,
-                "tie": 0
-            }
-        },
-        "TEAM-5": {
-            "teamName": "Minority Squad",
-            "sportKey": "SPBASKETBALL",
-            "sessionKey": "SESHBASKETBALL062019",
-            "captain": "Jon Ramos",
-            "players": [
-                "PLAYER-5",
-                "PLAYER-3"
-            ],
-            "stats": {
-                "position": 1,
-                "played": 12,
-                "won": 8,
-                "loss": 4,
-                "tie": 0
-            }
-        },
-        "TEAM-6": {
-            "teamName": "Monstars",
-            "sportKey": "SPBASKETBALL",
-            "sessionKey": "SESHBASKETBALL062019",
-            "captain": "Jon Ramos",
-            "players": [
-                "PLAYER-5",
-                "PLAYER-3"
-            ],
-            "stats": {
-                "position": 1,
-                "played": 12,
-                "won": 8,
-                "loss": 4,
-                "tie": 0
-            }
-        },
-        "TEAM-7": {
-            "teamName": "Pound Town",
-            "sportKey": "SPCORNHOLE",
-            "sessionKey": "SESHCORNHOLE062019",
-            "captain": "Faith Cuneo",
-            "players": [
-                "PLAYER-1",
-                "PLAYER-3"
-            ],
-            "stats": {
-                "position": 1,
-                "played": 12,
-                "won": 8,
-                "loss": 4,
-                "tie": 0
-            }
-        }
-    },
-    "Documents": {
-        "Liability Waiver": "https://docs.google.com/document/d/e/2PACX-1vQkfPJFZovcEt__gjqKzBKtPtIDBb6-kyQ2ga1FcMvcZdBKiDNcYoJz6MIBPXPxa5vDAl47gTySjn_v/pub?embedded=true",
-        "How-To": [
-            {
-                "title" : "Next Steps After Joining the Player Portal",
-                "source" : "https://docs.google.com/document/d/e/2PACX-1vRv8bkwLXcqBVIDFf-XelIcc1wT_erHnzZcp7U72lKwJ5c03yscCQQjlh-K9K2JyiaWGdYJo85O0PyY/pub?embedded=true"
-            },
-            {
-                "title" : "Where can I find the schedule?",
-                "source" : "https://docs.google.com/document/d/e/2PACX-1vSr6QDsdlx1rXCpBmTzqvteMS5gU94iLmlkspFidE7ch6K6BuTJVF8Y8xxhvabVtP_6-_dh0omr97nw/pub?embedded=true"
-            }
-        ],
-        "RuleBooks": [
-            {
-                "title" : "CornHole RuleBook",
-                "source" : "https://docs.google.com/document/d/e/2PACX-1vQ_Ja9qrIuYqzVRD93xmUtXuTwThAJ-UJU_xJ0xeORQOvebuOqXEcIBlpyvwVuN55cMvdUEE23cBZrn/pub?embedded=true",
-                "image" : "https://firebasestorage.googleapis.com/v0/b/nh-urban-sport.appspot.com/o/images%2Frulebook-cornhole.jpg?alt=media&token=3c67a715-805f-4b67-b881-81e75f988c7f"    
-            },
-            {
-                "title" : "Flag Football RuleBook",
-                "source" : "https://docs.google.com/document/d/e/2PACX-1vRGOEPQ1j0rFQ24gcWY6cbvobtJ0sI32hnSnNoPpih-GHn45YadQJB6maWzacyMjkBZHu0Lho-S5f-H/pub?embedded=true",
-                "image" : "https://firebasestorage.googleapis.com/v0/b/nh-urban-sport.appspot.com/o/images%2Frulebook-flagfootball.jpg?alt=media&token=f1718918-6587-43d5-add0-afcd2a17ccfe"
-            },
-            {
-                "title" : "Basketball RuleBook",
-                "source" : "https://docs.google.com/document/d/e/2PACX-1vTs6ThwlpdRZs6SLrvz1N59w0LeG9bO16xpG-uXqJHEm3odOmlQvi8VlNTWiCsG16B9GI4olnSVEtBc/pub?embedded=true",
-                "image" : "https://firebasestorage.googleapis.com/v0/b/nh-urban-sport.appspot.com/o/images%2Frulebook-basketball.jpg?alt=media&token=9b2dd7e1-a0ed-4934-b3b9-f4a3f67b8717"
-            }
-        ]
-    },
-    "Images": {
-        "Home Banner" : "https://firebasestorage.googleapis.com/v0/b/nh-urban-sport.appspot.com/o/images%2Fhome-banner-img.jpg?alt=media&token=298f016b-1477-498c-9516-8d32f38d7b9b",
-        "Home: Option 1": "https://firebasestorage.googleapis.com/v0/b/nh-urban-sport.appspot.com/o/images%2Fhome-option-1-img.jpg?alt=media&token=d6a8cec2-c00a-43d3-afe9-0dea3933bd72"
+    "GAME2FLAG062019" : {
+      "awayTeamKey" : "TEAM-4",
+      "gameNumber" : 1,
+      "gameTime" : "11:00am",
+      "homeTeamKey" : "TEAM-3",
+      "scheduleKey" : "SCHEDFLAG062019",
+      "slotNumber" : 1
     }
+  },
+  "Images" : {
+    "Events Banner" : "https://firebasestorage.googleapis.com/v0/b/nh-urban-sport.appspot.com/o/images%2Fevents-banner.jpg?alt=media&token=91aa4e50-231e-43a1-914a-d383e45b4570",
+    "Home Banner" : "https://firebasestorage.googleapis.com/v0/b/nh-urban-sport.appspot.com/o/images%2Fhome-banner-img.jpg?alt=media&token=298f016b-1477-498c-9516-8d32f38d7b9b",
+    "Home: About Us" : "https://firebasestorage.googleapis.com/v0/b/nh-urban-sport.appspot.com/o/images%2Fabout-us-img.jpg?alt=media&token=e700c891-921a-467d-a164-5d219f286498",
+    "Home: Option 1" : "https://firebasestorage.googleapis.com/v0/b/nh-urban-sport.appspot.com/o/images%2Fhome-option-1-img.jpg?alt=media&token=d6a8cec2-c00a-43d3-afe9-0dea3933bd72",
+    "Home: Option 2" : "https://firebasestorage.googleapis.com/v0/b/nh-urban-sport.appspot.com/o/images%2Fhome-option-2-img.JPG?alt=media&token=766e3adc-4f3a-4aa2-aa7d-358e138bcc9e",
+    "Home: Option 3" : "https://firebasestorage.googleapis.com/v0/b/nh-urban-sport.appspot.com/o/images%2Fhome-option-3-img.JPG?alt=media&token=ce52c7cd-4d3d-44b8-abf5-4158c8e88ce3",
+    "How To Banner" : "https://firebasestorage.googleapis.com/v0/b/nh-urban-sport.appspot.com/o/images%2Fpp-how-to-banner.JPG?alt=media&token=975b78a6-6fa1-442d-9da8-eced43c7e647",
+    "Leagues Banner" : "https://firebasestorage.googleapis.com/v0/b/nh-urban-sport.appspot.com/o/images%2Fleague-banner-img.jpg?alt=media&token=94bc38bc-4771-43d4-9ee9-ab710050b8cf",
+    "New League Image" : "https://firebasestorage.googleapis.com/v0/b/nh-urban-sport.appspot.com/o/images%2FNature%20Background.jpg?alt=media&token=2158af8d-6015-4f26-ba27-6a8c76fcf0e5",
+    "Player Portal Banner" : "https://firebasestorage.googleapis.com/v0/b/nh-urban-sport.appspot.com/o/images%2Fplayer-portal-banner.jpg?alt=media&token=1f16b3d7-b2ea-4093-ae17-3f3d8ab5270a",
+    "Player Portal: Contact" : "https://firebasestorage.googleapis.com/v0/b/nh-urban-sport.appspot.com/o/images%2Fpp-improve.JPG?alt=media&token=35f3a23d-6059-4ed7-a9d4-358ba1f1f450",
+    "Player Portal: How To" : "https://firebasestorage.googleapis.com/v0/b/nh-urban-sport.appspot.com/o/images%2Fpp-how-to.JPG?alt=media&token=29bf1594-d881-499c-bf57-72f8ebb0c56f",
+    "Player Portal: Leader" : "https://firebasestorage.googleapis.com/v0/b/nh-urban-sport.appspot.com/o/images%2Fpp-leader.JPG?alt=media&token=56534304-ddff-4631-9939-3365f7543316",
+    "Player Portal: Rosters" : "https://firebasestorage.googleapis.com/v0/b/nh-urban-sport.appspot.com/o/images%2Fpp-rosters.JPG?alt=media&token=0a07eed4-1d9a-49da-b0b9-bc5eaa665710",
+    "Player Portal: RuleBook" : "https://firebasestorage.googleapis.com/v0/b/nh-urban-sport.appspot.com/o/images%2Fpp-rule-book.JPG?alt=media&token=4f8784d4-796a-4dfe-9f4a-bb66a160d0d4",
+    "Player Portal: Schedules" : "https://firebasestorage.googleapis.com/v0/b/nh-urban-sport.appspot.com/o/images%2Fpp-schedules.JPG?alt=media&token=03f05bb6-bcab-4d87-8ecf-2aaf0fa07550",
+    "Player Portal: Standings" : "https://firebasestorage.googleapis.com/v0/b/nh-urban-sport.appspot.com/o/images%2Fpp-standings.JPG?alt=media&token=b2e1f721-1eaa-4daf-9be0-fa9a24ec1740",
+    "Roster Banner" : "https://firebasestorage.googleapis.com/v0/b/nh-urban-sport.appspot.com/o/images%2Froster-banner.JPG?alt=media&token=afc82cd6-3464-4960-8e8b-e85eb2c7b4b0",
+    "Rulebook Banner" : "https://firebasestorage.googleapis.com/v0/b/nh-urban-sport.appspot.com/o/images%2Fpp-rule-book-banner.JPG?alt=media&token=7b3d11c1-2bf7-4a7d-99e8-80db800563ae",
+    "Schedules Banner" : "https://firebasestorage.googleapis.com/v0/b/nh-urban-sport.appspot.com/o/images%2Fschedules-banner.JPG?alt=media&token=a4d3e908-1ecf-46bb-bf2a-9f8c68f6826b",
+    "Standings Banner" : "https://firebasestorage.googleapis.com/v0/b/nh-urban-sport.appspot.com/o/images%2Fleague-standing-banner.JPG?alt=media&token=e695afb0-8fdc-4c1d-9da5-54c6d2c55c2c",
+    "Veterans Banner" : "https://firebasestorage.googleapis.com/v0/b/nh-urban-sport.appspot.com/o/images%2Fveterans-banner.jpg?alt=media&token=5501b597-2886-4643-9a4c-0b46d5bb4132"
+  },
+  "Players" : {
+    "PLAYER-1" : {
+      "dateOfBirth" : "05/02/1991",
+      "firstName" : "Faith",
+      "lastName" : "Cuneo",
+      "phoneNumber" : "603-851-8200",
+      "textAlerts" : true
+    },
+    "PLAYER-2" : {
+      "dateOfBirth" : "05/02/1991",
+      "firstName" : "Tyrell",
+      "lastName" : "Skinner",
+      "phoneNumber" : "603-851-8200",
+      "textAlerts" : true
+    },
+    "PLAYER-3" : {
+      "dateOfBirth" : "05/02/1991",
+      "firstName" : "Jesus",
+      "lastName" : "Salamanca",
+      "phoneNumber" : "603-851-8200",
+      "textAlerts" : true
+    },
+    "PLAYER-4" : {
+      "dateOfBirth" : "05/02/1991",
+      "firstName" : "Greg",
+      "lastName" : "Scott",
+      "phoneNumber" : "603-851-8200",
+      "textAlerts" : true
+    },
+    "PLAYER-5" : {
+      "dateOfBirth" : "02/18/1986",
+      "firstName" : "Jon",
+      "lastName" : "Ramos",
+      "phoneNumber" : "603-851-8200",
+      "textAlerts" : true
+    }
+  },
+  "Schedules" : {
+    "SCHEDFLAG062019" : {
+      "games" : [ "GAME1FLAG062019", "GAME2FLAG062019", "GAME3FLAG062019" ],
+      "sessionKey" : "SESHFLAG062019"
+    }
+  },
+  "Sessions" : {
+    "-LsnsWi_PLFLBPeRbP16" : {
+      "active" : true,
+      "coupons" : "Coupon codes cannot be combined. ",
+      "date" : "11/11/2019",
+      "day" : "Sunday",
+      "disclaimer" : "Teams that have not met the minimum requirement will be filled with free agents or merged with another team.",
+      "html" : "<h3><strong>League Information</strong></h3><p><span style=\"color: rgb(230, 0, 0);\">EARLY BIRD PRICES CLOSE 8/30</span></p><p><br></p><p>This coed flag football league plays on Sundays from 10 am to 1 pm starting on September 29 for 9 weeks at Rock Rimmon Soccer Fields in Manchester (near Rock Rimmon Park).</p><p><br></p><p>Wear your NH Urban Sport t-shirt to our sponsor bars during the week or after a game for discounts on select apps and select beers.</p><p><br></p><p><a href=\"www.google.com\" rel=\"noopener noreferrer\" target=\"_blank\">ManchVegas Bar &amp; Grill</a>, 50 Old Granite St, Manchester, NH 03101</p><p>Central Ale House, 23 Central St, Manchester, NH 03101</p><p> </p><h3><strong>Team Format</strong></h3><p>Teams consist of 10 players minimum with 7 on the field of which at least 2 are of each gender. This is a coed league after all.</p><p><br></p><p>You must electronically acknowledge waiver prior to playing.</p><p><br></p><p>You can add teammates through week three but not thereafter.</p><p><br></p><h3><strong>Championship</strong></h3><p><br></p><p>All teams compete in the flag football championship playoffs. Winners get awesome, brag-worthy shirts and discounts on the following session.</p><p><br></p><h3><strong>What You Can Expect</strong></h3><p>We play hard, and we maintain respect for one another. Expect sweat, sportsmanship, and loud music to pump you up on the field.</p>",
+      "image" : "https://firebasestorage.googleapis.com/v0/b/nh-urban-sport.appspot.com/o/images%2Fleague-banner-img.jpg?alt=media&token=94bc38bc-4771-43d4-9ee9-ab710050b8cf",
+      "instructions" : "Please include your team name, if you have one already, and your t-shirt size. ",
+      "length" : "9 Weeks",
+      "location" : "Manchester, NH",
+      "name" : "Coed Flag Football",
+      "price" : "$50"
+    },
+    "-Lso1uPG6zNnih--n9NP" : {
+      "active" : true,
+      "coupons" : "Coupon codes cannot be combined. ",
+      "date" : "11/19/2019",
+      "day" : "Tuesday",
+      "disclaimer" : "Teams that have not met the minimum requirement will be filled with free agents or merged with another team.",
+      "html" : "<h3><strong>League Information</strong></h3><p><span style=\"background-color: rgb(255, 255, 0);\">EARLY BIRD PRICES CLOSE 8/30</span></p><p>This coed league plays on Tuesdays from 7:15 - 9:45 pm starting on September 17 for 9 weeks at the various gyms in Manchester, NH (Boys and Girls Club, Bishop O'Neil Center and Kravia Academy etc.)</p><p>Wear your NH Urban Sport t-shirt to our sponsor bars during the week or after a game for discounts on select apps and select beers. (<a href=\"www.google.com\" rel=\"noopener noreferrer\" target=\"_blank\">Central Ale House,</a> 23 Central St, Manchester, NH 03101)</p><h3><strong>Team Format</strong></h3><p>Teams consist of 8 players minimum with at least 2 players of each gender on the court. This is a coed league after all.</p><p>You must electronically acknowledge waiver prior to playing.</p><p>You can add teammates through week three but not thereafter.</p><h3><strong>Championship</strong></h3><p>All teams compete in the basketball championship playoffs. Winners get awesome, brag-worthy shirts and discounts on the following session.</p><p>What You Can Expect</p><p>We play hard, and we maintain respect for one another. Expect sweat, sportsmanship, and loud music to pump you up on the court.</p>",
+      "image" : "https://firebasestorage.googleapis.com/v0/b/nh-urban-sport.appspot.com/o/images%2Fhome-option-3-img.JPG?alt=media&token=ce52c7cd-4d3d-44b8-abf5-4158c8e88ce3",
+      "instructions" : "Please include your team name, if you have one already, and your tshirt size. ",
+      "length" : "9 Weeks",
+      "location" : "Manchester, NH",
+      "name" : "Coed Basketball",
+      "price" : "$55",
+      "selectShirtOption" : true,
+      "selectTeamOption" : true
+    }
+  },
+  "Sports" : {
+    "SPADAPTIVEBASKETBALL" : {
+      "sportName" : "Adaptive Basketball"
+    },
+    "SPBASKETBALL" : {
+      "sportName" : "Basketball"
+    },
+    "SPCORNHOLE" : {
+      "sportName" : "Cornhole"
+    },
+    "SPELITEBASKETBALL" : {
+      "sportName" : "Elite Basketball"
+    },
+    "SPFLAGFOOTBALL" : {
+      "sportName" : "Flag Football"
+    }
+  },
+  "Teams" : {
+    "TEAM-1" : {
+      "captain" : "Tyrell Skinner",
+      "players" : [ "PLAYER-1", "PLAYER-2" ],
+      "sessionKey" : "SESHFLAG062019",
+      "sportKey" : "SPFLAGFOOTBALL",
+      "stats" : {
+        "loss" : 4,
+        "played" : 12,
+        "position" : 1,
+        "tie" : 0,
+        "won" : 8
+      },
+      "teamName" : "PoundTown"
+    },
+    "TEAM-2" : {
+      "captain" : "Jesus Salamanca",
+      "players" : [ "PLAYER-3", "PLAYER-4" ],
+      "sessionKey" : "SESHFLAG062019",
+      "sportKey" : "SPFLAGFOOTBALL",
+      "stats" : {
+        "loss" : 4,
+        "played" : 12,
+        "position" : 1,
+        "tie" : 0,
+        "won" : 8
+      },
+      "teamName" : "Monstars"
+    },
+    "TEAM-3" : {
+      "captain" : "Jon Ramos",
+      "players" : [ "PLAYER-5", "PLAYER-3" ],
+      "sessionKey" : "SESHFLAG062019",
+      "sportKey" : "SPFLAGFOOTBALL",
+      "stats" : {
+        "loss" : 4,
+        "played" : 12,
+        "position" : 1,
+        "tie" : 0,
+        "won" : 8
+      },
+      "teamName" : "Minority Squad"
+    },
+    "TEAM-4" : {
+      "captain" : "Faith Cuneo",
+      "players" : [ "PLAYER-3" ],
+      "sessionKey" : "SESHFLAG062019",
+      "sportKey" : "SPFLAGFOOTBALL",
+      "stats" : {
+        "loss" : 4,
+        "played" : 12,
+        "position" : 1,
+        "tie" : 0,
+        "won" : 8
+      },
+      "teamName" : "Queens Of Manchester"
+    },
+    "TEAM-5" : {
+      "captain" : "Jon Ramos",
+      "players" : [ "PLAYER-5", "PLAYER-3" ],
+      "sessionKey" : "SESHBASKETBALL062019",
+      "sportKey" : "SPBASKETBALL",
+      "stats" : {
+        "loss" : 4,
+        "played" : 12,
+        "position" : 1,
+        "tie" : 0,
+        "won" : 8
+      },
+      "teamName" : "Minority Squad"
+    },
+    "TEAM-6" : {
+      "captain" : "Jon Ramos",
+      "players" : [ "PLAYER-5", "PLAYER-3" ],
+      "sessionKey" : "SESHBASKETBALL062019",
+      "sportKey" : "SPBASKETBALL",
+      "stats" : {
+        "loss" : 4,
+        "played" : 12,
+        "position" : 1,
+        "tie" : 0,
+        "won" : 8
+      },
+      "teamName" : "Monstars"
+    },
+    "TEAM-7" : {
+      "captain" : "Faith Cuneo",
+      "players" : [ "PLAYER-1", "PLAYER-3" ],
+      "sessionKey" : "SESHCORNHOLE062019",
+      "sportKey" : "SPCORNHOLE",
+      "stats" : {
+        "loss" : 4,
+        "played" : 12,
+        "position" : 1,
+        "tie" : 0,
+        "won" : 8
+      },
+      "teamName" : "Pound Town"
+    }
+  }
 }
