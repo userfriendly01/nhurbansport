@@ -15,14 +15,17 @@ const Home = () => {
     const context = useContext(StateContext);
     const images = context.state.imageContext.imageData;
     const adminText = context.state.adminContext.text;
-    const [ admin, setAdmin ] = useState(false);
-    const handleEdit = ({
-    
-    }) => {
-
-    }
+    const optionArray = ["Home: Option 1","Home: Option 2","Home: Option 3"];
+    const [ editModal, setEditModal ] = useState(
+      {
+        open: false,
+        key: "",
+        html: ""
+      }    
+    )
 
     console.log("The home page is accessing this value: ", context);
+    console.log("Here is the editModal Object: ", editModal);
 
     return (
         <Container direction="column" align="center">
@@ -38,30 +41,26 @@ const Home = () => {
                 </TextContainer>
             </Container>
             <Container>
-                <Container direction="column" bcolor="white" width="200" margin="0 10" justify="space-between" onClick={handleEdit}>
-                  <CustomHTMLParser html={adminText["Home: Option 1"]} />
-                  <Image url={images["Home: Option 1"]}
-                         name="Home: Option 1"
+                { optionArray.map(key => {
+                  return (
+                    <Container direction="column" bcolor="white" width="200" margin="0 10" justify="space-between" 
+                        onClick={() => setEditModal(
+                        {
+                            open: true,
+                            key: key,
+                            html: adminText[key]
+                        } 
+                        )}>
+                    <CustomHTMLParser html={adminText[key]} />
+                    <Image url={images[key]}
+                         name={key}
                          height="180"
                          width="180"
                          margin="2%"/>
-                </Container>
-                <Container direction="column" bcolor="white" width="200" margin="0 10" justify="space-between" onClick={handleEdit}>
-                  <CustomHTMLParser html={adminText["Home: Option 2"]} />
-                  <Image url={images["Home: Option 2"]}
-                         name="Home: Option 2"
-                         height="180"
-                         width="180"
-                         margin="2%"/>
-                </Container>
-                <Container direction="column" bcolor="white" width="200" margin="0 10" justify="space-between" onClick={handleEdit}>
-                  <CustomHTMLParser html={adminText["Home: Option 3"]} />
-                  <Image url={images["Home: Option 3"]}
-                         name="Home: Option 3"
-                         height="180"
-                         width="180"
-                         margin="2%"/>
-                </Container>
+                    </Container>
+                    )
+                })
+                }
             </Container>
             <Container align="stretch">
                 <TextContainer bcolor="white" width="450">
@@ -89,13 +88,13 @@ const Home = () => {
                 </Form>
             </Container>   
             <EditTextModal 
-                      isOpen={false} 
-                      buttons={[]} 
-                    //   callbackState={}
-                    //   callbackFunction={}
-                    //   header={}
-                    //   html={}
-                      />
+                isOpen={editModal.open} 
+                buttons={[]} 
+                callbackState={editModal}
+                callbackFunction={setEditModal}
+                header={editModal.key}
+                html={editModal.html}
+                />
         </Container>
     );
 }

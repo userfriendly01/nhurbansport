@@ -18,6 +18,12 @@ const EditTextModal = ({
   isOpen,
   buttons
 }) => {
+
+  const handleSave = () => {
+    //use CallBack State and save to the text database
+    console.log("Here is where I'll be saved!");
+  }
+
   return (
     <Modal isOpen={isOpen}>
       <ModalHeader>
