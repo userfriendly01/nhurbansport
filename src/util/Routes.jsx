@@ -5,7 +5,6 @@ import {
     ImageUpload,
     League,
     Leagues,
-    LeagueLeader,
     LiabilityWaiver,
     Schedules,
     SocialEvents,
@@ -13,7 +12,6 @@ import {
     Veterans,
     PlayerPortal,
     Roster,
-    HowTo,
     RuleBook,
     Standings
 } from '../pages'
@@ -55,20 +53,12 @@ export const routes = [
         component: Roster
     },
     {
-        path: "/how-to",
-        component: HowTo
-    },
-    {
         path: "/rule-book",
         component: RuleBook
     },
     {
         path: "/standings",
         component: Standings
-    },
-    {
-        path: "/leagueleader",
-        component: LeagueLeader
     },
     {
         path: "/schedules",

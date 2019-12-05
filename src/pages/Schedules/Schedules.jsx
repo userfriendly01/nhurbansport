@@ -7,11 +7,13 @@ import { getSchedule } from '../../service/Database'
 import { StateContext } from '../../context/appContext.jsx'
 
 //add image parameter to sessions
+//Pull all games, group by date, order by time
 
 const Schedules = () => {
     const context = useContext(StateContext);
     const [ schedules, setSchedules ] = useState(getSchedule("SESHFLAG062019"));
     const images = context.state.imageContext.imageData;
+    const activeSessions = context.state.leagueContext.leagues;
 
     return (
         <Container direction="column" width="600" margin="0 auto">

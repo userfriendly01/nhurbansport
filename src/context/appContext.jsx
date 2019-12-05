@@ -1,5 +1,6 @@
 import { 
   getActiveSessions,
+  getGamesForSession,
   getPlayerFriendlyName,
   getAllTeamsForSession
 } from '../service/Database'
@@ -15,10 +16,6 @@ let initialState = {
     images: {},
     imageData: {}
   },
-  documentContext: {
-    howToDocuments: [],
-    ruleBooks: []
-  },
   leagueContext: {
     leagues: []
   },
@@ -33,12 +30,11 @@ const StateContextProvider = ({ children }) => {
   const [ loading, setLoading ] = useState(true);
 
   useEffect(() => {
-    const documentPromise = setDocumentContext(state);
     const leaguePromise = setLeagueContext(state, setState);
     const imagePromise = setImageContext(state);
     const adminPromise = setAdminContext(state);
 
-    Promise.all([documentPromise, leaguePromise, imagePromise, adminPromise]).then(() => {
+    Promise.all([leaguePromise, imagePromise, adminPromise]).then(() => {
       console.log("Promises have resolved");
       setLoading(false);
     })
@@ -63,6 +59,7 @@ const StateContextProvider = ({ children }) => {
 export { StateContextProvider, StateContext };
 
 export const setLeagueContext = async state => {
+  //enhance to add schedule for league onto context
     await getActiveSessions()
       .then((sessions) => {
           for(let s in sessions) {
@@ -90,6 +87,9 @@ export const setLeagueContext = async state => {
                 };
                 sessionObject.sessionTeams = teamsArray;
             });
+            getGamesForSession(sessionId).then(games => {
+            sessionObject.sessionGames = games;
+            });
             state.leagueContext.leagues.push(sessionObject)
           };
     }).catch((error) => {
@@ -98,6 +98,7 @@ export const setLeagueContext = async state => {
 }
 
 export const setAdminContext = async state => {
+  //Update the Admin Context to feed Liability waiver and Rulebooks
   await database
     .ref("Admin")
     .child("Text")
@@ -114,44 +115,6 @@ export const setImageContext = async state => {
   await setImages(state);
   await setImageData(state);
 };
-
-export const setDocumentContext = async state => {
-  await setHowToDocuments(state);
-  await setRuleBooks(state);
-}
-
-export const setHowToDocuments = async state => {
-  await database
-    .ref("Documents")
-    .child("How-To")
-    .once("value")
-    .then(snapshot => {
-      let newSnapshot = snapshot.val();
-      for(let r in newSnapshot){
-        let newObject = {...newSnapshot[r]};
-        state.documentContext.howToDocuments.push(newObject);
-      };
-    }).catch(error => {
-      console.log(error);
-    });
-}
-
-export const setRuleBooks = async state => {
-  await database
-    .ref("Documents")
-    .child("RuleBooks")
-    .once("value")
-    .then(snapshot => {
-      let newSnapshot = snapshot.val();
-      for(let r in newSnapshot){
-        let newObject = {...newSnapshot[r]};
-        newObject.show = false;
-        state.documentContext.ruleBooks.push(newObject);
-      };
-    }).catch(error => {
-      console.log(error);
-    });
-}
 
 export const setImages = async state => {
   await storage
