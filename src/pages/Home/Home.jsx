@@ -16,6 +16,7 @@ const Home = () => {
     const images = context.state.imageContext.imageData;
     const adminText = context.state.adminContext.text;
     const optionArray = ["Home: Option 1","Home: Option 2","Home: Option 3"];
+    const aboutUs = "Home: About Us";
     const [ editModal, setEditModal ] = useState(
       {
         open: false,
@@ -63,11 +64,17 @@ const Home = () => {
                 }
             </Container>
             <Container align="stretch">
-                <TextContainer bcolor="white" width="450">
-                  <CustomHTMLParser html={adminText["About Us"]} />
+                <TextContainer bcolor="white" width="450" onClick={() => setEditModal(
+                    {
+                        open: true,
+                        key: aboutUs,
+                        html: adminText[aboutUs]
+                    } 
+                    )}>>
+                  <CustomHTMLParser html={adminText[aboutUs]} />
                 </TextContainer>
-                <Image url={images["Home: About Us"]}
-                            name="Home: Option 2"
+                <Image url={images[aboutUs]}
+                            name={aboutUs}
                                  height="180"
                                  width="180"/>
             </Container>

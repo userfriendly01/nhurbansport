@@ -13,7 +13,12 @@ const StyledParagraph = styled.p`
 
 const transform = (node, index) => {
   if(node.attribs && node.attribs.class === "ql-size-small") {
-    node.attribs.style = "font-size: 13px";
+    if (node.attribs.style){
+      node.attribs.style = node.attribs.style += " font-size: 13px;";
+    } else {
+      node.attribs.style = "font-size: 13px;";
+    }
+    console.log("New Year New Me", node.attribs.style)
     return convertNodeToElement(node, index, transform);
   }
   if (node.name === 'p') {
@@ -23,7 +28,6 @@ const transform = (node, index) => {
 };
 
 const options = {
-  decodeEntities: true,
   transform
 };
 

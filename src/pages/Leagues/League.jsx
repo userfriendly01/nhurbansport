@@ -4,6 +4,7 @@ import {
 } from '@material-ui/core'
 import {
   Accordion,
+  CustomHTMLParser,
   Cart,
   Container,
   DeleteIcon,
@@ -13,7 +14,7 @@ import {
   TextContainer
 } from '../../components'
 import { StateContext } from '../../context/appContext.jsx'
-import ReactHtmlParser from 'react-html-parser'
+import ReactHtmlParser, { convertNodeToElement } from 'react-html-parser'
 import styled from 'styled-components'
 import { deleteLeague} from './LeagueUtil.jsx'
 
