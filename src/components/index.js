@@ -14,4 +14,4 @@ export { default as DeleteIcon } from "./DeleteIcon.jsx"
 export { default as EditTextModal } from "./TextEditor/EditTextModal.jsx"
 export { default as TextEditor } from "./TextEditor/TextEditor.jsx"
 export { default as CustomHTMLParser } from "./TextEditor/CustomHTMLParser.jsx"
-
+export { default as TextCard } from "./TextEditor/TextCard.jsx"

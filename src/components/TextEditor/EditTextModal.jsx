@@ -19,7 +19,7 @@ const EditTextModal = ({
   const context = useContext(StateContext);
 
   const handleSave = () => {
-    updateAdminText(callbackState.key, callbackState.html, updateAdminContext);
+    updateAdminText(callbackState.id, callbackState.html, updateAdminContext);
     handleClose();
   }
 
@@ -37,7 +37,7 @@ const EditTextModal = ({
         ...context.state.adminContext,
         text: {
           ...context.state.adminContext.text,
-          [callbackState.key]: callbackState.html
+          [callbackState.id]: callbackState.html
         }
       }
     });
@@ -46,7 +46,7 @@ const EditTextModal = ({
   return (
     <Modal isOpen={callbackState.open}>
       <ModalHeader>
-        {callbackState.key}
+        {callbackState.id}
       </ModalHeader>
       <ModalBody>
         <TextEditor callbackState={callbackState} callbackFunction={callbackFunction} html={callbackState.html} />

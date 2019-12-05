@@ -6,7 +6,7 @@ import {
     Text,
     TextContainer,
     Button,
-    EditTextModal
+    TextCard
 } from '../../components'
 import { Form, FormGroup, Input} from 'reactstrap'
 import { StateContext } from '../../context/appContext.jsx'
@@ -17,16 +17,9 @@ const Home = () => {
     const adminText = context.state.adminContext.text;
     const optionArray = ["Home: Option 1","Home: Option 2","Home: Option 3"];
     const aboutUs = "Home: About Us";
-    const [ editModal, setEditModal ] = useState(
-      {
-        open: false,
-        key: "",
-        html: ""
-      }    
-    )
+    
 
     console.log("The home page is accessing this value: ", context);
-    console.log("Here is the editModal Object: ", editModal);
 
     return (
         <Container direction="column" align="center">
@@ -44,14 +37,7 @@ const Home = () => {
             <Container>
                 { optionArray.map(key => {
                   return (
-                    <Container direction="column" bcolor="white" width="200" margin="0 10" justify="space-between" 
-                        onClick={() => setEditModal(
-                        {
-                            open: true,
-                            key: key,
-                            html: adminText[key]
-                        } 
-                        )}>
+                    <Container direction="column" bcolor="white" width="200" margin="0 10" justify="space-between" >
                     <CustomHTMLParser html={adminText[key]} />
                     <Image url={images[key]}
                          name={key}
@@ -63,16 +49,8 @@ const Home = () => {
                 })
                 }
             </Container>
-            <Container align="stretch">
-                <TextContainer bcolor="white" width="450" onClick={() => setEditModal(
-                    {
-                        open: true,
-                        key: aboutUs,
-                        html: adminText[aboutUs]
-                    } 
-                    )}>>
-                  <CustomHTMLParser html={adminText[aboutUs]} />
-                </TextContainer>
+            <Container align="stretch" bcolor="white" width="630">
+                <TextCard id={aboutUs} />
                 <Image url={images[aboutUs]}
                             name={aboutUs}
                                  height="180"
@@ -93,13 +71,7 @@ const Home = () => {
                     </FormGroup>
                     <Button>Send</Button>
                 </Form>
-            </Container>   
-            <EditTextModal 
-                callbackState={editModal}
-                callbackFunction={setEditModal}
-                header={editModal.key}
-                html={editModal.html}
-                />
+            </Container>  
         </Container>
     );
 }
