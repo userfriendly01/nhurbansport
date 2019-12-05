@@ -12,8 +12,6 @@ const StyledParagraph = styled.p`
 `;
 
 const transform = (node, index) => {
-  console.log("I'm a node! ", node);
-
   if(node.attribs && node.attribs.class === "ql-size-small") {
     node.attribs.style = "font-size: 13px";
     return convertNodeToElement(node, index, transform);

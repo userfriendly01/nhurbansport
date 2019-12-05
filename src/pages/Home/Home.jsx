@@ -88,8 +88,6 @@ const Home = () => {
                 </Form>
             </Container>   
             <EditTextModal 
-                isOpen={editModal.open} 
-                buttons={[]} 
                 callbackState={editModal}
                 callbackFunction={setEditModal}
                 header={editModal.key}

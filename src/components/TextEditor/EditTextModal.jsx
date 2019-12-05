@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import {
   Modal, 
   ModalBody,
@@ -9,35 +9,51 @@ import {
   Button,
   TextEditor
 } from '../../components';
+import { updateAdminText } from '../../service/Database'
+import { StateContext } from '../../context/appContext.jsx'
 
 const EditTextModal = ({
-  header,
   callbackState,
-  callbackFunction,
-  html,
-  isOpen,
-  buttons
+  callbackFunction
 }) => {
+  const context = useContext(StateContext);
 
   const handleSave = () => {
-    //use CallBack State and save to the text database
-    console.log("Here is where I'll be saved!");
+    updateAdminText(callbackState.key, callbackState.html, updateAdminContext);
+    handleClose();
+  }
+
+  const handleClose = () => {
+    callbackFunction({
+      ...callbackState,
+      open: false
+    });
+  }
+
+  const updateAdminContext = () => {
+    context.setState({
+      ...context.state,
+      adminContext: {
+        ...context.state.adminContext,
+        text: {
+          ...context.state.adminContext.text,
+          [callbackState.key]: callbackState.html
+        }
+      }
+    });
   }
 
   return (
-    <Modal isOpen={isOpen}>
+    <Modal isOpen={callbackState.open}>
       <ModalHeader>
-        {header}
+        {callbackState.key}
       </ModalHeader>
       <ModalBody>
-        <TextEditor callbackState={callbackState} callbackFunction={callbackFunction} html={html} />
+        <TextEditor callbackState={callbackState} callbackFunction={callbackFunction} html={callbackState.html} />
       </ModalBody>
       <ModalFooter>
-        {
-          buttons.map(button => {
-            <Button onclick={button.onclick} />
-          })
-        }
+        <Button onClick={handleSave}>Save</Button>
+        <Button onClick={handleClose}>Cancel</Button>
       </ModalFooter>
     </Modal>
   )
