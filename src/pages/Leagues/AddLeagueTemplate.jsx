@@ -31,7 +31,7 @@ const StyledTextField = styled(TextField)`
 
 const StyledImage = styled.img`
   width: 400;
-  height: 300
+  height: 300;
   margin: 10;
 `;
 
@@ -132,7 +132,7 @@ const LeagueTemplate = ({ match }) => {
             <form noValidate autoComplete="off">
               <Container>
                 <Container direction="column" justify="flex-start">
-                  <Container height="100vh" direction="column" align="center" justify="center" margin="0 -50 0 0">
+                  <Container justify="flex-start" direction="column" align="center" justify="center" margin="0 -50 0 0">
                     <StyledImage src={leagueForm.image}></StyledImage>
                       <Button onClick={() => {setSelectImageView(true)}}>Add Image</Button>
                   </Container>

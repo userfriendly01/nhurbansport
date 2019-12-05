@@ -7,10 +7,6 @@ const StyledTextContainer = styled.div`
 
 `;
 
-const StyledParagraph = styled.p`
-  margin: 0px;
-`;
-
 const transform = (node, index) => {
   if(node.attribs && node.attribs.class === "ql-size-small") {
     if (node.attribs.style){
@@ -18,11 +14,14 @@ const transform = (node, index) => {
     } else {
       node.attribs.style = "font-size: 13px;";
     }
-    console.log("New Year New Me", node.attribs.style)
     return convertNodeToElement(node, index, transform);
   }
   if (node.name === 'p') {
-    node.attribs.style = "margin: 0px";
+    if (node.attribs.style){
+      node.attribs.style = node.attribs.style += " margin: 0px;";
+    } else {
+      node.attribs.style = "margin: 0px;";
+    }
     return convertNodeToElement(node, index, transform);
   }
 };
