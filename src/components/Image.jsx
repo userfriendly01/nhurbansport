@@ -1,25 +1,35 @@
-import React, { useState} from 'react'
+import React, { useState, useContext } from 'react'
 import Container from './Container.jsx'
 import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAngleDoubleUp } from '@fortawesome/free-solid-svg-icons'
 import styled from 'styled-components'
+import { StateContext } from '../context/appContext.jsx'
 
-const Image = (props) => {
+
+const Image = ({
+    id,
+    width,
+    height,
+    margin,
+    cursor,
+    upload
+}) => {
+    const context = useContext(StateContext);
+    const images = context.state.imageContext.imageData;
 
     const uploadIcon = <FontAwesomeIcon icon={faAngleDoubleUp} />
-    const [uploadIconShouldDisplay] = useState(props.upload != null ? props.upload : true);
+    const [uploadIconShouldDisplay] = useState(upload != null ? upload : true);
 
     const ImageContent = styled.div`
-        background-image: url("${props.url}");
-        // src: ${props.src};
+        background-image: url("${images[id]}");
         background-size: 100% 100%;
-        min-width: ${props.width};
-        min-height: ${props.height};
+        min-width: ${width};
+        min-height: ${height};
         position: relative;
-        margin: ${props.margin};
+        margin: ${margin};
         &:hover {
-            cursor: ${props.cursor ? props.cursor : null};
+            cursor: ${cursor ? cursor : null};
         }
     `;
 
@@ -46,10 +56,10 @@ const Image = (props) => {
                 <Link to={{
                     pathname: `/upload-image`, 
                     state: {
-                        url: props.url,
-                        name: props.name,
-                        height: props.height,
-                        width: props.width
+                        url: images[id],
+                        name: id,
+                        height: height,
+                        width: width
                     }
                 }}>
                     <UploadIconWrapper>

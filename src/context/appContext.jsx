@@ -35,7 +35,6 @@ const StateContextProvider = ({ children }) => {
     const adminPromise = setAdminContext(state);
 
     Promise.all([leaguePromise, imagePromise, adminPromise]).then(() => {
-      console.log("Promises have resolved");
       setLoading(false);
     })
   }, []);

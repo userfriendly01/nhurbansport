@@ -16,6 +16,7 @@ const MainContainer = styled.div`
 
 const App = () => {
   const context = useContext(StateContext);
+  console.log("Context: ", context);
   
   return (
     <MainContainer>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ReactHtmlParser, { convertNodeToElement } from 'react-html-parser';
 import styled from 'styled-components';
 
@@ -8,22 +8,20 @@ const StyledTextContainer = styled.div`
 `;
 
 const transform = (node, index) => {
+  const nodeAttributes = node.attribs ? node.attribs : {};
+  let nodeStyle = nodeAttributes.style ? nodeAttributes.style : "";
+
   if(node.attribs && node.attribs.class === "ql-size-small") {
-    if (node.attribs.style){
-      node.attribs.style = node.attribs.style += " font-size: 13px;";
-    } else {
-      node.attribs.style = "font-size: 13px;";
-    }
-    return convertNodeToElement(node, index, transform);
+    node.attribs.style = nodeStyle += " font-size: 13px;";
+  }
+  if(node.attribs && node.attribs.class === "ql-align-center") {
+    node.attribs.style = nodeStyle += " text-align: center;";
   }
   if (node.name === 'p') {
-    if (node.attribs.style){
-      node.attribs.style = node.attribs.style += " margin: 0px;";
-    } else {
-      node.attribs.style = "margin: 0px;";
-    }
-    return convertNodeToElement(node, index, transform);
+    node.attribs.style = nodeStyle += " margin: 0px;";
+    
   }
+  return convertNodeToElement(node, index, transform);
 };
 
 const options = {
