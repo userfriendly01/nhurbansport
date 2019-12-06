@@ -6,20 +6,17 @@ import { faAngleDoubleUp } from '@fortawesome/free-solid-svg-icons'
 import styled from 'styled-components'
 import { StateContext } from '../context/appContext.jsx'
 
-
 const Image = ({
     id,
     width,
     height,
     margin,
-    cursor,
-    upload
+    cursor
 }) => {
     const context = useContext(StateContext);
     const images = context.state.imageContext.imageData;
 
     const uploadIcon = <FontAwesomeIcon icon={faAngleDoubleUp} />
-    const [uploadIconShouldDisplay] = useState(upload != null ? upload : true);
 
     const ImageContent = styled.div`
         background-image: url("${images[id]}");
@@ -49,28 +46,22 @@ const Image = ({
         }
     `;
 
-
-    return(
-        <Container position="relative" margin="0">
-            {uploadIconShouldDisplay ?
-                <Link to={{
-                    pathname: `/upload-image`, 
-                    state: {
-                        url: images[id],
-                        name: id,
-                        height: height,
-                        width: width
-                    }
-                }}>
-                    <UploadIconWrapper>
-                        {uploadIcon}   
-                    </UploadIconWrapper>    
-                </Link>
-                : null
-            }
-            <ImageContent/>
-        </Container>
+    return (
+      <Container position="relative" margin="0">
+        <Link to={{
+          pathname: `/upload-image`, 
+          state: {
+            url: images[id],
+            name: id,
+            height: height,
+            width: width
+        }}}>
+          <UploadIconWrapper>
+            {uploadIcon}   
+          </UploadIconWrapper>    
+        </Link>
+        <ImageContent/>
+      </Container>
     )
-
 }
 export default Image;

@@ -37,19 +37,17 @@ export const getImageObject = () => {
 
 export const uploadImage = ({ 
     temporaryImage,
-    setProgress,
     imageArray,
     setImageArray,
     imageDetails,
     setImageDetails
   }) => {
 
-  const uploadTask = storage.ref(`images/${temporaryImage.name}`).put(temporaryImage);
+    console.log("Temp Image" , temporaryImage);
+
+  const uploadTask = storage.ref(`images/${temporaryImage.name}`).put(temporaryImage.file);
   uploadTask.on('state_changed',
-  (snapshot) => {
-      const progress = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
-      setProgress(progress)
-  },
+  null,
   (error) => {
       console.log(error);
   },
@@ -59,14 +57,13 @@ export const uploadImage = ({
           ...imageDetails,
           url: url
       });
-          const newImageArray = [
-              ...imageArray,
-              { name: temporaryImage.name,
-                url: url
-              }
-          ]
-          setImageArray(newImageArray)
-          setProgress(0);
+        const newImageArray = [
+            ...imageArray,
+            { name: temporaryImage.name,
+              url: url
+            }
+        ]
+        setImageArray(newImageArray)
       })  
   });
 }

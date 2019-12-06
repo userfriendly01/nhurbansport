@@ -1,9 +1,6 @@
 import React, { useState, useContext } from 'react'
 import { Redirect } from 'react-router-dom'
-import { 
-    Container,
-    Image,
-} from '../../components'
+import { Wrapper } from '../../components'
 import { 
     ImagePagination,
     uploadImage,
@@ -12,7 +9,6 @@ import {
 import { StateContext } from '../../context/appContext.jsx'
 
 const ImageUpload = ({ location } ) => {
-    const replacedImageName = location.state.name;
     const [ imageDetails, setImageDetails ] = useState({
         url: location.state.url,
         name: location.state.name,
@@ -36,32 +32,31 @@ const ImageUpload = ({ location } ) => {
     const [ imageArray, setImageArray ] = useState(createImageArray());
     const [ temporaryImage, setTemporaryImage ] = useState({
         file: null,
+        name: null,
         preview: null
     });
-    const [ progress, setProgress ] = useState(0);
     const [ completed, setCompleted ] = useState(false);
     const redirect = location.state.redirect == null ? true : false;
 
     const handleChange = e => {
-        const reader = new FileReader();
-      
-        if (e.target.files[0]) {
-          const tempImage = e.target.files[0];
-      
-          reader.onloadend = () => {
-            setTemporaryImage({
-              file: tempImage.file,
-              preview: reader.result
-            })
-          }
-            reader.readAsDataURL(tempImage);
+      const reader = new FileReader();
+    
+      if (e.target.files[0]) {
+        const tempImage = e.target.files[0];
+        reader.onloadend = () => {
+          setTemporaryImage({
+            file: tempImage,
+            name: imageDetails.name,
+            preview: reader.result
+          })
         }
+          reader.readAsDataURL(tempImage);
       }
+    }
 
     const handleUpload = () => {
         const obj = {
-            temporaryImage, 
-            setProgress, 
+            temporaryImage,
             imageArray, 
             setImageArray,
             imageDetails,
@@ -99,29 +94,31 @@ const ImageUpload = ({ location } ) => {
       setCompleted(true);
     }
 
-    return (
-        <div>
-        {
-          completed && redirect ?
-            <Redirect to={history.go(-1)} />
-          :
-            <Container direction= "row" align="center">
-              <Container height="100vh" direction="column" align="center" justify="center" margin="0 -50 0 0">
-                {replacedImageName}
-                  <Image url={imageDetails.url} height={imageDetails.height} width={imageDetails.width} margin="20"/>
-                  <progress value={progress} max="100"/>
-                  <input type="file" onChange={handleChange}/>
-                  {
-                    temporaryImage != null ?
-                        <button onClick={() => handleUpload()}>Upload</button>
-                    : null
-                  }
-                <button onClick={() => updateImageSource()}>Change Image</button>
-              </Container>
-            <Container direction="row" wrap="wrap">
-              <ImagePagination array={imageArray} parentCallBack={imageCallback} />
-            </Container>
-        </Container>
+  return (
+    <div>
+      {
+        completed && redirect ?
+        <Redirect to={history.go(-1)} />
+        :
+        <Wrapper direction="column" align="center">
+            <img src={imageDetails.url} height={imageDetails.height} width={imageDetails.width}/>
+            <Wrapper align="center">
+              <h4>Upload a new file:</h4>
+            <input type="file" onChange={handleChange} style={{width:"100px", margin:"10px"}}/>
+            {
+              temporaryImage.file != null ?
+                <button onClick={() => handleUpload()}>Upload</button>
+              : null
+            }
+          </Wrapper>
+          { imageDetails.url !== location.state.url ?
+                <button onClick={() => updateImageSource()}>Save New Image</button>
+              : null
+          }
+          <h4>Or Select an Existing Image</h4>
+          <ImagePagination array={imageArray} parentCallBack={imageCallback} />
+          
+        </Wrapper>
       }
     </div>
   )

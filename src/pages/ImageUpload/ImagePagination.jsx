@@ -1,9 +1,22 @@
 import React, { useState, useEffect } from 'react';
 import { Pagination, PaginationItem, PaginationLink } from 'reactstrap';
-import { 
-    Container, 
-    Image 
-} from '../../components';
+import { Wrapper } from '../../components';
+import styled from 'styled-components';
+
+const AvailableImage = styled.img`
+    width: 150px;
+    height: 150px;
+    margin: 5px;
+    &:hover {
+        cursor: pointer;
+    }
+`;
+
+const StyledWrapper = styled(Wrapper)`
+    flex-wrap: wrap;
+    width: 800px;
+    margin-top: 10px;
+`;
 
 const ImagePagination = ({
         array,
@@ -12,7 +25,7 @@ const ImagePagination = ({
 
     const [ numberOfPages, setNumberOfPages ] = useState(0);
     const [ currentPage, setCurrentPage ] = useState(1);
-    const itemsPerPage = 6;
+    const itemsPerPage = 10;
     const start = (currentPage - 1) * itemsPerPage;
     const end = currentPage * itemsPerPage;
 
@@ -20,22 +33,19 @@ const ImagePagination = ({
         setNumberOfPages(Math.ceil(array.length / itemsPerPage));
     }, [array])
 
-    console.log(array)
-
     return (
-        <Container direction="column" align="center" margin="0">
-            <Container direction="row" wrap="wrap" width="650" margin="0">
+        <Wrapper direction="column" align="center">
+            <StyledWrapper>
                 {
                     array.slice(start, end).map((item, index) => (
-                        <Container id="index" direction="column" align="center">
+                        <Wrapper id="index" direction="column" align="center">
                             <div onClick={() => parentCallBack(item.url)}>
-                                <Image cursor="pointer" url={item.url} height="150" width="150" margin="5" upload={false} id={index}/>
-                                <p>{item.name}</p>
+                                <AvailableImage src={item.url} id={index} />
                             </div>
-                        </Container>
+                        </Wrapper>
                     ))
                 }
-            </Container>
+            </StyledWrapper>
             <Pagination>
                 <PaginationItem disabled={currentPage <= 1}>
                     <PaginationLink first onClick={() => setCurrentPage(1)}></PaginationLink>
@@ -59,7 +69,7 @@ const ImagePagination = ({
                     <PaginationLink last onClick={() => setCurrentPage(numberOfPages)}></PaginationLink>
                 </PaginationItem>
             </Pagination>
-        </Container>
+        </Wrapper>
     )
     
 }
