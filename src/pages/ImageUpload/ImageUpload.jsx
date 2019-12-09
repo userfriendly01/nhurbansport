@@ -36,7 +36,7 @@ const ImageUpload = ({ location } ) => {
         preview: null
     });
     const [ completed, setCompleted ] = useState(false);
-    const redirect = location.state.redirect == null ? true : false;
+    const form = location.state.form == null ? false : true;
 
     const handleChange = e => {
       const reader = new FileReader();
@@ -73,11 +73,17 @@ const ImageUpload = ({ location } ) => {
     }
 
     const updateImageSource = () => {
+      console.log("What's the Form? ",form);
+      if (form) {
+        const attachImage = location.state.callbackFunction;
+        attachImage(imageDetails.url);
+      } else {
         setImage({
-            name: imageDetails.name,
-            url: imageDetails.url,
-            updateStateAndReturn
-        });
+          name: imageDetails.name,
+          url: imageDetails.url,
+          updateStateAndReturn
+      });
+      }   
     }
 
     const updateStateAndReturn = () => {
@@ -97,8 +103,9 @@ const ImageUpload = ({ location } ) => {
   return (
     <div>
       {
-        completed && redirect ?
-        <Redirect to={history.go(-1)} />
+        completed && !form ?
+        //<Redirect to={history.go(-1)} />
+        console.log("I tried to redirect")
         :
         <Wrapper direction="column" align="center">
             <img src={imageDetails.url} height={imageDetails.height} width={imageDetails.width}/>

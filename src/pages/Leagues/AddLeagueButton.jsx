@@ -1,16 +1,17 @@
 import React from 'react'
 import { ControlPoint } from '@material-ui/icons'
-import { Container } from '../../components'
-import { Card } from '@material-ui/core'
+import { 
+    Wrapper, 
+    DisplayCard 
+} from '../../components'
+import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
-const StyledCard = styled(Card)`
-  display: flex;
+const StyledCard = styled(DisplayCard)`
   align-items: center;
   justify-content: center;
-  min-width: 200;
-  min-height: 180;
-  margin: 10;
+  width: 200;
+  height: 180;
 `
 
 const StyledPlus = styled(ControlPoint)`
@@ -22,14 +23,18 @@ const StyledPlus = styled(ControlPoint)`
 }
 `
 
-const AddLeagueButton = () => {
-    return (
-        <Container>
-            <StyledCard>
-                <StyledPlus />
-            </StyledCard>
-        </Container>
-    );
+const AddLeagueButton = ({
+    to
+}) => {
+  return (
+    <Wrapper align="center">
+      <StyledCard>
+        <Link to={to}>
+          <StyledPlus />
+        </Link>
+      </StyledCard>
+    </Wrapper>
+  );
 };
 
 export default AddLeagueButton;

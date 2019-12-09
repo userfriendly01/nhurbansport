@@ -78,6 +78,7 @@ const LeagueTemplate = ({ match }) => {
     }
     updatedObject[key] = value;
     setLeagueForm(updatedObject);
+    console.log("League Form after the image has been set: ", leagueForm)
     setSelectImageView(false);
   }
 
@@ -112,11 +113,13 @@ const LeagueTemplate = ({ match }) => {
 
   const location = {
     state: {
+      form: true,
       url: "none",
       name: "New League Image",
       height: "300",
       width: "300",
-      redirect: false
+      callbackState: leagueForm,
+      callbackFunction: handleAttachImage
     }
   }
 
@@ -126,7 +129,7 @@ const LeagueTemplate = ({ match }) => {
     <div>
       {
         selectImageView ?
-          <ImageUpload location={location} callbackState={leagueForm} callbackFunction={handleAttachImage}/>
+          <ImageUpload location={location} />
         : <Card>
             <Container direction="column">
             <form noValidate autoComplete="off">
