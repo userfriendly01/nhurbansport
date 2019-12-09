@@ -4,7 +4,6 @@ import {
 } from '@material-ui/core'
 import {
   Accordion,
-  CustomHTMLParser,
   Cart,
   Container,
   DeleteIcon,
@@ -27,6 +26,12 @@ const StyledAccordian = styled(Accordion)`
   }
 `;
 
+const FormImage = styled.img`
+    &:hover {
+        cursor: pointer;
+    }
+`;
+
 const League = ({ match }) => {
   const context = useContext(StateContext);
   const leagueId = match.params.id;
@@ -44,9 +49,9 @@ const League = ({ match }) => {
         <Container direction="column" justify="flex-start" align="center">
           <Container direction="column" border="2px solid black" margin="10" height="320" width="325">
             { league.image == null ?
-              <Image upload={false} url={imagePlaceholder} height="320" width="325"/>
+              <img src={imagePlaceholder} height="320" width="325"/>
               :
-              <Image upload={false} url={league.image} height="320" width="325"/>
+              <img src={league.image} height="320" width="325"/>
             }
           </Container>
           <Container direction="column" border="2px solid black" margin="10" width="450">

@@ -73,7 +73,6 @@ const Leagues = () => {
                           <Wrapper direction="column" width="200">
                           <StyledDisplayCard>
                             <StyledImage src={session.image} />
-                            
                               <StyledParagraph size="14">{session.name}</StyledParagraph>
                               <StyledParagraph >{session.location} | {session.day} ({session.length})</StyledParagraph>
                               <StyledParagraph>__</StyledParagraph>

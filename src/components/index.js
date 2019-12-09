@@ -17,3 +17,4 @@ export { default as TextEditor } from "./TextEditor/TextEditor.jsx"
 export { default as CustomHTMLParser } from "./TextEditor/CustomHTMLParser.jsx"
 export { default as TextCard } from "./TextEditor/TextCard.jsx"
 export { default as Wrapper } from "./Wrapper.jsx"
+export * from './FormComponents'

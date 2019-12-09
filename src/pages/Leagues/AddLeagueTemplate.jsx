@@ -1,38 +1,29 @@
 import React, { useState, useContext } from 'react'
 import {
-  Container,
+  Wrapper,
   Button,
-  Text,
-  TextEditor
+  DisplayCard,
+  TextEditor,
+  TextField,
+  Checkbox,
+  DayPicker
 } from '../../components'
-import {
-  TextField
-} from '@material-ui/core'
 import styled from 'styled-components'
-import 'react-quill/dist/quill.snow.css'
-import { 
-  Card, 
-  Checkbox, 
-  FormControlLabel
-} from '@material-ui/core'
 import ImageUpload from '../ImageUpload/ImageUpload.jsx'
-import DayPickerInput from 'react-day-picker/DayPickerInput';
-import 'react-day-picker/lib/style.css';
 import { 
   createLeague,
   editLeague
 } from './LeagueUtil.jsx'
 import { StateContext } from '../../context/appContext.jsx'
 
-const StyledTextField = styled(TextField)`
-  width: 200;
-  margin: 20;
-`
-
 const StyledImage = styled.img`
   width: 400;
   height: 300;
   margin: 10;
+`;
+
+const StyledWrapper = styled(Wrapper)`
+  justify-content: flex-start;
 `;
 
 const LeagueTemplate = ({ match }) => {
@@ -59,17 +50,6 @@ const LeagueTemplate = ({ match }) => {
 
   const [ selectImageView, setSelectImageView ] = useState(false);
 
-  const handleChange = event => {
-    const key = event.target.id;
-    const value = event.target.value;
-    const updatedObject = {
-      ...leagueForm
-    }
-    updatedObject[key] = value;
-    console.log("updated", updatedObject);
-    setLeagueForm(updatedObject);
-  };
-
   const handleAttachImage = imageUrl => {
     const key = "image";
     const value = imageUrl;
@@ -78,29 +58,7 @@ const LeagueTemplate = ({ match }) => {
     }
     updatedObject[key] = value;
     setLeagueForm(updatedObject);
-    console.log("League Form after the image has been set: ", leagueForm)
     setSelectImageView(false);
-  }
-
-  const handleDateChange = date => {
-    const key = "date";
-    const value = date;
-    const updatedObject = {
-      ...leagueForm
-    }
-    updatedObject[key] = value.toLocaleDateString();
-    setLeagueForm(updatedObject);
-  }
-
-  const handleCheckBox = event => {
-    const checkbox = event.target.value
-    const key = checkbox;
-    const value = !leagueForm[checkbox];
-    const updatedObject = {
-      ...leagueForm
-    }
-    updatedObject[key] = value;
-    setLeagueForm(updatedObject);
   }
 
   const handleCreateLeague = () => {
@@ -130,132 +88,109 @@ const LeagueTemplate = ({ match }) => {
       {
         selectImageView ?
           <ImageUpload location={location} />
-        : <Card>
-            <Container direction="column">
+        : <DisplayCard>
+            <Wrapper direction="column" align="center">
             <form noValidate autoComplete="off">
-              <Container>
-                <Container direction="column" justify="flex-start">
-                  <Container justify="flex-start" direction="column" align="center" justify="center" margin="0 -50 0 0">
+              <Wrapper>
+                <StyledWrapper direction="column">
+                  <StyledWrapper direction="column" align="center">
                     <StyledImage src={leagueForm.image}></StyledImage>
                       <Button onClick={() => {setSelectImageView(true)}}>Add Image</Button>
-                  </Container>
-                <Container>
+                  </StyledWrapper>
+                <Wrapper>
                   <TextEditor html={leagueForm.html} callbackState={leagueForm} callbackFunction={setLeagueForm}/>
-                </Container>
-              </Container>
-              <Container direction="column" maxw="300" wrap="wrap" margin="5">
-                <Container wrap="wrap" direction="column" align="center">
-                  <Text>Cart Options</Text>
-                  <FormControlLabel
-                    value="selectShirtOption"
-                    control={
-                      <Checkbox
-                        color="primary" 
-                        checked={leagueForm.selectShirtOption} 
-                        onChange={handleCheckBox}
-                      />}
+                </Wrapper>
+              </StyledWrapper>
+              <Wrapper direction="column" margin="5">
+                <Wrapper wrap="wrap" direction="column" align="center">
+                  <p>Cart Options</p>
+                  <Checkbox 
                     label="Choose Shirt"
-                    labelPlacement="end"
+                    form={leagueForm}
+                    setForm={setLeagueForm}
+                    checked={leagueForm.selectShirtOption}
+                    id="selectShirtOption"
                   />
-                  <FormControlLabel
-                    value="selectTeamOption"
-                    control={
-                      <Checkbox 
-                        color="primary" 
-                        checked={leagueForm.selectTeamOption}
-                        onChange={handleCheckBox}
-                      />}
-                    label="Choose Team"
-                    labelPlacement="end"
-                  />
-                  <FormControlLabel
-                    value="active"
-                    control={
-                      <Checkbox 
-                        color="primary" 
-                        checked={leagueForm.active}
-                        onChange={handleCheckBox}
-                      />}
+                  <Checkbox 
                     label="Open Registration"
-                    labelPlacement="end"
+                    form={leagueForm}
+                    setForm={setLeagueForm}
+                    checked={leagueForm.active}
+                    id="active"
                   />
-                </Container>
-                <DayPickerInput 
-                  id="date"
-                  value={leagueForm.date}
-                  onDayChange={handleDateChange} 
-                  component={props => <StyledTextField {...props} 
-                  label="Start Date"
-                  margin="normal"
-                  />} 
-                />
-                <StyledTextField 
-                  id="name"
-                  value={leagueForm.name}
-                  label="League Name" 
-                  margin="normal"
-                  onChange={handleChange}
+                  <Checkbox 
+                    label="Choose Team"
+                    form={leagueForm}
+                    setForm={setLeagueForm}
+                    checked={leagueForm.selectTeamOption}
+                    id="selectTeamOption"
                   />
-                <StyledTextField 
-                  id="location"
-                  value={leagueForm.location}
-                  label="Location" 
-                  margin="normal"
-                  onChange={handleChange}
+                </Wrapper>
+                  <DayPicker
+                    id="date" 
+                    label="Start Date"
+                    form={leagueForm}
+                    setForm={setLeagueForm}
                   />
-                <StyledTextField 
-                  id="day"
-                  value={leagueForm.day}
-                  label="Day" 
-                  margin="normal"
-                  onChange={handleChange}
+                  <TextField 
+                    id="name"
+                    label="League Name"
+                    form={leagueForm}
+                    setForm={setLeagueForm}
                   />
-                  <StyledTextField 
-                  id="length"
-                  value={leagueForm.length}
-                  label="Length" 
-                  margin="normal"
-                  onChange={handleChange}
+                  <TextField 
+                    id="location"
+                    label="Location" 
+                    form={leagueForm}
+                    setForm={setLeagueForm}
                   />
-                <StyledTextField 
-                  id="price"
-                  value={leagueForm.price}
-                  label="Price" 
-                  margin="normal"
-                  onChange={handleChange}
+                  <TextField 
+                    id="day"
+                    label="Day"
+                    form={leagueForm}
+                    setForm={setLeagueForm}
                   />
-                <StyledTextField 
-                  id="disclaimer"
-                  value={leagueForm.disclaimer}
-                  label="Disclaimer" 
-                  margin="normal"
-                  onChange={handleChange}
+                  <TextField 
+                    id="length"
+                    label="Length"
+                    form={leagueForm}
+                    setForm={setLeagueForm}
                   />
-                <StyledTextField 
-                  id="instructions"
-                  value={leagueForm.instructions}
-                  label="Special Instructions" 
-                  margin="normal"
-                  onChange={handleChange}
+                  <TextField 
+                    id="price"
+                    label="Price"
+                    form={leagueForm}
+                    setForm={setLeagueForm}
                   />
-                <StyledTextField 
-                  id="coupons"
-                  value={leagueForm.coupons}
-                  label="Coupons" 
-                  margin="normal"
-                  onChange={handleChange}
+                  <TextField 
+                    id="disclaimer"
+                    label="Disclaimer"
+                    form={leagueForm}
+                    setForm={setLeagueForm}
                   />
-              </Container>
-            </Container>
-            {
-              match.params.id ?
-                <Button onClick={handleEditLeague}>Update League</Button>
-              :
-                <Button onClick={handleCreateLeague}>Create League</Button>
-            }
+                  <TextField 
+                    id="instructions"
+                    label="Special Instructions"
+                    form={leagueForm}
+                    setForm={setLeagueForm}
+                  />
+                  <TextField 
+                    id="coupons"
+                    label="Coupons"
+                    form={leagueForm}
+                    setForm={setLeagueForm}
+                  />
+                </Wrapper>
+              </Wrapper>
+              {
+                match.params.id ?
+                  <Button onClick={handleEditLeague}>Update League</Button>
+                :
+                  <Button onClick={handleCreateLeague}>Create League</Button>
+              }
             </form>
-          </Container>
-        </Card>
+          </Wrapper>
+        </DisplayCard>
       }
     </div>
   );
