@@ -1,15 +1,16 @@
 import { getDatabase } from "../../service/Connect.jsx";
 
+
 const rulebooksRef = getDatabase().ref("Admin").child("Rulebooks");
 
 export const createRulebook = newRulebook => {
-  rulebooksRef.push(newRulebook);
+  return rulebooksRef.push(newRulebook);
 }
 
-// export const editLeague = (id, updatedSession) => {
-//   sessionsRef.child(id).set(updatedSession);
-// }
+export const editRulebook = (id, updatedRulebook) => {
+  return rulebooksRef.child(id).set(updatedRulebook);
+}
 
-// export const deleteLeague = id => {
-//   sessionsRef.child(id).remove();
-// }
+export const deleteRulebook = id => {
+  return rulebooksRef.child(id).remove();
+}

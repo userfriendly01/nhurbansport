@@ -4,16 +4,14 @@ import {
   Wrapper,
   Button,
   DisplayCard,
-  TextEditor,
   TextField
 } from '../../components'
 import styled from 'styled-components'
 import ImageUpload from '../ImageUpload/ImageUpload.jsx'
-// import { 
-//   createLeague,
-//   editLeague
-// } from './LeagueUtil.jsx'
-import { createRulebook } from './RulebookUtil.jsx'
+import { 
+  createRulebook,
+  editRulebook
+} from './RulebookUtil.jsx'
 import { StateContext } from '../../context/appContext.jsx'
 
 const StyledImage = styled.img`
@@ -30,13 +28,11 @@ const RuleBookTemplate = ({ match }) => {
   const context = useContext(StateContext);
   const rulebookId = match.params.id;
   const rulebooks = context.state.adminContext.rulebooks;
-  //Hows this work?
-  // const rulebook = rulebooks.find(obj => obj.sessionId === rulebookId) ? leagues.find(obj => obj.sessionId === rulebookId) : {};
-  const rulebook = {};
+  const rulebook = rulebooks.find(obj => obj.rulebookId === rulebookId) ? rulebooks.find(obj => obj.rulebookId === rulebookId) : {};
   const [ rulebookForm, setRulebookForm ] = useState({
     name: rulebook.name ? rulebook.name : "",
     image: rulebook.image ? rulebook.image : "",
-    html: rulebook.html ? rulebook.html : "",
+    html: rulebook.link ? rulebook.link : "",
     active: rulebook.active ? rulebook.active : true,
   });
 
@@ -54,13 +50,31 @@ const RuleBookTemplate = ({ match }) => {
   }
 
   const handleCreateRulebook = () => {
-    createRulebook(rulebookForm);
-    console.log("Rulebook Created!");
+    createRulebook(rulebookForm).then(() => {
+      const newRuleBookArray = rulebooks.push(rulebookForm);
+      context.setState({
+        ...context.state,
+        adminContext: {
+          ...context.state.adminContext,
+          rulebooks: newRuleBookArray
+        }
+      });
+    });
   }
 
   const handleEditRulebook = () => {
-    // editLeague(rulebookId, rulebookForm);
-    console.log("Rulebook Edited!");
+    editRulebook(rulebookId, rulebookForm).then(() => {
+      const deleteIndex = rulebooks.map(deletedRulebook => { return deletedRulebook.ruleBookId; }).indexOf(rulebookId);
+      rulebooks.splice(deleteIndex, 1);
+      rulebooks.push(rulebookForm);
+      context.setState({
+        ...context.state,
+        adminContext: {
+          ...context.state.adminContext,
+          rulebooks: rulebooks
+        }
+      });
+    });
   }
 
   const location = {
@@ -103,7 +117,12 @@ const RuleBookTemplate = ({ match }) => {
                       <Button onClick={() => {setSelectImageView(true)}}>Add Image</Button>
                   </StyledWrapper>
                   <Wrapper>
-                    <TextEditor html={rulebookForm.html} callbackState={rulebookForm} callbackFunction={setRulebookForm}/>
+                    <TextField 
+                          id="link"
+                          label="Link"
+                          form={rulebookForm}
+                          setForm={setRulebookForm}
+                      />
                   </Wrapper>
               </StyledWrapper>
               {

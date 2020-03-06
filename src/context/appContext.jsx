@@ -22,6 +22,12 @@ let initialState = {
   adminContext: {
     text: [
 
+    ],
+    rulebooks: [
+
+    ],
+    liabilityWaiver: [
+
     ]
   }
 };
@@ -97,7 +103,7 @@ export const setLeagueContext = async state => {
 }
 
 export const setAdminContext = async state => {
-  //Update the Admin Context to feed Liability waiver and Rulebooks
+  //Update the Admin Context to feed Liability waiver
   await database
     .ref("Admin")
     .child("Text")
@@ -114,8 +120,14 @@ export const setAdminContext = async state => {
     .child("Rulebooks")
     .once("value")
     .then(snapshot => {
-      let newSnapshot = snapshot.val();
-      state.adminContext.rulebooks = newSnapshot;
+      let rulebooks = snapshot.val();
+      for(let r in rulebooks) {
+        let rulebookObject = {
+          ...rulebooks[r],
+          rulebookId: r
+        }
+        state.adminContext.rulebooks.push(rulebookObject);
+      }
     }).catch(error => {
       console.log(error);
     });
