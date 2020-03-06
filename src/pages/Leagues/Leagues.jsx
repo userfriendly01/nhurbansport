@@ -1,13 +1,13 @@
 import React, { useContext } from 'react'
 import {
-    Container,
-    Wrapper,
-    Image,
-    Text,
-    TextContainer,
-    DisplayCard
+  AddButton,
+  Container,
+  Wrapper,
+  Image,
+  Text,
+  TextContainer,
+  DisplayCard
 } from '../../components'
-import AddLeagueButton from './AddLeagueButton.jsx'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import { StateContext } from '../../context/appContext.jsx'
@@ -83,7 +83,7 @@ const Leagues = () => {
                       </div>
                   ))
                 }
-                <AddLeagueButton to="/add-league" />
+                <AddButton to="/add-league" />
             </StyledWrapper>
         </Container>
     );

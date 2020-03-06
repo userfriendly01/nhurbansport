@@ -1,4 +1,4 @@
-export { default as Checkbox } from '../FormComponents/CustomCheckbox.jsx'
-export { default as DayPicker } from '../FormComponents/CustomDayPicker.jsx'
-export { default as TextField } from '../FormComponents/CustomTextField.jsx'
-export { default as TextDropdown } from '../FormComponents/CustomTextFieldDropDown.jsx'
+export { default as Checkbox } from './CustomCheckbox.jsx'
+export { default as DayPicker } from './CustomDayPicker.jsx'
+export { default as TextField } from './CustomTextField.jsx'
+export { default as TextDropdown } from './CustomTextFieldDropDown.jsx'

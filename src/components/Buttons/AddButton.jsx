@@ -3,7 +3,7 @@ import { ControlPoint } from '@material-ui/icons'
 import { 
     Wrapper, 
     DisplayCard 
-} from '../../components'
+} from '..'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
@@ -23,7 +23,7 @@ const StyledPlus = styled(ControlPoint)`
 }
 `
 
-const AddLeagueButton = ({
+const AddButton = ({
     to
 }) => {
   return (
@@ -37,4 +37,4 @@ const AddLeagueButton = ({
   );
 };
 
-export default AddLeagueButton;
+export default AddButton;

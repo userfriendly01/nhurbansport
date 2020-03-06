@@ -1,18 +1,25 @@
 {
   "Admin" : {
+    "Liability Waiver" : "",
+    "Rulebooks" : {
+      "Flag Football" : ""
+    },
     "Text" : {
-      "Home: About Us" : "<h6 class=\"ql-align-center\"><strong style=\"color: rgb(0, 0, 0); background-color: initial;\">ABOUT US</strong></h6><p class=\"ql-align-center\">___</p><p class=\"ql-align-center\"><span style=\"color: rgb(0, 0, 0); background-color: initial;\" class=\"ql-size-small\">NH Urban Sport, LLC is a veteran-owned-and operated,&nbsp;recreational&nbsp;sports organization that provides adaptive sports to disabled veterans and all able-bodied&nbsp;athletes in southern New Hampshire. It's the first organization in the Granite State to offer both adaptive and non-adaptive sports in the area.&nbsp;</span></p><p class=\"ql-align-center\"><br></p><p class=\"ql-align-center\"><strong style=\"color: rgb(0, 0, 0); background-color: initial;\" class=\"ql-size-small\">Mission</strong></p><p class=\"ql-align-center\"><span style=\"color: rgb(0, 0, 0); background-color: initial;\" class=\"ql-size-small\">To&nbsp;provide affordable, inclusive athletic and recreational programming for adults with and without physical disabilities in a positive and empowering environment.&nbsp;</span></p><p class=\"ql-align-center\"><br></p><p class=\"ql-align-center\"><strong style=\"color: rgb(0, 0, 0); background-color: initial;\" class=\"ql-size-small\">Vision</strong></p><p class=\"ql-align-center\"><span style=\"color: rgb(0, 0, 0); background-color: initial;\" class=\"ql-size-small\">To&nbsp;build an inclusive recreational sports organization not just accommodated for or accessible to veterans&nbsp;with disabilities&nbsp;but rather specifically designed for their unique recreational needs while also engaging the able-bodied public.&nbsp;</span></p>",
+      "Home: About Us" : "<h6 class=\"ql-align-center\"><strong style=\"color: rgb(0, 0, 0); background-color: initial;\">ABOUT US</strong></h6><p class=\"ql-align-center\">___</p><p class=\"ql-align-center\"><span class=\"ql-size-small\" style=\"color: rgb(0, 0, 0); background-color: initial;\">NH Urban Sport, LLC is a veteran-owned-and operated,&nbsp;recreational&nbsp;sports organization that provides adaptive sports to disabled veterans and all able-bodied&nbsp;athletes in southern New Hampshire. It's the first organization in the Granite State to offer both adaptive and non-adaptive sports in the area.&nbsp;</span></p><p class=\"ql-align-center\"><br></p><p class=\"ql-align-center\"><strong class=\"ql-size-small\" style=\"color: rgb(0, 0, 0); background-color: initial;\">Mission</strong></p><p class=\"ql-align-center\"><span class=\"ql-size-small\" style=\"color: rgb(0, 0, 0); background-color: initial;\">To&nbsp;provide affordable, inclusive athletic and recreational programming for adults with and without physical disabilities in a positive and empowering environment.&nbsp;</span></p><p class=\"ql-align-center\"><br></p><p class=\"ql-align-center\"><strong class=\"ql-size-small\" style=\"background-color: initial;\">Vision</strong></p><p class=\"ql-align-center\"><span class=\"ql-size-small\" style=\"color: rgb(0, 0, 0); background-color: initial;\">To&nbsp;build an inclusive recreational sports organization not just accommodated for or accessible to veterans&nbsp;with disabilities&nbsp;but rather specifically designed for their unique recreational needs while also engaging the able-bodied public.&nbsp;</span></p>",
       "Home: Option 1" : "<p class=\"ql-align-center\"><strong>SPORTS LEAGUES</strong></p><p class=\"ql-align-center\"><strong>__</strong></p><p class=\"ql-align-center\"><span class=\"ql-size-small\">From the couch potato to the weekend warrior, we have a sport for you.</span></p>",
       "Home: Option 2" : "<p class=\"ql-align-center\"><strong>JOIN OUR EMAIL LIST</strong></p><p class=\"ql-align-center\"><strong>__</strong></p><p class=\"ql-align-center\"><span class=\"ql-size-small\">Stay up-to-date with all things happening in the league.</span></p>",
       "Home: Option 3" : "<p class=\"ql-align-center\"><strong>PLAYER PORTAL</strong></p><p class=\"ql-align-center\"><strong>__</strong></p><p class=\"ql-align-center\"><span class=\"ql-size-small\">Create an account to explore the forums for updated rosters, rules, and rankings.</span></p>",
       "Veterans" : "<p><span class=\"ql-size-large\" style=\"color: rgb(136, 136, 136);\">Adaptive Recreational Sports for Veterans</span></p><p><br></p><p><span class=\"ql-size-small\">Approximately 112,790 veterans live in the Granite State. More than 15 percent of which (16,756) have a service-connected disability. Unfortunately, at this time, there is a lack of recreational outlets for injured and non-injured veterans in southern New Hampshire. Through sports, NH Urban Sport can offer an opportunity to maintain optimum physical health and to increase mental well being through activity and socialization.</span></p><p><br></p><p><span class=\"ql-size-small\">According to the Center for Disease Control and Prevention (CDC), “With good health habits and access to health care, many disabilities can be delayed or even prevented… [by] increasing physical activity, and reducing or preventing obesity can eliminate some of the underlying causes of disability.” In fact, the CDC also reports that in most cases, secondary issues like obesity, diabetes and heart disease, all of which are preventable, are a greater problem than the disability itself.</span></p><p><br></p><p><strong>With access to an affordable, accessible, and inclusive athletic and recreational organization like NH Urban Sport, we can begin to make a significant and positive impact in the lives of service members living with disabilities.</strong></p>"
-    },
-    "Rulebooks" : {
-      "Flag Football" : ""
-    },
-    "Liability Waiver": ""
+    }
   },
   "Games" : {
+    "GAME1BB062019" : {
+      "awayTeamKey" : "TEAM-4",
+      "gameDate" : "12/30/2019",
+      "gameTime" : "11:00am",
+      "homeTeamKey" : "TEAM-3",
+      "sessionKey" : "-Lso1uPG6zNnih--n9NP"
+    },
     "GAME1FLAG062019" : {
       "awayTeamKey" : "TEAM-2",
       "gameDate" : "12/1/2019",
@@ -26,25 +33,19 @@
       "gameTime" : "11:00am",
       "homeTeamKey" : "TEAM-3",
       "sessionKey" : "-LsnsWi_PLFLBPeRbP16"
-    },
-    "GAME1BB062019" : {
-      "awayTeamKey" : "TEAM-4",
-      "gameDate" : "12/30/2019",
-      "gameTime" : "11:00am",
-      "homeTeamKey" : "TEAM-3",
-      "sessionKey" : "-Lso1uPG6zNnih--n9NP"
     }
   },
   "Images" : {
+    "Placeholder" : "https://firebasestorage.googleapis.com/v0/b/nh-urban-sport.appspot.com/o/images%2FNo%20Image.JPG?alt=media&token=dc5a3422-0cb5-4433-b391-7f433a15d35d",
     "Events Banner" : "https://firebasestorage.googleapis.com/v0/b/nh-urban-sport.appspot.com/o/images%2Fevents-banner.jpg?alt=media&token=91aa4e50-231e-43a1-914a-d383e45b4570",
-    "Home Banner" : "https://firebasestorage.googleapis.com/v0/b/nh-urban-sport.appspot.com/o/images%2Fhome-banner-img.jpg?alt=media&token=298f016b-1477-498c-9516-8d32f38d7b9b",
+    "Home Banner" : "https://firebasestorage.googleapis.com/v0/b/nh-urban-sport.appspot.com/o/images%2FHome%20Banner.JPG?alt=media&token=06756b1e-1fb6-435f-bb17-77c5ca78ba2e",
     "Home: About Us" : "https://firebasestorage.googleapis.com/v0/b/nh-urban-sport.appspot.com/o/images%2Fabout-us-img.jpg?alt=media&token=e700c891-921a-467d-a164-5d219f286498",
     "Home: Option 1" : "https://firebasestorage.googleapis.com/v0/b/nh-urban-sport.appspot.com/o/images%2Fhome-option-1-img.jpg?alt=media&token=d6a8cec2-c00a-43d3-afe9-0dea3933bd72",
     "Home: Option 2" : "https://firebasestorage.googleapis.com/v0/b/nh-urban-sport.appspot.com/o/images%2Fhome-option-2-img.JPG?alt=media&token=766e3adc-4f3a-4aa2-aa7d-358e138bcc9e",
     "Home: Option 3" : "https://firebasestorage.googleapis.com/v0/b/nh-urban-sport.appspot.com/o/images%2Fhome-option-3-img.JPG?alt=media&token=ce52c7cd-4d3d-44b8-abf5-4158c8e88ce3",
     "How To Banner" : "https://firebasestorage.googleapis.com/v0/b/nh-urban-sport.appspot.com/o/images%2Fpp-how-to-banner.JPG?alt=media&token=975b78a6-6fa1-442d-9da8-eced43c7e647",
     "Leagues Banner" : "https://firebasestorage.googleapis.com/v0/b/nh-urban-sport.appspot.com/o/images%2Fleague-banner-img.jpg?alt=media&token=94bc38bc-4771-43d4-9ee9-ab710050b8cf",
-    "New League Image" : "https://firebasestorage.googleapis.com/v0/b/nh-urban-sport.appspot.com/o/images%2FNature%20Background.jpg?alt=media&token=2158af8d-6015-4f26-ba27-6a8c76fcf0e5",
+    "New League Image" : "https://firebasestorage.googleapis.com/v0/b/nh-urban-sport.appspot.com/o/images%2Fpp-standings.JPG?alt=media&token=b2e1f721-1eaa-4daf-9be0-fa9a24ec1740",
     "Player Portal Banner" : "https://firebasestorage.googleapis.com/v0/b/nh-urban-sport.appspot.com/o/images%2Fplayer-portal-banner.jpg?alt=media&token=1f16b3d7-b2ea-4093-ae17-3f3d8ab5270a",
     "Player Portal: Contact" : "https://firebasestorage.googleapis.com/v0/b/nh-urban-sport.appspot.com/o/images%2Fpp-improve.JPG?alt=media&token=35f3a23d-6059-4ed7-a9d4-358ba1f1f450",
     "Player Portal: How To" : "https://firebasestorage.googleapis.com/v0/b/nh-urban-sport.appspot.com/o/images%2Fpp-how-to.JPG?alt=media&token=29bf1594-d881-499c-bf57-72f8ebb0c56f",
@@ -125,6 +126,38 @@
       "name" : "Coed Basketball",
       "price" : "$55",
       "selectShirtOption" : true,
+      "selectTeamOption" : true
+    },
+    "-LvbdygG4Y7VGfckG2Zb" : {
+      "active" : true,
+      "coupons" : "Boop!",
+      "date" : "12/3/2019",
+      "day" : "Tuesday",
+      "disclaimer" : "Boop!",
+      "html" : "<p>Another league! YAASS!</p>",
+      "image" : "https://firebasestorage.googleapis.com/v0/b/nh-urban-sport.appspot.com/o/images%2FHome%20Banner?alt=media&token=d27aea91-a661-4e45-80f0-ea39901da345",
+      "instructions" : "Boop!",
+      "length" : "9 Weeks",
+      "location" : "Manchester, NH",
+      "name" : "Comet's Snowball",
+      "price" : "25.00",
+      "selectShirtOption" : true,
+      "selectTeamOption" : true
+    },
+    "-Lvc_PcnanC9C5cOj-CZ" : {
+      "active" : true,
+      "coupons" : "Boop!",
+      "date" : "12/13/2019",
+      "day" : "Thursdays",
+      "disclaimer" : "Boop!",
+      "html" : "<p>Lets make sure this baby still works!</p>",
+      "image" : "https://firebasestorage.googleapis.com/v0/b/nh-urban-sport.appspot.com/o/images%2Fpp-schedules.JPG?alt=media&token=03f05bb6-bcab-4d87-8ecf-2aaf0fa07550",
+      "instructions" : "Boop!",
+      "length" : "9 Weeks",
+      "location" : "Manchester, NH",
+      "name" : "New Kitty League",
+      "price" : "16.00",
+      "selectShirtOption" : false,
       "selectTeamOption" : true
     }
   },

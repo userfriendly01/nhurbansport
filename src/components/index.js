@@ -1,5 +1,4 @@
 export { default as Accordion } from "./Accordion.jsx"
-export { default as Button } from "./Button.jsx"
 export { default as Cart } from "./Cart.jsx"
 export { default as Container } from "./Container.jsx"
 export { default as Footer } from "./Footer.jsx"
@@ -18,3 +17,4 @@ export { default as CustomHTMLParser } from "./TextEditor/CustomHTMLParser.jsx"
 export { default as TextCard } from "./TextEditor/TextCard.jsx"
 export { default as Wrapper } from "./Wrapper.jsx"
 export * from './FormComponents'
+export * from './Buttons'
