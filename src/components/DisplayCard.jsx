@@ -9,9 +9,11 @@ const DisplayCard = styled.div`
         height: ${props => props.height};
 
         padding: 1%;
+        margin: ${props => props.margin};
         border-radius: 5px;
 
         font-size: ${props => props.size};
+        font-weight: ${props => props.weight};
         white-space: pre-line;
     `;
 

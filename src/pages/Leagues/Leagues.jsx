@@ -1,11 +1,8 @@
 import React, { useContext } from 'react'
 import {
   AddButton,
-  Container,
   Wrapper,
   Image,
-  Text,
-  TextContainer,
   DisplayCard
 } from '../../components'
 import { Link } from 'react-router-dom'
@@ -20,72 +17,54 @@ const StyledImage = styled.img`
 `;
 
 const StyledLink = styled(Link)`
+  color: black;
   &:hover{
     text-decoration: none;
-    color: pink;
+    color: black;
   }
 `;
 
 const StyledWrapper = styled(Wrapper)`
-    flex-wrap: wrap;
-    width: 650px;
-    margin-top: 10px;
-    &:hover{
-      text-decoration: none;
-      color: pink;
-    }
+  align-items: center;
+  flex-wrap: wrap;
+  width: 650px;
+  margin-top: 10px;
 `;
 
-const StyledDisplayCard = styled(DisplayCard)`
-  flex-direction: column;
-  padding: 0px;
-  margin: 10 0;
-`;
-
-const StyledParagraph = styled.p`
-  margin: 0px;
-  color: black;
-  font-size: ${props => props.size ? props.size : "12px"};
-  font-weight: ${props => props.weight ? props.weight : "normal"};
-`;
 
 const Leagues = () => {
     const context = useContext(StateContext);
     const activeSessions = context.state.leagueContext.leagues;
     
     return (
-        <Container direction="column" align="center">
-            <Container>
+        <Wrapper direction="column" align="center">
+            <Wrapper>
                 <Image id="Leagues Banner"
                   width="650px"
                   height="320px">
-                    <TextContainer bcolor="#0066ff" position="absolute" opacity="0.8">
-                        <Text color="white" opacity="1" size="32">Leagues</Text>
-                        <Text color="white" size="16">To register for a league, choose your sport, select the number of players, and click “Add to Cart.” It's that easy.</Text>
-                    </TextContainer>
                 </Image>
-            </Container>
+            </Wrapper>
             <StyledWrapper>
                 {
                   activeSessions.map((session, index) => (
                       <div key={`session${index}`} >
                         <StyledLink to={`/league/${session.sessionId}`}>
-                          <Wrapper direction="column" width="200">
-                          <StyledDisplayCard>
-                            <StyledImage src={session.image} />
-                              <StyledParagraph size="14">{session.name}</StyledParagraph>
-                              <StyledParagraph >{session.location} | {session.day} ({session.length})</StyledParagraph>
-                              <StyledParagraph>__</StyledParagraph>
-                              <StyledParagraph>{session.price}</StyledParagraph>
-                            </StyledDisplayCard>
-                          </Wrapper>
+                          <DisplayCard margin="5">
+                            <Wrapper direction="column" width="200" align="center">
+                              <StyledImage src={session.image} />
+                              <DisplayCard size="14">{session.name}</DisplayCard>
+                              <DisplayCard size="11">{session.location} | {session.day}</DisplayCard>
+                              <DisplayCard size="11">({session.length})</DisplayCard>
+                              <DisplayCard size="11">{session.price}</DisplayCard>
+                            </Wrapper>
+                          </DisplayCard>
                         </StyledLink>
                       </div>
                   ))
                 }
                 <AddButton to="/add-league" />
             </StyledWrapper>
-        </Container>
+        </Wrapper>
     );
 }
 
