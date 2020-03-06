@@ -73,7 +73,8 @@ const StyledTitle = styled.dt `
       return (
         <Container direction="column" 
                     border="solid 1px #eeeeee" 
-                    margin="10px 5px">
+                    margin="10px 5px"
+                    width={props.width}>
           <StyledTitle bcolor={props.bcolor}
                         color={props.color}
                         scolor={props.scolor}
