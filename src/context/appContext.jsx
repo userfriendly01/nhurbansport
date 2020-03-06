@@ -108,6 +108,17 @@ export const setAdminContext = async state => {
     }).catch(error => {
       console.log(error);
     });
+
+    await database
+    .ref("Admin")
+    .child("Rulebooks")
+    .once("value")
+    .then(snapshot => {
+      let newSnapshot = snapshot.val();
+      state.adminContext.rulebooks = newSnapshot;
+    }).catch(error => {
+      console.log(error);
+    });
 }
 
 export const setImageContext = async state => {

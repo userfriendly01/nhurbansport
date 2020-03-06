@@ -27,7 +27,7 @@ const PlayerPortal = () => {
           <StyledWrapper>
                 <DisplayCard margin="10" height="270">
                 <Wrapper direction="column" width="280px" bcolor="white" justify="center">
-                    <Link to="/rule-book">
+                    <Link to="/rule-books">
                     <Image id="Player Portal: RuleBook"
                         width="200"
                         height="180" />

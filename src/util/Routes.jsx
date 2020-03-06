@@ -12,7 +12,9 @@ import {
     Veterans,
     PlayerPortal,
     Roster,
-    RuleBook,
+    RulebookTemplate,
+    Rulebook,
+    Rulebooks,
     Standings
 } from '../pages'
 
@@ -53,8 +55,8 @@ export const routes = [
         component: Roster
     },
     {
-        path: "/rule-book",
-        component: RuleBook
+        path: "/rule-books",
+        component: Rulebooks
     },
     {
         path: "/standings",
@@ -80,5 +82,13 @@ export const routes = [
     {
         path: "/league/:id",
         component: League
+    },
+    {
+        path: "/rule-book/:id",
+        component: Rulebook
+    },
+    {
+        path: "/add-rulebook",
+        component: RulebookTemplate
     }
 ];
