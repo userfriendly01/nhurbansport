@@ -1,8 +1,6 @@
 import React, { useState, useContext } from "react"
 import {
   DisplayCard,
-  CreateDropDown,
-  TextField,
   Wrapper
 } from "../../components"
 import ScheduleGroup from "./ScheduleGroup.jsx"
@@ -10,10 +8,16 @@ import styled from 'styled-components'
 import { StateContext } from '../../context/appContext.jsx'
 
 const StyledTitle = styled(Wrapper)`
-  width: 600;
+  width: 380;
   color: #483d8b;
-  padding: 1% 1% 1% 6%;
+  padding: 1% 1% 1% 3%;
   font-weight: bold;
+`
+const StyledButton = styled.button`
+  margin: 0 15;
+  width: 150;
+  height: 30;
+  font-size: 13;
 `
 
 const scheduleObject = {
@@ -91,22 +95,15 @@ const Schedule = ({match}) => {
   return (
     <DisplayCard width="600" bcolor="F5F5F5" border="5px solid white" direction="column">
       <Wrapper direction="column" align="center" width="100%">
-        <StyledTitle>{session.sessionFriendlyName} Schedule</StyledTitle>
+        <Wrapper>
+          <StyledTitle>{session.sessionFriendlyName} Schedule</StyledTitle>
+          <StyledButton>Create Schedule Group</StyledButton>
+        </Wrapper>
           { 
             scheduleGroups.map(group => (
               <ScheduleGroup scheduleGroup={group} />
             ))
           }
-      </Wrapper>
-      <Wrapper direction="column" align="center" width="100%">
-        <button>Create Schedule Group</button>
-        <button>Add game</button>
-        <CreateDropDown 
-        width="300"
-        label="name"
-        value="teamId"
-        options={teamOptions} 
-        updateFunction={() => console.log("Update kicked off")} />
       </Wrapper>
     </DisplayCard>
   )

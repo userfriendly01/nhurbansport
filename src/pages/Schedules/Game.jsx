@@ -18,6 +18,10 @@ const StyledGameRow = styled(Wrapper)`
   padding: 5;
   background-color: ${props => props.bcolor}
 `
+const StyledInput = styled.input`
+  width: 45;
+  margin: 15 5;
+`
 //Custom Styling for winner
 
 const ScheduleGroup = props => {
@@ -56,14 +60,18 @@ const ScheduleGroup = props => {
         </StyledLocationRow>
         <StyledGameRow>
         <CreateDropDown 
-          width="200"
+          width="180"
           label="name"
           value="teamId"
           options={teamOptions} 
           updateFunction={()=> {console.log("Almost Done")}} />
-          <div>{homeTeamScore} : {awayTeamScore}</div>
+          <div>
+            <StyledInput type="number" id="homeTeam" name="homeTeam" min="0" />
+            : 
+            <StyledInput type="number" id="awayTeam" name="awayTeam" min="0" />
+          </div>
           <CreateDropDown 
-          width="200"
+          width="180"
           label="name"
           value="teamId"
           options={teamOptions} 

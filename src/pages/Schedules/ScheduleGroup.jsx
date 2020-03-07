@@ -20,6 +20,7 @@ const StyledGroupRow = styled(Wrapper)`
   padding: 10 5;
   font-size: 25;
   font-weight: bold;
+  align-items: baseline;
 `
 
 const StyledDateRow = styled(Wrapper)`
@@ -28,6 +29,14 @@ const StyledDateRow = styled(Wrapper)`
   background-color: #555555;
   color: white;
 `
+
+const StyledButton = styled.button`
+  margin: 0 15;
+  width: 80;
+  height: 30;
+  font-size: 13;
+`
+
 const ScheduleGroup = props => {
   const scheduleGroup = props.scheduleGroup;
   const groupLabel = scheduleGroup.groupLabel ? scheduleGroup.groupLabel : "";
@@ -45,6 +54,7 @@ const ScheduleGroup = props => {
             form={groupForm}
             setForm={() => console.log("Form is Set")}
           />
+          <StyledButton>Add game</StyledButton>
         </StyledGroupRow>
         <StyledDateRow>{groupDate}</StyledDateRow>
         {
