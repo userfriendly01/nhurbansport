@@ -1,8 +1,6 @@
 import React, { useContext, useState } from 'react'
 import {
   StandardDropDown,
-  EditIcon,
-  DeleteIcon,
   Wrapper,
   Image,
   DisplayCard
@@ -61,24 +59,6 @@ const Schedules = () => {
     return sessionsWithoutGames;
   }
 
-    const handleDelete = rulebookId => {
-      //Include confirmation message that all games will be deleted
-      deleteSchedule(rulebookId).then(() => {
-        const deleteIndex = rulebooks.map(deletedRulebook => { return deletedRulebook.ruleBookId; }).indexOf(rulebookId);
-        rulebooks.splice(deleteIndex, 1);
-        context.setState({
-          ...context.state,
-          leagueContext: {
-            ...context.state.leagueContext,
-            leagues: [
-              ...context.state.leagueContext.leagues
-              //Get to specific league: replace sessionGames with empty array
-            ]
-          }
-        });
-      });
-    };
-
     const handleCreate = option => {
       console.log("handleCreate Option: ", option);
       setRedirect({
@@ -89,7 +69,7 @@ const Schedules = () => {
 
     return (
       <div>
-      { redirect.value ? <Redirect to={`/schedule/${redirect.value}`} /> :
+      { redirect.value ? <Redirect to={`/add-schedule/${redirect.value}`} /> :
         <Wrapper direction="column" align="center">
             <Wrapper>
                 <Image id="Schedules Banner"
@@ -103,11 +83,7 @@ const Schedules = () => {
                       <div key={`session${index}`} >
                         <DisplayCard margin="5" >
                           <Wrapper direction="column">
-                            <Wrapper justify="center" margin="7">
-                              <EditIcon route="/edit-schedule" id={session.sessionId} />
-                              <DeleteIcon deleteFunction={() => handleDelete(session.sessionId)}/>
-                            </Wrapper>
-                          <StyledLink to={`/edit-schedule/${session.sessionId}`}>
+                          <StyledLink to={`/schedule/${session.sessionId}`}>
                             <Wrapper direction="column" width="200" align="center">
                               <StyledImage src={session.image} />
                               <DisplayCard size="14">{session.sessionFriendlyName}</DisplayCard>

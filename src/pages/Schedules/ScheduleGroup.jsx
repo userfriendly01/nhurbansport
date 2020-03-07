@@ -38,20 +38,19 @@ const StyledButton = styled.button`
   font-size: 13;
 `
 
-const ScheduleGroup = props => {
-  const scheduleGroup = props.scheduleGroup;
+const ScheduleGroup = ({
+  scheduleGroup,
+  edit,
+  groupForm
+}) => {
+  console.log("EDIT?", edit);
   const groupLabel = scheduleGroup.groupLabel ? scheduleGroup.groupLabel : "";
   const groupDate = scheduleGroup.date ? scheduleGroup.date : "";
   const games = scheduleGroup.games ? scheduleGroup.games : [];
-  const groupForm = props.edit ? props.edit : { 
-    edit: true, 
-    group: "PlaceHolderLabel",
-    date: null
-  };
 
   return (
     <>
-    {groupForm.edit ?
+    {edit ?
       <StyledDisplay>
         <StyledGroupRow>
           <TextField 
@@ -70,7 +69,7 @@ const ScheduleGroup = props => {
         </StyledDateRow>
         {
           games.map(game => (
-            <Game game={game} edit={groupForm.edit}/>
+            <Game game={game} edit={edit}/>
           ))
         }
       </StyledDisplay>

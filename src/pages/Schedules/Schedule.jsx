@@ -1,7 +1,9 @@
 import React, { useState, useContext } from "react"
 import {
   DisplayCard,
-  Wrapper
+  Wrapper,
+  EditIcon,
+  DeleteIcon,
 } from "../../components"
 import ScheduleGroup from "./ScheduleGroup.jsx"
 import styled from 'styled-components'
@@ -66,50 +68,48 @@ const scheduleObject = {
   ]
 }
 
-const teamOptions = [
-  {
-    teamId: "1234",
-    name: "PoundTown"
-  },
-  {
-    teamId: "4567",
-    name: "Monstars"
-  },
-  {
-    teamId: "7412",
-    name: "PiffSquad"
-  }
-]
-
 const Schedule = ({match}) => {
   const context = useContext(StateContext);
   const sessionId = match.params.id;
   const sessions = context.state.leagueContext.leagues;
-  const session = sessions.find(obj => obj.sessionId === sessionId) ? leagues.find(obj => obj.sessionId === sessionId) : {};
+  const session = sessions.find(obj => obj.sessionId === sessionId) ? sessions.find(obj => obj.sessionId === sessionId) : {};
   // const teams = session.sessionTeams ? session.sessionTeams : [];
   // const scheduleGroups = session.schedule.scheduleGroups;
   const scheduleGroups = scheduleObject.scheduleGroups;
 
-  //Spread existing group forms & set initial count
-  const [groupForm, setGroupForm] = useState({
-    edit: true,
-    groupCount: 0,
-    
-  });
+  const handleDelete = rulebookId => {
+    //Include confirmation message that all games will be deleted
+    // deleteSchedule(rulebookId).then(() => {
+    //   const deleteIndex = rulebooks.map(deletedRulebook => { return deletedRulebook.ruleBookId; }).indexOf(rulebookId);
+    //   rulebooks.splice(deleteIndex, 1);
+    //   context.setState({
+    //     ...context.state,
+    //     leagueContext: {
+    //       ...context.state.leagueContext,
+    //       leagues: [
+    //         ...context.state.leagueContext.leagues
+    //         //Get to specific league: replace sessionGames with empty array
+    //       ]
+    //     }
+    //   });
+    // });
+  };
 
-  return (
+   return (
     <DisplayCard width="600" bcolor="F5F5F5" border="5px solid white" direction="column">
       <Wrapper direction="column" align="center" width="100%">
+        <Wrapper justify="center" margin="7">
+          <EditIcon route="/edit-schedule" id={sessionId} />
+          <DeleteIcon deleteFunction={() => handleDelete(session.sessionId)}/>
+        </Wrapper>
         <Wrapper>
           <StyledTitle>{session.sessionFriendlyName} Schedule</StyledTitle>
-          <StyledButton>Create Schedule Group</StyledButton>
         </Wrapper>
           { 
             scheduleGroups.map(group => (
-              <ScheduleGroup scheduleGroup={group} />
+              <ScheduleGroup scheduleGroup={group} edit={false} />
             ))
           }
-          <StyledButton>Save</StyledButton>
       </Wrapper>
     </DisplayCard>
   )
