@@ -12,6 +12,7 @@ import {
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 import { StateContext } from '../../context/appContext.jsx'
+import { useEffect } from 'react'
 
 const StyledImage = styled.img`
   width: 200;
@@ -41,6 +42,28 @@ const Schedules = () => {
   const context = useContext(StateContext);
   const activeSessions = context.state.leagueContext.leagues;
 
+  const getSessionsWithSchedules = () => {
+    let sessionsWithGames = [];
+    activeSessions.map(session => {
+      const games = session.sessionGames ? session.sessionGames : [];
+      if(games.length !== 0) {
+        sessionsWithGames.push(session);
+      }
+    });
+    return sessionsWithGames;
+  }
+
+  const getSessionsWithoutSchedules = () => {
+    let sessionsWithoutGames = ["Crap"];
+    activeSessions.map(session => {
+      const games = session.sessionGames ? session.sessionGames : [];
+      if(games.length === 0) {
+        sessionsWithoutGames.push(session.sessionFriendlyName);
+      }
+    });
+    return sessionsWithoutGames;
+  }
+
     const handleDelete = rulebookId => {
       //Include confirmation message that all games will be deleted
       deleteSchedule(rulebookId).then(() => {
@@ -69,7 +92,7 @@ const Schedules = () => {
             </Wrapper>
             <StyledWrapper>
                 {
-                  activeSessions.map((session, index) => (
+                  getSessionsWithSchedules().map((session, index) => (
                       <div key={`session${index}`} >
                         <DisplayCard margin="5" >
                           <Wrapper direction="column">
@@ -90,8 +113,7 @@ const Schedules = () => {
                 }
                 <AddButton to="/add-schedule" />
             </StyledWrapper>
-            <CreateDropDown width="300" options={["Option 1", "Option 2", "Monkey", "Gene"]} />
-            <StandardDropDown isSearchable={false} width="300" options={["Option 1", "Option 2", "Monkey", "Gene"]} />
+            <StandardDropDown isSearchable={false} width="300" options={getSessionsWithoutSchedules()} />
         </Wrapper>
     );
 }

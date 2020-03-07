@@ -5,9 +5,11 @@ const StandardDropDown = props => {
   const options = props.options ? props.options : null;
   const updateFunction = props.updateFunction ? props.updateFunction : null;
 
+
   const generateOptions = () => {
     const formattedOptions = [];
-    options.map((label) => {
+    console.log("The Standard Options are: ", options);
+    options.map(label => {
       formattedOptions.push({
         label,
         value: label.toLowerCase().replace(/\W/g, '')
