@@ -35,20 +35,15 @@ const Schedule = ({match}) => {
   const [scheduleForm, setScheduleForm] = useState(schedule);
   const scheduleGroups = scheduleForm.scheduleGroups;
   const groupCount = scheduleGroups.length ? scheduleGroups.length : 0;
-  console.log("This Render has this as the scheduleForm", scheduleForm)
 
   const createScheduleGroup = () => {
-    //Add schedule group object to groups array with Id - This should rerender and show one group
-    const testobj = {
-      ...schedule,
+    setScheduleForm({
+      ...scheduleForm,
       scheduleGroups: [ 
-        ...schedule.scheduleGroups,
-        { groupId: schedule.scheduleId + "G" + groupCount }
+        ...scheduleForm.scheduleGroups,
+        { groupId: scheduleForm.scheduleId + "G" + groupCount, games: [] }
       ]
-    }
-    console.log("Gotta keep up with the schedule Form", testobj);
-
-    setScheduleForm(testobj)
+    })
   };
 
   return (
@@ -59,7 +54,7 @@ const Schedule = ({match}) => {
         </Wrapper>
           { 
             scheduleGroups.map(group => (
-              <ScheduleGroup group={group} edit={true} form={scheduleForm} setForm={setScheduleForm} />
+              <ScheduleGroup key={group.groupId} groupId={group.groupId} edit={true} form={scheduleForm} setForm={setScheduleForm} />
             ))
           }
           <Wrapper width="550">

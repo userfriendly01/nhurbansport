@@ -5,7 +5,7 @@ import styled from 'styled-components'
 
 const StyledDeleteIcon = styled(FontAwesomeIcon)`
   color: black;
-  font-size: 20;
+  font-size: ${props => props.size ? props.size : "20"};
   margin: 0 10px;
   &:hover{
     cursor: pointer;
@@ -14,11 +14,12 @@ const StyledDeleteIcon = styled(FontAwesomeIcon)`
 `;
 
 const DeleteIcon = ({
-  deleteFunction
+  deleteFunction,
+  size
 }) => {
 
 return (
-  <StyledDeleteIcon onClick={deleteFunction} icon={faTrashAlt} />
+  <StyledDeleteIcon size={size} onClick={deleteFunction} icon={faTrashAlt} />
   )
 }
 

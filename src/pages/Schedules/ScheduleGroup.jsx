@@ -1,6 +1,7 @@
 import React, { useState } from "react"
 import {
   DayPicker,
+  DeleteIcon,
   DisplayCard,
   TextField,
   Wrapper
@@ -39,44 +40,62 @@ const StyledButton = styled.button`
 `
 
 const ScheduleGroup = ({
-  group,
+  groupId,
   edit,
   form,
   setForm
 }) => {
+  const groups = form.scheduleGroups;
+  const group = groups.find(obj => obj.groupId === groupId) ? groups.find(obj => obj.groupId === groupId) : {};
   const groupLabel = group.groupLabel ? group.groupLabel : "";
   const groupDate = group.date ? group.date : "";
-  const games = group.games ? group.games : [];
-  console.log(group);
+  const games = group.games;
+  const gameCount = group.games.length ? group.games.length : 0;
 
-  const [groupForm, setGroupForm] = useState();
+  console.log("Show me the form", form);
 
-const updateGroupsArray = () => {
-  //check for groupId in sessionGroups
-  sessions.find(obj => obj.sessionId === sessionId)
-
-}
-
-  const handleSomething = () => {
+  const createGame = () => {
+    const newGroup = {
+      ...group,
+      games: [
+        ...group.games,
+        { gameId: form.scheduleGroups.groupId + "GA" + gameCount }
+      ]
+    }
+    deleteScheduleGroup()
     setForm({
       ...form,
-      sessionGroups: [
-        ...form.sessionGroups,
-
+      scheduleGroups: [ 
+        ...form.scheduleGroups,
+        newGroup
       ]
     })
-  }
+  };
+
+  const deleteScheduleGroup = () => {
+    const groupArray = form.scheduleGroups;
+    const deleteIndex = groupArray.map(deletedGroup => { return deletedGroup.groupId; }).indexOf(groupId);
+    groupArray.splice(deleteIndex, 1);
+    setForm({
+      ...form,
+      scheduleGroups: groupArray
+    })
+  };
+
   return (
     <>
     {edit ?
       <StyledDisplay>
+        <Wrapper justify="flex-end" padding="5 0 0 0">
+          <DeleteIcon size="16" deleteFunction={deleteScheduleGroup}/>
+        </Wrapper>
         <StyledGroupRow>
           <TextField 
             id="groupLabel"
             form={group}
             setForm={() => console.log("Form is Set")}
           />
-          <StyledButton>Add game</StyledButton>
+          <StyledButton onClick={createGame}>Add game</StyledButton>
         </StyledGroupRow>
         <StyledDateRow color="black">
           <DayPicker
@@ -87,7 +106,7 @@ const updateGroupsArray = () => {
         </StyledDateRow>
         {
           games.map(game => (
-            <Game game={game} edit={edit}/>
+            <Game key={game.gameID} game={game} edit={edit} form={form} setForm={setForm}/>
           ))
         }
       </StyledDisplay>
