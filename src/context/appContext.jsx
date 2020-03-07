@@ -64,7 +64,6 @@ const StateContextProvider = ({ children }) => {
 export { StateContextProvider, StateContext };
 
 export const setLeagueContext = async state => {
-  //enhance to add schedule for league onto context
     await getActiveSessions()
       .then((sessions) => {
           for(let s in sessions) {

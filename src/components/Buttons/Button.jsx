@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const Button = styled.button`
+const MyButton = styled.button`
     background-color: rgba(186,218,85,1);
     border-color: rgba(186,218,85,1);
     font-weight: bold;
@@ -10,4 +10,4 @@ const Button = styled.button`
     width: ${props => props.width};
 `
 
-export default Button;
+export default MyButton;

@@ -1,6 +1,5 @@
 import { getDatabase } from "../../service/Connect.jsx";
 
-
 const rulebooksRef = getDatabase().ref("Admin").child("Rulebooks");
 
 export const createRulebook = newRulebook => {

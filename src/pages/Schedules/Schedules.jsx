@@ -1,47 +1,99 @@
-import React, { useState, useContext } from 'react'
-import Container from '../../components/Container.jsx'
-import TextContainer from '../../components/TextContainer.jsx'
-import Text from '../../components/Text.jsx'
-import Image from '../../components/Image.jsx'
-import { getSchedule } from '../../service/Database'
+import React, { useContext } from 'react'
+import {
+  AddButton,
+  CreateDropDown,
+  StandardDropDown,
+  EditIcon,
+  DeleteIcon,
+  Wrapper,
+  Image,
+  DisplayCard
+} from '../../components'
+import styled from 'styled-components'
+import { Link } from 'react-router-dom'
 import { StateContext } from '../../context/appContext.jsx'
 
-//add image parameter to sessions
-//Pull all games, group by date, order by time
+const StyledImage = styled.img`
+  width: 200;
+  height: 180
+`;
 
+const StyledLink = styled(Link)`
+  color: black;
+  &:hover{
+    text-decoration: none;
+    color: black;
+  }
+`;
+
+const StyledWrapper = styled(Wrapper)`
+  align-items: center;
+  flex-wrap: wrap;
+  width: 650px;
+  margin-top: 10px;
+`;
+
+//Pull all active sessions
+//Add Dropdown at the bottom to "create Schedule" when you select a currently hidden schedule
+//if games exist - redirect to show shedules
+//if no games exist- hide session
 const Schedules = () => {
-    const context = useContext(StateContext);
-    const [ schedules, setSchedules ] = useState(getSchedule("SESHFLAG062019"));
-    const images = context.state.imageContext.imageData;
-    const activeSessions = context.state.leagueContext.leagues;
+  const context = useContext(StateContext);
+  const activeSessions = context.state.leagueContext.leagues;
 
+    const handleDelete = rulebookId => {
+      //Include confirmation message that all games will be deleted
+      deleteSchedule(rulebookId).then(() => {
+        const deleteIndex = rulebooks.map(deletedRulebook => { return deletedRulebook.ruleBookId; }).indexOf(rulebookId);
+        rulebooks.splice(deleteIndex, 1);
+        context.setState({
+          ...context.state,
+          leagueContext: {
+            ...context.state.leagueContext,
+            leagues: [
+              ...context.state.leagueContext.leagues
+              //Get to specific league: replace sessionGames with empty array
+            ]
+          }
+        });
+      });
+    };
+    
     return (
-        <Container direction="column" width="600" margin="0 auto">
-            <Container position="relative" margin="10 0 10 0">
-                <Image url={images["Schedules Banner"]}
-                    name="Schedules Banner"
-                    height="200"
-                    width="650"/>
-            </Container>
-          <Container direction="column" align="center">
-          {/* { 
-            // pages.map((document, index) => (
-            //   <div key={index}>
-            //     <Container direction="column" bcolor="white" width="450" radius="10px" margin="10">
-            //         <TextContainer>
-            //             <Text size="24">{document.title}</Text>
-            //         </TextContainer>
-            //         <Image url={document.image}
-            //         height="200"
-            //         width="450"/>
-            //         <Button> View RuleBook</Button>
-            //     </Container>
-            //   </div>
-            ))
-          } */}
-          </Container>
-        </Container>
-    )
+        <Wrapper direction="column" align="center">
+            <Wrapper>
+                <Image id="Schedules Banner"
+                  width="650px"
+                  height="230px">
+                </Image>
+            </Wrapper>
+            <StyledWrapper>
+                {
+                  activeSessions.map((session, index) => (
+                      <div key={`session${index}`} >
+                        <DisplayCard margin="5" >
+                          <Wrapper direction="column">
+                            <Wrapper justify="center" margin="7">
+                              <EditIcon route="/edit-schedule" id={session.sessionId} />
+                              <DeleteIcon deleteFunction={() => handleDelete(session.sessionId)}/>
+                            </Wrapper>
+                          <StyledLink to={`/schedule/${session.sessionId}`}>
+                            <Wrapper direction="column" width="200" align="center">
+                              <StyledImage src={session.image} />
+                              <DisplayCard size="14">{session.sessionFriendlyName}</DisplayCard>
+                            </Wrapper>
+                          </StyledLink>
+                        </Wrapper>
+                      </DisplayCard>
+                    </div>
+                  ))
+                }
+                <AddButton to="/add-schedule" />
+            </StyledWrapper>
+            <CreateDropDown width="300" options={["Option 1", "Option 2", "Monkey", "Gene"]} />
+            <StandardDropDown isSearchable={false} width="300" options={["Option 1", "Option 2", "Monkey", "Gene"]} />
+        </Wrapper>
+    );
 }
 
 export default Schedules;
