@@ -53,7 +53,7 @@ const Schedule = ({match}) => {
         </Wrapper>
           { 
             scheduleGroups.map(group => (
-              <ScheduleGroup groupId={group.groupId} edit={false} form={session.schedule} />
+              <ScheduleGroup group={group} edit={false} form={session.schedule} />
             ))
           }
       </Wrapper>

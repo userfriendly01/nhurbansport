@@ -39,13 +39,11 @@ const StyledButton = styled.button`
 `
 
 const ScheduleGroup = ({
-  groupId,
+  group,
   edit,
   form,
   setForm
 }) => {
-  const groupCount = form.scheduleGroups.length ? form.scheduleGroups.length : 0;
-  const group = form.scheduleGroups.find(obj => obj.groupId === groupId) ? form.scheduleGroups.find(obj => obj.groupId === groupId) : { groupId: form.scheduleId + "G" + groupCount };
   const groupLabel = group.groupLabel ? group.groupLabel : "";
   const groupDate = group.date ? group.date : "";
   const games = group.games ? group.games : [];

@@ -21,66 +21,35 @@ const StyledButton = styled.button`
   align-self: flex-end;
 `
 
-const scheduleObject = {
-  scheduleId: 1234,
-  scheduleGroups: [
-    {
-    groupId: 4567,
-    groupLabel: "Week 1",
-    date: "Wednesday, January 15",
-    games: [
-      {
-        gameID: "1234",
-        location: "Concord Sports Center, Concord NH",
-        time: "7:00pm",
-        homeTeam: "My Team",
-        homeTeamScore: "100",
-        awayTeam: "Your Team",
-        awayTeamScore: "50"
-      }
-    ]},
-    {
-      groupId: 1234,
-      groupLabel: "Week 2",
-      date: "Wednesday, March 15",
-      games: [
-        {
-          gameID: "4567",
-          location: "Concord Sports Center, Concord NH",
-          time: "7:00pm",
-          homeTeam: "Butt Team",
-          homeTeamScore: "90",
-          awayTeam: "Boob Team",
-          awayTeamScore: "40"
-        },
-        {
-          gameID: "9635",
-          location: "Concord Sports Center, Concord NH",
-          time: "8:00pm",
-          homeTeam: "Arm Team",
-          homeTeamScore: "",
-          awayTeam: "Leg Team",
-          awayTeamScore: ""
-        }
-      ]}
-  ]
-}
-
 const Schedule = ({match}) => {
   const context = useContext(StateContext);
   const sessionId = match.params.id;
   const sessions = context.state.leagueContext.leagues;
   const session = sessions.find(obj => obj.sessionId === sessionId) ? sessions.find(obj => obj.sessionId === sessionId) : {};
   const schedule = session.schedule ? session.schedule : {
-    scheduleId: 1234,
+    scheduleId: sessionId + "SH",
     scheduleGroups: []
 };
-  console.log("Does it find the session? ", schedule);
   // const teams = session.sessionTeams ? session.sessionTeams : [];
-  // const scheduleGroups = session.schedule.scheduleGroups;
-  const scheduleGroups = schedule.scheduleGroups;
-
+  
   const [scheduleForm, setScheduleForm] = useState(schedule);
+  const scheduleGroups = scheduleForm.scheduleGroups;
+  const groupCount = scheduleGroups.length ? scheduleGroups.length : 0;
+  console.log("This Render has this as the scheduleForm", scheduleForm)
+
+  const createScheduleGroup = () => {
+    //Add schedule group object to groups array with Id - This should rerender and show one group
+    const testobj = {
+      ...schedule,
+      scheduleGroups: [ 
+        ...schedule.scheduleGroups,
+        { groupId: schedule.scheduleId + "G" + groupCount }
+      ]
+    }
+    console.log("Gotta keep up with the schedule Form", testobj);
+
+    setScheduleForm(testobj)
+  };
 
   return (
     <DisplayCard width="600" bcolor="F5F5F5" border="5px solid white" direction="column">
@@ -90,11 +59,11 @@ const Schedule = ({match}) => {
         </Wrapper>
           { 
             scheduleGroups.map(group => (
-              <ScheduleGroup groupId={group.groupId} edit={true} form={scheduleForm} setForm={setScheduleForm} />
+              <ScheduleGroup group={group} edit={true} form={scheduleForm} setForm={setScheduleForm} />
             ))
           }
           <Wrapper width="550">
-            <StyledButton>Create Schedule Group</StyledButton>
+            <StyledButton onClick={createScheduleGroup}>Create Schedule Group</StyledButton>
             <StyledButton>Save Schedule</StyledButton>
           </Wrapper>
       </Wrapper>

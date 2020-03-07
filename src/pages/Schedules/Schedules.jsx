@@ -60,7 +60,7 @@ const Schedules = () => {
   }
 
     const handleCreate = option => {
-      console.log("handleCreate Option: ", option);
+      console.log("The Option is sent as: ", option);
       setRedirect({
         value: option.value,
         redirect: true
@@ -69,7 +69,7 @@ const Schedules = () => {
 
     return (
       <div>
-      { redirect.value ? <Redirect to={`/add-schedule/${redirect.value}`} /> :
+      { redirect.redirect ? <Redirect to={`/add-schedule/${redirect.value}`} /> :
         <Wrapper direction="column" align="center">
             <Wrapper>
                 <Image id="Schedules Banner"

@@ -21,7 +21,7 @@ const StandardDropDown = props => {
       console.groupEnd();
       formattedOptions.push({
         label: option[optionLabelKey],
-        value: option[optionValueKey].toLowerCase().replace(/\W/g, '')
+        value: option[optionValueKey]
       });
     });
     return formattedOptions

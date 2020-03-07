@@ -8,19 +8,11 @@ const CreateDropDown = (props) => {
   const addNewFunction = props.addNewFunction ? props.addNewFunction : null;
 
   const generateOptions = () => {
-    console.group("DropDown Evaluation");
-    console.log("Label Key: ", optionLabelKey);
-    console.log("Value Key: ", optionValueKey);
-    console.groupEnd();
     const formattedOptions = [];
     options.map(option => {
-      console.group("DropDown Evaluation Per Option");
-      console.log("Label: ", option[optionLabelKey]);
-      console.log("Value: ", option[optionValueKey]);
-      console.groupEnd();
       formattedOptions.push({
         label: option[optionLabelKey],
-        value: option[optionValueKey].toLowerCase()
+        value: option[optionValueKey]
       });
     });
     return formattedOptions
