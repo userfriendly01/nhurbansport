@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import {
   DayPicker,
   DisplayCard,
@@ -39,23 +39,43 @@ const StyledButton = styled.button`
 `
 
 const ScheduleGroup = ({
-  scheduleGroup,
+  groupId,
   edit,
-  groupForm
+  form,
+  setForm
 }) => {
-  console.log("EDIT?", edit);
-  const groupLabel = scheduleGroup.groupLabel ? scheduleGroup.groupLabel : "";
-  const groupDate = scheduleGroup.date ? scheduleGroup.date : "";
-  const games = scheduleGroup.games ? scheduleGroup.games : [];
+  const groupCount = form.scheduleGroups.length ? form.scheduleGroups.length : 0;
+  const group = form.scheduleGroups.find(obj => obj.groupId === groupId) ? form.scheduleGroups.find(obj => obj.groupId === groupId) : { groupId: form.scheduleId + "G" + groupCount };
+  const groupLabel = group.groupLabel ? group.groupLabel : "";
+  const groupDate = group.date ? group.date : "";
+  const games = group.games ? group.games : [];
+  console.log(group);
 
+  const [groupForm, setGroupForm] = useState();
+
+const updateGroupsArray = () => {
+  //check for groupId in sessionGroups
+  sessions.find(obj => obj.sessionId === sessionId)
+
+}
+
+  const handleSomething = () => {
+    setForm({
+      ...form,
+      sessionGroups: [
+        ...form.sessionGroups,
+
+      ]
+    })
+  }
   return (
     <>
     {edit ?
       <StyledDisplay>
         <StyledGroupRow>
           <TextField 
-            id="group"
-            form={groupForm}
+            id="groupLabel"
+            form={group}
             setForm={() => console.log("Form is Set")}
           />
           <StyledButton>Add game</StyledButton>
@@ -63,7 +83,7 @@ const ScheduleGroup = ({
         <StyledDateRow color="black">
           <DayPicker
             id="date" 
-            form={groupForm}
+            form={group}
             setForm={() => console.log("Form is Set")}
           />
         </StyledDateRow>

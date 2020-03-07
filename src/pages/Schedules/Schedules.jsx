@@ -40,8 +40,8 @@ const Schedules = () => {
   const getSessionsWithSchedules = () => {
     let sessionsWithGames = [];
     activeSessions.map(session => {
-      const games = session.sessionGames ? session.sessionGames : [];
-      if(games.length !== 0) {
+      const schedule = session.schedule ? session.schedule : false;
+      if(schedule) {
         sessionsWithGames.push(session);
       }
     });
@@ -51,8 +51,8 @@ const Schedules = () => {
   const getSessionsWithoutSchedules = () => {
     let sessionsWithoutGames = [];
     activeSessions.map(session => {
-      const games = session.sessionGames ? session.sessionGames : [];
-      if(games.length === 0) {
+      const schedule = session.schedule ? session.schedule : false;
+      if(!schedule) {
         sessionsWithoutGames.push(session);
       }
     });

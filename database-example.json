@@ -2,24 +2,26 @@
   "Admin" : {
     "Liability Waiver" : "<h6 class=\"ql-align-center\"><span style=\"color: rgb(95, 95, 95); background-color: initial;\" class=\"ql-size-large\">Adult Waiver/Release</span></h6><h6 class=\"ql-align-center\"><br></h6><h6 class=\"ql-align-center\"><span style=\"color: rgb(95, 95, 95); background-color: initial;\">RECREATIONAL ATHLETIC WAIVER AND RELEASE OF LIABILITY READ BEFORE ACKNOWLEDGING</span></h6><p>In consideration of being allowed to participate in any way in the NH Urban Sport athletic sports program, related events and activities, the undersigned acknowledges, appreciates, and understands that:</p><p><span style=\"background-color: initial;\">​</span></p><ol><li><span class=\"ql-size-small\">Participating in the activities involved in this program is potentially hazardous, including the potential for serious bodily injury, permanent paralysis and death, some of which may not be foreseeable. While particular rules, equipment, and personal discipline may reduce this risk, the risk of serious injury does exist; and,&nbsp;</span></li><li><span class=\"ql-size-small\">&nbsp;I agree not to enter in to and participate in NH Urban Sport unless I am medically able. I hereby authorize any medical treatment deemed necessary in the event of any injury while participating in NH Urban Sport activities. I agree to pay all costs of rescue and/or medical services as may be incurred.&nbsp;</span></li><li><span class=\"ql-size-small\">&nbsp;I am voluntarily participating in NH Urban Sports activities, assume all risks, known and foreseeable or unknown and unforeseeable, associated with participating in the activities, even if arising from the negligence of the releasees or others, and agree to be solely responsible for any injury, loss or damage that I may sustain or cause while participating in NH Urban Sport activities.</span></li><li><span class=\"ql-size-small\">&nbsp;I grant to the NH Urban Sport, its legal representatives, successors and assigns, the absolute right and permission to take, use, and publish any photographs of my participation in the NH Urban Sport activities and/or related activities, in whole or in part, or composite or distorted in character or form, for any purpose whatsoever. The foregoing permission is given, without restriction as to changes or alterations, in conjunction with my own or a fictitious name, or reproductions thereof, and in any and all media now or hereafter known for illustration, promotion, art, advertising, trade, or any other purpose whatsoever.&nbsp;I also consent to the use of any printed matter in conjunction therewith.</span></li><li><span class=\"ql-size-small\">I willingly agree to comply with the stated and customary terms and conditions for participation. If, however, I observe any unusual significant hazard during my presence or participation, I will remove myself from participation and bring such to the attention of the nearest official immediately; and,</span></li><li><span class=\"ql-size-small\">I, for myself and on behalf of my heirs, assigns, personal representatives and next of kin, HEREBY RELEASE AND HOLD HARMLESS NH Urban Sport, their directors, officers, officials, agents, volunteers and/or employees, other participants, sponsoring agencies, sponsors, advertisers, and if applicable, owners and lessors of premises used to conduct the event (“RELEASES”), WITH RESPECT TO ANY AND ALL INJURY, DISABILITY, DEATH, or loss or damage to person or property, WHETHER ARISING FROM THE NEGLIGENCE OF THE RELEASEES OR OTHERWISE, to the fullest extent permitted by law.&nbsp;</span></li></ol><p><br></p><p><strong style=\"background-color: initial;\">I WARRANT THAT I (A) AM AT LEAST EIGHTEEN (18) YEARS OF AGE AND HAVE REACHED THE AGE OF MAJORITY IN THE JURISDICTION IN WHICH I RESIDE, (B) HAVE READ THIS RELEASE OF LIABILITY AND ASSUMPTION OF RISK AGREEMENT CAREFULLY PRIOR TO AGREEING TO THE TERMS HEREIN AND FULLY UNDERSTAND ITS CONTENT, (C) AM AWARE THAT THESE TERMS AND CONDITIONS INCLUDE A WAIVER AND RELEASE OF LIABILITY AND IS AN ENFORCEABLE LEGAL DOCUMENT BETWEEN MYSELF AND NH URBAN SPORT, AND (D) AM SIGNING OF MY OWN FREE WILL.&nbsp;</strong></p>",
     "Rulebooks" : {
-        "1" : {
-          "active" : true,
-          "image" : "https://firebasestorage.googleapis.com/v0/b/nh-urban-sport.appspot.com/o/images%2Frulebook-flagfootball.jpg?alt=media&token=f1718918-6587-43d5-add0-afcd2a17ccfe",
-          "html" : "<p>Hello!</p>",
-          "name" : "Coed Flag Football"
-        },
-        "2" : {
-          "active" : true,
-          "image" : "https://firebasestorage.googleapis.com/v0/b/nh-urban-sport.appspot.com/o/images%2Frulebook-basketball.jpg?alt=media&token=e4815eb1-9aa5-4f4c-aa07-369119d6e9a9",
-          "html" : "<p>Hello!</p>",
-          "name" : "Coed Basketball"
-        },
-        "3" : {
-          "active" : true,
-          "image" : "https://firebasestorage.googleapis.com/v0/b/nh-urban-sport.appspot.com/o/images%2Frulebook-cornhole.jpg?alt=media&token=f1918990-deb8-409c-a8a1-ee3dfb6ff0c2",
-          "html" : "<p>Hello!</p>",
-          "name" : "Cornhole"
-        }
+      "-M1lh9EozC_bvkMPOhgb" : {
+        "active" : true,
+        "html" : "",
+        "image" : "https://firebasestorage.googleapis.com/v0/b/nh-urban-sport.appspot.com/o/images%2Frulebook-basketball.jpg?alt=media&token=e4815eb1-9aa5-4f4c-aa07-369119d6e9a9",
+        "link" : "https://drive.google.com/file/d/1R-rvB_jVIuS_K9yKsBR4J6rQhQuF7XOZ/view",
+        "name" : "BasketBall"
+      },
+      "-M1lhN2X08F2gUihrykd" : {
+        "active" : true,
+        "html" : "",
+        "image" : "https://firebasestorage.googleapis.com/v0/b/nh-urban-sport.appspot.com/o/images%2Fpp-leader.JPG?alt=media&token=56534304-ddff-4631-9939-3365f7543316",
+        "link" : "https://drive.google.com/file/d/1K7ucumk2I0KP1pLdTx7P1hhrVik5ElUa/view",
+        "name" : "Coed Flag Football Rulebook"
+      },
+      "-M1lj6Z-dgNHQUqRpiPv" : {
+        "active" : true,
+        "html" : "",
+        "image" : "https://firebasestorage.googleapis.com/v0/b/nh-urban-sport.appspot.com/o/images%2Frulebook-cornhole.jpg?alt=media&token=f1918990-deb8-409c-a8a1-ee3dfb6ff0c2",
+        "name" : "Cornhole"
+      }
     },
     "Text" : {
       "Home: About Us" : "<h6 class=\"ql-align-center\"><strong style=\"color: rgb(0, 0, 0); background-color: initial;\">ABOUT US</strong></h6><p class=\"ql-align-center\">___</p><p class=\"ql-align-center\"><span class=\"ql-size-small\" style=\"color: rgb(0, 0, 0); background-color: initial;\">NH Urban Sport, LLC is a veteran-owned-and operated,&nbsp;recreational&nbsp;sports organization that provides adaptive sports to disabled veterans and all able-bodied&nbsp;athletes in southern New Hampshire. It's the first organization in the Granite State to offer both adaptive and non-adaptive sports in the area.&nbsp;</span></p><p class=\"ql-align-center\"><br></p><p class=\"ql-align-center\"><strong class=\"ql-size-small\" style=\"color: rgb(0, 0, 0); background-color: initial;\">Mission</strong></p><p class=\"ql-align-center\"><span class=\"ql-size-small\" style=\"color: rgb(0, 0, 0); background-color: initial;\">To&nbsp;provide affordable, inclusive athletic and recreational programming for adults with and without physical disabilities in a positive and empowering environment.&nbsp;</span></p><p class=\"ql-align-center\"><br></p><p class=\"ql-align-center\"><strong class=\"ql-size-small\" style=\"background-color: initial;\">Vision</strong></p><p class=\"ql-align-center\"><span class=\"ql-size-small\" style=\"color: rgb(0, 0, 0); background-color: initial;\">To&nbsp;build an inclusive recreational sports organization not just accommodated for or accessible to veterans&nbsp;with disabilities&nbsp;but rather specifically designed for their unique recreational needs while also engaging the able-bodied public.&nbsp;</span></p>",
@@ -33,29 +35,6 @@
       "Veterans" : "<p><span class=\"ql-size-large\" style=\"color: rgb(136, 136, 136);\">Adaptive Recreational Sports for Veterans</span></p><p><br></p><p><span class=\"ql-size-small\">Approximately 112,790 veterans live in the Granite State. More than 15 percent of which (16,756) have a service-connected disability. Unfortunately, at this time, there is a lack of recreational outlets for injured and non-injured veterans in southern New Hampshire. Through sports, NH Urban Sport can offer an opportunity to maintain optimum physical health and to increase mental well being through activity and socialization.</span></p><p><br></p><p><span class=\"ql-size-small\">According to the Center for Disease Control and Prevention (CDC), “With good health habits and access to health care, many disabilities can be delayed or even prevented… [by] increasing physical activity, and reducing or preventing obesity can eliminate some of the underlying causes of disability.” In fact, the CDC also reports that in most cases, secondary issues like obesity, diabetes and heart disease, all of which are preventable, are a greater problem than the disability itself.</span></p><p><br></p><p><strong>With access to an affordable, accessible, and inclusive athletic and recreational organization like NH Urban Sport, we can begin to make a significant and positive impact in the lives of service members living with disabilities.</strong></p>"
     }
   },
-  "Games" : {
-    "GAME1BB062019" : {
-      "awayTeamKey" : "TEAM-4",
-      "gameDate" : "12/30/2019",
-      "gameTime" : "11:00am",
-      "homeTeamKey" : "TEAM-3",
-      "sessionKey" : "-Lso1uPG6zNnih--n9NP"
-    },
-    "GAME1FLAG062019" : {
-      "awayTeamKey" : "TEAM-2",
-      "gameDate" : "12/1/2019",
-      "gameTime" : "10:00am",
-      "homeTeamKey" : "TEAM-1",
-      "sessionKey" : "-LsnsWi_PLFLBPeRbP16"
-    },
-    "GAME2FLAG062019" : {
-      "awayTeamKey" : "TEAM-4",
-      "gameDate" : "12/30/2019",
-      "gameTime" : "11:00am",
-      "homeTeamKey" : "TEAM-3",
-      "sessionKey" : "-LsnsWi_PLFLBPeRbP16"
-    }
-  },
   "Images" : {
     "Events Banner" : "https://firebasestorage.googleapis.com/v0/b/nh-urban-sport.appspot.com/o/images%2Fevents-banner.jpg?alt=media&token=91aa4e50-231e-43a1-914a-d383e45b4570",
     "Home Banner" : "https://firebasestorage.googleapis.com/v0/b/nh-urban-sport.appspot.com/o/images%2FHome%20Banner.JPG?alt=media&token=06756b1e-1fb6-435f-bb17-77c5ca78ba2e",
@@ -64,7 +43,7 @@
     "Home: Option 2" : "https://firebasestorage.googleapis.com/v0/b/nh-urban-sport.appspot.com/o/images%2Fhome-option-2-img.JPG?alt=media&token=766e3adc-4f3a-4aa2-aa7d-358e138bcc9e",
     "Home: Option 3" : "https://firebasestorage.googleapis.com/v0/b/nh-urban-sport.appspot.com/o/images%2Fhome-option-3-img.JPG?alt=media&token=ce52c7cd-4d3d-44b8-abf5-4158c8e88ce3",
     "How To Banner" : "https://firebasestorage.googleapis.com/v0/b/nh-urban-sport.appspot.com/o/images%2Fpp-how-to-banner.JPG?alt=media&token=975b78a6-6fa1-442d-9da8-eced43c7e647",
-    "Leagues Banner" : "https://firebasestorage.googleapis.com/v0/b/nh-urban-sport.appspot.com/o/images%2Fleague-banner-img.jpg?alt=media&token=94bc38bc-4771-43d4-9ee9-ab710050b8cf",
+    "Leagues Banner" : "https://firebasestorage.googleapis.com/v0/b/nh-urban-sport.appspot.com/o/images%2FLeagues%20Banner?alt=media&token=b6850dce-31ce-4732-9326-cb66b40cfb5f",
     "New League Image" : "https://firebasestorage.googleapis.com/v0/b/nh-urban-sport.appspot.com/o/images%2Fpp-standings.JPG?alt=media&token=b2e1f721-1eaa-4daf-9be0-fa9a24ec1740",
     "Placeholder" : "https://firebasestorage.googleapis.com/v0/b/nh-urban-sport.appspot.com/o/images%2FNo%20Image.JPG?alt=media&token=dc5a3422-0cb5-4433-b391-7f433a15d35d",
     "Player Portal Banner" : "https://firebasestorage.googleapis.com/v0/b/nh-urban-sport.appspot.com/o/images%2Fplayer-portal-banner.jpg?alt=media&token=1f16b3d7-b2ea-4093-ae17-3f3d8ab5270a",
@@ -131,7 +110,51 @@
       "length" : "9 Weeks",
       "location" : "Manchester, NH",
       "name" : "Coed Flag Football",
-      "price" : "$50"
+      "price" : "$50",
+      "schedule": {
+        "scheduleId": "-LsnsWi_PLFLBPeRbP16SH",
+        "scheduleGroups": [
+          {
+          "groupId": "-LsnsWi_PLFLBPeRbP16GR1",
+          "groupLabel": "Week 1",
+          "date": "Wednesday, January 15",
+          "games": [
+            {
+              "gameID": "-LsnsWi_PLFLBPeRbP16GR1GA1",
+              "location": "Concord Sports Center, Concord NH",
+              "time": "7:00pm",
+              "homeTeam": "My Team",
+              "homeTeamScore": "100",
+              "awayTeam": "Your Team",
+              "awayTeamScore": "50"
+            }
+          ]},
+          {
+            "groupId": "LsnsWi_PLFLBPeRbP16GR2",
+            "groupLabel": "Week 2",
+            "date": "Wednesday, March 15",
+            "games": [
+              {
+                "gameID": "LsnsWi_PLFLBPeRbP16GR2GA1",
+                "location": "Concord Sports Center, Concord NH",
+                "time": "7:00pm",
+                "homeTeam": "Butt Team",
+                "homeTeamScore": "90",
+                "awayTeam": "Boob Team",
+                "awayTeamScore": "40"
+              },
+              {
+                "gameID": "LsnsWi_PLFLBPeRbP16GR2GA2",
+                "location": "Concord Sports Center, Concord NH",
+                "time": "8:00pm",
+                "homeTeam": "Arm Team",
+                "homeTeamScore": "",
+                "awayTeam": "Leg Team",
+                "awayTeamScore": ""
+              }
+            ]}
+        ]
+      }
     },
     "-Lso1uPG6zNnih--n9NP" : {
       "active" : true,

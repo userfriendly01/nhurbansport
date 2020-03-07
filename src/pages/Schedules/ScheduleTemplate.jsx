@@ -71,21 +71,16 @@ const Schedule = ({match}) => {
   const sessionId = match.params.id;
   const sessions = context.state.leagueContext.leagues;
   const session = sessions.find(obj => obj.sessionId === sessionId) ? sessions.find(obj => obj.sessionId === sessionId) : {};
+  const schedule = session.schedule ? session.schedule : {
+    scheduleId: 1234,
+    scheduleGroups: []
+};
+  console.log("Does it find the session? ", schedule);
   // const teams = session.sessionTeams ? session.sessionTeams : [];
   // const scheduleGroups = session.schedule.scheduleGroups;
-  const scheduleGroups = scheduleObject.scheduleGroups;
+  const scheduleGroups = schedule.scheduleGroups;
 
-  //Spread existing group forms & set initial count
-  const [groupForm, setGroupForm] = useState({
-    edit: true,
-    groupCount: 0,
-    group: "Week 0",
-    date: "Today, March 7th"
-  });
-
-  //Start at schedule with a schedule form & set schedule forrm
-  //Run this from the schedule Template and pass in the "edit parameter"
-
+  const [scheduleForm, setScheduleForm] = useState(schedule);
 
   return (
     <DisplayCard width="600" bcolor="F5F5F5" border="5px solid white" direction="column">
@@ -95,7 +90,7 @@ const Schedule = ({match}) => {
         </Wrapper>
           { 
             scheduleGroups.map(group => (
-              <ScheduleGroup scheduleGroup={group} edit={true} groupForm={groupForm} />
+              <ScheduleGroup groupId={group.groupId} edit={true} form={scheduleForm} setForm={setScheduleForm} />
             ))
           }
           <Wrapper width="550">
