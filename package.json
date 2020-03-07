@@ -56,6 +56,7 @@
     "@material-ui/icons": "^4.5.1",
     "@material-ui/pickers": "^3.2.7",
     "@material-ui/utils": "^4.5.2",
+    "date-fns": "^2.10.0",
     "firebase": "^6.3.3",
     "iframe-resizer": "^4.1.1",
     "mdbreact": "^4.17.0",

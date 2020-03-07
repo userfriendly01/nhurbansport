@@ -18,6 +18,7 @@ const StyledButton = styled.button`
   width: 150;
   height: 30;
   font-size: 13;
+  align-self: flex-end;
 `
 
 const scheduleObject = {
@@ -89,9 +90,13 @@ const Schedule = ({match}) => {
   // const scheduleGroups = session.schedule.scheduleGroups;
   const scheduleGroups = scheduleObject.scheduleGroups;
 
+  //Spread existing group forms & set initial count
   const [groupForm, setGroupForm] = useState({
-    edit: true
+    edit: true,
+    groupCount: 0,
+    
   });
+
   return (
     <DisplayCard width="600" bcolor="F5F5F5" border="5px solid white" direction="column">
       <Wrapper direction="column" align="center" width="100%">
@@ -104,6 +109,7 @@ const Schedule = ({match}) => {
               <ScheduleGroup scheduleGroup={group} />
             ))
           }
+          <StyledButton>Save</StyledButton>
       </Wrapper>
     </DisplayCard>
   )

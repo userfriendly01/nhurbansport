@@ -1,6 +1,7 @@
 import React from "react"
 import {
   CreateDropDown,
+  TextField,
   Wrapper
 } from "../../components"
 import styled from 'styled-components'
@@ -50,13 +51,28 @@ const ScheduleGroup = props => {
   ]
   //Check if Game existes
 
+  const tempForm = {
+    location: "Concord",
+    time: "6:00pm"
+  }
+
   return (
     <>
     { edit ?
       <>
         <StyledLocationRow>
-            <div>{gameLocation}</div>
-            <div>{gameTime}</div>
+          <TextField 
+              id="location"
+              margin="none"
+              form={tempForm}
+              setForm={() => console.log("Form is Set")}
+            />
+          <TextField 
+            id="time"
+            margin="none"
+            form={tempForm}
+            setForm={() => console.log("Form is Set")}
+          />
         </StyledLocationRow>
         <StyledGameRow>
         <CreateDropDown 

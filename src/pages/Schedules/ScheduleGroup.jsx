@@ -1,5 +1,6 @@
 import React from "react"
 import {
+  DayPicker,
   DisplayCard,
   TextField,
   Wrapper
@@ -27,7 +28,7 @@ const StyledDateRow = styled(Wrapper)`
   width: 100%;
   padding: 5;
   background-color: #555555;
-  color: white;
+  color: ${props => props.color ? props.color : "white"};
 `
 
 const StyledButton = styled.button`
@@ -42,7 +43,11 @@ const ScheduleGroup = props => {
   const groupLabel = scheduleGroup.groupLabel ? scheduleGroup.groupLabel : "";
   const groupDate = scheduleGroup.date ? scheduleGroup.date : "";
   const games = scheduleGroup.games ? scheduleGroup.games : [];
-  const groupForm = props.edit ? props.edit : { edit: true, group: "PlaceHolderLabel" };
+  const groupForm = props.edit ? props.edit : { 
+    edit: true, 
+    group: "PlaceHolderLabel",
+    date: null
+  };
 
   return (
     <>
@@ -56,7 +61,13 @@ const ScheduleGroup = props => {
           />
           <StyledButton>Add game</StyledButton>
         </StyledGroupRow>
-        <StyledDateRow>{groupDate}</StyledDateRow>
+        <StyledDateRow color="black">
+          <DayPicker
+            id="date" 
+            form={groupForm}
+            setForm={() => console.log("Form is Set")}
+          />
+        </StyledDateRow>
         {
           games.map(game => (
             <Game game={game} edit={groupForm.edit}/>

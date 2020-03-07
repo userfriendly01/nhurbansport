@@ -11,7 +11,8 @@ const CustomTextField = ({
   form,
   setForm,
   id,
-  label
+  label,
+  margin
 }) => {
   
   const handleChange = event => {
@@ -28,7 +29,7 @@ const CustomTextField = ({
       id={id}
       value={form[id]}
       label={label}
-      margin="normal"
+      margin={margin ? margin : "normal"}
       onChange={handleChange}
       />
   )
