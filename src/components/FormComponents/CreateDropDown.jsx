@@ -3,17 +3,26 @@ import CreatableSelect from 'react-select/creatable';
 
 const CreateDropDown = (props) => {
   const options = props.options ? props.options : null;
+  const optionLabelKey = props.label ? props.label : null;
+  const optionValueKey = props.value ? props.value : null;
   const addNewFunction = props.addNewFunction ? props.addNewFunction : null;
 
   const generateOptions = () => {
+    console.group("DropDown Evaluation");
+    console.log("Label Key: ", optionLabelKey);
+    console.log("Value Key: ", optionValueKey);
+    console.groupEnd();
     const formattedOptions = [];
-    options.map((label) => {
+    options.map(option => {
+      console.group("DropDown Evaluation Per Option");
+      console.log("Label: ", option[optionLabelKey]);
+      console.log("Value: ", option[optionValueKey]);
+      console.groupEnd();
       formattedOptions.push({
-        label,
-        value: label.toLowerCase().replace(/\W/g, '')
+        label: option[optionLabelKey],
+        value: option[optionValueKey].toLowerCase()
       });
     });
-    console.log("Options List Looks Like: ", formattedOptions);
     return formattedOptions
   };
 

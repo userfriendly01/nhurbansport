@@ -9,7 +9,20 @@ import {
 
 const Cart = () => {
   //Update this to feed existing teams
-  const teamOptions = ["PoundTown", "Monstars", "PiffSquad"];
+  const teamOptions = [
+    {
+      teamId: "1234",
+      name: "PoundTown"
+    },
+    {
+      teamId: "4567",
+      name: "Monstars"
+    },
+    {
+      teamId: "7412",
+      name: "PiffSquad"
+    }
+  ]
   const shirtOptions = [
     {
       key: "Small",
@@ -46,11 +59,14 @@ const Cart = () => {
         width="300"
         label="key"
         value="value"
+        isSearchable={false}
         options={shirtOptions} 
         updateFunction={setShirtSize} />
       <DisplayCard>Choose a team</DisplayCard>
       <CreateDropDown 
-        width="300" 
+        width="300"
+        label="name"
+        value="teamId"
         options={teamOptions} 
         updateFunction={setTeam} />
       <Button onClick={handleNewTeam}>Add to Cart</Button>

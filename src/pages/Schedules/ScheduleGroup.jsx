@@ -1,6 +1,7 @@
 import React from "react"
 import {
   DisplayCard,
+  TextField,
   Wrapper
 } from "../../components"
 import Game from "./Game.jsx"
@@ -32,9 +33,28 @@ const ScheduleGroup = props => {
   const groupLabel = scheduleGroup.groupLabel ? scheduleGroup.groupLabel : "";
   const groupDate = scheduleGroup.date ? scheduleGroup.date : "";
   const games = scheduleGroup.games ? scheduleGroup.games : [];
+  const groupForm = props.edit ? props.edit : { edit: true, group: "PlaceHolderLabel" };
 
   return (
-    <StyledDisplay>
+    <>
+    {groupForm.edit ?
+      <StyledDisplay>
+        <StyledGroupRow>
+          <TextField 
+            id="group"
+            form={groupForm}
+            setForm={() => console.log("Form is Set")}
+          />
+        </StyledGroupRow>
+        <StyledDateRow>{groupDate}</StyledDateRow>
+        {
+          games.map(game => (
+            <Game game={game} edit={groupForm.edit}/>
+          ))
+        }
+      </StyledDisplay>
+      :
+      <StyledDisplay>
       <StyledGroupRow>{groupLabel}</StyledGroupRow>
       <StyledDateRow>{groupDate}</StyledDateRow>
       {
@@ -43,6 +63,8 @@ const ScheduleGroup = props => {
         ))
       }
     </StyledDisplay>
+    }
+    </>
   )
 }
 
