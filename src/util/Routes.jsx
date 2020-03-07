@@ -7,6 +7,8 @@ import {
     Leagues,
     LiabilityWaiver,
     Schedules,
+    Schedule,
+    ScheduleTemplate,
     SocialEvents,
     EventDetails,
     Veterans,
@@ -89,5 +91,18 @@ export const routes = [
     {
         path: "/edit-rulebook/:id",
         component: RulebookTemplate
+    },
+    {
+        path: "/add-schedule/:id",
+        component: ScheduleTemplate
+    },
+    {
+        path: "/schedule/:id",
+        component: Schedule
+    },
+    {
+        path: "/edit-schedule/:id",
+        component: ScheduleTemplate
     }
+    
 ];
