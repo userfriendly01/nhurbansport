@@ -6,6 +6,7 @@ import {
 import ScheduleGroup from "./ScheduleGroup.jsx"
 import styled from 'styled-components'
 import { StateContext } from '../../context/appContext.jsx'
+import { editLeague } from '../Leagues/LeagueUtil.jsx'
 
 const StyledTitle = styled(Wrapper)`
   width: 550;
@@ -49,6 +50,14 @@ const Schedule = ({match}) => {
     })
   };
 
+  const saveSchedule = () => {
+    const newSession = session;
+    newSession.schedule = scheduleForm;
+    editLeague(sessionId, newSession).then(() => {
+      console.log("Session Updated!")
+    });
+  }
+
   return (
     <DisplayCard width="600" bcolor="F5F5F5" border="5px solid white" direction="column">
       <Wrapper direction="column" align="center" width="100%">
@@ -62,7 +71,7 @@ const Schedule = ({match}) => {
           }
           <Wrapper width="550">
             <StyledButton onClick={createScheduleGroup}>Create Schedule Group</StyledButton>
-            <StyledButton>Save Schedule</StyledButton>
+            <StyledButton onClick={saveSchedule} >Save Schedule</StyledButton>
           </Wrapper>
       </Wrapper>
     </DisplayCard>

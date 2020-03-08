@@ -17,7 +17,7 @@ export const createLeague = newSession => {
 }
 
 export const editLeague = (id, updatedSession) => {
-  sessionsRef.child(id).set(updatedSession);
+  return sessionsRef.child(id).set(updatedSession);
 }
 
 export const deleteLeague = id => {
