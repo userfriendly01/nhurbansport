@@ -73,17 +73,7 @@ const ScheduleGroup = ({
     resetFunction(newGroup);
   };
 
-  const handleTextChange = event => {
-    const key = event.target.id;
-    const value = event.target.value;
-    const newGame = {
-      ...game,
-    }
-    newGame[key] = value;
-    resetGame(newGame);
-  }
-
-  const handleDropdownSelection = (selection, id) => {
+  const handleFormEntry = (selection, id) => {
     const key = id;
     const value = selection;
     const newGame = {
@@ -106,15 +96,15 @@ const ScheduleGroup = ({
               value={game.location}
               placeholder="Game Location"
               margin="none"
-              customOnChangeFunction={handleTextChange}
+              customOnChangeFunction={e => {handleFormEntry(e.target.value, "location")}}
             />
           <TextField 
             id="time"
             value={game.time}
             placeholder="Game Time"
             margin="none"
-            customOnChangeFunction={handleTextChange}
-          />
+            customOnChangeFunction={e => {handleFormEntry(e.target.value, "time")}}
+            />
         </StyledLocationRow>
         <StyledGameRow>
         <CreateDropDown 
@@ -124,14 +114,22 @@ const ScheduleGroup = ({
             options={teamOptions}
             optionLabelKey="name"
             optionValueKey="teamId"
-            customOnChangeFunction={selection => {handleDropdownSelection(selection, "homeTeam")}}  
-            addNewFunction={selection => {handleDropdownSelection(selection, "homeTeam")}} 
+            customOnChangeFunction={selection => {handleFormEntry(selection, "homeTeam")}}  
+            addNewFunction={selection => {handleFormEntry(selection, "homeTeam")}} 
           />
           
           <div>
-            <StyledInput type="number" id="homeTeam" name="homeTeam" min="0" />
+            <StyledInput onChange={e => {handleFormEntry(e.target.value, "homeTeamScore")}} 
+              type="number" 
+              id="homeTeamScore" 
+              name="homeTeamScore" 
+              min="0" />
             : 
-            <StyledInput type="number" id="awayTeam" name="awayTeam" min="0" />
+            <StyledInput onChange={e => {handleFormEntry(e.target.value, "awayTeamScore")}} 
+              type="number" 
+              id="awayTeamScore" 
+              name="awayTeamScore" 
+              min="0" />
           </div>
           <CreateDropDown 
             width="180"
@@ -140,8 +138,8 @@ const ScheduleGroup = ({
             options={teamOptions}
             optionLabelKey="name"
             optionValueKey="teamId"
-            customOnChangeFunction={selection => {handleDropdownSelection(selection, "awayTeam")}} 
-            addNewFunction={selection => {handleDropdownSelection(selection, "awayTeam")}} 
+            customOnChangeFunction={selection => {handleFormEntry(selection, "awayTeam")}} 
+            addNewFunction={selection => {handleFormEntry(selection, "awayTeam")}} 
           />
         </StyledGameRow>
       </>
