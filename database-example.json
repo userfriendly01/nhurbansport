@@ -66,7 +66,14 @@
       "firstName" : "Faith",
       "lastName" : "Cuneo",
       "phoneNumber" : "603-851-8200",
-      "textAlerts" : true
+      "textAlerts" : true,
+      "Teams": [
+        {
+          "teamId": "123456",
+          "teamName": "",
+          "sessionId": "sesh1234"
+        }
+      ]
     },
     "PLAYER-2" : {
       "dateOfBirth" : "05/02/1991",
@@ -154,7 +161,69 @@
               }
             ]}
         ]
-      }
+      },
+      "teams": [
+        {
+          "captain" : {
+            "name": "Tyrell Skinner",
+            "playerId": "1234"
+          },
+          "teamId" : "TMFB1234",
+          "stats" : {
+            "loss" : 4,
+            "played" : 12,
+            "position" : 1,
+            "tie" : 0,
+            "won" : 8
+          },
+          "name" : "PoundTown"
+        },
+        {
+          "captain" : {
+            "name": "Jesus Salamanca",
+            "playerId": "1234"
+          },
+          "teamId" : "TMFB4567",
+          "stats" : {
+            "loss" : 4,
+            "played" : 12,
+            "position" : 1,
+            "tie" : 0,
+            "won" : 8
+          },
+          "name" : "Monstars"
+        },
+        {
+          "captain" : {
+            "name": "Jon Ramos",
+            "playerId": "1234"
+          },
+          "teamId" : "TMFB3698",
+          "stats" : {
+            "loss" : 4,
+            "played" : 12,
+            "position" : 1,
+            "tie" : 0,
+            "won" : 8
+          },
+          "name" : "Minority Squad"
+        },
+        {
+          "captain" : {
+            "name": "Faith Cuneo",
+            "playerId": "1234"
+          },
+          "teamId" : "TMFB6654",
+          "stats" : {
+            "loss" : 4,
+            "played" : 12,
+            "position" : 1,
+            "tie" : 0,
+            "won" : 8
+          },
+          "name" : "Queens Of Manchester"
+        }
+      ]
     },
     "-Lso1uPG6zNnih--n9NP" : {
       "active" : true,
@@ -170,7 +239,39 @@
       "name" : "Coed Basketball",
       "price" : "$55",
       "selectShirtOption" : true,
-      "selectTeamOption" : true
+      "selectTeamOption" : true,
+      "teams": [
+        {
+          "captain" :  {
+            "name": "Jon Ramos",
+            "playerId": "1234"
+          },
+          "teamId" : "TMBB1234",
+          "stats" : {
+            "loss" : 4,
+            "played" : 12,
+            "position" : 1,
+            "tie" : 0,
+            "won" : 8
+          },
+          "name" : "Minority Squad"
+        },
+        {
+          "captain" : {
+            "name": "Jesus Salamanca",
+            "playerId": "1234"
+          },
+          "teamId" : "TMBB4567",
+          "stats" : {
+            "loss" : 4,
+            "played" : 12,
+            "position" : 1,
+            "tie" : 0,
+            "won" : 8
+          },
+          "name" : "Monstars"
+        }
+      ]
     },
     "-LvbdygG4Y7VGfckG2Zb" : {
       "active" : true,
@@ -203,123 +304,6 @@
       "price" : "16.00",
       "selectShirtOption" : false,
       "selectTeamOption" : true
-    }
-  },
-  "Sports" : {
-    "SPADAPTIVEBASKETBALL" : {
-      "sportName" : "Adaptive Basketball"
-    },
-    "SPBASKETBALL" : {
-      "sportName" : "Basketball"
-    },
-    "SPCORNHOLE" : {
-      "sportName" : "Cornhole"
-    },
-    "SPELITEBASKETBALL" : {
-      "sportName" : "Elite Basketball"
-    },
-    "SPFLAGFOOTBALL" : {
-      "sportName" : "Flag Football"
-    }
-  },
-  "Teams" : {
-    "TEAM-1" : {
-      "captain" : "Tyrell Skinner",
-      "players" : [ "PLAYER-1", "PLAYER-2" ],
-      "sessionKey" : "SESHFLAG062019",
-      "sportKey" : "SPFLAGFOOTBALL",
-      "stats" : {
-        "loss" : 4,
-        "played" : 12,
-        "position" : 1,
-        "tie" : 0,
-        "won" : 8
-      },
-      "teamName" : "PoundTown"
-    },
-    "TEAM-2" : {
-      "captain" : "Jesus Salamanca",
-      "players" : [ "PLAYER-3", "PLAYER-4" ],
-      "sessionKey" : "SESHFLAG062019",
-      "sportKey" : "SPFLAGFOOTBALL",
-      "stats" : {
-        "loss" : 4,
-        "played" : 12,
-        "position" : 1,
-        "tie" : 0,
-        "won" : 8
-      },
-      "teamName" : "Monstars"
-    },
-    "TEAM-3" : {
-      "captain" : "Jon Ramos",
-      "players" : [ "PLAYER-5", "PLAYER-3" ],
-      "sessionKey" : "SESHFLAG062019",
-      "sportKey" : "SPFLAGFOOTBALL",
-      "stats" : {
-        "loss" : 4,
-        "played" : 12,
-        "position" : 1,
-        "tie" : 0,
-        "won" : 8
-      },
-      "teamName" : "Minority Squad"
-    },
-    "TEAM-4" : {
-      "captain" : "Faith Cuneo",
-      "players" : [ "PLAYER-3" ],
-      "sessionKey" : "SESHFLAG062019",
-      "sportKey" : "SPFLAGFOOTBALL",
-      "stats" : {
-        "loss" : 4,
-        "played" : 12,
-        "position" : 1,
-        "tie" : 0,
-        "won" : 8
-      },
-      "teamName" : "Queens Of Manchester"
-    },
-    "TEAM-5" : {
-      "captain" : "Jon Ramos",
-      "players" : [ "PLAYER-5", "PLAYER-3" ],
-      "sessionKey" : "SESHBASKETBALL062019",
-      "sportKey" : "SPBASKETBALL",
-      "stats" : {
-        "loss" : 4,
-        "played" : 12,
-        "position" : 1,
-        "tie" : 0,
-        "won" : 8
-      },
-      "teamName" : "Minority Squad"
-    },
-    "TEAM-6" : {
-      "captain" : "Jon Ramos",
-      "players" : [ "PLAYER-5", "PLAYER-3" ],
-      "sessionKey" : "SESHBASKETBALL062019",
-      "sportKey" : "SPBASKETBALL",
-      "stats" : {
-        "loss" : 4,
-        "played" : 12,
-        "position" : 1,
-        "tie" : 0,
-        "won" : 8
-      },
-      "teamName" : "Monstars"
-    },
-    "TEAM-7" : {
-      "captain" : "Faith Cuneo",
-      "players" : [ "PLAYER-1", "PLAYER-3" ],
-      "sessionKey" : "SESHCORNHOLE062019",
-      "sportKey" : "SPCORNHOLE",
-      "stats" : {
-        "loss" : 4,
-        "played" : 12,
-        "position" : 1,
-        "tie" : 0,
-        "won" : 8
-      },
-      "teamName" : "Pound Town"
     }
   }
 }

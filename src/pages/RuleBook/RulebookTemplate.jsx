@@ -10,8 +10,8 @@ import styled from 'styled-components'
 import ImageUpload from '../ImageUpload/ImageUpload.jsx'
 import { 
   createRulebook,
-  editRulebook
-} from './RulebookUtil.jsx'
+  updateRulebook
+} from '../../service/Database'
 import { StateContext } from '../../context/appContext.jsx'
 
 const StyledImage = styled.img`
@@ -63,7 +63,7 @@ const RuleBookTemplate = ({ match }) => {
   }
 
   const handleEditRulebook = () => {
-    editRulebook(rulebookId, rulebookForm).then(() => {
+    updateRulebook(rulebookId, rulebookForm).then(() => {
       const deleteIndex = rulebooks.map(deletedRulebook => { return deletedRulebook.ruleBookId; }).indexOf(rulebookId);
       rulebooks.splice(deleteIndex, 1);
       rulebooks.push(rulebookForm);

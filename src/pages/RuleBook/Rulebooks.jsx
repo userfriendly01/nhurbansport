@@ -7,7 +7,7 @@ import {
   Image,
   DisplayCard
 } from '../../components'
-import { deleteRulebook } from './RulebookUtil.jsx'
+import { deleteRulebook } from '../../service/Database'
 import styled from 'styled-components'
 import { StateContext } from '../../context/appContext.jsx'
 

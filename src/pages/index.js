@@ -1,7 +1,6 @@
 export { default as App } from "./App/App.jsx"
 export { default as Home } from "./Home/Home.jsx"
 export * from "./Leagues"
-export { default as AddLeagueTemplate } from "./Leagues/AddLeagueTemplate.jsx"
 export { default as LiabilityWaiver } from "./LiabilityWaiver/LiabilityWaiver.jsx"
 export { default as PlayerPortal } from "./PlayerPortal/PlayerPortal.jsx"
 export { default as Roster } from "./Roster/Roster.jsx"

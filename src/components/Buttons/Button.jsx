@@ -7,6 +7,7 @@ const MyButton = styled.button`
     padding: 5 24;
     height: calc(1.5em + .75rem + 2px);
     margin: 0 10;
+    align-self: ${props => props.align};
     width: ${props => props.width};
 `
 

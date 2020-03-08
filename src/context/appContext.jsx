@@ -1,9 +1,10 @@
 import { 
-  getActiveSessions,
-  getGamesForSession,
-  getPlayerFriendlyName,
-  getAllTeamsForSession
+  getActiveSessions
 } from '../service/Database'
+import {
+  convertTeamArray,
+  convertSchedule
+} from '../util/Helpers.jsx'
 import { getStorage, getDatabase } from "../service/Connect.jsx";
 import React, { useState, useEffect } from 'react';
 
@@ -19,16 +20,13 @@ let initialState = {
   leagueContext: {
     leagues: []
   },
+  playerContext: {
+    players: []
+  },
   adminContext: {
-    text: [
-
-    ],
-    rulebooks: [
-
-    ],
-    liabilityWaiver: [
-
-    ]
+    text: [],
+    rulebooks: [],
+    liabilityWaiver: []
   }
 };
 const StateContextProvider = ({ children }) => {
@@ -39,8 +37,9 @@ const StateContextProvider = ({ children }) => {
     const leaguePromise = setLeagueContext(state, setState);
     const imagePromise = setImageContext(state);
     const adminPromise = setAdminContext(state);
+    const playerPromise = setPlayerContext(state);
 
-    Promise.all([leaguePromise, imagePromise, adminPromise]).then(() => {
+    Promise.all([leaguePromise, imagePromise, adminPromise, playerPromise]).then(() => {
       setLoading(false);
     })
   }, []);
@@ -67,37 +66,39 @@ export const setLeagueContext = async state => {
     await getActiveSessions()
       .then((sessions) => {
           for(let s in sessions) {
-            let sessionObject = {...sessions[s]};
-            let leagueName = sessions[s].name
-            let startDate = sessions[s].date;
             let sessionId = s;
+            let sessionObject = {...sessions[sessionId]};
+            let leagueName = sessions[sessionId].name
+            let startDate = sessions[sessionId].date;
+            
             sessionObject.sessionFriendlyName = leagueName + " " + startDate;
             sessionObject.sessionId = sessionId;
-            getAllTeamsForSession(sessionId).then((teams) => {
-              let teamsArray = [];
-                for(let t in teams){
-                  let teamObject = {};
-                  let teamId = t;
-                  let playerArray = [];
-                  teamObject.teamId = teamId;
-                  teamObject.teamName = teams[teamId].teamName;
-                  for(let p in teams[teamId].players) {
-                    getPlayerFriendlyName(teams[teamId].players[p]).then((player => {
-                      playerArray.push(player)
-                    })
-                  )};
-                  teamObject.players = playerArray;
-                  teamsArray.push(teamObject);
-                };
-                sessionObject.sessionTeams = teamsArray;
-            });
-            getGamesForSession(sessionId).then(games => {
-            sessionObject.sessionGames = games;
-            });
+            let formattedTeams = convertTeamArray(sessionObject.teams);
+            sessionObject.teams = formattedTeams;
+            if (sessionObject.schedule) {
+              let formattedSchedule = convertSchedule(sessionObject.schedule);
+              sessionObject.schedule = formattedSchedule;
+            }
             state.leagueContext.leagues.push(sessionObject)
           };
     }).catch((error) => {
         console.log(error)
+    })
+}
+
+export const setPlayerContext = async state => {
+  await database
+    .ref("Players")
+    .once("value")
+    .then(snapshot => {
+      let players = snapshot.val();
+      for (let p in players) {
+        let playerObject = {...players[p]};
+        playerObject.playerId = p;
+        state.playerContext.players.push(playerObject);
+      }
+    }).catch(error => {
+      console.error("Failed to Load Player Context. ", error)
     })
 }
 
@@ -111,7 +112,7 @@ export const setAdminContext = async state => {
       let newSnapshot = snapshot.val();
       state.adminContext.text = newSnapshot;
     }).catch(error => {
-      console.log(error);
+      console.error("Failed to Load Admin Text to Context. ", error)
     });
 
     await database
@@ -128,7 +129,7 @@ export const setAdminContext = async state => {
         state.adminContext.rulebooks.push(rulebookObject);
       }
     }).catch(error => {
-      console.log(error);
+      console.error("Failed to Load Rulebooks to Context. ", error)
     });
 }
 
@@ -158,7 +159,7 @@ export const setImages = async state => {
         });
         state.imageContext.images = imageObject;
       }).catch(error => {
-        console.log(error);
+        console.error("Failed to Load Images from Storage to Context. ", error)
       });
     };
 
@@ -170,6 +171,6 @@ export const setImageData = async state => {
     let newSnapshot = snapshot.val();
     state.imageContext.imageData = newSnapshot;
   }).catch((error) => {
-    console.log(error);
+    console.error("Failed to Load Images from Database to Context. ", error)
   });
 }

@@ -1,7 +1,4 @@
-import { getDatabase } from "../Connect.jsx";
-
-const database = getDatabase();
-
+//pass in the update function duhh
 export const updateAdminText = (id, updatedText, updateAdminContext) => {
   database
   .ref("Admin")
@@ -13,7 +10,3 @@ export const updateAdminText = (id, updatedText, updateAdminContext) => {
     console.log(error);
   });
 };
-
-export const updateLeague = (id, updatedSession) => {
-  sessionsRef.child(id).set(updatedSession);
-}

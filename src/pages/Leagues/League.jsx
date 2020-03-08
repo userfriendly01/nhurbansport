@@ -10,7 +10,7 @@ import {
 } from '../../components'
 import { StateContext } from '../../context/appContext.jsx'
 import styled from 'styled-components'
-import { deleteLeague} from './LeagueUtil.jsx'
+import { deleteSession } from '../../service/Database'
 
 const StyledAccordian = styled(Accordion)`
   font-weight: unset;
@@ -28,7 +28,7 @@ const League = ({ match }) => {
   const league = leagues.find(obj => obj.sessionId === leagueId) ? leagues.find(obj => obj.sessionId === leagueId) : {};
   
   const handleDelete = () => {
-    deleteLeague(leagueId);
+    deleteSession(leagueId);
   };
   
   return (

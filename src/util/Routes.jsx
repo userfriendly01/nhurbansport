@@ -1,6 +1,6 @@
 import React from 'react'
 import {
-    AddLeagueTemplate,
+    LeagueTemplate,
     Home,
     ImageUpload,
     League,
@@ -74,11 +74,11 @@ export const routes = [
     },
     {
         path: "/add-league",
-        component: AddLeagueTemplate
+        component: LeagueTemplate
     },
     {
         path: "/edit-league/:id",
-        component: AddLeagueTemplate
+        component: LeagueTemplate
     },
     {
         path: "/league/:id",

@@ -6,7 +6,7 @@ import {
 import ScheduleGroup from "./ScheduleGroup.jsx"
 import styled from 'styled-components'
 import { StateContext } from '../../context/appContext.jsx'
-import { editLeague } from '../Leagues/LeagueUtil.jsx'
+import { updateSession } from "../../service/Database"
 
 const StyledTitle = styled(Wrapper)`
   width: 550;
@@ -53,7 +53,7 @@ const Schedule = ({match}) => {
   const saveSchedule = () => {
     const newSession = session;
     newSession.schedule = scheduleForm;
-    editLeague(sessionId, newSession).then(() => {
+    updateSession(sessionId, newSession).then(() => {
       console.log("Session Updated!")
     });
   }

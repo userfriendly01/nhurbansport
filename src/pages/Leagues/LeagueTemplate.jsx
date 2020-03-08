@@ -11,9 +11,9 @@ import {
 import styled from 'styled-components'
 import ImageUpload from '../ImageUpload/ImageUpload.jsx'
 import { 
-  createLeague,
-  editLeague
-} from './LeagueUtil.jsx'
+  createSession,
+  updateSession
+} from '../../service/Database'
 import { StateContext } from '../../context/appContext.jsx'
 
 const StyledImage = styled.img`
@@ -62,11 +62,11 @@ const LeagueTemplate = ({ match }) => {
   }
 
   const handleCreateLeague = () => {
-    createLeague(leagueForm);
+    createSession(leagueForm);
   }
 
   const handleEditLeague = () => {
-    editLeague(leagueId, leagueForm);
+    updateSession(leagueId, leagueForm);
   }
 
   const location = {
