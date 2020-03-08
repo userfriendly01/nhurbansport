@@ -1,11 +1,19 @@
 import React from 'react';
 import CreatableSelect from 'react-select/creatable';
 
-const CreateDropDown = (props) => {
-  const options = props.options ? props.options : null;
-  const optionLabelKey = props.label ? props.label : null;
-  const optionValueKey = props.value ? props.value : null;
-  const addNewFunction = props.addNewFunction ? props.addNewFunction : null;
+const CreateDropDown = ({
+  options,
+  label,
+  value,
+  placeholder,
+  customOnChangeFunction,
+  addNewFunction,
+  optionLabelKey,
+  optionValueKey,
+  width
+}) => {
+  
+  const isCustom = customOnChangeFunction ? customOnChangeFunction : false;
 
   const generateOptions = () => {
     const formattedOptions = [];
@@ -19,8 +27,8 @@ const CreateDropDown = (props) => {
   };
 
   const customStyles = { 
-    menu: base => ({ ...base, width: props.width }),
-    container: base => ({ ...base, width: props.width, margin: 10 })
+    menu: base => ({ ...base, width: width }),
+    container: base => ({ ...base, width: width, margin: 10 })
   }
 
   const handleChange = (newValue, actionMeta) => {
@@ -35,14 +43,16 @@ const CreateDropDown = (props) => {
     // console.log(`action: ${actionMeta.action}`);
     // console.groupEnd();
   };
-
+console.log("Value", value)
     return (
       <CreatableSelect
         styles={customStyles}
         isClearable
+        value={value}
+        placeholder={placeholder}
         options={generateOptions()}
-        onChange={handleChange}
-        onInputChange={handleInputChange}
+        onChange={isCustom ? customOnChangeFunction : handleChange}
+        // onInputChange={handleInputChange}
         onCreateOption={addNewFunction}
       />
     );

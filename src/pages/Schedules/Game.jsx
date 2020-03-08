@@ -35,7 +35,6 @@ const ScheduleGroup = ({
 }) => {
   const groups = form.scheduleGroups;
   const group = groups[groupIndex] ? groups[groupIndex] : {};
-  console.log("Did this work", group)
   const games = group.games;
   const game = games.find(obj => obj.gameId === gameId) ? games.find(obj => obj.gameId === gameId) : {};
   const gameIndex = games.map(deletedGame => { return deletedGame.gameId; }).indexOf(gameId);
@@ -75,10 +74,6 @@ const ScheduleGroup = ({
   };
 
   const handleTextChange = event => {
-    console.log("Game ID" , gameId);
-    console.log("Games" , games);
-    console.log("Game Form", form.scheduleGroups[groupIndex].games)
-    console.log("Game Index", gameIndex)
     const key = event.target.id;
     const value = event.target.value;
     const newGame = {
@@ -88,7 +83,15 @@ const ScheduleGroup = ({
     resetGame(newGame);
   }
 
-  
+  const handleDropdownSelection = (selection, id) => {
+    const key = id;
+    const value = selection;
+    const newGame = {
+      ...game,
+    }
+    newGame[key] = value;
+    resetGame(newGame);
+  }
 
   return (
     <>
@@ -115,22 +118,31 @@ const ScheduleGroup = ({
         </StyledLocationRow>
         <StyledGameRow>
         <CreateDropDown 
-          width="180"
-          label="name"
-          value="teamId"
-          options={teamOptions} 
-          updateFunction={()=> {console.log("Almost Done")}} />
+            width="180"
+            placeholder="Home Team"
+            value={game.homeTeam}
+            options={teamOptions}
+            optionLabelKey="name"
+            optionValueKey="teamId"
+            customOnChangeFunction={selection => {handleDropdownSelection(selection, "homeTeam")}}  
+            addNewFunction={selection => {handleDropdownSelection(selection, "homeTeam")}} 
+          />
+          
           <div>
             <StyledInput type="number" id="homeTeam" name="homeTeam" min="0" />
             : 
             <StyledInput type="number" id="awayTeam" name="awayTeam" min="0" />
           </div>
           <CreateDropDown 
-          width="180"
-          label="name"
-          value="teamId"
-          options={teamOptions} 
-          updateFunction={()=> {console.log("Almost Done")}} />
+            width="180"
+            placeholder="Away Team"
+            value={game.awayTeam}
+            options={teamOptions}
+            optionLabelKey="name"
+            optionValueKey="teamId"
+            customOnChangeFunction={selection => {handleDropdownSelection(selection, "awayTeam")}} 
+            addNewFunction={selection => {handleDropdownSelection(selection, "awayTeam")}} 
+          />
         </StyledGameRow>
       </>
       :
