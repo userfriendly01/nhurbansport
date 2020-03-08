@@ -81,8 +81,6 @@ const LeagueTemplate = ({ match }) => {
     }
   }
 
-  console.log(leagueForm);
-
   return (
     <div>
       {

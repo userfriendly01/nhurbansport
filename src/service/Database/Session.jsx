@@ -23,7 +23,6 @@ export const getGamesForSession = sessionId => {
     .equalTo(sessionId)
     .once('value')
     .then((snapshot) => {
-        console.log("Games! ", snapshot.val());
     return snapshot.val();
 }).catch((error) => {
     console.log(error)

@@ -9,16 +9,8 @@ const StandardDropDown = props => {
 
 
   const generateOptions = () => {
-    console.group("DropDown Evaluation");
-    console.log("Label Key: ", optionLabelKey);
-    console.log("Value Key: ", optionValueKey);
-    console.groupEnd();
     const formattedOptions = [];
     options.map(option => {
-      console.group("DropDown Evaluation Per Option");
-      console.log("Label: ", option[optionLabelKey]);
-      console.log("Value: ", option[optionValueKey]);
-      console.groupEnd();
       formattedOptions.push({
         label: option[optionLabelKey],
         value: option[optionValueKey]
@@ -33,10 +25,6 @@ const StandardDropDown = props => {
   }
 
   const handleChange = (newValue, actionMeta) => {
-    console.group('Value Changed');
-    console.log(newValue);
-    console.log(`action: ${actionMeta.action}`);
-    console.groupEnd();
     updateFunction(newValue);
   };
 

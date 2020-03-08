@@ -46,35 +46,47 @@ const ScheduleGroup = ({
   setForm
 }) => {
   const groups = form.scheduleGroups;
+  console.log("Schedule Group Form", form)
   const group = groups.find(obj => obj.groupId === groupId) ? groups.find(obj => obj.groupId === groupId) : {};
   const groupLabel = group.groupLabel ? group.groupLabel : "";
   const groupDate = group.date ? group.date : "";
   const games = group.games;
   const gameCount = group.games.length ? group.games.length : 0;
 
-  console.log("Show me the form", form);
-
   const createGame = () => {
+    const index = form.scheduleGroups.map(group => { return group.groupId; }).indexOf(groupId);
     const newGroup = {
       ...group,
       games: [
         ...group.games,
-        { gameId: form.scheduleGroups.groupId + "GA" + gameCount }
+        { gameId: form.scheduleGroups[index].groupId + "GA" + gameCount,
+          location: "",
+          time: "",
+          homeTeam: "",
+          homeTeamScore: "",
+          awayTeam: "",
+          awayTeamScore: ""
+      }
       ]
     }
-    deleteScheduleGroup()
+    console.group()
+    console.log("The original array order", form.scheduleGroups)
+    console.log("The index to delete is: ", index)
+    console.log("New Group Object after create game", newGroup)
+    deleteScheduleGroup(newGroup.groupId)
+    const newArray = form.scheduleGroups;
+    newArray.splice(index,0,newGroup);
+    console.log("How did the new array come out?", newArray);
+    console.groupEnd();
     setForm({
       ...form,
-      scheduleGroups: [ 
-        ...form.scheduleGroups,
-        newGroup
-      ]
+      scheduleGroups: newArray
     })
   };
 
-  const deleteScheduleGroup = () => {
+  const deleteScheduleGroup = deleteGroupID => {
     const groupArray = form.scheduleGroups;
-    const deleteIndex = groupArray.map(deletedGroup => { return deletedGroup.groupId; }).indexOf(groupId);
+    const deleteIndex = groupArray.map(deletedGroup => { return deletedGroup.groupId; }).indexOf(deleteGroupID);
     groupArray.splice(deleteIndex, 1);
     setForm({
       ...form,
@@ -106,7 +118,14 @@ const ScheduleGroup = ({
         </StyledDateRow>
         {
           games.map(game => (
-            <Game key={game.gameID} game={game} edit={edit} form={form} setForm={setForm}/>
+            <Game 
+              key={game.gameId}
+              groupId={groupId}
+              game={game}
+              edit={edit} 
+              form={form} 
+              setForm={setForm}
+              deleteGroupFunction={deleteScheduleGroup}/>
           ))
         }
       </StyledDisplay>
@@ -116,7 +135,7 @@ const ScheduleGroup = ({
       <StyledDateRow>{groupDate}</StyledDateRow>
       {
         games.map(game => (
-          <Game game={game}/>
+          <Game key={game.gameId} game={game}/>
         ))
       }
     </StyledDisplay>

@@ -73,7 +73,6 @@ const ImageUpload = ({ location } ) => {
     }
 
     const updateImageSource = () => {
-      console.log("What's the Form? ",form);
       if (form) {
         const attachImage = location.state.callbackFunction;
         attachImage(imageDetails.url);

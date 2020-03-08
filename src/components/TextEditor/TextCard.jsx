@@ -20,8 +20,6 @@ const TextCard = ({ id }) => {
     }    
   )
 
-  console.log("Here is the editModal Object: ", editModal);
-  console.log("The ID is coming through as: ",id);
   return (
     <div>
       <StyledTextCard onClick={() => setEditModal(

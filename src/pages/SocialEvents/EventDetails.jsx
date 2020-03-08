@@ -27,7 +27,6 @@ const EventDetails = ({ match }) => {
     ]
 
     useEffect(() => {
-        console.log({match})
         fetchEvent();
     },[event])
 
@@ -45,7 +44,6 @@ const EventDetails = ({ match }) => {
         const eventDetails = events.find(item => {
             return item.id==id;
         })
-        console.log(eventDetails)
         setEvent(eventDetails);
     }
 

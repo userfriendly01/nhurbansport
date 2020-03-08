@@ -120,7 +120,7 @@
           "date": "Wednesday, January 15",
           "games": [
             {
-              "gameID": "-LsnsWi_PLFLBPeRbP16GR1GA1",
+              "gameId": "-LsnsWi_PLFLBPeRbP16GR1GA1",
               "location": "Concord Sports Center, Concord NH",
               "time": "7:00pm",
               "homeTeam": "My Team",
@@ -135,7 +135,7 @@
             "date": "Wednesday, March 15",
             "games": [
               {
-                "gameID": "LsnsWi_PLFLBPeRbP16GR2GA1",
+                "gameId": "LsnsWi_PLFLBPeRbP16GR2GA1",
                 "location": "Concord Sports Center, Concord NH",
                 "time": "7:00pm",
                 "homeTeam": "Butt Team",
@@ -144,7 +144,7 @@
                 "awayTeamScore": "40"
               },
               {
-                "gameID": "LsnsWi_PLFLBPeRbP16GR2GA2",
+                "gameId": "LsnsWi_PLFLBPeRbP16GR2GA2",
                 "location": "Concord Sports Center, Concord NH",
                 "time": "8:00pm",
                 "homeTeam": "Arm Team",

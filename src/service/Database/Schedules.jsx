@@ -8,7 +8,6 @@ export const getSchedule = (session) => {
       .equalTo(session)
       .once('value')
       .then((snapshot) => {
-          console.log(snapshot.val())
         return snapshot.val();
     }).catch((error) => {
         console.log(error)

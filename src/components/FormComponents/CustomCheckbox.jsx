@@ -22,7 +22,6 @@ const CustomCheckbox = ({
     setForm(updatedObject);
   }
 
-  console.log("Here's the key: ", id);
   return (
     <FormControlLabel
       value={id}

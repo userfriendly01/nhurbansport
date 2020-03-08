@@ -60,7 +60,6 @@ const Schedules = () => {
   }
 
     const handleCreate = option => {
-      console.log("The Option is sent as: ", option);
       setRedirect({
         value: option.value,
         redirect: true

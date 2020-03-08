@@ -1,6 +1,7 @@
 import React from "react"
 import {
   CreateDropDown,
+  DeleteIcon,
   TextField,
   Wrapper
 } from "../../components"
@@ -25,16 +26,24 @@ const StyledInput = styled.input`
 `
 //Custom Styling for winner
 
-const ScheduleGroup = props => {
-  const game = props.game ? props.game : false;
-  const homeTeam = game.homeTeam ? game.homeTeam : null;
-  const homeTeamScore = game.homeTeamScore ? game.homeTeamScore : null;
-  const awayTeam = game.awayTeam ? game.awayTeam : null;
-  const awayTeamScore = game.awayTeamScore ? game.awayTeamScore : null;
-  const gameTime = game.time ? game.time : null;
-  const gameLocation = game.location ? game.location : null;
-
-  const edit = props.edit ? props.edit : false;
+const ScheduleGroup = ({
+  groupId,
+  gameId,
+  edit,
+  form,
+  setForm,
+  deleteGroupFunction
+}) => {
+  const groups = form.scheduleGroups;
+  const group = groups.find(obj => obj.groupId === groupId) ? groups.find(obj => obj.groupId === groupId) : {};
+  const games = group.games;
+  console.group()
+  console.log("First lets see game groups", groups)
+  console.log("First lets see game groupId", groupId)
+  console.log("First lets see game group", group)
+  console.groupEnd()
+  const game = games.find(obj => obj.gameId === gameId) ? games.find(obj => obj.gameId === gameId) : {};
+  
   const teamOptions = [
     {
       teamId: "1234",
@@ -49,28 +58,44 @@ const ScheduleGroup = props => {
       name: "PiffSquad"
     }
   ]
-  //Check if Game existes
 
-  const tempForm = {
-    location: "Concord",
-    time: "6:00pm"
-  }
+  const deleteGame = () => {
+    const gameArray = games;
+    const deleteIndex = gameArray.map(deletedGame => { return deletedGame.gameId; }).indexOf(gameId);
+    gameArray.splice(deleteIndex, 1);
+
+    const newGroup = {
+      ...group,
+      games: gameArray
+    }
+    deleteGroupFunction(groupId);
+    setForm({
+      ...form,
+      scheduleGroups: [ 
+        ...form.scheduleGroups,
+        newGroup
+      ]
+    })
+  };
 
   return (
     <>
     { edit ?
       <>
+        <Wrapper justify="flex-end" padding="5 0 0 0">
+          <DeleteIcon size="16" deleteFunction={deleteGame}/>
+        </Wrapper>
         <StyledLocationRow>
           <TextField 
               id="location"
               margin="none"
-              form={tempForm}
+              form={game}
               setForm={() => console.log("Form is Set")}
             />
           <TextField 
             id="time"
             margin="none"
-            form={tempForm}
+            form={game}
             setForm={() => console.log("Form is Set")}
           />
         </StyledLocationRow>

@@ -43,8 +43,6 @@ export const uploadImage = ({
     setImageDetails
   }) => {
 
-    console.log("Temp Image" , temporaryImage);
-
   const uploadTask = storage.ref(`images/${temporaryImage.name}`).put(temporaryImage.file);
   uploadTask.on('state_changed',
   null,
