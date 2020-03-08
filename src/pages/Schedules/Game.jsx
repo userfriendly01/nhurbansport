@@ -27,23 +27,19 @@ const StyledInput = styled.input`
 //Custom Styling for winner
 
 const ScheduleGroup = ({
-  groupId,
+  groupIndex,
   gameId,
   edit,
   form,
-  setForm,
   resetFunction
 }) => {
   const groups = form.scheduleGroups;
-  const group = groups.find(obj => obj.groupId === groupId) ? groups.find(obj => obj.groupId === groupId) : {};
+  const group = groups[groupIndex] ? groups[groupIndex] : {};
+  console.log("Did this work", group)
   const games = group.games;
-  console.group()
-  console.log("First lets see game groups", groups)
-  console.log("First lets see game groupId", groupId)
-  console.log("First lets see game group", group)
-  console.groupEnd()
   const game = games.find(obj => obj.gameId === gameId) ? games.find(obj => obj.gameId === gameId) : {};
-  
+  const gameIndex = games.map(deletedGame => { return deletedGame.gameId; }).indexOf(gameId);
+
   const teamOptions = [
     {
       teamId: "1234",
@@ -59,17 +55,40 @@ const ScheduleGroup = ({
     }
   ]
 
-  const deleteGame = () => {
-    const gameArray = games;
-    const gameIndex = gameArray.map(deletedGame => { return deletedGame.gameId; }).indexOf(gameId);
-    gameArray.splice(gameIndex, 1);
-
+  const resetGame = newGame => {
+    deleteGame();
+    games.splice(gameIndex, 0, newGame);
     const newGroup = {
       ...group,
-      games: gameArray
+      games: games
+    }
+    resetFunction(newGroup);
+  }
+  
+  const deleteGame = () => {
+    games.splice(gameIndex, 1);
+    const newGroup = {
+      ...group,
+      games: games
     }
     resetFunction(newGroup);
   };
+
+  const handleTextChange = event => {
+    console.log("Game ID" , gameId);
+    console.log("Games" , games);
+    console.log("Game Form", form.scheduleGroups[groupIndex].games)
+    console.log("Game Index", gameIndex)
+    const key = event.target.id;
+    const value = event.target.value;
+    const newGame = {
+      ...game,
+    }
+    newGame[key] = value;
+    resetGame(newGame);
+  }
+
+  
 
   return (
     <>
@@ -81,15 +100,17 @@ const ScheduleGroup = ({
         <StyledLocationRow>
           <TextField 
               id="location"
+              value={game.location}
+              placeholder="Game Location"
               margin="none"
-              form={game}
-              setForm={() => console.log("Form is Set")}
+              customOnChangeFunction={handleTextChange}
             />
           <TextField 
             id="time"
+            value={game.time}
+            placeholder="Game Time"
             margin="none"
-            form={game}
-            setForm={() => console.log("Form is Set")}
+            customOnChangeFunction={handleTextChange}
           />
         </StyledLocationRow>
         <StyledGameRow>

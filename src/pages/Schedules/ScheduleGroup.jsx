@@ -96,7 +96,7 @@ const ScheduleGroup = ({
     const key = event.target.id;
     const value = event.target.value;
     const newGroup = {
-      ...form.scheduleGroups[index],
+      ...group,
     }
     newGroup[key] = value;
     resetScheduleGroup(newGroup);
@@ -106,7 +106,7 @@ const ScheduleGroup = ({
     const key = "date";
     const value = date;
     const newGroup = {
-      ...form.scheduleGroups[index],
+      ...group,
     }
     newGroup[key] = value;
     resetScheduleGroup(newGroup);
@@ -120,7 +120,7 @@ const ScheduleGroup = ({
           <DeleteIcon size="16" deleteFunction={resetScheduleGroup}/>
         </Wrapper>
         <StyledGroupRow>
-          <TextField 
+          <TextField
             id="label"
             placeholder="Week"
             value={form.scheduleGroups[index].label}
@@ -136,10 +136,11 @@ const ScheduleGroup = ({
         </StyledDateRow>
         {
           games.map(game => (
+            console.log(game.gameId),
             <Game 
               key={game.gameId}
-              groupId={groupId}
-              game={game}
+              groupIndex={index}
+              gameId={game.gameId}
               edit={edit} 
               form={form} 
               setForm={setForm}

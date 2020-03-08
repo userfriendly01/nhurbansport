@@ -20,7 +20,6 @@ const CustomTextField = ({
 
   const isCustom = customOnChangeFunction ? customOnChangeFunction : false;
 
-  console.log("Why wouldnt this be a value", value);
   const handleChange = event => {
     const key = event.target.id;
     const value = event.target.value;
