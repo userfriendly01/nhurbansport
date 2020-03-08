@@ -12,9 +12,15 @@ const CustomTextField = ({
   setForm,
   id,
   label,
-  margin
+  margin,
+  value,
+  placeholder,
+  customOnChangeFunction
 }) => {
-  
+
+  const isCustom = customOnChangeFunction ? customOnChangeFunction : false;
+
+  console.log("Why wouldnt this be a value", value);
   const handleChange = event => {
     const key = event.target.id;
     const value = event.target.value;
@@ -27,10 +33,11 @@ const CustomTextField = ({
   return (
     <StyledTextField 
       id={id}
-      value={form[id]}
+      value={isCustom ? value : form[id]}
+      placeholder={placeholder}
       label={label}
       margin={margin ? margin : "normal"}
-      onChange={handleChange}
+      onChange={isCustom ? customOnChangeFunction : handleChange}
       />
   )
 }

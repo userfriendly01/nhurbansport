@@ -16,8 +16,12 @@ const CustomDayPicker = ({
   label,
   form,
   setForm,
-  id
+  id,
+  customOnChangeFunction,
+  value
 }) => {
+
+  const isCustom = customOnChangeFunction ? customOnChangeFunction : false;
 
   const handleDateChange = date => {
     const key = id;
@@ -29,17 +33,19 @@ const CustomDayPicker = ({
     setForm(updatedObject);
   }
 
+  const format ="iiii, MMMM do";
+
   const formatDate = date => {
-    const format ="iiii, MMMM do";
     return dateFnsFormat(date, format);
   }
 
   return (
     <DayPickerInput 
       formatDate={formatDate}
+      format={format}
       id={id}
-      value={form[id]}
-      onDayChange={handleDateChange} 
+      value={isCustom ? value : form[id]}
+      onDayChange={isCustom ? customOnChangeFunction : handleDateChange} 
       component={props => <StyledTextField {...props}
         label={label}
         style={{marginRight: "70px"}}

@@ -41,7 +41,10 @@ const Schedule = ({match}) => {
       ...scheduleForm,
       scheduleGroups: [ 
         ...scheduleForm.scheduleGroups,
-        { groupId: scheduleForm.scheduleId + "G" + groupCount, games: [] }
+        { groupId: scheduleForm.scheduleId + "G" + groupCount, 
+          label: "",
+          date: "",
+          games: [] }
       ]
     })
   };

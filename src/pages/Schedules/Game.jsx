@@ -32,7 +32,7 @@ const ScheduleGroup = ({
   edit,
   form,
   setForm,
-  deleteGroupFunction
+  resetFunction
 }) => {
   const groups = form.scheduleGroups;
   const group = groups.find(obj => obj.groupId === groupId) ? groups.find(obj => obj.groupId === groupId) : {};
@@ -68,14 +68,7 @@ const ScheduleGroup = ({
       ...group,
       games: gameArray
     }
-    const groupIndex = deleteGroupFunction(groupId);
-    const groups = form.scheduleGroups;
-    groups.splice(groupIndex, 0, newGroup);
-
-    setForm({
-      ...form,
-      scheduleGroups: groups
-    })
+    resetFunction(newGroup);
   };
 
   return (

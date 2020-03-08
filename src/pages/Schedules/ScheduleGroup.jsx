@@ -2,12 +2,13 @@ import React, { useState } from "react"
 import {
   DayPicker,
   DeleteIcon,
-  DisplayCard,
   TextField,
+  DisplayCard,
   Wrapper
 } from "../../components"
 import Game from "./Game.jsx"
 import styled from 'styled-components'
+
 
 const StyledDisplay = styled(DisplayCard)`
   width: 95%;
@@ -45,16 +46,34 @@ const ScheduleGroup = ({
   form,
   setForm
 }) => {
-  const groups = form.scheduleGroups;
   console.log("Schedule Group Form", form)
+  const groups = form.scheduleGroups;
   const group = groups.find(obj => obj.groupId === groupId) ? groups.find(obj => obj.groupId === groupId) : {};
-  const groupLabel = group.groupLabel ? group.groupLabel : "";
+  const groupLabel = group.label ? group.label : "";
   const groupDate = group.date ? group.date : "";
   const games = group.games;
   const gameCount = group.games.length ? group.games.length : 0;
+  const index = form.scheduleGroups.map(group => { return group.groupId; }).indexOf(groupId);
+
+  const resetScheduleGroup = newGroup => {
+    deleteScheduleGroup(groups, index)
+    groups.splice(index, 0, newGroup);
+    setForm({
+      ...form,
+      scheduleGroups: groups
+    })
+  }
+
+  const deleteScheduleGroup = (groups, index) => {
+    groups.splice(index, 1);
+    setForm({
+      ...form,
+      scheduleGroups: groups
+    })
+    // return groupIndex;
+  };
 
   const createGame = () => {
-    const index = form.scheduleGroups.map(group => { return group.groupId; }).indexOf(groupId);
     const newGroup = {
       ...group,
       games: [
@@ -69,47 +88,50 @@ const ScheduleGroup = ({
       }
       ]
     }
-    deleteScheduleGroup(newGroup.groupId)
-
-    const newArray = form.scheduleGroups;
-    newArray.splice(index,0,newGroup);
-    setForm({
-      ...form,
-      scheduleGroups: newArray
-    })
+    resetScheduleGroup(newGroup);
   };
 
-  const deleteScheduleGroup = deleteGroupID => {
-    const groupArray = form.scheduleGroups;
-    const groupIndex = groupArray.map(deletedGroup => { return deletedGroup.groupId; }).indexOf(deleteGroupID);
-    groupArray.splice(groupIndex, 1);
-    setForm({
-      ...form,
-      scheduleGroups: groupArray
-    })
-    return groupIndex;
-  };
+
+  const handleTextChange = event => {
+    const key = event.target.id;
+    const value = event.target.value;
+    const newGroup = {
+      ...form.scheduleGroups[index],
+    }
+    newGroup[key] = value;
+    resetScheduleGroup(newGroup);
+  }
+
+  const handleDateChange = date => {
+    const key = "date";
+    const value = date;
+    const newGroup = {
+      ...form.scheduleGroups[index],
+    }
+    newGroup[key] = value;
+    resetScheduleGroup(newGroup);
+  }
 
   return (
     <>
     {edit ?
       <StyledDisplay>
         <Wrapper justify="flex-end" padding="5 0 0 0">
-          <DeleteIcon size="16" deleteFunction={() => {deleteScheduleGroup(groupId)}}/>
+          <DeleteIcon size="16" deleteFunction={resetScheduleGroup}/>
         </Wrapper>
         <StyledGroupRow>
           <TextField 
-            id="groupLabel"
-            form={group}
-            setForm={() => console.log("Form is Set")}
+            id="label"
+            placeholder="Week"
+            value={form.scheduleGroups[index].label}
+            customOnChangeFunction={handleTextChange}
           />
           <StyledButton onClick={createGame}>Add game</StyledButton>
         </StyledGroupRow>
         <StyledDateRow color="black">
           <DayPicker
-            id="date" 
-            form={group}
-            setForm={() => console.log("Form is Set")}
+            value={form.scheduleGroups[index].date}
+            customOnChangeFunction={handleDateChange}
           />
         </StyledDateRow>
         {
@@ -121,7 +143,7 @@ const ScheduleGroup = ({
               edit={edit} 
               form={form} 
               setForm={setForm}
-              deleteGroupFunction={deleteScheduleGroup}/>
+              resetFunction={resetScheduleGroup}/>
           ))
         }
       </StyledDisplay>
