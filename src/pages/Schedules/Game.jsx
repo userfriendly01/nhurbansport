@@ -61,20 +61,20 @@ const ScheduleGroup = ({
 
   const deleteGame = () => {
     const gameArray = games;
-    const deleteIndex = gameArray.map(deletedGame => { return deletedGame.gameId; }).indexOf(gameId);
-    gameArray.splice(deleteIndex, 1);
+    const gameIndex = gameArray.map(deletedGame => { return deletedGame.gameId; }).indexOf(gameId);
+    gameArray.splice(gameIndex, 1);
 
     const newGroup = {
       ...group,
       games: gameArray
     }
-    deleteGroupFunction(groupId);
+    const groupIndex = deleteGroupFunction(groupId);
+    const groups = form.scheduleGroups;
+    groups.splice(groupIndex, 0, newGroup);
+
     setForm({
       ...form,
-      scheduleGroups: [ 
-        ...form.scheduleGroups,
-        newGroup
-      ]
+      scheduleGroups: groups
     })
   };
 

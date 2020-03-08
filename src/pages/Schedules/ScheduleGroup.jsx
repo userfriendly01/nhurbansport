@@ -69,15 +69,10 @@ const ScheduleGroup = ({
       }
       ]
     }
-    console.group()
-    console.log("The original array order", form.scheduleGroups)
-    console.log("The index to delete is: ", index)
-    console.log("New Group Object after create game", newGroup)
     deleteScheduleGroup(newGroup.groupId)
+
     const newArray = form.scheduleGroups;
     newArray.splice(index,0,newGroup);
-    console.log("How did the new array come out?", newArray);
-    console.groupEnd();
     setForm({
       ...form,
       scheduleGroups: newArray
@@ -86,12 +81,13 @@ const ScheduleGroup = ({
 
   const deleteScheduleGroup = deleteGroupID => {
     const groupArray = form.scheduleGroups;
-    const deleteIndex = groupArray.map(deletedGroup => { return deletedGroup.groupId; }).indexOf(deleteGroupID);
-    groupArray.splice(deleteIndex, 1);
+    const groupIndex = groupArray.map(deletedGroup => { return deletedGroup.groupId; }).indexOf(deleteGroupID);
+    groupArray.splice(groupIndex, 1);
     setForm({
       ...form,
       scheduleGroups: groupArray
     })
+    return groupIndex;
   };
 
   return (
@@ -99,7 +95,7 @@ const ScheduleGroup = ({
     {edit ?
       <StyledDisplay>
         <Wrapper justify="flex-end" padding="5 0 0 0">
-          <DeleteIcon size="16" deleteFunction={deleteScheduleGroup}/>
+          <DeleteIcon size="16" deleteFunction={() => {deleteScheduleGroup(groupId)}}/>
         </Wrapper>
         <StyledGroupRow>
           <TextField 
