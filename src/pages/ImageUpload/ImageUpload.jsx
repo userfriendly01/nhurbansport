@@ -103,8 +103,7 @@ const ImageUpload = ({ location } ) => {
     <div>
       {
         completed && !form ?
-        //<Redirect to={history.go(-1)} />
-        console.log("I tried to redirect")
+        <Redirect to={history.go(-1)} />
         :
         <Wrapper direction="column" align="center">
             <img src={imageDetails.url} height={imageDetails.height} width={imageDetails.width}/>

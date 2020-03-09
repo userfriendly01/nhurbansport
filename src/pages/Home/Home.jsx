@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import {
     Image,
     Button,
@@ -29,9 +29,16 @@ const StyledFormGroup = styled(FormGroup)`
   width: 500px;
 `;
 
-const Home = () => {
+const Home = ({focus}) => {
   const optionArray = ["Home: Option 1","Home: Option 2","Home: Option 3"];
   const aboutUs = "Home: About Us";
+
+  useEffect(() => {
+    if(focus){
+      const element = document.getElementById(focus)
+      element.scrollIntoView();
+    }
+  }, [])
 
   return (
     <Wrapper direction="column" align="center">
@@ -52,12 +59,12 @@ const Home = () => {
         }
           </Wrapper>
       <Wrapper width="630" margin="5px">
-        <DisplayCard>
+        <DisplayCard id="about">
           <TextCard id={aboutUs} />
         </DisplayCard>
         <Image id={aboutUs} height="180" width="180"/>
       </Wrapper>
-      <QuestionsAndCommentsWrapper >
+      <QuestionsAndCommentsWrapper id="contact">
         QUESTIONS AND COMMENTS
         <Form>
           <StyledFormGroup>                            

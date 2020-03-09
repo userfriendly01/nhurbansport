@@ -58,10 +58,10 @@ const Header = () => {
                     </StyledDropdownToggle>
                     <DropdownMenu>
                         <DropdownItem>
-                            <StyledLink to={aboutLink}>About</StyledLink>
+                            <StyledLink to="/about">About</StyledLink>
                         </DropdownItem>
                         <DropdownItem> 
-                            <StyledLink to="/">Contact</StyledLink>
+                            <StyledLink to="/contact">Contact</StyledLink>
                         </DropdownItem>
                     </DropdownMenu>
                 </UncontrolledDropdown>

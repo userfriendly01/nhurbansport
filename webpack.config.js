@@ -1,8 +1,6 @@
 const resolve = require('path').resolve;
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
-const CopyWebpackPlugin = require('copy-webpack-plugin')
-
 
 const config = {
   entry: ['babel-polyfill','./src/index.js'],

@@ -27,6 +27,14 @@ export const routes = [
         component: Home
     },
     {
+        path: "/about",
+        render: props => <Home {...props} focus={"about"}/>
+    },
+    {
+        path: "/contact",
+        render: props => <Home {...props} focus={"contact"}/>
+    },
+    {
         path: "/leagues",
         component: Leagues
     },
