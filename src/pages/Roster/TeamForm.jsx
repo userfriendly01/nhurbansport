@@ -7,7 +7,7 @@ import {
 } from '../../components'
 import {
   SessionDropDown,
-  TeamDropDown,
+  TeamStandardDropDown,
   PlayerDropDown
 } from "../../util/DropdownHelpers.jsx"
 import {
@@ -114,7 +114,7 @@ export const EditTeam = ({
       <Wrapper direction="column" width="100%" align="center">
         <SessionDropDown updateFunction={handleSelectSession}/>
         {sessionId ?
-          <TeamDropDown sessionId={sessionId} updateFunction={handleSelectTeam}/>
+          <TeamStandardDropDown sessionId={sessionId} updateFunction={handleSelectTeam}/>
           :
           null
         }
@@ -177,7 +177,7 @@ export const DeleteTeam = ({
       <Wrapper direction="column" width="100%" align="center">
         <SessionDropDown updateFunction={handleSelectSession}/>
         {sessionId ?
-          <TeamDropDown sessionId={sessionId} updateFunction={handleSelectTeam} />
+          <TeamStandardDropDown sessionId={sessionId} updateFunction={handleSelectTeam} />
           : null
         }
         {team ?

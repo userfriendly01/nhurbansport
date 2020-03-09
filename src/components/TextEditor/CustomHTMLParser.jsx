@@ -1,10 +1,5 @@
 import React from 'react';
 import ReactHtmlParser, { convertNodeToElement } from 'react-html-parser';
-import styled from 'styled-components';
-
-const StyledTextContainer = styled.div`
-  margin: 0px;
-`;
 
 const transform = (node, index) => {
   const nodeAttributes = node.attribs ? node.attribs : {};
@@ -49,9 +44,9 @@ const CustomHTMLParser = ({
   const parsedHtml = ReactHtmlParser(html, options);
 
   return (
-    <StyledTextContainer>
+    <div>
       {parsedHtml}
-    </StyledTextContainer>
+    </div>
   )
 }
 

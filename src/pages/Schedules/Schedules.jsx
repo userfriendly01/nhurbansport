@@ -53,7 +53,11 @@ const Schedules = () => {
     activeSessions.map(session => {
       const schedule = session.schedule ? session.schedule : false;
       if(!schedule) {
-        sessionsWithoutGames.push(session);
+        let sessionObject = {
+          label: session.sessionFriendlyName,
+          value: session.sessionId
+        }
+        sessionsWithoutGames.push(sessionObject);
       }
     });
     return sessionsWithoutGames;
@@ -95,13 +99,13 @@ const Schedules = () => {
                 }
             </StyledWrapper>
             <Wrapper margin="5" align="center">Create a new schedule:
-              <StandardDropDown 
-                isSearchable={false} 
-                width="300"
-                label={"sessionFriendlyName"}
-                value={"sessionId"}
-                options={getSessionsWithoutSchedules()} 
-                updateFunction={handleCreate} />
+                <StandardDropDown props={{
+                    isSearchable: false,
+                    placeholder: "Select Session"
+                  }}
+                  styles={{width: "300"}}
+                  options={getSessionsWithoutSchedules()} 
+                  updateFunction={handleCreate} />
             </Wrapper>
         </Wrapper>
       }

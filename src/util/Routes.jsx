@@ -10,7 +10,7 @@ import {
     Schedule,
     ScheduleTemplate,
     SocialEvents,
-    EventDetails,
+    SocialEvent,
     Veterans,
     PlayerPortal,
     Roster,
@@ -41,7 +41,7 @@ export const routes = [
     },
     {
         path: "/events/:id",
-        component:  EventDetails
+        component:  SocialEvent
     },
     {
         path: "/veterans",

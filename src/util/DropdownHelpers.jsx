@@ -2,12 +2,16 @@
 //return counter with no dups
 import React, { useContext } from 'react'
 import { 
-  StandardDropDown
+  StandardDropDown,
+  CreateDropDown
 } from "../components"
 import {
   getPlayersByTeam,
   getPlayersBySession
 } from "../util/Helpers.jsx"
+import {
+  createTeam
+} from "../service/Database"
 import { StateContext } from '../context/appContext.jsx'
 
 export const SessionDropDown = ({
@@ -43,7 +47,7 @@ export const SessionDropDown = ({
   )
 }
 
-export const TeamDropDown = ({
+export const TeamStandardDropDown = ({
   sessionId,
   updateFunction
 }) => {
@@ -79,6 +83,55 @@ export const TeamDropDown = ({
   )
 }
 
+export const TeamCreateDropDown = ({
+  label,
+  placeholder,
+  width,
+  sessionId,
+  updateFunction
+}) => {
+  const context = useContext(StateContext);
+  const sessions = context.state.leagueContext.leagues;
+  const session = sessions.find(obj => obj.sessionId === sessionId) ? sessions.find(obj => obj.sessionId === sessionId) : {};
+  const teams = session.teams ? session.teams : [];
+
+  const generateOptions = () => {
+    const teamsArray = [];
+    teams.map(team => {
+      const optionObject = {
+        label: team.name,
+        value: team.teamId
+      }
+      teamsArray.push(optionObject);
+    })
+    return teamsArray;
+  }
+
+  const handleCreate = entry => {
+    const newTeam = {
+      name: entry,
+      captain: "",
+      stats: []
+    }
+    createTeam(sessionId, newTeam);
+  }
+
+  return (
+    <CreateDropDown
+      styles={{width: width ? width : "300"}}
+      props={{
+        isSearchable: true,
+        label: label || label === "" ? label : "Team",
+        placeholder: placeholder ? placeholder : "Choose Team",
+        noOptionMessage: () => "No Teams Found"
+      }}
+      options={generateOptions()} 
+      updateFunction={updateFunction}
+      addNewFunction={handleCreate}
+    />
+  )
+}
+
 export const PlayerDropDown = ({
   label,
   sessionId,
@@ -88,9 +141,6 @@ export const PlayerDropDown = ({
 
   const context = useContext(StateContext);
   const players = context.state.playerContext.players;
-
-  console.log("Quick Check: ", teamId);
-  console.log("Quick Check: ", players);
   
   const generateOptions = () => {
     let filteredPlayers = [];

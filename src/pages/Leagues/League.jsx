@@ -53,7 +53,7 @@ const League = ({ match }) => {
             <DisplayCard size="24px">{league.length}</DisplayCard>
             <DisplayCard size="18px" color="#BADA55">{league.price}</DisplayCard>
           </Wrapper>
-            <Cart/>
+            <Cart sessionId={leagueId}/>
           <Wrapper direction="column" width="325">
             <StyledAccordian title={"DISCLAIMER"} expand={false} content={league.disclaimer}/>
             <StyledAccordian title={"SPECIAL INSTRUCTIONS"} expand={false} content={league.instructions}/>

@@ -46,9 +46,13 @@ const ScheduleGroup = ({
   form,
   setForm
 }) => {
+  console.group()
   console.log("Schedule Group Form", form)
+  console.log("Group Id", groupId)
   const groups = form.scheduleGroups;
   const group = groups.find(obj => obj.groupId === groupId) ? groups.find(obj => obj.groupId === groupId) : {};
+  console.log("Group", group)
+  console.groupEnd()
   const groupLabel = group.label ? group.label : "";
   const groupDate = group.date ? group.date : "";
   const games = group.games;
@@ -154,7 +158,7 @@ const ScheduleGroup = ({
       <StyledDateRow>{groupDate}</StyledDateRow>
       {
         games.map(game => (
-          <Game key={game.gameId} game={game}/>
+          <Game key={game.gameId} game={game} form={form} groupIndex={index} />
         ))
       }
     </StyledDisplay>

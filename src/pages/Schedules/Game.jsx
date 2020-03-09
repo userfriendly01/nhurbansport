@@ -1,10 +1,10 @@
 import React from "react"
 import {
-  CreateDropDown,
   DeleteIcon,
   TextField,
   Wrapper
 } from "../../components"
+import { TeamCreateDropDown } from "../../util/DropdownHelpers.jsx"
 import styled from 'styled-components'
 
 const StyledLocationRow = styled(Wrapper)`
@@ -28,6 +28,7 @@ const StyledInput = styled.input`
 
 const ScheduleGroup = ({
   groupIndex,
+  sessionId,
   gameId,
   edit,
   form,
@@ -35,24 +36,10 @@ const ScheduleGroup = ({
 }) => {
   const groups = form.scheduleGroups;
   const group = groups[groupIndex] ? groups[groupIndex] : {};
+  console.log("Group Index", groupIndex)
   const games = group.games;
   const game = games.find(obj => obj.gameId === gameId) ? games.find(obj => obj.gameId === gameId) : {};
   const gameIndex = games.map(deletedGame => { return deletedGame.gameId; }).indexOf(gameId);
-
-  const teamOptions = [
-    {
-      teamId: "1234",
-      name: "PoundTown"
-    },
-    {
-      teamId: "4567",
-      name: "Monstars"
-    },
-    {
-      teamId: "7412",
-      name: "PiffSquad"
-    }
-  ]
 
   const resetGame = newGame => {
     deleteGame();
@@ -107,17 +94,13 @@ const ScheduleGroup = ({
             />
         </StyledLocationRow>
         <StyledGameRow>
-        <CreateDropDown 
+          <TeamCreateDropDown
             width="180"
             placeholder="Home Team"
-            value={game.homeTeam}
-            options={teamOptions}
-            optionLabelKey="name"
-            optionValueKey="teamId"
-            customOnChangeFunction={selection => {handleFormEntry(selection, "homeTeam")}}  
-            addNewFunction={selection => {handleFormEntry(selection, "homeTeam")}} 
+            label=""
+            sessionId={sessionId} 
+            updateFunction={selection => {handleFormEntry(selection, "homeTeam")}} 
           />
-          
           <div>
             <StyledInput onChange={e => {handleFormEntry(e.target.value, "homeTeamScore")}} 
               type="number" 
@@ -131,28 +114,25 @@ const ScheduleGroup = ({
               name="awayTeamScore" 
               min="0" />
           </div>
-          <CreateDropDown 
+          <TeamCreateDropDown
             width="180"
             placeholder="Away Team"
-            value={game.awayTeam}
-            options={teamOptions}
-            optionLabelKey="name"
-            optionValueKey="teamId"
-            customOnChangeFunction={selection => {handleFormEntry(selection, "awayTeam")}} 
-            addNewFunction={selection => {handleFormEntry(selection, "awayTeam")}} 
+            label=""
+            sessionId={sessionId} 
+            updateFunction={selection => {handleFormEntry(selection, "awayTeam")}} 
           />
         </StyledGameRow>
       </>
       :
       <>
         <StyledLocationRow>
-            <div>{gameLocation}</div>
-            <div>{gameTime}</div>
+            <div>{game.gameLocation}</div>
+            <div>{game.gameTime}</div>
         </StyledLocationRow>
         <StyledGameRow>
-          <div>{homeTeam}</div>
-          <div>{homeTeamScore} : {awayTeamScore}</div>
-          <div>{awayTeam}</div>
+          <div>{game.homeTeam}</div>
+          <div>{game.homeTeamScore} : {game.awayTeamScore}</div>
+          <div>{game.awayTeam}</div>
         </StyledGameRow>
       </>
     }

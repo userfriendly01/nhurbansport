@@ -1,61 +1,81 @@
-import React from 'react';
+import React, { useState } from 'react';
 import CreatableSelect from 'react-select/creatable';
+import styled from "styled-components";
+import { Wrapper} from "../../components"
 
 const CreateDropDown = ({
   options,
-  label,
-  value,
-  placeholder,
-  customOnChangeFunction,
+  updateFunction,
   addNewFunction,
-  optionLabelKey,
-  optionValueKey,
-  width
+  value,
+  props,
+  styles
 }) => {
   
-  const isCustom = customOnChangeFunction ? customOnChangeFunction : false;
+  const [ selectedValue, setSelectedValue ] = useState(value ? value : null);
 
-  const generateOptions = () => {
-    const formattedOptions = [];
-    options.map(option => {
-      formattedOptions.push({
-        label: option[optionLabelKey],
-        value: option[optionValueKey]
-      });
-    });
-    return formattedOptions
-  };
+  const StyledWrapper = styled(Wrapper)`
+  flex-direction: column;
+  width: ${styles.width};
+  margin: 0;
+`
 
-  const customStyles = { 
-    menu: base => ({ ...base, width: width }),
-    container: base => ({ ...base, width: width, margin: 10 })
+const StyledLabel = styled(Wrapper)`
+  font-size: 14;
+  margin: 0 0 -10 0;
+  color: grey;
+`
+
+  const validateProp = prop => {
+    if(props){
+      return props[prop] ? props[prop] : null;
+    } else{
+      return null
+    }
   }
 
-  const handleChange = (newValue, actionMeta) => {
-    // console.group('Value Changed');
-    // console.log(newValue);
-    // console.log(`action: ${actionMeta.action}`);
-    // console.groupEnd();
-  };
-  const handleInputChange = (inputValue, actionMeta) => {
-    // console.group('Input Changed');
-    // console.log(inputValue);
-    // console.log(`action: ${actionMeta.action}`);
-    // console.groupEnd();
-  };
-console.log("Value", value)
-    return (
+  const customStyles = { 
+    menu: base => ({ ...base, width: styles ? styles.width : null }),
+    container: base => ({ ...base, width: styles ? styles.width : null, margin: 10 })
+  }
+
+  const handleUpdate = selection => {
+    setSelectedValue(selection);
+    updateFunction(selection);
+  }
+
+  return (
+    <>
+    {validateProp("label") ?
+      <StyledWrapper>
+        <StyledLabel>{validateProp("label")}</StyledLabel>
+        <CreatableSelect
+          styles={customStyles}
+          isClearable= {validateProp("isClearable")}
+          isSearchable= {validateProp("isSearchable")}
+          placeholder={validateProp("placeholder")}
+          value={selectedValue}
+          noOptionsMessage={validateProp("noOptionMessage")}
+          options={options}
+          onChange={handleUpdate}
+          onCreateOption={addNewFunction}
+        />
+      </StyledWrapper>
+    : 
       <CreatableSelect
         styles={customStyles}
-        isClearable
-        value={value}
-        placeholder={placeholder}
-        options={generateOptions()}
-        onChange={isCustom ? customOnChangeFunction : handleChange}
-        // onInputChange={handleInputChange}
+        isClearable= {validateProp("isClearable")}
+        isSearchable= {validateProp("isSearchable")}
+        placeholder={validateProp("placeholder")}
+        value={selectedValue}
+        noOptionsMessage={validateProp("noOptionMessage")}
+        options={options}
+        onChange={handleUpdate}
         onCreateOption={addNewFunction}
       />
-    );
+      }
+    </>
+  );
 }
 
 export default CreateDropDown;

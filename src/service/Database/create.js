@@ -29,6 +29,7 @@ export const createTeam = (sessionId, newTeam) => {
     .child(sessionId)
     .child("teams")
     .push(newTeam).then(() => {
+      console.log("Team Created! ", newTeam);
       return newTeam;
     }).catch(error => {
       console.error("Failed to Create Team. ", error);
