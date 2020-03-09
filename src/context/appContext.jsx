@@ -104,7 +104,6 @@ export const setPlayerContext = async state => {
 }
 
 export const setAdminContext = async state => {
-  //Update the Admin Context to feed Liability waiver
   await database
     .ref("Admin")
     .child("Text")

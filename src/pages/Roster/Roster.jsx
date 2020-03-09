@@ -115,13 +115,15 @@ import { getPlayersByTeam } from '../../util/Helpers.jsx';
                           session.teams.map((team, index) => (
                             <div key={`team${index}`}>
                               <Accordion 
-                                title={team.teamName} 
+                                title={team.name} 
                                 expand={false}
                                 content= {
                                   getPlayersByTeam(players, team.teamId).map((player, index) => (
-                                  <div key={`player${index}`}>
-                                    <p>{player}</p>
-                                  </div>
+                                  <Wrapper direction="column" key={`player${index}`}>
+                                    <Wrapper>
+                                      <div>{player.firstName} {player.lastName}</div>
+                                    </Wrapper>
+                                  </Wrapper>
                                   ))  
                                 }
                                 bcolor="white"

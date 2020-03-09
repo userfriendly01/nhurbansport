@@ -1,6 +1,5 @@
 {
   "Admin" : {
-    "Liability Waiver" : "<h6 class=\"ql-align-center\"><span style=\"color: rgb(95, 95, 95); background-color: initial;\" class=\"ql-size-large\">Adult Waiver/Release</span></h6><h6 class=\"ql-align-center\"><br></h6><h6 class=\"ql-align-center\"><span style=\"color: rgb(95, 95, 95); background-color: initial;\">RECREATIONAL ATHLETIC WAIVER AND RELEASE OF LIABILITY READ BEFORE ACKNOWLEDGING</span></h6><p>In consideration of being allowed to participate in any way in the NH Urban Sport athletic sports program, related events and activities, the undersigned acknowledges, appreciates, and understands that:</p><p><span style=\"background-color: initial;\">​</span></p><ol><li><span class=\"ql-size-small\">Participating in the activities involved in this program is potentially hazardous, including the potential for serious bodily injury, permanent paralysis and death, some of which may not be foreseeable. While particular rules, equipment, and personal discipline may reduce this risk, the risk of serious injury does exist; and,&nbsp;</span></li><li><span class=\"ql-size-small\">&nbsp;I agree not to enter in to and participate in NH Urban Sport unless I am medically able. I hereby authorize any medical treatment deemed necessary in the event of any injury while participating in NH Urban Sport activities. I agree to pay all costs of rescue and/or medical services as may be incurred.&nbsp;</span></li><li><span class=\"ql-size-small\">&nbsp;I am voluntarily participating in NH Urban Sports activities, assume all risks, known and foreseeable or unknown and unforeseeable, associated with participating in the activities, even if arising from the negligence of the releasees or others, and agree to be solely responsible for any injury, loss or damage that I may sustain or cause while participating in NH Urban Sport activities.</span></li><li><span class=\"ql-size-small\">&nbsp;I grant to the NH Urban Sport, its legal representatives, successors and assigns, the absolute right and permission to take, use, and publish any photographs of my participation in the NH Urban Sport activities and/or related activities, in whole or in part, or composite or distorted in character or form, for any purpose whatsoever. The foregoing permission is given, without restriction as to changes or alterations, in conjunction with my own or a fictitious name, or reproductions thereof, and in any and all media now or hereafter known for illustration, promotion, art, advertising, trade, or any other purpose whatsoever.&nbsp;I also consent to the use of any printed matter in conjunction therewith.</span></li><li><span class=\"ql-size-small\">I willingly agree to comply with the stated and customary terms and conditions for participation. If, however, I observe any unusual significant hazard during my presence or participation, I will remove myself from participation and bring such to the attention of the nearest official immediately; and,</span></li><li><span class=\"ql-size-small\">I, for myself and on behalf of my heirs, assigns, personal representatives and next of kin, HEREBY RELEASE AND HOLD HARMLESS NH Urban Sport, their directors, officers, officials, agents, volunteers and/or employees, other participants, sponsoring agencies, sponsors, advertisers, and if applicable, owners and lessors of premises used to conduct the event (“RELEASES”), WITH RESPECT TO ANY AND ALL INJURY, DISABILITY, DEATH, or loss or damage to person or property, WHETHER ARISING FROM THE NEGLIGENCE OF THE RELEASEES OR OTHERWISE, to the fullest extent permitted by law.&nbsp;</span></li></ol><p><br></p><p><strong style=\"background-color: initial;\">I WARRANT THAT I (A) AM AT LEAST EIGHTEEN (18) YEARS OF AGE AND HAVE REACHED THE AGE OF MAJORITY IN THE JURISDICTION IN WHICH I RESIDE, (B) HAVE READ THIS RELEASE OF LIABILITY AND ASSUMPTION OF RISK AGREEMENT CAREFULLY PRIOR TO AGREEING TO THE TERMS HEREIN AND FULLY UNDERSTAND ITS CONTENT, (C) AM AWARE THAT THESE TERMS AND CONDITIONS INCLUDE A WAIVER AND RELEASE OF LIABILITY AND IS AN ENFORCEABLE LEGAL DOCUMENT BETWEEN MYSELF AND NH URBAN SPORT, AND (D) AM SIGNING OF MY OWN FREE WILL.&nbsp;</strong></p>",
     "Rulebooks" : {
       "-M1lh9EozC_bvkMPOhgb" : {
         "active" : true,
@@ -32,7 +31,8 @@
       "Rulebooks Intro" : "<p class=\"ql-align-center\">NH Urban Sport Rulebook</p><p class=\"ql-align-center\"><span class=\"ql-size-small\">Your information on touchdowns, gender plays, and more.</span></p>",
       "Schedules Intro" : "<p class=\"ql-align-center\">League Schedules</p><p class=\"ql-align-center\"><span class=\"ql-size-small\">The who, what, where, and when – all in one place!</span></p>",
       "Standings Intro" : "<p class=\"ql-align-center\">League Standings</p><p class=\"ql-align-center\"><span class=\"ql-size-small\">Your updates for team standings</span></p>",
-      "Veterans" : "<p><span class=\"ql-size-large\" style=\"color: rgb(136, 136, 136);\">Adaptive Recreational Sports for Veterans</span></p><p><br></p><p><span class=\"ql-size-small\">Approximately 112,790 veterans live in the Granite State. More than 15 percent of which (16,756) have a service-connected disability. Unfortunately, at this time, there is a lack of recreational outlets for injured and non-injured veterans in southern New Hampshire. Through sports, NH Urban Sport can offer an opportunity to maintain optimum physical health and to increase mental well being through activity and socialization.</span></p><p><br></p><p><span class=\"ql-size-small\">According to the Center for Disease Control and Prevention (CDC), “With good health habits and access to health care, many disabilities can be delayed or even prevented… [by] increasing physical activity, and reducing or preventing obesity can eliminate some of the underlying causes of disability.” In fact, the CDC also reports that in most cases, secondary issues like obesity, diabetes and heart disease, all of which are preventable, are a greater problem than the disability itself.</span></p><p><br></p><p><strong>With access to an affordable, accessible, and inclusive athletic and recreational organization like NH Urban Sport, we can begin to make a significant and positive impact in the lives of service members living with disabilities.</strong></p>"
+      "Veterans" : "<p><span class=\"ql-size-large\" style=\"color: rgb(136, 136, 136);\">Adaptive Recreational Sports for Veterans</span></p><p><br></p><p><span class=\"ql-size-small\">Approximately 112,790 veterans live in the Granite State. More than 15 percent of which (16,756) have a service-connected disability. Unfortunately, at this time, there is a lack of recreational outlets for injured and non-injured veterans in southern New Hampshire. Through sports, NH Urban Sport can offer an opportunity to maintain optimum physical health and to increase mental well being through activity and socialization.</span></p><p><br></p><p><span class=\"ql-size-small\">According to the Center for Disease Control and Prevention (CDC), “With good health habits and access to health care, many disabilities can be delayed or even prevented… [by] increasing physical activity, and reducing or preventing obesity can eliminate some of the underlying causes of disability.” In fact, the CDC also reports that in most cases, secondary issues like obesity, diabetes and heart disease, all of which are preventable, are a greater problem than the disability itself.</span></p><p><br></p><p><strong>With access to an affordable, accessible, and inclusive athletic and recreational organization like NH Urban Sport, we can begin to make a significant and positive impact in the lives of service members living with disabilities.</strong></p>",
+      "Liability Waiver" : "<h6 class=\"ql-align-center\"><span style=\"color: rgb(95, 95, 95); background-color: initial;\" class=\"ql-size-large\">Adult Waiver/Release</span></h6><h6 class=\"ql-align-center\"><br></h6><h6 class=\"ql-align-center\"><span style=\"color: rgb(95, 95, 95); background-color: initial;\">RECREATIONAL ATHLETIC WAIVER AND RELEASE OF LIABILITY READ BEFORE ACKNOWLEDGING</span></h6><p>In consideration of being allowed to participate in any way in the NH Urban Sport athletic sports program, related events and activities, the undersigned acknowledges, appreciates, and understands that:</p><p><span style=\"background-color: initial;\">​</span></p><ol><li><span class=\"ql-size-small\">Participating in the activities involved in this program is potentially hazardous, including the potential for serious bodily injury, permanent paralysis and death, some of which may not be foreseeable. While particular rules, equipment, and personal discipline may reduce this risk, the risk of serious injury does exist; and,&nbsp;</span></li><li><span class=\"ql-size-small\">&nbsp;I agree not to enter in to and participate in NH Urban Sport unless I am medically able. I hereby authorize any medical treatment deemed necessary in the event of any injury while participating in NH Urban Sport activities. I agree to pay all costs of rescue and/or medical services as may be incurred.&nbsp;</span></li><li><span class=\"ql-size-small\">&nbsp;I am voluntarily participating in NH Urban Sports activities, assume all risks, known and foreseeable or unknown and unforeseeable, associated with participating in the activities, even if arising from the negligence of the releasees or others, and agree to be solely responsible for any injury, loss or damage that I may sustain or cause while participating in NH Urban Sport activities.</span></li><li><span class=\"ql-size-small\">&nbsp;I grant to the NH Urban Sport, its legal representatives, successors and assigns, the absolute right and permission to take, use, and publish any photographs of my participation in the NH Urban Sport activities and/or related activities, in whole or in part, or composite or distorted in character or form, for any purpose whatsoever. The foregoing permission is given, without restriction as to changes or alterations, in conjunction with my own or a fictitious name, or reproductions thereof, and in any and all media now or hereafter known for illustration, promotion, art, advertising, trade, or any other purpose whatsoever.&nbsp;I also consent to the use of any printed matter in conjunction therewith.</span></li><li><span class=\"ql-size-small\">I willingly agree to comply with the stated and customary terms and conditions for participation. If, however, I observe any unusual significant hazard during my presence or participation, I will remove myself from participation and bring such to the attention of the nearest official immediately; and,</span></li><li><span class=\"ql-size-small\">I, for myself and on behalf of my heirs, assigns, personal representatives and next of kin, HEREBY RELEASE AND HOLD HARMLESS NH Urban Sport, their directors, officers, officials, agents, volunteers and/or employees, other participants, sponsoring agencies, sponsors, advertisers, and if applicable, owners and lessors of premises used to conduct the event (“RELEASES”), WITH RESPECT TO ANY AND ALL INJURY, DISABILITY, DEATH, or loss or damage to person or property, WHETHER ARISING FROM THE NEGLIGENCE OF THE RELEASEES OR OTHERWISE, to the fullest extent permitted by law.&nbsp;</span></li></ol><p><br></p><p><strong style=\"background-color: initial;\">I WARRANT THAT I (A) AM AT LEAST EIGHTEEN (18) YEARS OF AGE AND HAVE REACHED THE AGE OF MAJORITY IN THE JURISDICTION IN WHICH I RESIDE, (B) HAVE READ THIS RELEASE OF LIABILITY AND ASSUMPTION OF RISK AGREEMENT CAREFULLY PRIOR TO AGREEING TO THE TERMS HEREIN AND FULLY UNDERSTAND ITS CONTENT, (C) AM AWARE THAT THESE TERMS AND CONDITIONS INCLUDE A WAIVER AND RELEASE OF LIABILITY AND IS AN ENFORCEABLE LEGAL DOCUMENT BETWEEN MYSELF AND NH URBAN SPORT, AND (D) AM SIGNING OF MY OWN FREE WILL.&nbsp;</strong></p>"
     }
   },
   "Images" : {
@@ -66,42 +66,60 @@
       "firstName" : "Faith",
       "lastName" : "Cuneo",
       "phoneNumber" : "603-851-8200",
-      "textAlerts" : true,
-      "teams": [
-        {
-          "teamId": "123456",
-          "name": "",
-          "sessionId": "sesh1234"
-        }
-      ]
+      "teams" : [ {
+        "name" : "",
+        "sessionId" : "sesh1234",
+        "teamId" : "-M1wz1JMBIe7PHYjUXSc"
+      } ],
+      "textAlerts" : true
     },
     "PLAYER-2" : {
       "dateOfBirth" : "05/02/1991",
       "firstName" : "Tyrell",
       "lastName" : "Skinner",
       "phoneNumber" : "603-851-8200",
-      "textAlerts" : true
+      "textAlerts" : true,
+      "teams" : [ {
+        "name" : "",
+        "sessionId" : "sesh1234",
+        "teamId" : "-M1wz1JMBIe7PHYjUXSc"
+      } ]
     },
     "PLAYER-3" : {
       "dateOfBirth" : "05/02/1991",
       "firstName" : "Jesus",
       "lastName" : "Salamanca",
       "phoneNumber" : "603-851-8200",
-      "textAlerts" : true
+      "textAlerts" : true,
+      "teams" : [ {
+        "name" : "",
+        "sessionId" : "sesh1234",
+        "teamId" : "-M1wvk5jI-w5Fp37MRh1"
+      } ]
     },
     "PLAYER-4" : {
       "dateOfBirth" : "05/02/1991",
       "firstName" : "Greg",
       "lastName" : "Scott",
       "phoneNumber" : "603-851-8200",
-      "textAlerts" : true
+      "textAlerts" : true,
+      "teams" : [ {
+        "name" : "",
+        "sessionId" : "sesh1234",
+        "teamId" : "-M1wyyo-mEGmoWWRbGJb"
+      } ]
     },
     "PLAYER-5" : {
       "dateOfBirth" : "02/18/1986",
       "firstName" : "Jon",
       "lastName" : "Ramos",
       "phoneNumber" : "603-851-8200",
-      "textAlerts" : true
+      "textAlerts" : true,
+      "teams" : [ {
+        "name" : "",
+        "sessionId" : "sesh1234",
+        "teamId" : "-M1wz8unqUvj-pgL4U4y"
+      } ]
     }
   },
   "Sessions" : {
@@ -118,112 +136,74 @@
       "location" : "Manchester, NH",
       "name" : "Coed Flag Football",
       "price" : "$50",
-      "schedule": {
-        "scheduleId": "-LsnsWi_PLFLBPeRbP16SH",
-        "scheduleGroups": [
-          {
-          "groupId": "-LsnsWi_PLFLBPeRbP16GR1",
-          "groupLabel": "Week 1",
-          "date": "Wednesday, January 15",
-          "games": [
-            {
-              "gameId": "-LsnsWi_PLFLBPeRbP16GR1GA1",
-              "location": "Concord Sports Center, Concord NH",
-              "time": "7:00pm",
-              "homeTeam": "My Team",
-              "homeTeamScore": "100",
-              "awayTeam": "Your Team",
-              "awayTeamScore": "50"
-            }
-          ]},
-          {
-            "groupId": "LsnsWi_PLFLBPeRbP16GR2",
-            "groupLabel": "Week 2",
-            "date": "Wednesday, March 15",
-            "games": [
-              {
-                "gameId": "LsnsWi_PLFLBPeRbP16GR2GA1",
-                "location": "Concord Sports Center, Concord NH",
-                "time": "7:00pm",
-                "homeTeam": "Butt Team",
-                "homeTeamScore": "90",
-                "awayTeam": "Boob Team",
-                "awayTeamScore": "40"
-              },
-              {
-                "gameId": "LsnsWi_PLFLBPeRbP16GR2GA2",
-                "location": "Concord Sports Center, Concord NH",
-                "time": "8:00pm",
-                "homeTeam": "Arm Team",
-                "homeTeamScore": "",
-                "awayTeam": "Leg Team",
-                "awayTeamScore": ""
-              }
-            ]}
-        ]
+      "schedule" : {
+        "scheduleGroups" : [ {
+          "date" : "Wednesday, January 15",
+          "games" : [ {
+            "awayTeam" : "Your Team",
+            "awayTeamScore" : "50",
+            "gameId" : "-LsnsWi_PLFLBPeRbP16GR1GA1",
+            "homeTeam" : "My Team",
+            "homeTeamScore" : "100",
+            "location" : "Concord Sports Center, Concord NH",
+            "time" : "7:00pm"
+          } ],
+          "groupId" : "-LsnsWi_PLFLBPeRbP16GR1",
+          "groupLabel" : "Week 1"
+        }, {
+          "date" : "Wednesday, March 15",
+          "games" : [ {
+            "awayTeam" : "Boob Team",
+            "awayTeamScore" : "40",
+            "gameId" : "LsnsWi_PLFLBPeRbP16GR2GA1",
+            "homeTeam" : "Butt Team",
+            "homeTeamScore" : "90",
+            "location" : "Concord Sports Center, Concord NH",
+            "time" : "7:00pm"
+          }, {
+            "awayTeam" : "Leg Team",
+            "awayTeamScore" : "",
+            "gameId" : "LsnsWi_PLFLBPeRbP16GR2GA2",
+            "homeTeam" : "Arm Team",
+            "homeTeamScore" : "",
+            "location" : "Concord Sports Center, Concord NH",
+            "time" : "8:00pm"
+          } ],
+          "groupId" : "LsnsWi_PLFLBPeRbP16GR2",
+          "groupLabel" : "Week 2"
+        } ],
+        "scheduleId" : "-LsnsWi_PLFLBPeRbP16SH"
       },
-      "teams": [
-        {
-          "captain" : {
-            "name": "Tyrell Skinner",
-            "playerId": "1234"
-          },
-          "teamId" : "TMFB1234",
-          "stats" : {
-            "loss" : 4,
-            "played" : 12,
-            "position" : 1,
-            "tie" : 0,
-            "won" : 8
-          },
-          "name" : "PoundTown"
+      "teams" : {
+        "-M1wvk5jI-w5Fp37MRh1" : {
+          "captain" : "",
+          "name" : "Comets Carnivors"
         },
-        {
-          "captain" : {
-            "name": "Jesus Salamanca",
-            "playerId": "1234"
-          },
-          "teamId" : "TMFB4567",
-          "stats" : {
-            "loss" : 4,
-            "played" : 12,
-            "position" : 1,
-            "tie" : 0,
-            "won" : 8
-          },
-          "name" : "Monstars"
-        },
-        {
-          "captain" : {
-            "name": "Jon Ramos",
-            "playerId": "1234"
-          },
-          "teamId" : "TMFB3698",
-          "stats" : {
-            "loss" : 4,
-            "played" : 12,
-            "position" : 1,
-            "tie" : 0,
-            "won" : 8
-          },
+        "-M1wywoXb9J_54atb9Ug" : {
+          "captain" : "",
           "name" : "Minority Squad"
         },
-        {
-          "captain" : {
-            "name": "Faith Cuneo",
-            "playerId": "1234"
-          },
-          "teamId" : "TMFB6654",
-          "stats" : {
-            "loss" : 4,
-            "played" : 12,
-            "position" : 1,
-            "tie" : 0,
-            "won" : 8
-          },
-          "name" : "Queens Of Manchester"
+        "-M1wyyo-mEGmoWWRbGJb" : {
+          "captain" : "",
+          "name" : "Piff Squad"
+        },
+        "-M1wz1JMBIe7PHYjUXSc" : {
+          "captain" : "",
+          "name" : "Pound Town"
+        },
+        "-M1wz3Uin0AaWsyf1gMh" : {
+          "captain" : "",
+          "name" : "Mixfits"
+        },
+        "-M1wz6wqj84Ve2z8sohm" : {
+          "captain" : "",
+          "name" : "Free Agents"
+        },
+        "-M1xGpMhKNJUGz0227Rd" : {
+          "captain" : "",
+          "name" : "Silver's Slayers"
         }
-      ]
+      }
     },
     "-Lso1uPG6zNnih--n9NP" : {
       "active" : true,
@@ -240,38 +220,32 @@
       "price" : "$55",
       "selectShirtOption" : true,
       "selectTeamOption" : true,
-      "teams": [
-        {
-          "captain" :  {
-            "name": "Jon Ramos",
-            "playerId": "1234"
-          },
-          "teamId" : "TMBB1234",
-          "stats" : {
-            "loss" : 4,
-            "played" : 12,
-            "position" : 1,
-            "tie" : 0,
-            "won" : 8
-          },
-          "name" : "Minority Squad"
+      "teams" : {
+        "-M1ww2KGu9JmoG6onLtL" : {
+          "captain" : "",
+          "name" : "Momma's Maniacs"
         },
-        {
-          "captain" : {
-            "name": "Jesus Salamanca",
-            "playerId": "1234"
-          },
-          "teamId" : "TMBB4567",
-          "stats" : {
-            "loss" : 4,
-            "played" : 12,
-            "position" : 1,
-            "tie" : 0,
-            "won" : 8
-          },
+        "-M1wwRqYzkRfcoG30Bm9" : {
+          "captain" : "",
+          "name" : "When Snow Attacks"
+        },
+        "-M1wz8unqUvj-pgL4U4y" : {
+          "captain" : "",
           "name" : "Monstars"
+        },
+        "-M1wzAjKfBeatxafbTn6" : {
+          "captain" : "",
+          "name" : "Pound Town"
+        },
+        "-M1wzDF1RUPN2l995W5y" : {
+          "captain" : "",
+          "name" : "Queens Of Manchester"
+        },
+        "-M1wzFJXYhWm6BRkMxfw" : {
+          "captain" : "",
+          "name" : "Mizfits"
         }
-      ]
+      }
     },
     "-LvbdygG4Y7VGfckG2Zb" : {
       "active" : true,

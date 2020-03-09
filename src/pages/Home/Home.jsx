@@ -30,13 +30,26 @@ const StyledFormGroup = styled(FormGroup)`
 `;
 
 const Home = ({focus}) => {
-  const optionArray = ["Home: Option 1","Home: Option 2","Home: Option 3"];
+  const optionArray = [
+    {
+      id: "Home: Option 1",
+      link: "/leagues"
+    },
+    {
+      id: "Home: Option 2",
+      link: "/contact"
+    },
+    {
+      id: "Home: Option 3",
+      link: "/playerportal"
+    }
+  ];
   const aboutUs = "Home: About Us";
 
   useEffect(() => {
     if(focus){
       const element = document.getElementById(focus)
-      element.scrollIntoView();
+      element.scrollIntoView({behavior: "smooth"});
     }
   }, [])
 
@@ -46,13 +59,13 @@ const Home = ({focus}) => {
         <Image id="Home Banner" height="320" width="650" margin="0 0 10px 0"/>
       </Wrapper>
       <Wrapper>
-        { optionArray.map(id => {
+        { optionArray.map(option => {
           return (
             <StyledWrapper direction="column" width="200" margin="0 10" >
               <DisplayCard>
-                <TextCard id={id} />
+                <TextCard id={option.id} />
               </DisplayCard>
-            <Image id={id} height="180" width="180" margin="0 0 4% 0"/>
+              <Image id={option.id} height="180" width="180" margin="0 0 4% 0" link={option.link}/>
             </StyledWrapper>
             )
           })

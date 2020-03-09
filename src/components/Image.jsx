@@ -11,7 +11,8 @@ const Image = ({
     width,
     height,
     margin,
-    cursor
+    cursor,
+    link
 }) => {
     const context = useContext(StateContext);
     const images = context.state.imageContext.imageData;
@@ -60,7 +61,13 @@ const Image = ({
             {uploadIcon}   
           </UploadIconWrapper>    
         </Link>
-        <ImageContent/>
+        {link ?
+          <Link to={link}>
+            <ImageContent/>
+          </Link>
+          :
+          <ImageContent/>
+        }     
       </Container>
     )
 }
