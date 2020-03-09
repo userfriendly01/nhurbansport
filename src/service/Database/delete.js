@@ -23,3 +23,17 @@ export const deleteSession = id => {
       console.error("Failed to delete Session. ", error);
     });
 }
+
+export const deleteTeam = (sessionId, teamId) => {
+  return database
+    .ref("Sessions")
+    .child(sessionId)
+    .child("teams")
+    .child(teamId)
+    .remove().then(removedTeam => {
+      console.log(removedTeam);
+      return true;
+    }).catch(error => {
+      console.error("Failed to delete Session. ", error);
+    });
+}

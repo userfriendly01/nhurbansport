@@ -10,6 +10,11 @@ import {
   TeamDropDown,
   PlayerDropDown
 } from "../../util/DropdownHelpers.jsx"
+import {
+  createTeam,
+  updateTeam,
+  deleteTeam
+} from "../../service/Database"
 import styled from "styled-components"
 
 const TitleBar = styled(Wrapper)`
@@ -25,27 +30,34 @@ const StyledText = styled(Wrapper)`
 `
 
 export const CreateTeam = () => {
+  const [ sessionId, setSessionId ] = useState(null);
   const [ team, setTeam ] = useState({
     name: "",
-    sessionId: ""
+    captain: "",
+    stats: []
   });
 
   const addTeam = () => {
-    console.log("Team Added: ", team);
+    createTeam(sessionId, team).then(savedTeam => {
+      console.log("Team Added: ", savedTeam)
+      setSessionId(null);
+      setTeam({
+        name: "",
+        captain: "",
+        stats: []
+      })
+    })
   }
 
   const handleDropDown = selection => {
-    setTeam({
-    ...team,
-    sessionId: selection.value
-    })
+    setSessionId(selection.value);
   }
 
   return (      
     <DisplayCard margin="10" width="600" border="3px solid grey" align="center" padding="0">
       <Wrapper direction="column" width="100%" align="center">
         <SessionDropDown updateFunction={handleDropDown} />
-        {team.sessionId ?
+        {sessionId ?
           <>      
           <TitleBar>Create Team</TitleBar>
           <TextField
@@ -143,8 +155,12 @@ export const DeleteTeam = ({
   const [ team, setTeam ] = useState(null);
 
 
-  const deleteTeam = () => {
-    console.log("Team Deleted: ", team);
+  const handleDelete = () => {
+    deleteTeam(sessionId, team.teamId).then(() => {
+      console.log("Team Deleted: ", team);
+      setSessionId(null);
+      setTeam(null)
+    })
   }
 
   const handleSelectSession = selection => {
@@ -170,7 +186,7 @@ export const DeleteTeam = ({
             {console.log("team", team)}
             <StyledText>Team Name: {team.name}</StyledText>
             <StyledText>Team Captain: {team.captain.name}</StyledText>
-            <Button onClick={deleteTeam} align="center" width="150" margin="5">Delete Team</Button>
+            <Button onClick={handleDelete} align="center" width="150" margin="5">Delete Team</Button>
           </>
           : null
         }

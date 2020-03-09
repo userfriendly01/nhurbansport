@@ -28,8 +28,8 @@ export const createTeam = (sessionId, newTeam) => {
     .ref("Sessions")
     .child(sessionId)
     .child("teams")
-    .push(newTeam).then(teamSnapshot => {
-      return teamSnapshot.val();
+    .push(newTeam).then(() => {
+      return newTeam;
     }).catch(error => {
       console.error("Failed to Create Team. ", error);
     });

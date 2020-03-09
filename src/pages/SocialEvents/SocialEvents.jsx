@@ -2,8 +2,7 @@ import React, { useContext } from 'react'
 import {
     Container,
     Image,
-    Text,
-    TextContainer
+    Wrapper
 } from '../../components'
 import { Link } from 'react-router-dom'
 import { StateContext } from '../../context/appContext.jsx'
@@ -11,47 +10,31 @@ import { StateContext } from '../../context/appContext.jsx'
 const SocialEvents = () => {
     const context = useContext(StateContext);
     const images = context.state.imageContext.imageData;
-
-    const events = [
-        {
-            id: 1,
-            title: "2019 NHUS Beer Olympics",
-            image: "https://firebasestorage.googleapis.com/v0/b/nh-urban-sport.appspot.com/o/images%2Fdummy-event-image.JPG?alt=media&token=04382154-c8f7-4398-b289-ce52e93b9e98"
-        },
-        {
-            id: 2,
-            title: "Faith Rocks",
-            image: "https://firebasestorage.googleapis.com/v0/b/nh-urban-sport.appspot.com/o/images%2Fdummy-event-image.JPG?alt=media&token=04382154-c8f7-4398-b289-ce52e93b9e98"
-        }
-    ]
+    const events = context.state.adminContext.events;
+   
 
     return (
         <div>
-            <Container>
-                <Image url={images["Events Banner"]}
-                       name="Events Banner"
-                       width="650"
-                       height="200">
-                    <TextContainer top="230" position="relative">
-                        <Text size="32" color="white">Upcoming Events</Text>
-                    </TextContainer>
+            <Wrapper>
+                <Image id="Events Banner"
+                  width="650px"
+                  height="200px">
                 </Image>
-            </Container>
+            </Wrapper>
             <Container width="660px" wrap="wrap">
             {
                 events.map(event => 
                     <Link to={`/events/${event.id}`}>
-                        <Container direction="column" width="200px">
+                        <Wrapper direction="column" width="200px">
                             <Image url={event.image}
                                 width="200"
                                 height="180"/>
-                            <Text size="14">{event.title} {event.id}</Text>
-                            <Text>__</Text>
-                            <Text size="13" weight="normal">$40</Text>
-                        </Container>
+                            <div size="14">{event.title} {event.id}</div>
+                            <div>__</div>
+                            <div size="13" weight="normal">$40</div>
+                        </Wrapper>
                     </Link>
                 )
-                
             }
             </Container>
         </div>

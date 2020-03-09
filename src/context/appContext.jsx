@@ -26,7 +26,8 @@ let initialState = {
   adminContext: {
     text: [],
     rulebooks: [],
-    liabilityWaiver: []
+    liabilityWaiver: [],
+    events: []
   }
 };
 const StateContextProvider = ({ children }) => {
@@ -130,6 +131,23 @@ export const setAdminContext = async state => {
       }
     }).catch(error => {
       console.error("Failed to Load Rulebooks to Context. ", error)
+    });
+
+    await database
+    .ref("Admin")
+    .child("Events")
+    .once("value")
+    .then(snapshot => {
+      let events = snapshot.val();
+      for(let e in events) {
+        let eventsObject = {
+          ...events[e],
+          eventId: e
+        }
+        state.adminContext.events.push(eventsObject);
+      }
+    }).catch(error => {
+      console.error("Failed to Load Events to Context. ", error)
     });
 }
 

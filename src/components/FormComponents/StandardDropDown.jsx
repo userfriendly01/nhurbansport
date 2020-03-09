@@ -44,8 +44,7 @@ const StandardDropDown = ({
     setSelectedValue(selection);
     updateFunction(selection);
   }
-
-  console.log(options)
+  
     return (
       <StyledWrapper>
         <StyledLabel>{validateProp("label")}</StyledLabel>
