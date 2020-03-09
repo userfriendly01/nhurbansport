@@ -4,6 +4,10 @@ import React, { useContext } from 'react'
 import { 
   StandardDropDown
 } from "../components"
+import {
+  getPlayersByTeam,
+  getPlayersBySession
+} from "../util/Helpers.jsx"
 import { StateContext } from '../context/appContext.jsx'
 
 export const SessionDropDown = ({
@@ -26,12 +30,13 @@ export const SessionDropDown = ({
 
   return (
     <StandardDropDown
-      isSearchable={false} 
-      width="300"
-      label={"label"}
-      value={"value"}
-      placeholder="Choose Session"
-      noOptionMessage={"No Sessions Found"}
+      styles={{width:"300"}}
+      props={{
+        isSearchable: true,
+        label:"Session",
+        placeholder: "Choose Session",
+        noOptionMessage: () => "No Sessions Found"
+      }}
       options={generateOptions()} 
       updateFunction={updateFunction} 
     />
@@ -61,12 +66,13 @@ export const TeamDropDown = ({
 
   return (
     <StandardDropDown
-      isSearchable={false} 
-      width="300"
-      label={"label"}
-      value={"value"}
-      placeholder="Choose Team"
-      noOptionMessage={"No Teams Found"}
+      styles={{width:"300"}}
+      props={{
+        isSearchable: true,
+        label:"Team",
+        placeholder: "Choose Team",
+        noOptionMessage: () => "No Teams Found"
+      }}
       options={generateOptions()} 
       updateFunction={updateFunction} 
     />
@@ -74,36 +80,47 @@ export const TeamDropDown = ({
 }
 
 export const PlayerDropDown = ({
+  label,
   sessionId,
   teamId,
   updateFunction
 }) => {
-  //If session Id is passed in filter for getPlayersBySession
-  //If team Id is passed in, filter for getPlayersByTeam
 
   const context = useContext(StateContext);
   const players = context.state.playerContext.players;
+
+  console.log("Quick Check: ", teamId);
+  console.log("Quick Check: ", players);
   
   const generateOptions = () => {
+    let filteredPlayers = [];
+    if(teamId) {
+      filteredPlayers = getPlayersByTeam(players, teamId)
+    } else if(sessionId) {
+      filteredPlayers = getPlayersBySession(players, sessionId)
+    } else {
+      filteredPlayers = players;
+    }
     const playersArray = [];
-    players.map(player => {
+    filteredPlayers.map(player => {
       const optionObject = {
-        label: player.firstName + player.lastName,
+        label: player.firstName + " " + player.lastName,
         value: player.playerId
       }
-      teamsArray.push(optionObject);
+      playersArray.push(optionObject);
     })
-    return teamsArray;
+    return playersArray;
   }
 
   return (
     <StandardDropDown
-      isSearchable={true} 
-      width="300"
-      label={"label"}
-      value={"value"}
-      placeholder="Choose Team"
-      noOptionMessage={"No Teams Found"}
+      styles={{width:"300"}}
+      props={{
+        isSearchable: true,
+        label: label ? label : "Players",
+        placeholder: "Choose Player",
+        noOptionMessage: () => "No Players Found"
+      }}
       options={generateOptions()} 
       updateFunction={updateFunction} 
     />

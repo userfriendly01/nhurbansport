@@ -17,7 +17,6 @@ export const convertSchedule = (schedule) => {
   for(let sch in scheduleGroups) {
     let groupObject = {...scheduleGroups[sch]};
     let groupId = sch;
-    console.log("The Group Id should be", groupId)
     groupObject.groupId = groupId;
 
     let games = groupObject.games;
@@ -25,7 +24,6 @@ export const convertSchedule = (schedule) => {
     for(let g in games) {
       let gameObject = {...games[g]};
       let gameId = g;
-      console.log("The Game Id should be", gameId)
       gameObject.gameId = gameId;
     }
     groupObject.games = gamesArray;
@@ -40,7 +38,7 @@ export const getPlayersByTeam = (players, teamId) => {
   const filteredPlayers = [];
 
   players.map(player => {
-    const teams = player.teams;
+    const teams = player.teams ? player.teams : [];
     teams.map(team => {
       if(team.teamId === teamId){
         filteredPlayers.push(player);

@@ -1,43 +1,64 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Select from 'react-select';
+import {
+  Wrapper 
+} from '../../components';
+import styled from "styled-components"
 
-const StandardDropDown = props => {
-  const options = props.options ? props.options : null;
-  const optionLabelKey = props.label ? props.label : null;
-  const optionValueKey = props.value ? props.value : null;
-  const placeholder = props.placeholder ? props.placeholder : null;
-  const noOptionMessage = props.noOptionMessage ? props.noOptionMessage : null;
-  const updateFunction = props.updateFunction ? props.updateFunction : null;
+const StandardDropDown = ({
+  options,
+  updateFunction,
+  value,
+  props,
+  styles
+}) => {
 
-  const generateOptions = () => {
-    const formattedOptions = [];
-    options.map(option => {
-      formattedOptions.push({
-        label: option[optionLabelKey],
-        value: option[optionValueKey]
-      });
-    });
-    return formattedOptions
-  };
+  const [ selectedValue, setSelectedValue ] = useState(value ? value : null);
 
+  const StyledWrapper = styled(Wrapper)`
+    flex-direction: column;
+    width: ${styles.width};
+    margin: 0;
+  `
+
+  const StyledLabel = styled(Wrapper)`
+    font-size: 14;
+    margin: 0 0 -10 0;
+    color: grey;
+  `
+
+  const validateProp = prop => {
+    if(props){
+      return props[prop] ? props[prop] : null;
+    } else{
+      return null
+    }
+  }
+  
   const customStyles = { 
-    menu: base => ({ ...base, width: props.width }),
-    container: base => ({ ...base, width: props.width, margin: 10 })
+    menu: base => ({ ...base, width: styles ? styles.width : null }),
+    container: base => ({ ...base, width: styles ? styles.width : null, margin: 10 })
   }
 
-  const handleChange = (newValue, actionMeta) => {
-    updateFunction(newValue);
-  };
+  const handleUpdate = selection => {
+    setSelectedValue(selection);
+    updateFunction(selection);
+  }
 
+  console.log(options)
     return (
+      <StyledWrapper>
+        <StyledLabel>{validateProp("label")}</StyledLabel>
       <Select
         styles={customStyles}
-        isSearchable={props.isSearchable}
-        options={generateOptions()}
-        onChange={handleChange}
-        placeholder={placeholder}
-        noOptionsMessage={noOptionMessage ? () => noOptionMessage : null}
+        isSearchable={validateProp("isSearchable")}
+        placeholder={validateProp("placeholder")}
+        value={selectedValue}
+        noOptionsMessage={validateProp("noOptionMessage")}
+        options={options}
+        onChange={handleUpdate}
       />
+      </StyledWrapper>
     );
 }
 

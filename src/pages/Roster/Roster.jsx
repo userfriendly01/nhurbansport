@@ -8,12 +8,15 @@ import {
 import { 
   CreateTeam,
   EditTeam,
+  DeleteTeam
 } from './TeamForm.jsx'
 import { StateContext } from '../../context/appContext.jsx'
+import { getPlayersByTeam } from '../../util/Helpers.jsx';
 
   const Roster = () => {
     const context = useContext(StateContext);
     const roster = context.state.leagueContext.leagues;
+    const players = context.state.playerContext.players
     const [ optionSelected, setOptionSelected ] = useState(false);
     const rosterOptions = [
       {
@@ -61,7 +64,7 @@ import { StateContext } from '../../context/appContext.jsx'
       case "edit-team":
         return <EditTeam sessions={roster}/>;
       case "delete-team":
-        return <div>Delete Team Div</div>;
+        return <DeleteTeam sessions={roster} />;
       case "view-teams":
         return <div>View Teams Div</div>;
       case "add-player":
@@ -88,12 +91,12 @@ import { StateContext } from '../../context/appContext.jsx'
             </Wrapper>
             <Wrapper direction="column" align="center">
               <Wrapper margin="15 0 0 0"> 
-                <StandardDropDown
-                  isSearchable={false} 
-                  width="300"
-                  label={"label"}
-                  value={"value"}
-                  placeholder={"Select Admin Action"}
+                <StandardDropDown props={{
+                    isSearchable: false,
+                    label: "Admin Actions",
+                    placeholder: "Select Admin Action"
+                  }}
+                  styles={{width: "300"}}
                   options={rosterOptions} 
                   updateFunction={selection => {setOptionSelected(selection.value)}} />
               </Wrapper>
@@ -109,13 +112,13 @@ import { StateContext } from '../../context/appContext.jsx'
                         title={session.sessionFriendlyName} 
                         expand={!index}
                         content= {
-                          session.sessionTeams.map((team, index) => (
+                          session.teams.map((team, index) => (
                             <div key={`team${index}`}>
                               <Accordion 
                                 title={team.teamName} 
                                 expand={false}
                                 content= {
-                                  team.players.map((player, index) => (
+                                  getPlayersByTeam(players, team.teamId).map((player, index) => (
                                   <div key={`player${index}`}>
                                     <p>{player}</p>
                                   </div>

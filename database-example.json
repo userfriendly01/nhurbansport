@@ -67,10 +67,10 @@
       "lastName" : "Cuneo",
       "phoneNumber" : "603-851-8200",
       "textAlerts" : true,
-      "Teams": [
+      "teams": [
         {
           "teamId": "123456",
-          "teamName": "",
+          "name": "",
           "sessionId": "sesh1234"
         }
       ]
