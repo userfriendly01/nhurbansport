@@ -71,13 +71,13 @@ const LeagueTemplate = ({ match }) => {
 
   const location = {
     state: {
-      form: true,
       url: "none",
       name: "New League Image",
       height: "300",
       width: "300",
-      callbackState: leagueForm,
-      callbackFunction: handleAttachImage
+      button: "Add Image to League",
+      form: leagueForm,
+      setForm: handleAttachImage
     }
   }
 

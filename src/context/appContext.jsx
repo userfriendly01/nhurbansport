@@ -4,8 +4,8 @@ import {
 import {
   convertTeamArray,
   convertSchedule
-} from '../util/Helpers.jsx'
-import { getStorage, getDatabase } from "../service/Connect.jsx";
+} from '../util/helpers.js'
+import { getStorage, getDatabase } from "../service/connect.js";
 import React, { useState, useEffect } from 'react';
 
 const StateContext = React.createContext(null);
@@ -15,7 +15,7 @@ const database = getDatabase();
 let initialState = {
   imageContext: {
     images: {},
-    imageData: {}
+    imageData: []
   },
   leagueContext: {
     leagues: []
@@ -185,8 +185,14 @@ export const setImageData = async state => {
   .ref("Images")
   .once("value")
   .then(async snapshot => {
-    let newSnapshot = snapshot.val();
-    state.imageContext.imageData = newSnapshot;
+    let images = snapshot.val();
+      for(let i in images) {
+        let imageObject = {
+          imageId: i,
+          url: images[i]
+        }
+        state.imageContext.imageData.push(imageObject);
+      }
   }).catch((error) => {
     console.error("Failed to Load Images from Database to Context. ", error)
   });

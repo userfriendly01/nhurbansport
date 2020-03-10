@@ -1,4 +1,4 @@
-import { getDatabase } from "../Connect.jsx";
+import { getDatabase } from "../connect.js";
 
 const database = getDatabase();
 
@@ -48,6 +48,34 @@ export const updateAdminText = (id, editedText, context) => {
       console.error("Failed to update text.", error)
     });
 };
+
+export const updateImageData = (id, url, context) => {
+  return database
+    .ref('Images/' + id)
+    .set(url)
+    .then(()=> {
+      const images = context.state.imageContext.imageData
+      console.log("Images: ", images)
+      const index = images.map(image => { return image.imageId; }).indexOf(id);
+      const editedImageObject = {
+        imageId: id,
+        url
+      }
+      images.splice(index, 1);
+      images.splice(index, 0, editedImageObject);
+      context.setState({
+        ...context.state,
+        imageContext: {
+          ...context.state.imageContext,
+          imageData: images
+        }
+      });
+      console.log("Updated Image!", url)
+      return true;
+    }).catch(error => {
+      console.error("Failed to update image. ", error)
+    });
+}
 
 export const updateSession = (id, editedSession, context) => {
   return database

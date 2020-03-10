@@ -1,103 +1,74 @@
 import React, { useState, useContext } from 'react'
 import { Redirect } from 'react-router-dom'
 import { Wrapper } from '../../components'
-import { 
-    ImagePagination,
-    uploadImage,
-    setImage 
-} from '../ImageUpload'
+import ImagePagination  from '../ImageUpload/ImagePagination.jsx'
+import { uploadImage } from "../../service/storage.js"
+import { updateImageData } from "../../service/Database"
 import { StateContext } from '../../context/appContext.jsx'
 
 const ImageUpload = ({ location } ) => {
-    const [ imageDetails, setImageDetails ] = useState({
-        url: location.state.url,
-        name: location.state.name,
-        height: location.state.height,
-        width: location.state.width
-    });
+  const context = useContext(StateContext);
+  const form = location.state.form ? location.state.form : false;
+  const saveButtonText = location.state.button ? location.state.button : "Update Image";
 
-    const context = useContext(StateContext);
-    const createImageArray = () => {
-      const tempImageArray = [];
-      const images = context.state.imageContext.images;
-      for (const i in images) {
-        const imageObject = {
-          name: i,
-          url: images[i]
-        }
-        tempImageArray.push(imageObject)
-      };
-      return tempImageArray;
-    };
-    const [ imageArray, setImageArray ] = useState(createImageArray());
-    const [ temporaryImage, setTemporaryImage ] = useState({
-        file: null,
-        name: null,
-        preview: null
-    });
-    const [ completed, setCompleted ] = useState(false);
-    const form = location.state.form == null ? false : true;
-
-    const handleChange = e => {
-      const reader = new FileReader();
+  const [ completed, setCompleted ] = useState(false);
+  const [ images, setImages ] = useState(context.state.imageContext.imageData);
+  const [ imageDetails, setImageDetails ] = useState({
+      url: location.state.url,
+      name: location.state.name,
+      height: location.state.height,
+      width: location.state.width
+  });
+  const [ temporaryImage, setTemporaryImage ] = useState({
+      file: null,
+      name: null,
+      preview: null
+  });
     
-      if (e.target.files[0]) {
-        const tempImage = e.target.files[0];
-        reader.onloadend = () => {
-          setTemporaryImage({
-            file: tempImage,
-            name: imageDetails.name,
-            preview: reader.result
-          })
-        }
-          reader.readAsDataURL(tempImage);
-      }
-    }
-
-    const handleUpload = () => {
-        const obj = {
-            temporaryImage,
-            imageArray, 
-            setImageArray,
-            imageDetails,
-            setImageDetails
-        };
-        uploadImage(obj);
-    }
-    
-    const imageCallback = (childData) => {
-        setImageDetails({
-            ...imageDetails,
-            url: childData
-        });
-    }
-
-    const updateImageSource = () => {
-      if (form) {
-        const attachImage = location.state.callbackFunction;
-        attachImage(imageDetails.url);
-      } else {
-        setImage({
+  const handleChange = e => {
+    const reader = new FileReader();
+  
+    if (e.target.files[0]) {
+      const tempImage = e.target.files[0];
+      reader.onloadend = () => {
+        setTemporaryImage({
+          file: tempImage,
           name: imageDetails.name,
-          url: imageDetails.url,
-          updateStateAndReturn
-      });
-      }   
+          preview: reader.result
+        })
+      }
+        reader.readAsDataURL(tempImage);
     }
+  }
 
-    const updateStateAndReturn = () => {
-      context.setState({
-        ...context.state,
-        imageContext: {
-          ...context.state.imageContext,
-          imageData: {
-            ...context.state.imageContext.imageData,
-            [imageDetails.name]: imageDetails.url
-          }
-        }
+  const handleUpload = () => {
+      const obj = {
+          temporaryImage,
+          images, 
+          setImages,
+          imageDetails,
+          setImageDetails
+      };
+      uploadImage(obj);
+  }
+  
+  const imageCallback = (childData) => {
+      setImageDetails({
+          ...imageDetails,
+          url: childData
       });
-      setCompleted(true);
-    }
+  }
+
+  const updateImageSource = () => {
+    if (form) {
+      const attachImageToForm = location.state.setForm;
+      attachImageToForm(imageDetails.url);
+    } else {
+      updateImageData(imageDetails.name, imageDetails.url, context).then(() => {
+        setCompleted(true)
+      });
+    }   
+  }
 
   return (
     <div>
@@ -117,11 +88,11 @@ const ImageUpload = ({ location } ) => {
             }
           </Wrapper>
           { imageDetails.url !== location.state.url ?
-                <button onClick={() => updateImageSource()}>Save New Image</button>
-              : null
+              <button onClick={() => updateImageSource()}>{saveButtonText}</button>           
+            : null
           }
           <h4>Or Select an Existing Image</h4>
-          <ImagePagination array={imageArray} parentCallBack={imageCallback} />
+          <ImagePagination array={images} parentCallBack={imageCallback} />
           
         </Wrapper>
       }

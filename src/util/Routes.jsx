@@ -28,11 +28,11 @@ export const routes = [
     },
     {
         path: "/about",
-        render: props => <Home {...props} focus={"about"}/>
+        render: () => <Home focus={"about"}/>
     },
     {
         path: "/contact",
-        render: props => <Home {...props} focus={"contact"}/>
+        render: () => <Home focus={"contact"}/>
     },
     {
         path: "/leagues",
@@ -78,7 +78,7 @@ export const routes = [
     ,
     {
         path: "/upload-image",
-        render: props => <ImageUpload {...props} test={props}/>
+        render: props => <ImageUpload {...props}/>
     },
     {
         path: "/add-league",

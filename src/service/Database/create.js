@@ -1,4 +1,4 @@
-import { getDatabase } from "../Connect.jsx";
+import { getDatabase } from "../connect.js";
 
 const database = getDatabase();
 

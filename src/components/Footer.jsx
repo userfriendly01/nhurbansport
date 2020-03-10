@@ -53,11 +53,7 @@ const Footer = () => {
         height: calc(1.5em + .75rem + 2px);
         margin: 0 10;
     `;
-
-    //THIS LINE WORKS .. when I pass it as a prop, it no longer shows in the browser in a folder but still renders
-    //background-image: url("facebook-icon.jpg");
-    //url("src/images/facebook-icon.jpg")
-
+    
     const CopyWrite = styled.div`
         font-style: italic;
         background-color: #D8D8D8;

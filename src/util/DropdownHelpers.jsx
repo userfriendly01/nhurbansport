@@ -8,7 +8,7 @@ import {
 import {
   getPlayersByTeam,
   getPlayersBySession
-} from "../util/Helpers.jsx"
+} from "../util/helpers.js"
 import {
   createTeam
 } from "../service/Database"

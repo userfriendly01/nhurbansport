@@ -70,13 +70,13 @@ const RuleBookTemplate = ({ match }) => {
 
   const location = {
     state: {
-      form: true,
       url: "none",
       name: "New Rulebook Image",
       height: "300",
       width: "300",
-      callbackState: rulebookForm,
-      callbackFunction: handleAttachImage
+      button: "Add Image To Rulebook",
+      form: rulebookForm,
+      setForm: handleAttachImage
     }
   }
 

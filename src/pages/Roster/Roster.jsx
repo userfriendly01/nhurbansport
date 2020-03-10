@@ -11,7 +11,7 @@ import {
   DeleteTeam
 } from './TeamForm.jsx'
 import { StateContext } from '../../context/appContext.jsx'
-import { getPlayersByTeam } from '../../util/Helpers.jsx';
+import { getPlayersByTeam } from '../../util/helpers.js';
 
   const Roster = () => {
     const context = useContext(StateContext);

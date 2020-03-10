@@ -15,12 +15,14 @@ const Image = ({
     link
 }) => {
     const context = useContext(StateContext);
-    const images = context.state.imageContext.imageData;
+    const images = context.state.imageContext.imageData ? context.state.imageContext.imageData : [];
+    console.log("Image", images)
+    const image = images.find(image => image.imageId === id);
 
     const uploadIcon = <FontAwesomeIcon icon={faAngleDoubleUp} />
 
     const ImageContent = styled.div`
-        background-image: url("${images[id]}");
+        background-image: url("${image.url}");
         background-size: 100% 100%;
         min-width: ${width};
         min-height: ${height};
@@ -52,7 +54,7 @@ const Image = ({
         <Link to={{
           pathname: `/upload-image`, 
           state: {
-            url: images[id],
+            url: image.url,
             name: id,
             height: height,
             width: width

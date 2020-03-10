@@ -1,39 +1,6 @@
-import { getStorage, getDatabase } from "../../service/Connect.jsx";
+import { getStorage } from "./connect.js";
 
 const storage = getStorage();
-const database = getDatabase();
-
-export const setImage = ({
-  name,
-  url,
-  updateStateAndReturn
-}) => {
-  database
-    .ref('Images/' + name)
-    .set(url)
-    .then(()=> {
-    getImageObject().then(() => {
-      updateStateAndReturn();
-    }).catch(error => {
-      console.log(error);
-    });
-  })
-}
-
-export const getImageObject = () => {
-  return database.ref("Images")
-  .once("value")
-  .then(function(snapshot) {
-    const imageObject = {};
-    let newSnapshot = snapshot.val();
-        for(let r in newSnapshot) {
-          imageObject[r] = newSnapshot[r]
-        };
-  }).catch((error) => {
-    console.log(error);
-  });
-
-}
 
 export const uploadImage = ({ 
     temporaryImage,
