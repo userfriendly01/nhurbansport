@@ -95,6 +95,8 @@ export const TeamCreateDropDown = ({
   const session = sessions.find(obj => obj.sessionId === sessionId) ? sessions.find(obj => obj.sessionId === sessionId) : {};
   const teams = session.teams ? session.teams : [];
 
+  console.log("Create Dropdown Session Id", sessionId)
+
   const generateOptions = () => {
     const teamsArray = [];
     teams.map(team => {

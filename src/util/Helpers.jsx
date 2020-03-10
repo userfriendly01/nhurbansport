@@ -12,7 +12,7 @@ export const convertTeamArray = teams => {
 export const convertSchedule = (schedule) => {
   
   let scheduleObject = {...schedule};
-  let scheduleGroups = schedule.scheduleGroups
+  let scheduleGroups = schedule.groups
   let groupsArray = []
   for(let sch in scheduleGroups) {
     let groupObject = {...scheduleGroups[sch]};

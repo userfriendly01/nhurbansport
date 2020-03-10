@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useContext } from "react"
 import {
   DayPicker,
   DeleteIcon,
@@ -7,7 +7,14 @@ import {
   Wrapper
 } from "../../components"
 import Game from "./Game.jsx"
+import { 
+  createGame,
+  deleteScheduleGroup
+} from "../../service/Database"
 import styled from 'styled-components'
+import dateFnsFormat from 'date-fns/format';
+import { parse } from 'date-fns';
+import { StateContext } from '../../context/appContext.jsx'
 
 
 const StyledDisplay = styled(DisplayCard)`
@@ -40,61 +47,58 @@ const StyledButton = styled.button`
   font-size: 13;
 `
 
+const formatDate = date => {
+  const parseFormat = "E MMM dd yyyy"
+  const formatOutput ="iiii, MMMM do";
+  const dateObject = parse(date, parseFormat, new Date());
+  return dateFnsFormat(dateObject, formatOutput);
+}
+
 const ScheduleGroup = ({
+  sessionId,
   groupId,
   edit,
   form,
   setForm
 }) => {
-  console.group()
-  console.log("Schedule Group Form", form)
-  console.log("Group Id", groupId)
-  const groups = form.scheduleGroups;
+  const context = useContext(StateContext);
+  const groups = form.groups;
   const group = groups.find(obj => obj.groupId === groupId) ? groups.find(obj => obj.groupId === groupId) : {};
-  console.log("Group", group)
-  console.groupEnd()
   const groupLabel = group.label ? group.label : "";
-  const groupDate = group.date ? group.date : "";
+  const groupDate = group.date ? formatDate(group.date) : "";
   const games = group.games;
-  const gameCount = group.games.length ? group.games.length : 0;
-  const index = form.scheduleGroups.map(group => { return group.groupId; }).indexOf(groupId);
+  const gameTemplate = {
+    location: "",
+    time: "",
+    homeTeam: "",
+    homeTeamScore: "",
+    awayTeam: "",
+    awayTeamScore: ""
+  }
+  const index = form.groups.map(group => { return group.groupId; }).indexOf(groupId);
+  const [ reloadOnSave, setReloadOnSave ] = useState(true)
 
   const resetScheduleGroup = newGroup => {
-    deleteScheduleGroup(groups, index)
+    group.games = games;
+    groups.splice(index, 1);
     groups.splice(index, 0, newGroup);
     setForm({
       ...form,
-      scheduleGroups: groups
+      groups
     })
   }
 
-  const deleteScheduleGroup = (groups, index) => {
-    groups.splice(index, 1);
-    setForm({
-      ...form,
-      scheduleGroups: groups
-    })
-    // return groupIndex;
+  const handleDeleteGroup = () => {
+    deleteScheduleGroup(sessionId, groupId, context).then(() => {
+      setReloadOnSave(!reloadOnSave);
+    });
   };
 
-  const createGame = () => {
-    const newGroup = {
-      ...group,
-      games: [
-        ...group.games,
-        { gameId: form.scheduleGroups[index].groupId + "GA" + gameCount,
-          location: "",
-          time: "",
-          homeTeam: "",
-          homeTeamScore: "",
-          awayTeam: "",
-          awayTeamScore: ""
-      }
-      ]
-    }
-    resetScheduleGroup(newGroup);
-  };
-
+  const handleCreateGame = () => {
+    createGame(sessionId, groupId, gameTemplate, context).then(() => {
+      setReloadOnSave(!reloadOnSave);
+    });
+  }
 
   const handleTextChange = event => {
     const key = event.target.id;
@@ -111,8 +115,8 @@ const ScheduleGroup = ({
     const value = date;
     const newGroup = {
       ...group,
+      date: date.toDateString()
     }
-    newGroup[key] = value;
     resetScheduleGroup(newGroup);
   }
 
@@ -121,21 +125,21 @@ const ScheduleGroup = ({
     {edit ?
       <StyledDisplay>
         <Wrapper justify="flex-end" padding="5 0 0 0">
-          <DeleteIcon size="16" deleteFunction={resetScheduleGroup}/>
+          <DeleteIcon size="16" deleteFunction={handleDeleteGroup}/>
         </Wrapper>
         <StyledGroupRow>
           <TextField
             id="label"
             placeholder="Week"
-            value={form.scheduleGroups[index].label}
+            value={form.groups[index].label}
             customOnChangeFunction={handleTextChange}
           />
-          <StyledButton onClick={createGame}>Add game</StyledButton>
+          <StyledButton onClick={handleCreateGame}>Add game</StyledButton>
         </StyledGroupRow>
         <StyledDateRow color="black">
           <DayPicker
-            value={form.scheduleGroups[index].date}
-            customOnChangeFunction={handleDateChange}
+            value={form.groups[index].date ? form.groups[index].date : null }
+            onChangeFunction={handleDateChange}
           />
         </StyledDateRow>
         {
@@ -145,9 +149,9 @@ const ScheduleGroup = ({
               key={game.gameId}
               groupIndex={index}
               gameId={game.gameId}
+              sessionId={sessionId}
               edit={edit} 
-              form={form} 
-              setForm={setForm}
+              form={form}
               resetFunction={resetScheduleGroup}/>
           ))
         }

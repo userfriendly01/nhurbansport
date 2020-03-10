@@ -137,7 +137,7 @@
       "name" : "Coed Flag Football",
       "price" : "$50",
       "schedule" : {
-        "scheduleGroups" : [ {
+        "groups" : [ {
           "date" : "Wednesday, January 15",
           "games" : [ {
             "awayTeam" : "Your Team",
@@ -177,7 +177,14 @@
       "teams" : {
         "-M1wvk5jI-w5Fp37MRh1" : {
           "captain" : "",
-          "name" : "Comets Carnivors"
+          "name" : "Comets Carnivors",
+          "stats" : {
+            "position": 1,
+            "played": 5,
+            "won": 3,
+            "lost": 2,
+            "tie": 0
+          }
         },
         "-M1wywoXb9J_54atb9Ug" : {
           "captain" : "",

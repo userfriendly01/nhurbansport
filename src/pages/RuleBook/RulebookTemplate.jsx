@@ -50,16 +50,7 @@ const RuleBookTemplate = ({ match }) => {
   }
 
   const handleCreateRulebook = () => {
-    createRulebook(rulebookForm).then(() => {
-      const newRuleBookArray = rulebooks.push(rulebookForm);
-      context.setState({
-        ...context.state,
-        adminContext: {
-          ...context.state.adminContext,
-          rulebooks: newRuleBookArray
-        }
-      });
-    });
+    createRulebook(rulebookForm, context);
   }
 
   const handleEditRulebook = () => {

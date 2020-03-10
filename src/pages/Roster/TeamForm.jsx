@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import {
   Button,
   DisplayCard,
@@ -12,10 +12,10 @@ import {
 } from "../../util/DropdownHelpers.jsx"
 import {
   createTeam,
-  updateTeam,
   deleteTeam
 } from "../../service/Database"
 import styled from "styled-components"
+import { StateContext } from '../../context/appContext.jsx'
 
 const TitleBar = styled(Wrapper)`
   background-color: grey;
@@ -30,6 +30,7 @@ const StyledText = styled(Wrapper)`
 `
 
 export const CreateTeam = () => {
+  const context = useContext(StateContext);
   const [ sessionId, setSessionId ] = useState(null);
   const [ team, setTeam ] = useState({
     name: "",
@@ -38,8 +39,7 @@ export const CreateTeam = () => {
   });
 
   const addTeam = () => {
-    createTeam(sessionId, team).then(savedTeam => {
-      console.log("Team Added: ", savedTeam)
+    createTeam(sessionId, team, context).then(() => {
       setSessionId(null);
       setTeam({
         name: "",
@@ -153,11 +153,10 @@ export const DeleteTeam = ({
  }) => {
   const [ sessionId, setSessionId ] = useState(null);
   const [ team, setTeam ] = useState(null);
-
+  const context = useContext(StateContext);
 
   const handleDelete = () => {
-    deleteTeam(sessionId, team.teamId).then(() => {
-      console.log("Team Deleted: ", team);
+    deleteTeam(sessionId, team.teamId, context).then(() => {
       setSessionId(null);
       setTeam(null)
     })

@@ -37,7 +37,7 @@ const Rulebooks = () => {
     const rulebooks = context.state.adminContext.rulebooks;
 
     const handleDelete = rulebookId => {
-      deleteRulebook(rulebookId).then(() => {
+      deleteRulebook(rulebookId, context).then(() => {
         const deleteIndex = rulebooks.map(deletedRulebook => { return deletedRulebook.ruleBookId; }).indexOf(rulebookId);
         rulebooks.splice(deleteIndex, 1);
         context.setState({

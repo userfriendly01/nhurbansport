@@ -18,8 +18,9 @@ export const updateSession = (id, updatedSession) => {
   return database
     .ref("Sessions")
     .child(id)
-    .set(updatedSession).then(updatedSession => {
-      return updatedSession.val();
+    .set(updatedSession).then(snapshot => {
+      console.log("Updated Session!", updatedSession)
+      return true;
     }).catch(error => {
       console.error("Failed to update session. ", error)
     });

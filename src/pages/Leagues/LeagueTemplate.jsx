@@ -81,6 +81,7 @@ const LeagueTemplate = ({ match }) => {
     }
   }
 
+  console.log("The League Form: ", leagueForm)
   return (
     <div>
       {
@@ -125,10 +126,13 @@ const LeagueTemplate = ({ match }) => {
                   />
                 </Wrapper>
                   <DayPicker
-                    id="date" 
                     label="Start Date"
+                    value={leagueForm.date}
                     form={leagueForm}
-                    setForm={setLeagueForm}
+                    handleChange={date => setLeagueForm({
+                      ...leagueForm,
+                      date: date.toDateString()
+                    })}
                   />
                   <TextField 
                     id="name"

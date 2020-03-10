@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useContext } from "react"
 import {
   DeleteIcon,
   TextField,
@@ -6,6 +6,7 @@ import {
 } from "../../components"
 import { TeamCreateDropDown } from "../../util/DropdownHelpers.jsx"
 import styled from 'styled-components'
+import { StateContext } from '../../context/appContext.jsx'
 
 const StyledLocationRow = styled(Wrapper)`
   width: 100%;
@@ -34,7 +35,8 @@ const ScheduleGroup = ({
   form,
   resetFunction
 }) => {
-  const groups = form.scheduleGroups;
+  const context = useContext(StateContext);
+  const groups = form.groups;
   const group = groups[groupIndex] ? groups[groupIndex] : {};
   console.log("Group Index", groupIndex)
   const games = group.games;

@@ -7,6 +7,9 @@ import {
 } from "../../components"
 import ScheduleGroup from "./ScheduleGroup.jsx"
 import styled from 'styled-components'
+import {
+  deleteSchedule
+} from "../../service/Database"
 import { StateContext } from '../../context/appContext.jsx'
 
 const StyledTitle = styled(Wrapper)`
@@ -20,25 +23,14 @@ const Schedule = ({match}) => {
   const sessionId = match.params.id;
   const sessions = context.state.leagueContext.leagues;
   const session = sessions.find(obj => obj.sessionId === sessionId) ? sessions.find(obj => obj.sessionId === sessionId) : {};
-  // const teams = session.sessionTeams ? session.sessionTeams : [];
-  const scheduleGroups = session.schedule.scheduleGroups;
+  const scheduleGroups = session.schedule.groups;
+  const [ reloadOnSave, setReloadOnSave ] = useState(true)
 
-  const handleDelete = rulebookId => {
-    //Include confirmation message that all games will be deleted
-    // deleteSchedule(rulebookId).then(() => {
-    //   const deleteIndex = rulebooks.map(deletedRulebook => { return deletedRulebook.ruleBookId; }).indexOf(rulebookId);
-    //   rulebooks.splice(deleteIndex, 1);
-    //   context.setState({
-    //     ...context.state,
-    //     leagueContext: {
-    //       ...context.state.leagueContext,
-    //       leagues: [
-    //         ...context.state.leagueContext.leagues
-    //         //Get to specific league: replace sessionGames with empty array
-    //       ]
-    //     }
-    //   });
-    // });
+  const handleDelete = () => {
+    deleteSchedule(session.sessionId, context).then(() => {
+      setReloadOnSave(!reloadOnSave);
+      //Add redirect logic to previous page
+    });
   };
 
    return (
@@ -46,14 +38,14 @@ const Schedule = ({match}) => {
       <Wrapper direction="column" align="center" width="100%">
         <Wrapper justify="center" margin="7">
           <EditIcon route="/edit-schedule" id={sessionId} />
-          <DeleteIcon deleteFunction={() => handleDelete(session.sessionId)}/>
+          <DeleteIcon deleteFunction={handleDelete}/>
         </Wrapper>
         <Wrapper>
           <StyledTitle>{session.sessionFriendlyName} Schedule</StyledTitle>
         </Wrapper>
           { 
             scheduleGroups.map(group => (
-              <ScheduleGroup groupId={group.groupId} edit={false} form={session.schedule} />
+              <ScheduleGroup key={group.groupId} groupId={group.groupId} edit={false} form={session.schedule} />
             ))
           }
       </Wrapper>

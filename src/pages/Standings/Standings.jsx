@@ -27,32 +27,38 @@ const Standings = () => {
                 title={session.sessionFriendlyName} 
                 expand={!index}
                 content= {
-                    <Table>
-                        <thead>
-                        <tr>
-                            <th>Position</th>
-                            <th>Team Name</th>
-                            <th>P</th>
-                            <th>W</th>
-                            <th>L</th>
-                            <th>T</th>
-                        </tr>
-                        </thead>
-                        <tbody>
+                  <Table>
+                    <thead>
+                      <tr>
+                          <th>Position</th>
+                          <th>Team Name</th>
+                          <th>P</th>
+                          <th>W</th>
+                          <th>L</th>
+                          <th>T</th>
+                      </tr>
+                    </thead>
+                  <tbody>
                     {
-                        session.teams.map((team, index) => (
-                            <tr>
-                                {/* <th scope="row">{team.teamStats.position}</th>
-                                <td>{team.teamName}</td>
-                                <td>{team.teamStats.played}</td>
-                                <td>{team.teamStats.won}</td>
-                                <td>{team.teamStats.loss}</td>
-                                <td>{team.teamStats.tie}</td> */}
-                            </tr>
-                        ))
+                      session.teams.map((team, index) => {
+                        if(team.stats){
+                          return (
+                            <tr key= {`team${index}`}>
+                            <th scope="row">{team.stats.position}</th>
+                            <td>{team.name}</td>
+                            <td>{team.stats.played}</td>
+                            <td>{team.stats.won}</td>
+                            <td>{team.stats.lost}</td>
+                            <td>{team.stats.tie}</td>
+                          </tr>
+                          )
+                        } else {
+                          return null;
+                        }
+                      })
                     }
-                        </tbody>
-                    </Table>
+                  </tbody>
+                  </Table>
                 }
               />
             </div>

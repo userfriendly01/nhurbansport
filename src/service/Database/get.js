@@ -15,4 +15,18 @@ export const getActiveSessions = () => {
   });
 };
 
+export const getSchedule = sessionId => {
+  return database
+    .ref("Sessions")
+    .child(sessionId)
+    .child("schedule")
+    .once('value')
+    .then((snapshot) => {
+      console.log("The schedule returns as", snapshot)
+      return snapshot.val();
+  }).catch((error) => {
+      console.log(error)
+  });
+};
+
  

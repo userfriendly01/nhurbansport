@@ -28,7 +28,7 @@ const League = ({ match }) => {
   const league = leagues.find(obj => obj.sessionId === leagueId) ? leagues.find(obj => obj.sessionId === leagueId) : {};
   
   const handleDelete = () => {
-    deleteSession(leagueId);
+    deleteSession(leagueId, context);
   };
   
   return (
