@@ -9,7 +9,7 @@ import {
   Button,
   TextEditor
 } from '../../components';
-// import { updateAdminText } from '../../service/Database'
+import { updateAdminText } from '../../service/Database'
 import { StateContext } from '../../context/appContext.jsx'
 
 const EditTextModal = ({
@@ -18,29 +18,16 @@ const EditTextModal = ({
 }) => {
   const context = useContext(StateContext);
 
-  //Gotta come back and fix this when I create the admin context helpers
   const handleSave = () => {
-    // updateAdminText(callbackState.id, callbackState.html, updateAdminContext);
-    handleClose();
+    updateAdminText(callbackState.id, callbackState.html, context).then(() => {
+      handleClose();
+    });
   }
 
   const handleClose = () => {
     callbackFunction({
       ...callbackState,
       open: false
-    });
-  }
-
-  const updateAdminContext = () => {
-    context.setState({
-      ...context.state,
-      adminContext: {
-        ...context.state.adminContext,
-        text: {
-          ...context.state.adminContext.text,
-          [callbackState.id]: callbackState.html
-        }
-      }
     });
   }
 

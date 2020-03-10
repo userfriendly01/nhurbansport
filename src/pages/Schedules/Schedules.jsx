@@ -7,6 +7,7 @@ import {
 } from '../../components'
 import styled from 'styled-components'
 import { Link, Redirect } from 'react-router-dom'
+import { updateSession} from "../../service/Database"
 import { StateContext } from '../../context/appContext.jsx'
 
 const StyledImage = styled.img`
@@ -63,10 +64,23 @@ const Schedules = () => {
     return sessionsWithoutGames;
   }
 
-    const handleCreate = option => {
-      setRedirect({
-        value: option.value,
-        redirect: true
+    const handleCreate = selection => {
+      console.log(selection)
+      const session = activeSessions.find(obj => obj.sessionId === selection.value);
+      console.log(session);
+      const newSession = {
+        ...session,
+        schedule : { 
+          published: false, 
+          groups: [] 
+        }
+      }
+      console.log("New Session", newSession)
+      updateSession(session.sessionId, newSession, context).then(() => {
+        setRedirect({
+          value: selection.value,
+          redirect: true
+        });
       });
     }
 
@@ -105,7 +119,7 @@ const Schedules = () => {
                   }}
                   styles={{width: "300"}}
                   options={getSessionsWithoutSchedules()} 
-                  updateFunction={handleCreate} />
+                  updateFunction={selection => handleCreate(selection)} />
             </Wrapper>
         </Wrapper>
       }

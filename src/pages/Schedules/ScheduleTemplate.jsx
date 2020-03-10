@@ -33,20 +33,7 @@ const Schedule = ({match}) => {
   const session = sessions.find(obj => obj.sessionId === sessionId) ? sessions.find(obj => obj.sessionId === sessionId) : {};
   const schedule = session.schedule ? session.schedule : { published: false, groups: [] };
   const [scheduleForm, setScheduleForm] = useState(schedule);
-  const scheduleGroups = scheduleForm.groups;
 
-  useEffect(() => {
-    console.log("The use Effect kicked off", session.schedule)
-    if(!session.schedule){
-      console.log("The useEffect reset it")
-      const newSession = {
-        ...session,
-        schedule
-      }
-      updateSession(sessionId, newSession);
-    }
-  });
-  
   console.log("This is the form for the schedule render: ", session)
   console.log("This is the schedule form: ", scheduleForm)
 
@@ -54,10 +41,7 @@ const Schedule = ({match}) => {
     createScheduleGroup(sessionId, { 
         label: "",
         date: "",
-        games: [] }
-      , context).then(() => {
-        // setReloadOnSave(!reloadOnSave);
-      });
+        games: [] }, context)
   };
 
   const saveSchedule = publish => {
@@ -74,9 +58,7 @@ const Schedule = ({match}) => {
           groups: formatSchedule(schedule)
         }        
       }
-      updateSession(sessionId, newSession).then(() => {
-        // setReloadOnSave(!reloadOnSave);
-      });
+      updateSession(sessionId, newSession, context)
     });
   }
 
@@ -122,8 +104,8 @@ const Schedule = ({match}) => {
         <Wrapper>
           <StyledTitle>{session.sessionFriendlyName} Schedule</StyledTitle>
         </Wrapper>
-          { 
-            scheduleGroups.groups.map(group => (
+          {   
+            scheduleForm.groups.map(group => (
               <ScheduleGroup 
                 key={group.groupId} 
                 sessionId={sessionId}

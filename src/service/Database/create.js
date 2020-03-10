@@ -54,7 +54,7 @@ export const createTeam = (sessionId, newTeam, context) => {
       const teams = league.teams ? league.teams : [];
       teams.push(newTeam);
       league.teams = teams;
-      const index = leagues.map(deletedLeague => { return deletedLeague.sessionId; }).indexOf(sessionId);
+      const index = leagues.map(league => { return league.sessionId; }).indexOf(sessionId);
       leagues.splice(index, 1);
       leagues.splice(index, 0, league);
       context.setState({
@@ -88,9 +88,8 @@ export const createScheduleGroup = (sessionId, newScheduleGroup, context) => {
       });
 
       league.schedule = league.schedule ? league.schedule : {};
-      console.log("Why? ", league.schedule)
       league.schedule.groups = groups;
-      const index = leagues.map(deletedLeague => { return deletedLeague.sessionId; }).indexOf(sessionId);
+      const index = leagues.map(league => { return league.sessionId; }).indexOf(sessionId);
       leagues.splice(index, 1);
       leagues.splice(index, 0, league);
       context.setState({
@@ -124,15 +123,15 @@ export const createGame = (sessionId, groupId, newGame, context) => {
       const games = group.games ? group.games : [];
       games.push({ 
         ...newGame,
-        gameId: snapshot.val
+        gameId: snapshot.key
       });
       group.games = games;
-      const groupIndex = groups.map(deletedGroup => { return deletedGroup.groupId; }).indexOf(groupId);
+      const groupIndex = groups.map(group => { return group.groupId; }).indexOf(groupId);
       groups.splice(groupIndex, 1);
       groups.splice(groupIndex, 0, group);
 
       league.schedule.groups = groups;
-      const leagueIndex = leagues.map(deletedLeague => { return deletedLeague.sessionId; }).indexOf(sessionId);
+      const leagueIndex = leagues.map(league => { return league.sessionId; }).indexOf(sessionId);
       leagues.splice(leagueIndex, 1);
       leagues.splice(leagueIndex, 0, league);
       context.setState({

@@ -6,6 +6,7 @@ import {
 } from "../../components"
 import { TeamCreateDropDown } from "../../util/DropdownHelpers.jsx"
 import styled from 'styled-components'
+import { deleteGame } from "../../service/Database"
 import { StateContext } from '../../context/appContext.jsx'
 
 const StyledLocationRow = styled(Wrapper)`
@@ -38,28 +39,22 @@ const ScheduleGroup = ({
   const context = useContext(StateContext);
   const groups = form.groups;
   const group = groups[groupIndex] ? groups[groupIndex] : {};
-  console.log("Group Index", groupIndex)
   const games = group.games;
   const game = games.find(obj => obj.gameId === gameId) ? games.find(obj => obj.gameId === gameId) : {};
   const gameIndex = games.map(deletedGame => { return deletedGame.gameId; }).indexOf(gameId);
 
   const resetGame = newGame => {
-    deleteGame();
+    games.splice(gameIndex, 1);
     games.splice(gameIndex, 0, newGame);
     const newGroup = {
       ...group,
-      games: games
+      games
     }
     resetFunction(newGroup);
   }
   
-  const deleteGame = () => {
-    games.splice(gameIndex, 1);
-    const newGroup = {
-      ...group,
-      games: games
-    }
-    resetFunction(newGroup);
+  const handleDeleteGame = () => {
+    deleteGame(sessionId, group.groupId, gameId, context)
   };
 
   const handleFormEntry = (selection, id) => {
@@ -77,7 +72,7 @@ const ScheduleGroup = ({
     { edit ?
       <>
         <Wrapper justify="flex-end" padding="5 0 0 0">
-          <DeleteIcon size="16" deleteFunction={deleteGame}/>
+          <DeleteIcon size="16" deleteFunction={handleDeleteGame}/>
         </Wrapper>
         <StyledLocationRow>
           <TextField 

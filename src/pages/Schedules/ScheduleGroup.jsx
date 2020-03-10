@@ -76,10 +76,8 @@ const ScheduleGroup = ({
     awayTeamScore: ""
   }
   const index = form.groups.map(group => { return group.groupId; }).indexOf(groupId);
-  const [ reloadOnSave, setReloadOnSave ] = useState(true)
 
   const resetScheduleGroup = newGroup => {
-    group.games = games;
     groups.splice(index, 1);
     groups.splice(index, 0, newGroup);
     setForm({
@@ -89,30 +87,22 @@ const ScheduleGroup = ({
   }
 
   const handleDeleteGroup = () => {
-    deleteScheduleGroup(sessionId, groupId, context).then(() => {
-      setReloadOnSave(!reloadOnSave);
-    });
+    deleteScheduleGroup(sessionId, groupId, context)
   };
 
   const handleCreateGame = () => {
-    createGame(sessionId, groupId, gameTemplate, context).then(() => {
-      setReloadOnSave(!reloadOnSave);
-    });
+    createGame(sessionId, groupId, gameTemplate, context)
   }
 
   const handleTextChange = event => {
-    const key = event.target.id;
-    const value = event.target.value;
     const newGroup = {
       ...group,
+      label: event.target.value
     }
-    newGroup[key] = value;
     resetScheduleGroup(newGroup);
   }
 
   const handleDateChange = date => {
-    const key = "date";
-    const value = date;
     const newGroup = {
       ...group,
       date: date.toDateString()
@@ -129,7 +119,6 @@ const ScheduleGroup = ({
         </Wrapper>
         <StyledGroupRow>
           <TextField
-            id="label"
             placeholder="Week"
             value={form.groups[index].label}
             customOnChangeFunction={handleTextChange}

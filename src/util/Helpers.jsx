@@ -25,6 +25,7 @@ export const convertSchedule = (schedule) => {
       let gameObject = {...games[g]};
       let gameId = g;
       gameObject.gameId = gameId;
+      gamesArray.push(gameObject);
     }
     groupObject.games = gamesArray;
     groupsArray.push(groupObject);

@@ -11,6 +11,7 @@ import {
   deleteSchedule
 } from "../../service/Database"
 import { StateContext } from '../../context/appContext.jsx'
+import { Redirect } from 'react-router-dom'
 
 const StyledTitle = styled(Wrapper)`
   width: 380;
@@ -24,32 +25,38 @@ const Schedule = ({match}) => {
   const sessions = context.state.leagueContext.leagues;
   const session = sessions.find(obj => obj.sessionId === sessionId) ? sessions.find(obj => obj.sessionId === sessionId) : {};
   const scheduleGroups = session.schedule.groups;
-  const [ reloadOnSave, setReloadOnSave ] = useState(true)
+  const [ redirect, setRedirect ] = useState(false)
 
   const handleDelete = () => {
     deleteSchedule(session.sessionId, context).then(() => {
-      setReloadOnSave(!reloadOnSave);
-      //Add redirect logic to previous page
+      
     });
+    setRedirect(true);
   };
 
    return (
-    <DisplayCard width="600" bcolor="F5F5F5" border="5px solid white" direction="column">
-      <Wrapper direction="column" align="center" width="100%">
-        <Wrapper justify="center" margin="7">
-          <EditIcon route="/edit-schedule" id={sessionId} />
-          <DeleteIcon deleteFunction={handleDelete}/>
-        </Wrapper>
-        <Wrapper>
-          <StyledTitle>{session.sessionFriendlyName} Schedule</StyledTitle>
-        </Wrapper>
-          { 
-            scheduleGroups.map(group => (
-              <ScheduleGroup key={group.groupId} groupId={group.groupId} edit={false} form={session.schedule} />
-            ))
-          }
-      </Wrapper>
-    </DisplayCard>
+     <>
+      {redirect ?
+        <Redirect to="/schedules"/>
+        :
+        <DisplayCard width="600" bcolor="F5F5F5" border="5px solid white" direction="column">
+          <Wrapper direction="column" align="center" width="100%">
+            <Wrapper justify="center" margin="7">
+              <EditIcon route="/edit-schedule" id={sessionId} />
+              <DeleteIcon deleteFunction={handleDelete}/>
+            </Wrapper>
+            <Wrapper>
+              <StyledTitle>{session.sessionFriendlyName} Schedule</StyledTitle>
+            </Wrapper>
+              { 
+                scheduleGroups.map(group => (
+                  <ScheduleGroup key={group.groupId} groupId={group.groupId} edit={false} form={session.schedule} />
+                ))
+              }
+          </Wrapper>
+        </DisplayCard>
+      }
+    </>
   )
 }
 
