@@ -52,6 +52,7 @@ export const createTeam = (sessionId, newTeam, context) => {
       const leagues = context.state.leagueContext.leagues
       const league = leagues.find(obj => obj.sessionId === sessionId);
       const teams = league.teams ? league.teams : [];
+      newTeam.teamId = snapshot.key;
       teams.push(newTeam);
       league.teams = teams;
       const index = leagues.map(league => { return league.sessionId; }).indexOf(sessionId);

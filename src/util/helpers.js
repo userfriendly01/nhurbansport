@@ -1,4 +1,4 @@
-export const convertTeamArray = teams => {
+export const formatTeamsForContext = teams => {
   let teamsArray = []
   for(let t in teams) {
     let teamObject = {...teams[t]};
@@ -9,8 +9,7 @@ export const convertTeamArray = teams => {
   return teamsArray;
 }
 
-export const convertSchedule = (schedule) => {
-  
+export const formatScheduleForContext = schedule => {
   let scheduleObject = {...schedule};
   let scheduleGroups = schedule.groups
   let groupsArray = []
@@ -33,6 +32,32 @@ export const convertSchedule = (schedule) => {
 
   scheduleObject.groups = groupsArray;
   return scheduleObject;
+}
+
+export const formatScheduleForDatabase = schedule => {
+  let formattedGroupsObject = {};
+  if(schedule.groups){
+    schedule.groups.map(group => {
+      let formattedGamesObject = {}
+      if(group.games) {
+        group.games.map(game => {
+          formattedGamesObject[game.gameId] = game;
+        })
+      }
+      const formattedGroupObject = {
+        date: group.date,
+        label: group.label,
+        games: formattedGamesObject
+      }
+      formattedGroupsObject[group.groupId] = formattedGroupObject;
+    })
+  }
+
+  const formattedSchedule = {
+    ...schedule,
+    groups: formattedGroupsObject
+  }
+  return formattedSchedule;
 }
 
 export const getPlayersByTeam = (players, teamId) => {

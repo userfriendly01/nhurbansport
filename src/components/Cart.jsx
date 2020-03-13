@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import {
   Button,
-  CreateDropDown,
   DisplayCard,
   StandardDropDown,
   Wrapper
@@ -40,6 +39,7 @@ const Cart = ({
       <DisplayCard>Choose a shirt size</DisplayCard>
       <StandardDropDown props={{
           isSearchable: false,
+          label:"",
           placeholder: "Select Shirt Size"
         }}
         styles={{width: "300"}}

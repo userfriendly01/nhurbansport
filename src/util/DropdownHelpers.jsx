@@ -1,6 +1,4 @@
-//update form
-//return counter with no dups
-import React, { useContext } from 'react'
+import React, { useContext, useState, useEffect } from 'react'
 import { 
   StandardDropDown,
   CreateDropDown
@@ -49,7 +47,10 @@ export const SessionDropDown = ({
 
 export const TeamStandardDropDown = ({
   sessionId,
-  updateFunction
+  updateFunction,
+  value,
+  props,
+  styles
 }) => {
   const context = useContext(StateContext);
   const sessions = context.state.leagueContext.leagues;
@@ -70,23 +71,22 @@ export const TeamStandardDropDown = ({
 
   return (
     <StandardDropDown
-      styles={{width:"300"}}
-      props={{
-        isSearchable: true,
-        label:"Team",
-        placeholder: "Choose Team",
-        noOptionMessage: () => "No Teams Found"
-      }}
+      value= {value}
+      styles={styles}
+      props={props ? props : null}
       options={generateOptions()} 
       updateFunction={updateFunction} 
     />
   )
 }
 
+//Work in Prgoress
 export const TeamCreateDropDown = ({
   label,
   placeholder,
   width,
+  value,
+  formKey,
   sessionId,
   updateFunction
 }) => {
@@ -94,8 +94,6 @@ export const TeamCreateDropDown = ({
   const sessions = context.state.leagueContext.leagues;
   const session = sessions.find(obj => obj.sessionId === sessionId) ? sessions.find(obj => obj.sessionId === sessionId) : {};
   const teams = session.teams ? session.teams : [];
-
-  console.log("Create Dropdown Session Id", sessionId)
 
   const generateOptions = () => {
     const teamsArray = [];
@@ -108,15 +106,29 @@ export const TeamCreateDropDown = ({
     })
     return teamsArray;
   }
-
+  const options = generateOptions();
+  
   const handleCreate = entry => {
+    console.log("Entry", entry)
     const newTeam = {
       name: entry,
       captain: "",
       stats: []
     }
-    createTeam(sessionId, newTeam);
+    createTeam(sessionId, newTeam, context).then(id => {
+      console.log("Create team is kicked off", id)
+      const newOption = {
+        label: entry,
+        value: id
+      };
+      console.log("New option: ", newOption)
+      options.push(newOption);
+
+      updateFunction(newOption, formKey);
+    })
   }
+
+  console.log("Teams Array on render", options)
 
   return (
     <CreateDropDown
@@ -127,9 +139,11 @@ export const TeamCreateDropDown = ({
         placeholder: placeholder ? placeholder : "Choose Team",
         noOptionMessage: () => "No Teams Found"
       }}
-      options={generateOptions()} 
+      value= {value ? value : null}
+      options={options} 
       updateFunction={updateFunction}
-      addNewFunction={handleCreate}
+      // onCreateOption={handleCreate}
+      onCreateOption={() => handleCreate()}
     />
   )
 }

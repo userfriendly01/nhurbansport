@@ -14,7 +14,7 @@ export const uploadImage = ({
   uploadTask.on('state_changed',
   null,
   (error) => {
-      console.log(error);
+      console.error(error);
   },
   () => {
       storage.ref('images').child(temporaryImage.name).getDownloadURL().then(url => {

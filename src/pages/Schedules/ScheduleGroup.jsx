@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react"
+import React, { useContext } from "react"
 import {
   DayPicker,
   DeleteIcon,
@@ -133,7 +133,6 @@ const ScheduleGroup = ({
         </StyledDateRow>
         {
           games.map(game => (
-            console.log(game.gameId),
             <Game 
               key={game.gameId}
               groupIndex={index}
@@ -141,7 +140,7 @@ const ScheduleGroup = ({
               sessionId={sessionId}
               edit={edit} 
               form={form}
-              resetFunction={resetScheduleGroup}/>
+              resetFunction={setForm}/>
           ))
         }
       </StyledDisplay>
@@ -151,7 +150,7 @@ const ScheduleGroup = ({
       <StyledDateRow>{groupDate}</StyledDateRow>
       {
         games.map(game => (
-          <Game key={game.gameId} game={game} form={form} groupIndex={index} />
+          <Game key={game.gameId} gameId={game.gameId} game={game} form={form} groupIndex={index} />
         ))
       }
     </StyledDisplay>

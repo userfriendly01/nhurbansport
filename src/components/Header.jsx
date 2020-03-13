@@ -17,7 +17,7 @@ const StyledLink = styled(Link)`
 const StyledHeader = styled(Wrapper)`
   z-index: 3;
   height: 40;
-  width: 90%;
+  width: 760;
   &:hover {
     cursor: pointer;
 }

@@ -182,7 +182,6 @@ export const DeleteTeam = ({
         {team ?
           <>
             <TitleBar>Delete Team</TitleBar>
-            {console.log("team", team)}
             <StyledText>Team Name: {team.name}</StyledText>
             <StyledText>Team Captain: {team.captain.name}</StyledText>
             <Button onClick={handleDelete} align="center" width="150" margin="5">Delete Team</Button>

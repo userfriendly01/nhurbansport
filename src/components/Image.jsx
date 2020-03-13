@@ -16,7 +16,6 @@ const Image = ({
 }) => {
     const context = useContext(StateContext);
     const images = context.state.imageContext.imageData ? context.state.imageContext.imageData : [];
-    console.log("Image", images)
     const image = images.find(image => image.imageId === id);
 
     const uploadIcon = <FontAwesomeIcon icon={faAngleDoubleUp} />

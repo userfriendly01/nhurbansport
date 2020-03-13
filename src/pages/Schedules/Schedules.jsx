@@ -65,9 +65,7 @@ const Schedules = () => {
   }
 
     const handleCreate = selection => {
-      console.log(selection)
       const session = activeSessions.find(obj => obj.sessionId === selection.value);
-      console.log(session);
       const newSession = {
         ...session,
         schedule : { 
@@ -75,7 +73,6 @@ const Schedules = () => {
           groups: [] 
         }
       }
-      console.log("New Session", newSession)
       updateSession(session.sessionId, newSession, context).then(() => {
         setRedirect({
           value: selection.value,

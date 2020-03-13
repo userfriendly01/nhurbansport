@@ -84,9 +84,7 @@ export const deleteSchedule = (sessionId, context) => {
     .remove().then(() => {
       const leagues = context.state.leagueContext.leagues
       const league = leagues.find(obj => obj.sessionId === sessionId);
-      console.log("The leage now", league);
       delete league.schedule;
-      console.log("Did this delete work? ", league);
       const index = leagues.map(league => { return league.sessionId; }).indexOf(sessionId);
       leagues.splice(index, 1);
       leagues.splice(index, 0, league);
@@ -105,7 +103,6 @@ export const deleteSchedule = (sessionId, context) => {
 }
 
 export const deleteScheduleGroup = (sessionId, groupId, context) => {
-  console.log("Deleting Schedule Group ID: ", groupId)
   return database
     .ref("Sessions")
     .child(sessionId)
@@ -173,7 +170,7 @@ export const deleteGame = (sessionId, groupId, gameId, context) => {
           leagues
         }
       });
-      console.log("Game Deleted! ", teamId);
+      console.log("Game Successfully Deleted! ", teamId);
       return deletedGame.val();
     }).catch(error => {
       console.error("Failed to delete game. ", error);

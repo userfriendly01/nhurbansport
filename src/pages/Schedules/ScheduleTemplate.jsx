@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from "react"
+import React, { useState, useContext } from "react"
 import {
   DisplayCard,
   Wrapper
@@ -6,11 +6,12 @@ import {
 import ScheduleGroup from "./ScheduleGroup.jsx"
 import styled from 'styled-components'
 import { StateContext } from '../../context/appContext.jsx'
-import { 
-  getSchedule,
+import {
   updateSession,
+  getSession,
   createScheduleGroup
  } from "../../service/Database"
+ import { Redirect } from 'react-router-dom'
 
 const StyledTitle = styled(Wrapper)`
   width: 550;
@@ -33,9 +34,10 @@ const Schedule = ({match}) => {
   const session = sessions.find(obj => obj.sessionId === sessionId) ? sessions.find(obj => obj.sessionId === sessionId) : {};
   const schedule = session.schedule ? session.schedule : { published: false, groups: [] };
   const [scheduleForm, setScheduleForm] = useState(schedule);
-
-  console.log("This is the form for the schedule render: ", session)
-  console.log("This is the schedule form: ", scheduleForm)
+  const [redirect, setRedirect] = useState({
+    state: false,
+    to: ""}
+  );
 
   const handleCreateScheduleGroup = () => {
     createScheduleGroup(sessionId, { 
@@ -44,62 +46,50 @@ const Schedule = ({match}) => {
         games: [] }, context)
   };
 
-  const saveSchedule = publish => {
-    getSchedule(sessionId).then(schedule => {
-      if(publish){
-        schedule.published = true;
-      } else {
-        schedule.published = false;
-      }
-      const newSession = {
-        ...session,
-        schedule: {
-          ...schedule,
-          groups: formatSchedule(schedule)
-        }        
-      }
-      updateSession(sessionId, newSession, context)
-    });
+  const handleCancel = () => {
+    getSession(sessionId).then(originalSession => {
+      const index = sessions.map(session => { return session.sessionId; }).indexOf(sessionId);
+      sessions.splice(index, 1);
+      sessions.splice(index, 0, originalSession);
+      context.setState({
+        ...context.state,
+        leagueContext: {
+          ...context.state.leagueContext,
+          leagues: sessions
+        }
+      });
+      setRedirect({
+        state: true,
+        to: "/schedules"
+      });
+    })
   }
 
-  const formatSchedule = schedule => {
-    //Pass through the database schedule
-    const formattedGroupsObject = {};
-    for (let gr in schedule.groups) {
-      const databaseGroup = schedule.groups[gr];
-      const formGroup = scheduleForm.groups.find(obj => obj.groupId === gr);
-      const formatedGamesObject = {};
-        for (let ga in databaseGroup.games) {
-          const databaseGame = databaseGroup.games[ga];
-          const formGame = formGroup.games.find(obj => obj.gameId === ga);
-            if (formGame){
-              const newGame = {
-                // ...databaseGame,
-                location: formGame.location,
-                time: formGame.time,
-                homeTeam: formGame.homeTeam,
-                homeTeamScore: formGame.homeTeamScore,
-                awayTeam: formGame.awayTeam,
-                awayTeamScore: formGame.awayTeamScore
-              }
-              formatedGamesObject[ga] = newGame;
-          }
-      };
-      if (formGroup) {
-        const newGroup = {
-            // ...databaseGroup,
-            date: formGroup.date,
-            label: formGroup.label,
-            games: formatedGamesObject
-          }
-          formattedGroupsObject[gr] = newGroup;
-        }
-      }
-    return formattedGroupsObject;
+  const saveSchedule = publish => {
+    if(publish){
+      scheduleForm.published = true;
+    } else {
+      scheduleForm.published = false;
+    }
+
+    const newSession = {
+      ...session,
+      schedule: scheduleForm
+    }
+    updateSession(sessionId, newSession, context).then(() => {
+      setRedirect({
+        state: true,
+        to: `/schedule/${sessionId}`
+      });
+    })
   }
 
   return (
-    <DisplayCard width="600" bcolor="F5F5F5" border="5px solid white" direction="column">
+    <>
+      {redirect.state ?
+        <Redirect to={redirect.to}/>
+        : 
+        <DisplayCard width="600" bcolor="F5F5F5" border="5px solid white" direction="column">
       <Wrapper direction="column" align="center" width="100%">
         <Wrapper>
           <StyledTitle>{session.sessionFriendlyName} Schedule</StyledTitle>
@@ -121,7 +111,7 @@ const Schedule = ({match}) => {
             </Wrapper>
             <Wrapper justify="space-around">
               <Wrapper>
-                <StyledButton>Cancel</StyledButton>
+                <StyledButton onClick={handleCancel}>Cancel</StyledButton>
               </Wrapper>
               <Wrapper>
                 <StyledButton onClick={() => saveSchedule(false)} >Save as draft</StyledButton>
@@ -131,6 +121,8 @@ const Schedule = ({match}) => {
           </Wrapper>
       </Wrapper>
     </DisplayCard>
+      }
+    </>
   )
 }
 

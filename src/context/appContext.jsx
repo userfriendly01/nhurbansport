@@ -2,8 +2,8 @@ import {
   getActiveSessions
 } from '../service/Database'
 import {
-  convertTeamArray,
-  convertSchedule
+  formatTeamsForContext,
+  formatScheduleForContext
 } from '../util/helpers.js'
 import { getStorage, getDatabase } from "../service/connect.js";
 import React, { useState, useEffect } from 'react';
@@ -74,16 +74,16 @@ export const setLeagueContext = async state => {
             
             sessionObject.sessionFriendlyName = leagueName + " " + startDate;
             sessionObject.sessionId = sessionId;
-            let formattedTeams = convertTeamArray(sessionObject.teams);
+            let formattedTeams = formatTeamsForContext(sessionObject.teams);
             sessionObject.teams = formattedTeams;
             if (sessionObject.schedule) {
-              let formattedSchedule = convertSchedule(sessionObject.schedule);
+              let formattedSchedule = formatScheduleForContext(sessionObject.schedule);
               sessionObject.schedule = formattedSchedule;
             }
             state.leagueContext.leagues.push(sessionObject)
           };
     }).catch((error) => {
-        console.log(error)
+        console.error(error)
     })
 }
 
@@ -171,7 +171,7 @@ export const setImages = async state => {
           .then(async (url) => {
             imageObject[formattedImageName] = url;
           }).catch(error => {
-            console.log(error);
+            console.error(error);
           });
         });
         state.imageContext.images = imageObject;

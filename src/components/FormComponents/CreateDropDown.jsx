@@ -3,6 +3,7 @@ import CreatableSelect from 'react-select/creatable';
 import styled from "styled-components";
 import { Wrapper} from "../../components"
 
+//Work in Prgoress
 const CreateDropDown = ({
   options,
   updateFunction,
@@ -58,7 +59,7 @@ const StyledLabel = styled(Wrapper)`
           noOptionsMessage={validateProp("noOptionMessage")}
           options={options}
           onChange={handleUpdate}
-          onCreateOption={addNewFunction}
+          onCreateOption={handleUpdate}
         />
       </StyledWrapper>
     : 
@@ -71,7 +72,7 @@ const StyledLabel = styled(Wrapper)`
         noOptionsMessage={validateProp("noOptionMessage")}
         options={options}
         onChange={handleUpdate}
-        onCreateOption={addNewFunction}
+        onCreateOption={() => {console.log("On Create Option kicked off"); return {name: "Mimosa", label: "Sunday"}}}
       />
       }
     </>

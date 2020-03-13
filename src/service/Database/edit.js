@@ -1,4 +1,5 @@
 import { getDatabase } from "../connect.js";
+import { formatScheduleForDatabase } from "../../util/helpers.js"
 
 const database = getDatabase();
 
@@ -41,7 +42,7 @@ export const updateAdminText = (id, editedText, context) => {
             }
           }
         });
-        console.log("Successfully updated text!");
+        console.log("Updated text!");
         return true;
     })
     .catch(error => {
@@ -55,7 +56,6 @@ export const updateImageData = (id, url, context) => {
     .set(url)
     .then(()=> {
       const images = context.state.imageContext.imageData
-      console.log("Images: ", images)
       const index = images.map(image => { return image.imageId; }).indexOf(id);
       const editedImageObject = {
         imageId: id,
@@ -70,14 +70,22 @@ export const updateImageData = (id, url, context) => {
           imageData: images
         }
       });
-      console.log("Updated Image!", url)
       return true;
     }).catch(error => {
       console.error("Failed to update image. ", error)
     });
 }
 
-export const updateSession = (id, editedSession, context) => {
+export const updateSession = (id, session, context) => {
+    let editedSession = {};
+    if(session.schedule){
+      editedSession = {
+        ...session,
+        schedule: formatScheduleForDatabase(session.schedule)
+      }
+    }else {
+      editedSession = session;
+    }
   return database
     .ref("Sessions")
     .child(id)
@@ -85,7 +93,7 @@ export const updateSession = (id, editedSession, context) => {
       const sessions = context.state.leagueContext.leagues
       const index = sessions.map(session => { return session.sessionId; }).indexOf(id);
       sessions.splice(index, 1);
-      sessions.splice(index, 0, editedSession);
+      sessions.splice(index, 0, session);
       context.setState({
         ...context.state,
         leagueContext: {

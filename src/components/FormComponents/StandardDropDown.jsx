@@ -17,7 +17,7 @@ const StandardDropDown = ({
 
   const StyledWrapper = styled(Wrapper)`
     flex-direction: column;
-    width: ${styles.width};
+    width: ${styles ? styles.width : null };
     margin: 0;
   `
 
@@ -26,7 +26,7 @@ const StandardDropDown = ({
     margin: 0 0 -10 0;
     color: grey;
   `
-
+  
   const validateProp = prop => {
     if(props){
       return props[prop] ? props[prop] : null;
